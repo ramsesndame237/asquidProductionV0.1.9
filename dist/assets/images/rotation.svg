@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_rotate_right_48px</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="A4" transform="translate(-430.000000, -440.000000)">
+            <g id="ic_rotate_right_48px" transform="translate(430.000000, 440.000000)">
+                <rect id="Rectangle" fill="#A5A5A5" x="0" y="0" width="48" height="48" rx="24"></rect>
+                <g id="Group" transform="translate(10.560000, 5.520000)" fill="#FFFFFF" fill-rule="nonzero">
+                    <path d="M19.404,7.644 L11.76,0 L11.76,5.1576 C5.1324,5.9808 0,11.6256 0,18.48 C0,25.3344 5.1324,30.9792 11.76,31.8024 L11.76,28.4088 C6.9972,27.6108 3.36,23.4696 3.36,18.48 C3.36,13.4904 6.9972,9.3492 11.76,8.5512 L11.76,15.12 L19.404,7.644 Z M26.7624,16.8 C26.4768,14.4648 25.5444,12.2136 24.0324,10.2648 L21.6552,12.642 C22.554,13.9104 23.1252,15.33 23.3688,16.8 L26.7624,16.8 Z M15.12,28.4004 L15.12,31.8024 C17.4552,31.5168 19.7232,30.6096 21.672,29.0976 L19.2612,26.6868 C18.0012,27.5772 16.59,28.1484 15.12,28.4004 Z M21.6552,24.318 L24.0324,26.6952 C25.5444,24.7464 26.4768,22.4952 26.7624,20.16 L23.3688,20.16 C23.1252,21.63 22.554,23.0496 21.6552,24.318 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

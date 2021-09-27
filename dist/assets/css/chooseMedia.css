@@ -1,0 +1,525 @@
+@font-face {
+    font-family: 'Avenir';
+    src:url('../fonts/Avenir/AvenirLTStd-Roman.woff'), url('../fonts/Avenir/AvenirLTStd-Black.woff'), url('../fonts/Avenir/AvenirLTStd-Book.woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Avenir';
+}
+body{
+    margin: 0;
+    padding: 0;
+    background: #002633;
+}
+
+ul,li,a{text-decoration: none; list-style: none;}
+.chooseMediaBody{
+    max-width: 1336px;
+    max-height: 1740px;
+    margin: auto;
+    position: relative;
+    border: solid 1px solid #919da1;
+}
+.header_container{
+    display: flex;
+    justify-content: space-between;
+    width: 1046px;
+    height: 124px;
+    margin: auto;
+}
+.social-link{
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    float: right;
+    margin-bottom: 30px;
+    margin-top: 5px;
+
+}
+.user img {
+    filter: invert(100%) sepia(100%) saturate(100%) hue-rotate(86deg) brightness(100%) contrast(100%);
+    width: 21px;
+    height: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.shopping img{
+    filter: invert(100%) sepia(100%) saturate(100%) hue-rotate(86deg) brightness(100%) contrast(100%);
+    width: 21px;
+    height: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.search_utilisateur{
+    background: rgba(255,255,255,0.043);
+    padding: 10px;
+    border-radius:28px;
+    width: 184px;
+    height: 34px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.search_utilisateur input{
+    border: none;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    background-color: transparent !important;
+}
+.search_utilisateur input:focus{
+    border: none;
+    background-color: transparent !important;
+    color: #fff;
+    outline: none;
+}
+.search-icon img{
+    filter: invert(100%) sepia(100%) saturate(100%) hue-rotate(86deg) brightness(100%) contrast(100%);
+    width: 28px;
+    height: 28px;
+}
+.link-item-list{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 550px;
+    height: 60px;
+    font-size: 20px;
+    font-weight: 900;
+    cursor: pointer;
+}
+.dropdows{
+    position: relative;
+}
+.dropdows:hover .dropdown-link-item{
+    visibility: visible;
+    opacity: 1;
+}
+.dropdown-link-item{
+    position: absolute;
+    width: 180px;
+    /* height: 110px; */
+    text-align: center;
+    left: -50px;
+    top: 35px;
+    padding: 10px;
+    background: #fff;
+    z-index: 10;
+    color: #002633;
+    border-radius: 25px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .2s;
+}
+.dropdown-link-item li{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all .2s;
+}
+.dropdown-link-item li a {color: #002633;}
+.dropdown-link-item li:hover{
+    border: solid #33ccff;
+    border-radius: 10px;
+}
+.flexiSquidBreacrumb{
+    position: relative;
+    width: 1088px;
+    height: 89px;
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+.titleMedia{
+    color: #fff;
+    font-family: 'Avenir';
+}
+ /*
+ style du corps 
+ */
+ .mediaBodyChooseContainer{
+     height: 50rem;
+     width: 100%;
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
+ }
+ .containerMediaItem{
+     background: #fff;
+     width: 306px;
+     height: 306px;
+     border-radius: 28px;
+     font-size: 38px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     transition: all .3s;
+     cursor: pointer;
+ }
+ .containerMediaItem:hover{
+     transform: scale(1.09);
+ }
+
+/*
+*footer style 
+
+*/
+
+#Groupe_84 {
+		position: absolute;
+		width: 1366px;
+		height: 257px;
+		left: auto;
+        right: auto;
+		top: 1220px;
+		overflow: visible;
+	}
+	#Pricing {
+		left: 214.5px;
+		top: 118.5px;
+		position: absolute;
+		overflow: visible;
+		width: 49px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Avenir;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		color: rgba(255,255,255,1);
+	}
+	#Let_us_help {
+		left: 214.5px;
+		top: 25.5px;
+		position: absolute;
+		overflow: visible;
+		width: 107px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Avenir;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 20px;
+		color: rgba(255,255,255,1);
+	}
+	#My_account {
+		left: 214.5px;
+		top: 60.5px;
+		position: absolute;
+		overflow: visible;
+		width: 83px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Avenir;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		color: rgba(255,255,255,1);
+	}
+	#Contact__Support {
+		left: 214.5px;
+		top: 89.5px;
+		position: absolute;
+		overflow: visible;
+		width: 134px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Avenir;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		color: rgba(255,255,255,1);
+	}
+	#FAQs {
+		left: 214.5px;
+		top: 147.5px;
+		position: absolute;
+		overflow: visible;
+		width: 37px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Avenir;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		color: rgba(255,255,255,1);
+	}
+	#Stickers {
+		left: 429.5px;
+		top: 25.5px;
+		position: absolute;
+		overflow: visible;
+		width: 78px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Avenir;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 20px;
+		color: rgba(255,255,255,1);
+	}
+	#Composition_of_one_kit {
+		left: 429.5px;
+		top: 60.5px;
+		position: absolute;
+		overflow: visible;
+		width: 163px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Avenir;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		color: rgba(255,255,255,1);
+	}
+	#How_to_fix_the_stickers {
+		left: 429.5px;
+		top: 89.5px;
+		position: absolute;
+		overflow: visible;
+		width: 157px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Avenir;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		color: rgba(255,255,255,1);
+	}
+	#Options_for_stickers {
+		left: 429.5px;
+		top: 118.5px;
+		position: absolute;
+		overflow: visible;
+		width: 138px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Avenir;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		color: rgba(255,255,255,1);
+	}
+	#Follow_us {
+		left: 674.5px;
+		top: 25.5px;
+		position: absolute;
+		overflow: visible;
+		width: 94px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Avenir;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 20px;
+		color: rgba(255,255,255,1);
+	}
+	#Facebook {
+		left: 674.5px;
+		top: 60.5px;
+		position: absolute;
+		overflow: visible;
+		width: 68px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Avenir;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		color: rgba(255,255,255,1);
+	}
+	#Instagram {
+		left: 674.5px;
+		top: 89.5px;
+		position: absolute;
+		overflow: visible;
+		width: 72px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Avenir;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		color: rgba(255,255,255,1);
+	}
+	#Youtube {
+		left: 674.5px;
+		top: 118.5px;
+		position: absolute;
+		overflow: visible;
+		width: 59px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Avenir;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		color: rgba(255,255,255,1);
+	}
+	#Privacy_and_Cookie_Policy {
+		left: 157.5px;
+		top: 198px;
+		position: absolute;
+		overflow: visible;
+		width: 180px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Avenir;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		color: rgba(255,255,255,1);
+	}
+	#Terms_and_Conditions {
+		left: 384.5px;
+		top: 198px;
+		position: absolute;
+		overflow: visible;
+		width: 154px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Avenir;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		color: rgba(255,255,255,1);
+	}
+	#Ligne_3 {
+		fill: transparent;
+		stroke: rgba(63,188,236,1);
+		stroke-width: 5px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Ligne_3 {
+		overflow: visible;
+		position: absolute;
+		width: 1366px;
+		height: 5px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#Copyright_2021_Flysoft_Enginee {
+		left: 800.5px;
+		top: 198px;
+		position: absolute;
+		overflow: visible;
+		width: 266px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Avenir;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		color: rgba(255,255,255,1);
+	}
+	#ABN_16_998_486_520 {
+		left: 800.5px;
+		top: 220px;
+		position: absolute;
+		overflow: visible;
+		width: 148px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: 'Avenir';
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		color: rgba(255,255,255,1);
+	}
+	#Tentacule_footer_test_v2 {
+		position: absolute;
+		width: 212px;
+		height: 212px;
+		left: 1154px;
+		top: 45px;
+		overflow: visible;
+	}
+	#Rectangle_21 {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(145,157,161,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Rectangle_21 {
+		position: absolute;
+		overflow: visible;
+		width: 276px;
+		height: 53px;
+		left: 950.5px;
+		top: 37px;
+	}
+	#Email {
+		opacity: 0.798;
+		left: 1069px;
+		top: 54px;
+		position: absolute;
+		overflow: visible;
+		width: 39px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: 'Avenir';
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		color: rgba(0,38,51,1);
+	}
+	#Rectangle_22 {
+		fill: rgba(51,204,255,1);
+	}
+	.Rectangle_22 {
+		position: absolute;
+		overflow: visible;
+		width: 276px;
+		height: 53px;
+		left: 950.5px;
+		top: 98px;
+	}
+	#Subscribe {
+		left: 1051.5px;
+		top: 113px;
+		position: absolute;
+		overflow: visible;
+		width: 77px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: 'Avenir';
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		color: rgba(0,38,51,1);
+	}
+	#Ligne_4 {
+		fill: transparent;
+		stroke: rgba(63,188,236,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Ligne_4 {
+		overflow: visible;
+		position: absolute;
+		width: 936px;
+		height: 1px;
+		left: 215.5px;
+		top: 183.5px;
+		transform: matrix(1,0,0,1,0,0);
+	}

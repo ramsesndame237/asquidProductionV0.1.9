@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asquid | Quote</title>
+    <link rel="stylesheet" href="dist/assets/css/quote.css">
+    <link rel="stylesheet" href="dist/plugin/responsive/css/bootstrap.min.css">
+    <script src="dist/plugin/vue.js"></script>
+    <link rel="icon" href="dist/assets/images/logo.png">
+</head>
+<body>
+    <div class="QuoteBody" id="QuotePage">
+          <header>
+            <div class="header_container animate__animated animate__bounce animate__delay-2s">
+                <div class="logo-container">
+                      <a href="index.html"><img src="dist/assets/images/logo.png" alt=""></a> 
+                </div>
+                <div class="link-container">
+                    <div class="social-link">
+                        <div class="user">
+                            <img src="dist/assets/images/icon/user_V2.svg" alt="">
+                        </div>
+                        <div class="shopping">
+                            <img src="dist/assets/images/icon/shopping-cart_V2.svg" alt="">
+                        </div>
+                        <div class="search_utilisateur">
+                            <div class="search-icon">
+                                <img src="dist/assets/images/icon/search.svg" alt="">
+                            </div>
+                            <div class="inputText">
+                                <input type="text" name="search" id="search" placeholder="Search">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="link-item">
+                        <ul class="link-item-list">
+                            <li class="link-item-list-item dropdows ">Produit
+                                <ul class="dropdown-link-item">
+                                    <li><a href="products/kitSquid.html#Kit">Kit Squid</a></li>
+                                    <li><a href="products/flexiSquid.html#flexiSquidSelectioncontainer">FlexiSquid</a></li>
+                                    <li><a href="products/rearsquid.html#rearContainer">Rear Squid</a></li>
+                                </ul>
+
+                            </li>
+                            <li class="link-item-list-item">Quote</li>
+                            <li class="link-item-list-item">Business service</li>
+                            <li class="StartMarking"> <a href="chooseYourmedia.html"> Start marking</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <div class="QuoteContainer">
+            <div class="formulaireQuoteContainer">
+
+                <div class="nameQuoteClient mt-3 mb-3">
+                    <div class="labelQuote mb-2">
+                        <span>Your Name:</span>
+                    </div>
+                    <div class="inputContainer">
+                        <input type="text" class="customQuoteInput"> 
+                    </div>
+                </div>
+                <div class="nameQuoteClient mt-3 mb-3">
+                    <div class="labelQuote mb-2">
+                        <span>Your Company Name:</span>
+                    </div>
+                    <div class="inputContainer">
+                        <input type="text" class="customQuoteInput"> 
+                    </div>
+                </div>
+                <div class="nameQuoteClient mt-2 mb-2">
+                    <div class="labelQuote mb-2">
+                        <span>Your Email</span>
+                    </div>
+                    <div class="inputContainer">
+                        <input type="email" class="customQuoteInput"> 
+                    </div>
+                </div>
+                <div class="nameQuoteClient mt-3 mb-3">
+                    <div class="labelQuote mb-2">
+                        <span>Subject</span>
+                    </div>
+                    <div class="inputContainer">
+                       <div class="choosequantityDropdow d-lg-flex d-md-flex d-sm-block" @click="dropChoose = !dropChoose">
+                           <div class="container">
+                               <div class="row">
+                                   <div class="col col-11">
+                                       <div class="chooseQuantityName  text-center fw-bold">
+                                           <span>{{subjetChoose}}</span>
+                                       </div>
+                                   </div>
+                                   <div class="col col-1">
+                                       <div class="arrowDownDrop">
+                                           <img src="../dist/assets/images/arrowDown.png" alt="">
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                        </div>
+                        <div class="DropDowQuantityToChoose" v-if="dropChoose">
+                            <div class="quantityList mt-3 fw-bold"  v-for = "itemSubject in subjectQuote">
+                                <span  @click="SubjectToSelect(itemSubject)">  {{itemSubject.title}} </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nameQuoteClient mt-3 mb-3" v-if="itemSubjectToShow == 'I have several vehicles'">
+                    <div class="labelQuote mb-2">
+                        <span>How much</span>
+                    </div>
+                    <div class="inputContainer">
+                       <div class="choosequantityDropdow d-lg-flex d-md-flex d-sm-block" @click="dropChooseVehicle = !dropChooseVehicle">
+                           <div class="container">
+                               <div class="row">
+                                   <div class="col col-11">
+                                       <div class="chooseQuantityName  text-center fw-bold">
+                                           <span>{{QuantityVehicle}}</span>
+                                       </div>
+                                   </div>
+                                   <div class="col col-1">
+                                       <div class="arrowDownDrop">
+                                           <img src="../dist/assets/images/arrowDown.png" alt="">
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                        </div>
+                        <div class="DropDowQuantityToChoose" v-if="dropChooseVehicle">
+                            <div class="quantityList mt-3 fw-bold"  v-for =  "itemVehicleIntevale in quantityVehiculeInterval">
+                                <span  @click="SubjectToSelectVehicle(itemVehicleIntevale)">  {{itemVehicleIntevale.intervaleVehicule}} </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="nameQuoteClient mt-3 mb-3" v-if="itemSubjectToShow == 'I would like a specific wrapping for my vehicle'">
+                    <div class="labelQuote mb-2">
+                        <span>Your Brand:</span>
+                    </div>
+                    <div class="inputContainer">
+                       <div class="choosequantityDropdow d-lg-flex d-md-flex d-sm-block" @click="dropChooseVehicle = !dropChooseVehicle">
+                           <div class="container">
+                               <div class="row">
+                                   <div class="col col-11">
+                                       <div class="chooseQuantityName  text-center fw-bold">
+                                           <span>{{BrandChoose}}</span>
+                                       </div>
+                                   </div>
+                                   <div class="col col-1">
+                                       <div class="arrowDownDrop">
+                                           <img src="../dist/assets/images/arrowDown.png" alt="">
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                        </div>
+                        <div class="DropDowQuantityToChoose" v-if="dropChooseVehicle">
+                            <div class="quantityList mt-3 fw-bold"  v-for =  "itemBrand in BrandChooseList">
+                                <span  @click="SubjectToSelectBrand(itemBrand)">  {{itemBrand.model}} </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="nameQuoteClient mt-3 mb-3" v-if="itemSubjectToShow == 'I would like a specific wrapping for my vehicle'">
+                    <div class="labelQuote mb-2">
+                        <span>Your Model:</span>
+                    </div>
+                    <div class="inputContainer">
+                        <input type="text" class="customQuoteInput"> 
+                    </div>
+                </div>
+                 <div class="nameQuoteClient mt-3 mb-3" v-if="itemSubjectToShow == 'I would like a specific wrapping for my vehicle'">
+                    <div class="labelQuote mb-2">
+                        <span>Year of Vehicle:</span>
+                    </div>
+                    <div class="inputContainer">
+                       <div class="choosequantityDropdow d-lg-flex d-md-flex d-sm-block" @click="dropChooseYearVehicle = !dropChooseYearVehicle">
+                           <div class="container">
+                               <div class="row">
+                                   <div class="col col-11">
+                                       <div class="chooseQuantityName  text-center fw-bold">
+                                           <span>{{YearChoose}}</span>
+                                       </div>
+                                   </div>
+                                   <div class="col col-1">
+                                       <div class="arrowDownDrop">
+                                           <img src="../dist/assets/images/arrowDown.png" alt="">
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                        </div>
+                        <div class="DropDowQuantityToChoose" v-if="dropChooseYearVehicle">
+                            <div class="quantityList mt-3 fw-bold"  v-for =  "itemYear in YearList">
+                                <span  @click="SubjectToSelectYear(itemYear)">  {{itemYear}} </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                  <div class="nameQuoteClient mt-3 mb-3" v-if="itemSubjectToShow == 'I would also like buisness cards, flyers, website, a logo...'">
+                   <div class="labelQuote mb-2">
+                        <span>What I want:</span>
+                    </div>
+                    <div class="inputContainer">
+                       <div class="choosequantityDropdow d-lg-flex d-md-flex d-sm-block" @click="dropChooseWhat = !dropChooseWhat">
+                           <div class="container">
+                               <div class="row">
+                                   <div class="col col-11">
+                                       <div class="chooseQuantityName  text-center fw-bold">
+                                           <span>{{WhatProductChoose}}</span>
+                                       </div>
+                                   </div>
+                                   <div class="col col-1">
+                                       <div class="arrowDownDrop">
+                                           <img src="../dist/assets/images/arrowDown.png" alt="">
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                        </div>
+                        <div class="DropDowQuantityToChoose" v-if="dropChooseWhat">
+                            <div class="quantityList mt-3 fw-bold"  v-for =  "itemwhat in ListOfWhatIwant">
+                                <span  @click="SubjectToSelectWhat(itemwhat)">  {{itemwhat.product}} </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="nameQuoteClient mt-3 mb-3" v-if="isTheEnd">
+                    <div class="labelQuote mb-2">
+                        <span>Description:</span>
+                    </div>
+                    <div class="inputContainer">
+                        <textarea type="text" class="descriptionZone"> </textarea>
+                    </div>
+                </div>
+                <div class="buttonToSend float-lg-end"  v-if="isTheEnd">
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <script src="dist/assets/js/quote.js"></script>
+</body>
+</html>

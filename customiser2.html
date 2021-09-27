@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asquid | Customize</title>
+    <link rel="stylesheet" href="dist/assets/css/customiser2.css">
+    <link rel="stylesheet" href="dist/plugin/bootstrap.min.css">
+    <link rel="stylesheet" href="dist/plugin/animate.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="dist/plugin/colorPick.min.css">
+    <link rel="stylesheet" href="dist/plugin/colorPick.dark.theme.css">
+    <link rel="stylesheet" href="dist/assets/css/customisateurDropdown.css">
+    <link rel="stylesheet" href="dist/plugin/responsive/css/bootstrap.min.css">
+    <link rel="stylesheet" href="dist/assets/css/fontFamily.css">
+
+    <script src="dist/plugin/vue.js"></script>
+</head>
+
+<body>
+    <div id="cutomizateurContainer">
+        <header class="CutomisateurHeader">
+            <div class="container">
+                <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="index.html"><img src="dist/assets/images/logo.png" alt=""></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarCollapse">
+                            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#"></a>
+                                </li>
+                                <li class="nav-item">
+                                    <div class="ligne">
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <div class="title-customizer-product text-white mt-4 mx-4">
+                                        <h1>{{titreProduct}}</h1>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="d-flex edited">
+                                <div class="edit-action-button" @click="showBox = !showBox">
+                                    <img src="dist/assets/images/Customisateur/Edit.png" alt="#">
+                                    <img class="arrowDown" src="dist/assets/images/arrowDown.png" alt="#">
+                                </div>
+                                <div class="next-action-button" id="saveToNext" onclick="saveToCanvas()">
+                                    <span><a href="PreviewCanvas.html">next</a></span>
+                                </div>
+                                <div class="containerEditButon" v-if="showBox">
+                                    <ul>
+                                        <li id="saveAs">Save as</li>
+                                        <li id="StartAgain">Start again</li>
+                                        <li id="GoBackProduct">Back to the product</li>
+                                    </ul>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main id="mainCustomisateur">
+            <div class="sidebar">
+                <div class="sidebarTools">
+                    <div class="itemToolsSidebar" @click="Onselected(0), (textToShow = 'layout')">
+                        <div class="imagesTools">
+                            <img src="dist/assets/images/icon/Customisateur/Backgrounds_click.png" v-if="textToShow=='layout'" alt="backgroundCliquer">
+                            <img src="dist/assets/images/icon/Customisateur/Backgrounds.png" v-else alt="Backgrounds">
+                        </div>
+                        <div class="titleTools">
+                            <span>Backgrounds</span>
+                        </div>
+
+                    </div>
+                    <div class="itemToolsSidebar" @click="Onselected(1), (textToShow = 'TextManipulate'),(textTools=!textTools)">
+                        <div class="imagesTools">
+                            <img src="dist/assets/images/icon/Customisateur/Text_click.png" v-if="textToShow == 'TextManipulate'" alt="">
+                            <img src="dist/assets/images/icon/Customisateur/Text.png" v-else alt="Text">
+                        </div>
+                        <div class="titleTools">
+                            <span>Text</span>
+                        </div>
+                    </div>
+                    <div class="itemToolsSidebar" @click="Onselected(2), (textToShow = 'Logo')">
+                        <div class="imagesTools">
+                            <img src="dist/assets/images/icon/Customisateur/Image_click.png" v-if="textToShow == 'Logo'" alt="">
+                            <img src="dist/assets/images/icon/Customisateur/Image.png" v-else alt="">
+                        </div>
+
+                        <div class="titleTools">
+                            <span>Logo</span>
+                        </div>
+                    </div>
+                    <div class="itemToolsSidebar" @click="Onselected(3), (textToShow = 'icone')">
+                        <div class="imagesTools">
+                            <img src="dist/assets/images/Customisateur/iconSelect.jpeg" v-if="textToShow == 'icone'" alt="">
+                            <img src="dist/assets/images/Customisateur/icon.jpeg" v-else alt="">
+                        </div>
+                        <div class="titleTools">
+                            <span>Icons</span>
+                        </div>
+
+                    </div>
+                    <div class="itemToolsSidebar" @click="Onselected(4), (textToShow = 'QRcode')">
+                        <div class="imagesTools">
+                            <img src="dist/assets/images/icon/Customisateur/Qr_code_click.png" v-if="textToShow == 'QRcode'" alt="">
+                            <img src="dist/assets/images/icon/Customisateur/Qr_code.png" v-else alt="">
+                        </div>
+                        <div class="titleTools">
+                            <span>Qrcode</span>
+                        </div>
+                    </div>
+                    <div class="itemToolsSidebar" @click="Onselected(5), (textToShow = 'Layers')">
+                        <div class="imagesTools">
+                            <img src="dist/assets/images/Customisateur/background_v2_click.png" v-if="textToShow == 'Layers'" alt="">
+                            <img src="dist/assets/images/Customisateur/background_v2.png" v-else alt="">
+                        </div>
+                        <div class="titleTools">
+                            <span>Layers</span>
+                        </div>
+
+                    </div>
+                    <div class="itemToolsSidebar" @click="Onselected(6), (textToShow = 'Setting')">
+                        <div class="imagesTools">
+                            <img src="dist/assets/images/icon/Customisateur/Reglage_Click.png" v-if="textToShow =='Setting'" alt="">
+                            <img src="dist/assets/images/icon/Customisateur/Reglage.png" v-else alt="">
+                        </div>
+                        <div class="titleTools">
+                            <span>Settings</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="sidebarDetails">
+                    <div class="detailsLayoutSidebar" v-if="textToShow == 'layout'">
+                        <div class="containerTextLayout">
+                            <div class="headerLayout">
+                                <h2>
+                                    Backgrounds
+                                </h2>
+                            </div>
+                            <div class="bodyHeaderLayout">
+                                <span>
+                                    You can choose a design from our library or just choose the background color by clicking on 
+                                    your visual
+                                </span>
+                            </div>
+                        </div>
+                        <div class="visualDesignContainer">
+                            <div class="visualContent" v-for="itemP in backgroundLayout" @click="OnselectedBackground(itemP.id),(backgroundName ='sidebarItem')">
+                                <img class="imageLayout" :src="itemP.imageSrc" alt="#">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detailsTextSidebar " v-show="textToShow == 'TextManipulate'">
+                        <div class="containerTextLayout">
+                            <div class="headerLayout">
+                                <h2>
+                                    Text
+                                </h2>
+                            </div>
+                            <div class="bodyHeaderLayout">
+                                <span>
+                                    You can add or modify the text below, or by clicking directly on your text
+                                </span>
+                            </div>
+                        </div>
+                        <div class="TextContainer">
+                            <div class="textInputToCanvas d-lg-flex d-md-flex d-sm-flex">
+                                <input type="text" placeholder="Company name" value="Company name" id="companyText" class="defaultText">
+                                <div class="imageTextTocanvas">
+                                    <img src="dist/assets/images/Customisateur/Trash.png" alt="">
+                                </div>
+                            </div>
+                            <div class="textInputToCanvas d-lg-flex d-md-flex d-sm-flex">
+                                <input type="text" placeholder="Your business" value="Your business" id="yourbuisness" class="defaultText">
+                                <div class="imageTextTocanvas">
+                                    <img src="dist/assets/images/Customisateur/Trash.png" alt="">
+                                </div>
+                            </div>
+                            <div class="textInputToCanvas d-lg-flex d-md-flex d-sm-flex">
+                                <textarea type="text" rows="3" cols="25" placeholder="• Activity n°1 • Activity n°2  •Activity n°3" value=".Activity n°1 . Activity n°2.Activity n°3" id="activity" class="defaultText"></textarea>
+                                <div class="imageTextTocanvas">
+                                    <img src="dist/assets/images/Customisateur/Trash.png" alt="">
+                                </div>
+                            </div>
+                            <div class="textInputToCanvas d-lg-flex d-md-flex d-sm-flex">
+                                <input type="text" placeholder="Additional information" id="informationAdd" value="Additional information" class="defaultText">
+                                <div class="imageTextTocanvas">
+                                    <img src="dist/assets/images/Customisateur/Trash.png" alt="">
+                                </div>
+                            </div>
+                            <div class="textInputToCanvas d-lg-flex d-md-flex d-sm-flex">
+                                <textarea type="text" placeholder="04 00 000 000 - example@ Adsquid.com.au" value="04 00 000 000 - example@ Adsquid.com.au" id="adresseInformation" class="defaultText"></textarea>
+                                <div class="imageTextTocanvas">
+                                    <img src="dist/assets/images/Customisateur/Trash.png" alt="">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="buttonAddText mt-5" onclick="addText()">
+                            Add text
+                        </div>
+                    </div>
+                    <div class="detailsLogoSidebar" v-show="textToShow =='Logo' ">
+                        <div class="containerTextLayout">
+                            <div class="headerLayout">
+                                <h2>
+                                    Logo
+                                </h2>
+                            </div>
+                            <div class="bodyHeaderLayout">
+                                <span>
+                                    If you wish, you can upload your own logo/visual or choose it from our library
+                                </span>
+                            </div>
+                        </div>
+                        <div class="selectTypeLogo">
+                            <div class="downloadType fw-bold titleZone" @click="resumeImportShowActive(0),jobTipe ='downloadLogo'">
+                                <span class="h5 fw-bold">  Download</span>
+                            </div>
+                            <div class="ourLibraryType fw-bold titleZone" @click="resumeImportShowActive(1),jobTipe='ourLibrary'">
+                                <span class="h5 fw-bold">Our library</span>
+                            </div>
+                        </div>
+                        <div class="logoImporterZone" v-if="jobTipe=='downloadLogo'">
+                            <div id="Download_your_Logo">
+                                <span>Download your<br/>Logo</span>
+                            </div>
+                            <div class="Dowload">
+                                <img src="dist/assets/images/Customisateur/Dowload.png" alt="">
+                            </div>
+                            <input type="file" name="upload" id="logoImport">
+
+                        </div>
+                        <div class="mediaZoneImport" v-show="jobTipe=='ourLibrary'">
+                            <div class="choosequantityDropdow d-lg-flex d-md-flex d-sm-block" @click="dropChoose = !dropChoose">
+                                <div class="chooseQuantityName text-center">
+                                    <span class="metierChoose">{{jobchoose.jobname}}</span>
+                                </div>
+                                <div class="arrowDownDrop">
+                                    <img src="../dist/assets/images/arrowDown.png" alt="">
+                                </div>
+                            </div>
+                            <div class="DropDowQuantityToChoose" v-if="dropChoose">
+                                <div class="quantityList mt-3 fw-bold" v-for="itemJob in ListMetier">
+                                    <span @click="removeItem(itemJob)">  {{itemJob.jobname}} </span>
+                                </div>
+                            </div>
+
+                            <div class="containerJobMedia">
+                                <div class="containerVisualJob imageToSelect" onclick="uploadMetierImage()" v-for="itemImageMetier in jobchoose.image">
+                                    <img :src="itemImageMetier.imageSRC" alt="metier">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="detailsIconsSidebar" v-show="textToShow == 'icone'">
+                        <div class="containerTextLayout">
+                            <div class="headerLayout">
+                                <h2>
+                                    Icons
+                                </h2>
+                            </div>
+                            <div class="bodyHeaderLayout">
+                                <span>
+                                    If you wish you can add icons from our library
+                                </span>
+                            </div>
+                        </div>
+                        <div class="selectIconCategory">
+                            <div class="choosequantityDropdow iconDrop d-lg-flex d-md-flex d-sm-block" @click="dropChoose = !dropChoose">
+                                <div class="chooseQuantityName text-center">
+                                    <span class="metierChoose">{{IconChoose.title}}</span>
+                                </div>
+                                <div class="arrowDownDrop">
+                                    <img src="../dist/assets/images/arrowDown.png" alt="">
+                                </div>
+                            </div>
+                            <div class="DropDowQuantityToChoose" v-if="dropChoose">
+                                <div class="quantityList mt-3 fw-bold" v-for="itemIcon in iconListCategoryChoose">
+                                    <span @click="removeItemIcon(itemIcon)">  {{itemIcon.title}} </span>
+                                </div>
+                            </div>
+                            <div class="containerJobMedia">
+                                <div class="containerVisualJob imageToSelect" onclick="uploadMetierImage()" v-for="itemImageMedia in IconChoose.image">
+                                    <img :src="itemImageMedia.imageSrc" alt="metier">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detailsIconsSidebar"  v-show="textToShow == 'QRcode'">
+                        <div class="containerTextLayout">
+                            <div class="headerLayout">
+                                <h2>
+                                    Qr code
+                                </h2>
+                            </div>
+                            <div class="bodyHeaderLayout">
+                                <span>
+                                    If you wish, you can add a Qr code to your advertising. This allows the future customer to find your website just by scanning with their phone the code
+                                </span>
+                            </div>
+                        </div>
+                        <input type="text" placeholder="Https://exemple.com.au"  id="linkQrcode" class="defaultLinkCode">
+                        <div class="buttonQRcodeSend d-lg-flex d-md-flex d-sm-flex" onclick="mainQrCode()">
+                            <span>Add Qr code</span>
+                        </div>
+                    </div>
+                    <div class="detailsIconsSidebar"  v-show="textToShow == 'Setting'">
+                        <div class="SettingSidebarContainer">
+                            <div class="headerLayout">
+                                <h2 class="specialText">
+                                    Settings
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="settingItems mt-5 d-lg-flex d-md-flex d-sm-flex">
+                            <div class="titleSettingItems">
+                                <span>Safety area</span>
+                            </div>
+                            <div class="settingSwitch">
+                                <label class="switch">
+                                    <input type="checkbox" id="SafetyArea">
+                                    <span class="slider round"></span>
+                                  </label>
+                            </div>
+                        </div>
+                        <div class="settingItems mt-3  d-lg-flex d-md-flex d-sm-flex">
+                            <div class="titleSettingItems">
+                                <span>Rules</span>
+                                <div class="descri">
+                                    <span >Help for the correct positioning</span>
+                                </div>
+                            </div>
+                            <div class="settingSwitch">
+                                <label class="switch">
+                                    <input type="checkbox" id="Rules">
+                                    <span class="slider round"></span>
+                                  </label>
+                            </div>
+                        </div>
+                        <div class="settingItems mt-3 d-lg-flex d-md-flex d-sm-flex">
+                            <div class="titleSettingItems">
+                                <span>Guide lines</span>
+                            </div>
+                            <div class="settingSwitch">
+                                <label class="switch">
+                                    <input type="checkbox" id="GuideLines">
+                                    <span class="slider round"></span>
+                                  </label>
+                            </div>
+                        </div>
+                        <div class="settingItems mt-3 d-lg-flex d-md-flex d-sm-flex">
+                            <div class="titleSettingItems">
+                                <span>Grid lines</span>
+                            </div>
+                            <div class="settingSwitch">
+                                <label class="switch">
+                                    <input type="checkbox" id="GridLines">
+                                    <span class="slider round"></span>
+                                  </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="customisateurArea ">
+                <div class="zoomButtonContainer">
+                    <div class="zommButton mb-2" id="zoom" onclick="ZoomIn()">
+
+                    </div>
+                    <div class="dezommButton" id="Dezomme" onclick="ZoomOut()">
+
+                    </div>
+                </div>
+                <div class="undoActionZone d-lg-flex">
+                    <div class="zommButton mb-2" id="undo" onclick="undo()">
+
+                    </div>
+                    <div class="dezommButton" id="redo" onclick="redo()">
+
+                    </div>
+                </div>
+                <div class="LayoutCustomTools animate__animated animate__fadeInDown  " v-show="textToShow == 'layout' ">
+                    <div class="layoutCustomContent backgr " id="backgroundLayout " @click="(clicked=!clicked) , (backgroundName ='') , (elementToEdit ='color') ">
+                        <div v-if="elementToEdit==''" class="picker" id="picker1"></div>
+                    </div>
+                    <div class="layoutCustomContent" @click="(backgroundName ='topnavName'), (elementToEdit ='backgroundLayout') ,(clicked=false) ">
+                        <img src="dist/assets/images/icon/Customisateur/Backgrounds_click.png" v-if="elementToEdit=='backgroundLayout'" alt="backgroundCliquer">
+                        <img src="dist/assets/images/icon/Customisateur/Backgrounds.png" v-else alt="Backgrounds">
+                    </div>
+                    <div class="layoutQueekDesign " v-show="backgroundName=='topnavName' ">
+                        <div class="itemDesignLayout " v-for="items in backgroundLayout" @click="showActiveBackgroundTopnav(items.id) ">
+                            <img class="imageLayoutTopnav " :src="items.imageSrc" alt="# ">
+                        </div>
+                    </div>
+                    <div class="layoutCustomContent" @click="(elementToEdit = 'dowloadLogo'), (clicked=false), (backgroundName ='')">
+                        <img src="dist/assets/images/icon/Customisateur/Image_click.png" v-if="elementToEdit=='dowloadLogo'" alt="">
+                        <img src="dist/assets/images/icon/Customisateur/Image.png" v-else alt="">
+                    </div>
+                    <div class="uploadmageDownload animate__animated animate__backInDown" v-show="elementToEdit =='dowloadLogo'">
+                        <div class="uploadTitleHeader mb-3 d-flex">
+                            <div class="downloadType fw-bold mx-3 titleZoneHeader" @click="resumeImportShowActiveHeader(0),jobTipe ='downloadLogo'">
+                                <span class="h5 fw-bold">  Download</span>
+                            </div>
+                            <div class="ourLibraryType fw-bold titleZoneHeader" @click="resumeImportShowActiveHeader(1),jobTipe='ourLibrary'">
+                                <span class="h5 fw-bold">Our library</span>
+                            </div>
+                        </div>
+                        <div class="bodyUploadImage" v-show="jobTipe == 'downloadLogo'">
+                            <div class="downloadContainer d">
+                                <span style="width: 146px;height: 54px; font-size:20px;font-weight:bold">Download your<br/>Logo</span>
+                                <div class="Dowload">
+                                    <img src="dist/assets/images/Customisateur/Dowload.png" alt="">
+                                </div>
+                                <input type="file" name="upload" id="file">
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="layoutCustomContent ">
+                        <div class="socialLink" @click="(elementToEdit = 'showIconSocial'), (clicked=false), (backgroundName ='') ">
+                            <img src="dist/assets/images/Customisateur/iconSelect.jpeg" v-if="elementToEdit =='showIconSocial'" alt="">
+                            <img src="dist/assets/images/Customisateur/icon.jpeg" v-else alt="">
+                        </div>
+                        <div class="socialLinkContainer animate__animated animate__fadeInDown" v-if="elementToEdit == 'showIconSocial'">
+                            <div class="selectIconCategoryHeader">
+                                <div class="choosequantityDropdowHeader iconDrop d-lg-flex d-md-flex d-sm-block" @click="dropChoose = !dropChoose">
+                                    <div class="chooseQuantityName text-center">
+                                        <span class="metierChoose">{{IconChoose.title}}</span>
+                                    </div>
+                                    <div class="arrowDownDrop">
+                                        <img src="../dist/assets/images/arrowDown.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="DropDowQuantityToChoose" v-if="dropChoose">
+                                    <div class="quantityList mt-3 fw-bold" v-for="itemIcon in iconListCategoryChoose">
+                                        <span @click="removeItemIcon(itemIcon)">  {{itemIcon.title}} </span>
+                                    </div>
+                                </div>
+                                <div class="containerJobMedia">
+                                    <div class="containerVisualJob imageToSelect" onclick="uploadMetierImage()" v-for="itemImageMedia in IconChoose.image">
+                                        <img :src="itemImageMedia.imageSrc" alt="metier">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="layoutCustomContent ">
+                        <div class="QrcodeContainer" @click="(elementToEdit = 'AddQrCode') && (clicked=false) && (backgroundName ='') ">
+                            <img src="dist/assets/images/icon/Customisateur/Qr_code_click.png" v-if="elementToEdit=='AddQrCode'" alt="">
+                            <img src="dist/assets/images/icon/Customisateur/Qr_code.png" v-else alt="">
+                        </div>
+                        <div class="QrcodeContainerContent" v-if="elementToEdit =='AddQrCode'">
+                            <input type="text" class="dataBox" name="data" placeholder="Https://exemple.com.au" id="dataBox">
+                            <div class="QrcodeButton" id="generateBtn" @click="mainQrCode">Add Qr code</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="TextCustomTools animdownDropate__animated animate__fadeInDown" v-show="textToShow == 'TextManipulate'">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col col-lg-3">
+                                <div class="fontFamilySelection">
+                                    <div class="choosequantityDropdow d-lg-flex d-md-flex d-sm-block" @click="dropChoose = !dropChoose">
+                                        <div class="chooseQuantityName  fw-bold">
+                                            <span class="fontSelect">{{fontFamillyChoose}}</span>
+                                        </div>
+                                        <div class="arrowDownDrop">
+                                            <img src="../dist/assets/images/arrowDown.png" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="DropDowQuantityToChoose" v-if="dropChoose">
+                                        <div class="quantityList mt-3 fw-bold" v-for="itemToFont in fontFamilyList">
+                                            <span @click="fontSelectFontion(itemToFont)">  {{itemToFont.fontName}} </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-lg-2" @click="FunctionToText = 'textSize'">
+                                <div class="customTextStyle">
+                                    <img src="dist/assets/images/Customisateur/Text_size_click.png" v-if="FunctionToText == 'textSize'" alt="">
+                                    <img src="dist/assets/images/Customisateur/Text_size.png" v-else alt="#">
+                                </div>
+                            </div>
+                            <div class="col col-lg-2" @click="FunctionToText ='backgroundColor'">
+                                <div class="backgroundTextSelection">
+                                    <div class="picker" id="picker2"></div>
+                                </div>
+                            </div>
+                            <div class="col col-lg-2">
+                                <div class="duplicationSelection" id="duplicate-item">
+                                    <img src="dist/assets/images/Customisateur/layers.png" alt="#">
+                                </div>
+                            </div>
+                            <div class="col col-lg-2">
+                                <div class="deleteSelection">
+                                    <img src="dist/assets/images/Customisateur/Trash.png" alt="#">
+                                </div>
+                            </div>
+                            <div class="col col-lg-1" id="duplicate-item" @click="FunctionToText='Duplicate'">
+                                <div class="otherfunctionSelection">
+                                    <img src="dist/assets/images/Customisateur/Duplicate_click.png" v-if="FunctionToText == 'Duplicate'" alt="">
+                                    <img src="dist/assets/images/Customisateur/Duplicate.png" v-else alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="styleTextContainer" v-show="FunctionToText == 'textSize'">
+                        <div class="vertically-stacked-slider">
+                            <div id="TT">
+                                <img src="dist/assets/images/Customisateur/Text_agrandissement.png" alt="">
+                            </div>
+                            <input type="range" value="25" max="500" oninput="sliderChange(this.value)">
+                            <div class="valueTT">
+                                <output id="output"></output>
+                            </div>
+                        </div>
+                        <div class="vertically-stacked-slider">
+                            <div id="TT">
+                                <img src="dist/assets/images/Customisateur/Text_espacement.png" alt="">
+                            </div>
+                            <input type="range" value="25" max="500" oninput="SpaceLineChange(this.value)">
+                            <div class="valueTT">
+                                <output id="SpaceLine"></output>
+                            </div>
+                        </div>
+                        <div class="vertically-stacked-slider">
+                            <div id="espacement">
+                                <img src="dist/assets/images/Customisateur/Text_espacement_parapgraphe.png" alt="">
+                            </div>
+                            <input type="range" value="25">
+                            <div class="valueTT">
+                                <output id="output"></output>
+                            </div>
+                        </div>
+                        <div class="styleFontComponent d-lg-flex">
+                            <div class="containerStyleFont  d-lg-flex d-md-flex" id="WeightModify" @click="bold = true">
+                                <div class="fontImage mt-2">
+                                    <img src="dist/assets/images/Customisateur/bold_click.png" v-if="bold"  alt="bold">
+                                    <img src="dist/assets/images/Customisateur/bold.png"  alt="bold" v-else >
+                                </div>
+                            </div>
+                            <div class="containerStyleFont d-lg-flex d-md-flex" id="ObliqueText" @click="oblique =true">
+                                <div class="oblique mt-2">
+                                    <img src="dist/assets/images/Customisateur/Oblique_click.png" alt="oblique" v-if="oblique">
+                                    <img src="dist/assets/images/Customisateur/Oblique.png" alt="italique" v-else >
+                                </div>
+
+                            </div>
+                            <div class="containerStyleFont d-lg-flex d-md-flex" id="soulignerText" @click="underline =true">
+                                <div class="soulignement mt-2">
+                                    <img src="dist/assets/images/Customisateur/souligne_click.png" alt="underline" v-if="underline">
+                                    <img src="dist/assets/images/Customisateur/souligne.png" alt="souligne" v-else>
+                                </div>
+                            </div>
+                            <div class="containerStyleFont d-lg-flex d-md-flex">
+                                <div class="alignement mt-2">
+                                    <img src="dist/assets/images/Customisateur/Alignement_gauche.png" alt="">
+                                </div>
+                            </div>
+                            <div class="containerStyleFont d-lg-flex d-md-flex">
+                                <div class="curve mt-2">
+                                    <img src="dist/assets/images/Customisateur/curve.png" alt="">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="containerSurfaceArea ">
+                    <div class="rulesContainer">
+                        <div class="ligneA animate__animated animate__zoomIn animate__delay-1s "></div>
+                        <span class="heightCustomiser animate__animated animate__zoomIn animate__delay-2s ">{{customizerHeight}} mm</span>
+                        <div class="ligneB animate__animated animate__zoomIn animate__delay-1s "></div>
+                        <div class="ligneC animate__animated animate__zoomIn animate__delay-1s "></div>
+                        <span class="widthCustomiser animate__animated animate__zoomIn animate__delay-2s ">{{customizerWidth}} mm</span>
+                        <div class="ligneD animate__animated animate__zoomIn animate__delay-1s "></div>
+                    </div>
+                    <div class="importeZone" @click="">
+                        <div class="canvasAree animate__animated animate__zoomIn animate__delay-2s">
+                            <canvas id="canvasUpload" width="970" height="400" style="z-index: 100;">
+                                </canvas>
+                            <img :src="imagesBackground" class="imageBackgroundLayout inject-me" alt="#">
+                        </div>
+                        <div class="qrdiv " id="qrdiv">
+                            <div class="qrcode" id="qrcode"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        <footer>
+        </footer>
+    </div>
+
+
+    <script defer src="dist/plugin/fabric.js"></script>
+    <script defer src="dist/plugin/customiseControls.js"></script>
+    <script src="https://rawgit.com/fabricjs/fabric.js/master/lib/centering_guidelines.js"></script>
+    <script src="https://rawgit.com/fabricjs/fabric.js/master/lib/aligning_guidelines.js"></script>
+    <script src="dist/plugin/qrcode.js"></script>
+    <script src="dist/plugin/jquery.min.js"></script>
+    <script src="dist/plugin/svg-injector.min.js"></script>
+    <script src="dist/assets/js/customiser2.js "></script>
+    <script src="dist/plugin/colorPick.min.js"></script>
+    <script defer src="dist/assets/js/AsquidEditor.js"></script>
+</body>
+
+</html>

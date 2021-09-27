@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="dist/assets/css/previewCanvas.css">
+
+    <script src="dist/plugin/vue.js"></script>
+</head>
+<body>
+    <div class="previewCanvas" id="previewImageFinal">
+        <header class="canvasHeader">
+            <div class="logoContainerHeader">
+                <img src="dist/assets/images/logo.png" alt="">
+            </div>
+            <div class="titleContainer">
+                <span>Your Kit <span style="color:aqua">Squid</span></span>
+            </div>
+            <div class="actionButton">
+                <div class="editButton">
+
+                </div>
+                <div class="addOnCartButton">
+
+                </div>
+
+            </div>
+        </header>
+        <div class="ZoomButton">
+            <div class="zoom">
+
+            </div>
+            <div class="dezoom">
+
+            </div>
+        </div>
+
+        <div class="previewBodyContainer">
+            <div class="previewInformation">
+                <span class="titleInfo">
+                    Let’s check one more time
+                </span>
+                <div class="detailsInfo">
+                    <div class="iconLeft">
+                        <img src="dist/assets/images/" alt="">
+                    </div>
+                    <div class="itemsText">
+                        <span>Lack of ortoghraphs or others repositionable</span>
+                    </div>
+                </div>
+                <div class="detailsInfo">
+                    <div class="iconLeft">
+                        <img src="dist/assets/images/" alt="">
+                    </div>
+                    <div class="itemsText">
+                        <span>Your logo is well positioned and of good quality</span>
+                    </div>
+                </div>
+                <div class="detailsInfo">
+                    <div class="iconLeft">
+                        <img src="dist/assets/images/" alt="">
+                    </div>
+                    <div class="itemsText agree">
+                        <span>Yes! I checked everything.</span>
+                    </div>
+                </div>
+                
+
+            </div>
+            <div class="containerCanvasFabricPreview">
+                <img :src="dataSourceImage" alt="preview image canvas">
+            </div>
+
+        </div>
+
+    </div>
+    
+    <script src="dist/assets/js/previewCanvas.js"></script>
+</body>
+</html>

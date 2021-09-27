@@ -1,0 +1,230 @@
+    @font-face {
+        font-family: 'Avenir';
+        src: url('../fonts/Avenir/AvenirLTStd-Roman.woff'), url('../fonts/Avenir/AvenirLTStd-Black.woff'), url('../fonts/Avenir/AvenirLTStd-Book.woff');
+    }
+    @font-face {
+        font-family: 'Aloha';
+        src: url('../fonts/Aloha/OTF/AlohaParadise-Regular.otf');
+        font-weight: normal;
+    }
+     @font-face {
+        font-family: 'Aloha';
+        src: url('../fonts/Aloha/OTF/AlohaParadise-Bold.otf');
+        font-weight: bold;
+    }
+    @font-face {
+        font-family: 'Aloha';
+        src: url('../fonts/Aloha/OTF/AlohaParadise-Italic.otf');
+        font-weight: 200;
+    }
+    @font-face {
+        font-family: 'Aloha';
+        src: url('../fonts/Aloha/OTF/AlohaParadise-Light.otf');
+        font-weight: 300;
+    }
+    @font-face {
+        font-family: 'Aloha';
+        src: url('../fonts/Aloha/OTF/AlohaParadise-LightItalic.otf');
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: 'Aloha';
+        src: url('../fonts/Aloha/OTF/AlohaParadise-BoldItalic.otf');
+        font-weight: bold;
+    }
+    @font-face {
+        font-family: 'Aloha';
+        src: url('../fonts/Aloha/TTF/AlohaParadise-Bold.ttf');
+        font-weight: bold;
+    }
+    @font-face {
+        font-family: 'Aloha';
+        src: url('../fonts/Aloha/TTF/AlohaParadise-BoldItalic.ttf');
+        font-weight: bold;
+    }
+    @font-face {
+        font-family: 'Aloha';
+        src: url('../fonts/Aloha/TTF/AlohaParadise-Italic.ttf');
+        font-weight: 200;
+    }
+     @font-face {
+        font-family: 'Aloha';
+        src: url('../fonts/Aloha/TTF/AlohaParadise-Light.ttf');
+        font-weight: 300;
+    }
+     @font-face {
+        font-family: 'Aloha';
+        src: url('../fonts/Aloha/TTF/AlohaParadise-LightItalic.ttf');
+        font-weight: 400;
+    }
+     @font-face {
+        font-family: 'Aloha';
+        src: url('../fonts/Aloha/TTF/AlohaParadise-Regular.ttf');
+        font-weight: normal;
+    }
+
+     @font-face {
+        font-family: 'Atlantis';
+        src: url('../fonts/Atlantis/atlantis-Regular.otf');
+        font-weight: normal;
+    }
+    @font-face {
+        font-family: 'Atlantis';
+        src: url('../fonts/Atlantis/atlantis-Regular.ttf') format('truetype');
+        font-weight: normal;
+    }
+    @font-face {
+        font-family: 'BeachAbodeBrush';
+        src: url('../fonts/BeachAbodeBrush/BeachAbode-Regular.otf');
+        font-weight: normal;
+    }
+    @font-face {
+        font-family: 'BeachAbodeBrush';
+        src: url('../fonts/BeachAbodeBrush/BeachAbode-Regular.ttf') format('truetype');
+    }
+    @font-face {
+        font-family:'Chaitea' ;
+        src: url('../fonts/Chaitea/OTF/Chaitea-Bold.otf');
+        font-weight: bold;
+    }
+    @font-face {
+        font-family:'Chaitea' ;
+        src: url('../fonts/Chaitea/OTF/Chaitea-BoldItalic.otf');
+        font-weight: bold;
+    }
+    @font-face {
+        font-family:'Chaitea' ;
+        src: url('../fonts/Chaitea/OTF/Chaitea-ExtraBold.otf');
+        font-weight: bold;
+    }
+    @font-face {
+        font-family:'Chaitea' ;
+        src: url('../fonts/Chaitea/OTF/Chaitea-ExtraBoldItalic.otf');
+        font-weight: bold;
+    }
+    @font-face {
+        font-family:'Chaitea' ;
+        src: url('../fonts/Chaitea/OTF/Chaitea-Italic.otf');
+        font-weight: 200;
+    }
+    @font-face {
+        font-family:'Chaitea' ;
+        src: url('../fonts/Chaitea/OTF/Chaitea-Outline.otf');
+        font-weight: lighter;
+    }
+    @font-face {
+        font-family:'Chaitea' ;
+        src: url('../fonts/Chaitea/OTF/Chaitea-OutlineItalic.otf');
+        font-weight: lighter;
+    }
+      @font-face {
+        font-family:'Chaitea' ;
+        src: url('../fonts/Chaitea/OTF/Chaitea-Regular.otf');
+        font-weight: normal;
+    }
+    
+    @font-face {
+        font-family:'Chaitea' ;
+        src: url('../fonts/Chaitea/TTF/Chaitea-Bold.ttf') format('truetype');
+        font-weight: bold;
+    }
+    @font-face {
+        font-family:'Chaitea' ;
+        src: url('../fonts/Chaitea/TTF/Chaitea-BoldItalic.ttf') format('truetype');;
+        font-weight: bold;
+    }
+    @font-face {
+        font-family:'Chaitea' ;
+        src: url('../fonts/Chaitea/TTF/Chaitea-ExtraBold.ttf') format('truetype');;
+        font-weight: bold;
+    }
+    @font-face {
+        font-family:'Chaitea' ;
+        src: url('../fonts/Chaitea/TTF/Chaitea-ExtraBoldItalic.ttf') format('truetype');;
+        font-weight: bold;
+    }
+    @font-face {
+        font-family:'Chaitea' ;
+        src: url('../fonts/Chaitea/TTF/Chaitea-Italic.ttf') format('truetype');;
+        font-weight: 200;
+    }
+    @font-face {
+        font-family:'Chaitea' ;
+        src: url('../fonts/Chaitea/TTF/Chaitea-Outline.ttf') format('truetype');;
+        font-weight: lighter;
+    }
+    @font-face {
+        font-family:'Chaitea' ;
+        src: url('../fonts/Chaitea/TTF/Chaitea-OutlineItalic.ttf') format('truetype'); ;
+        font-weight: lighter;
+    }
+      @font-face {
+        font-family:'Chaitea' ;
+        src: url('../fonts/Chaitea/TTF/Chaitea-Regular.ttf') format('truetype');;
+        font-weight: normal;
+    }
+
+    @font-face {
+        font-family: 'Jules';
+        src: url('../fonts/Jules/Jules-Regular.otf');
+        font-weight: normal;
+    }
+    @font-face {
+        font-family:'Jules' ;
+        src: url('../fonts/Jules/Jules-Regular.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'Luster' ;
+        src: url('../fonts/Luster/luster-brush.otf');
+    }
+    @font-face {
+        font-family:'Luster' ;
+        src: url('../fonts/Luster/luster-brush.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'Paperie';
+        src: url('../fonts/Paperie/PaperieCreme-Regular.otf');
+        font-weight: normal;
+    }
+    @font-face {
+        font-family: 'Paperie';
+        src: url('../fonts/Paperie/PaperieCreme-Regular.ttf') format('truetype');
+    }
+    @font-face {
+        font-family:'Wander' ;
+        src: url('../fonts/Wander/WANDER-BRUSH.otf');
+    }
+    @font-face {
+        font-family:'Wander' ;
+        src: url('../fonts/Wander/WANDER-BRUSH.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'Wilde&Rad';
+        src: url('../fonts/Wilde&Rad/Wilde&Rad-Regular.otf');
+        font-weight: normal;
+    }
+      @font-face {
+        font-family: 'Wilde&Rad';
+        src: url('../fonts/Wilde&Rad/Wilde&Rad-Regular.ttf') format('truetype');
+        font-weight: normal;
+    }
+
+    @font-face {
+        font-family:'Wilde' ;
+        src: url('../fonts/Wilde/Wilde&Rad-Regular.otf');
+        font-weight: normal;
+    }
+    @font-face {
+        font-family:'xoBabe';
+        src: url('../fonts/xoBabe/xoBabe-Regular.otf');
+        font-weight: normal;
+    }
+    @font-face {
+        font-family:'xoBabe';
+        src: url('../fonts/xoBabe/xoBabe-Regular.ttf') format('truetype');
+        font-weight: normal;
+    }
+    
+
+
+    

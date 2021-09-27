@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_highlight_off_48px</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_highlight_off_48px">
+            <rect id="Rectangle" fill="#A5A5A5" x="0" y="0" width="48" height="48" rx="24"></rect>
+            <g id="Group" transform="translate(7.200000, 7.200000)" fill="#FFFFFF" fill-rule="nonzero">
+                <path d="M21.1428,10.08 L16.8,14.4228 L12.4572,10.08 L10.08,12.4572 L14.4228,16.8 L10.08,21.1428 L12.4572,23.52 L16.8,19.1772 L21.1428,23.52 L23.52,21.1428 L19.1772,16.8 L23.52,12.4572 L21.1428,10.08 Z M16.8,0 C7.518,0 0,7.518 0,16.8 C0,26.082 7.518,33.6 16.8,33.6 C26.082,33.6 33.6,26.082 33.6,16.8 C33.6,7.518 26.082,0 16.8,0 Z M16.8,30.24 C9.3912,30.24 3.36,24.2088 3.36,16.8 C3.36,9.3912 9.3912,3.36 16.8,3.36 C24.2088,3.36 30.24,9.3912 30.24,16.8 C30.24,24.2088 24.2088,30.24 16.8,30.24 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

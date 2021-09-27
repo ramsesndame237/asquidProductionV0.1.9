@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asquid | Kit Squid</title>
+    <link rel="stylesheet" href="../dist/assets/css/kitsquid.css">
+    <link rel="stylesheet" href="../dist/assets/css/myCustomiseDropdown.css">
+
+
+    <!--boostrapp-->
+    <link rel="stylesheet" href="../dist/plugin/responsive/css/bootstrap.min.css">
+    <!--vue js -->
+    <script src="../dist/plugin/vue.js"></script>
+
+</head>
+<body>
+    <div class="KitSquidBody" id="kitSquid">
+        <header class="rearSquidHeader">
+            <div class="rearSquidHeaderLogo">
+                <img src="../dist/assets/images/logo.png" alt="logo asquid vehicule">
+                
+            </div>
+            <div class="socialLinkRearSquid">
+                  <div class="social-link">
+                        <div class="user">
+                            <img src="../dist/assets/images/icon/user_V2.svg" alt="">
+                        </div>
+                        <div class="shopping">
+                            <img src="../dist/assets/images/icon/shopping-cart_V2.svg" alt="">
+                        </div>
+                        <div class="search_utilisateur">
+                            <div class="search-icon">
+                                <img src="../dist/assets/images/icon/search.svg" alt="">
+                            </div>
+                            <div class="inputText">
+                                <input type="text" name="search" id="search" placeholder="Search">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="link-item">
+                        <ul class="link-item-list">
+                            <li class="link-item-list-item dropdows ">Produit
+                                <ul class="dropdown-link-item">
+                                    <li><a href="kitSquid.html">Kit Squid</a></li>
+                                    <li><a href="flexiSquid.html">Flexi Squid</a></li>
+                                    <li><a href="RearSquid.html">Rear Squid</a></li>
+                                </ul>
+
+                            </li>
+                            <li class="link-item-list-item">Quote</li>
+                            <li class="link-item-list-item">Business service</li>
+                        </ul>
+                    </div>
+
+            </div>
+        </header>
+        <div class="KitSquidContainer">
+             <div class="rearSquidBreakcrumb">
+                <div class="Breakcrumbtitle">
+                    <span>Home/ Choose your media/</span><span style="color:rgba(51,204,255,1);"> Your Kit Squid</span>
+                </div>
+            </div>
+            <div class="KitContainer" id="Kit">
+                <div class="photoKitSquidProduct">
+
+                </div>
+                <div class="KitSquidDetailsContainer">
+                     <div class="kitSquidTitle">
+                        <span>Your Kit  </span><span style="color:rgba(51,204,255,1);">Squid</span>
+                    </div>
+                    <div class="kitSquidPriceBase">
+                         <span>From </span><span style="font-style:normal;font-weight:bold;">$49 <sub>(ex.GST)</sub> </span>
+                    </div>
+                    <div class="reviewKitSquid">
+                        <span>Review</span>
+                    </div>
+                    <div class="descriptionRearSquid">
+                        <div class="tagsKitSquid">
+                            <span>Become outstanding</span>
+                        </div>
+                        <div class="bodyDesciption">
+                            With your  Squid kit, your vehicule will be unique and visible.<br> 
+                            Our kits include two stickers for the side doors and a Squeegee<br>
+                            to put them on.<br>
+                            Choose the size that best suits your needs, and let us guide you<br>
+                            through the available options.<br>
+                            All our car stickers are finished with a glossy UV laminate for the <br>
+                            best durability.
+                        </div>
+                    </div>
+                    <div class="sizeKitSquid">
+                        <div class="titleRearSquid">
+                            <span>choose your <span style="color: #33ccff;"> size:</span></span>
+                        </div>
+
+                        <div class="containerSizeSquid d-grid">
+                            <div class="sizeKitContainer" v-for = "itemsSize in kitSize " @click="sizeShowActive(itemsSize.id)">
+                                <div class="imagesRearSize">
+                                    <img :src="itemsSize.image" alt=" ">
+                                </div>
+                                    <div class="sizeTitleRearContainer">
+                                            <div class="titleRearSize">
+                                                <span>Size <span style="color: #002633; font-weight: bold;">{{itemsSize.nomSize}}</span></span>
+                                            </div>
+                                            <div class="quantityRearSize">
+                                                <span> <small>2 stickers</small></span>
+                                            </div>
+                                        </div>
+                                        <div class="sizeRearSquidC">
+                                            <span style="color: #33ccff;">
+                                                {{itemsSize.dimension}} mm
+                                            </span>
+                                    </div>
+                             </div>
+                        </div>
+                    </div>
+                    <div class="cutKitSquid">
+                        <div class="titleRearSquid mt-4">
+                         <span>choose your <span style="color: #33ccff;"> cut:</span></span>
+                        </div>
+                    <div class="containerCutSquid d-lg-grid d-md-grid d-sm-block">
+                        <div class="cutKitContainer" v-for="itemsCut in kitCut" @click="cutShowActive(itemsCut.id)">
+                            <div class="imageCut mt-1">
+                                <img :src="itemsCut.image" alt="">
+                            </div>
+                            <div class="typeCut d-flex fw-bold text-center align-content-center justify-content-center mt-4">
+                                <span> {{itemsCut.nomCut}} </span>
+                            </div>
+                        </div>
+
+                    </div>
+                    </div>
+                    <div class="extraSquid">
+                        <div class="titleRearSquid mt-4">
+                         <span>choose your <span style="color: #33ccff;"> extra stickers:</span></span>
+                        </div>
+                        <div class="containerExtraSquid d-lg-grid d-md-grid d-sm-block">
+                            <div class="extraKitContainer noneExtra d-flex fw-bold" @click="noneExtraShowActive(0)">
+                                <span>None</span>
+                            </div>
+                            <div class="extraKitContainer withExtra fw-bold" v-for="(itemExtra,index) in KitExtra" @click="withExtraShowActive(index,itemExtra)">
+                                <div class="imageExtraSquid">
+                                    <img :src="itemExtra.image" alt="">
+                                </div>
+                                <div class="typeExtraSquid d-flex text-center mt-3  fw-bold flex-wrap">
+                                    <span> {{itemExtra.nomExtra}} </span>
+                                </div>
+                                <div class="infoExtra d-flex fw-bold">
+                                    <span>?</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="designSquid">
+                        <div class="titleRearSquid mt-4">
+                         <span>choose your <span style="color: #33ccff;"> design:</span></span>
+                        </div>
+                        <div class="containerDesignSquid d-lg-grid d-md-grid d-sm-block fw-bold ">
+                            <div class="designKitContainer" v-for="itemDesign in KitDesign" @click="designShowActive(itemDesign.id)">
+                                <div class="imageDesignSquid">
+                                    <img :src="itemDesign.image" alt="">
+                                </div>
+                                <div class="typeDesignSquid text-center fw-bold mt-4">
+                                    <span> {{itemDesign.nomDesign}} </span>
+                                </div>
+                                 <div class="infoExtra d-flex fw-bold">
+                                    <span>?</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="quantitySquid">
+                        <div class="titleRearSquid mt-4">
+                         <span>choose your <span style="color: #33ccff;"> quantity:</span></span>
+                        </div>
+                    </div>
+                    <div class="containerQuantitySquid">
+                        <div class="choosequantityDropdow d-lg-flex d-md-flex d-sm-block" @click="dropChoose = !dropChoose">
+                            <div class="chooseQuantityName fw-bold">
+                                <span>{{YourQuantity}}</span>
+                            </div>
+                            <div class="arrowDownDrop">
+                                <img src="../dist/assets/images/arrowDown.png" alt="">
+                            </div>
+                        </div>
+                        <div class="DropDowQuantityToChoose" v-if="dropChoose">
+                            <div class="quantityList mt-3 fw-bold"  v-for = "itemQuantity in kitQuantity">
+                                <span  @click="removeItem(itemQuantity.quantity,itemQuantity.value)">  {{itemQuantity.quantity}} </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="SumaryRearSquid mt-5">
+                        <div class="titleSummary">
+                            <span style="color: #33ccff;">Summary</span>
+                        </div>
+                        <div class="SumaryRearSquidContainer">
+                            <div class="yourSizeResume">
+                                <div class="texteSummary">
+                                    <span>Your size: </span> {{Yoursize}}
+                                </div>
+                                <div class="lineSummary">
+
+                                </div>
+                            </div>
+                             <div class="yourSizeResume">
+                                <div class="texteSummary">
+                                    <span>Your cut: </span> {{YourCut}}
+                                </div>
+                                <div class="lineSummary">
+
+                                </div>
+                            </div>
+                             <div class="yourSizeResume">
+                                <div class="texteSummary">
+                                    <div>Your extra stickers: </div> <div v-if="YourExtra.length >1" class="extraZoneResume">
+                                        <div v-for="itemse in YourExtra" > {{itemse.nomExtra}} <span v-if="YourExtra.length > 1">+</span> </div>
+                                    </div> 
+                                    <span v-else v-for="iteme in YourExtra"> {{iteme.nomExtra}} </span>
+                                    <span v-if="NoExtra" > {{NoneExtra}} </span>
+                                </div>
+                                <div class="lineSummary">
+
+                                </div>
+                            </div>
+                            
+                            <div class="yourDesignResume">
+                                <div class="texteSummary">
+                                    <span>Your design:</span> {{YourDesign}}
+                                </div>
+                                <div class="lineSummary">
+                                    
+                                </div>
+                            </div>
+                            <div class="yourQuantityResume">
+                               <div class="texteSummary">
+                                   <span>quantity:</span> {{YourQuantity}}
+                               </div>
+                                <div class="lineSummary">
+                                    
+                                </div>
+                            </div>
+                            <div class="yourTotalSummary">
+                                <div class="texteSummary">
+                                    <span>Total</span>: $ {{YourTotal}}
+                                </div>
+                                <div class="lineSummary">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="RearactionButton">
+                            <div class="uploadDesignRear">
+							<span>Upload My Design</span>
+						</div>
+						<div class="customizerRear">
+							<a href="../customiser2.html"> Customize</a>
+						</div>
+                            
+                        </div>
+                    </div>
+
+                    
+
+
+                </div>
+            </div>
+        </div>
+          <div class="recaptilatusContainer">
+            <div class="contentContainerRecap">
+                <ul class="contentLink">
+                    <li class="contentLinkItem" @click="(resumeShowActive(0) ), (itemToShow='overview')">Overview</li>
+                    <li class="contentLinkItem" @click="(resumeShowActive(1)) , (itemToShow='guideline')">Guideline</li>
+                    <li class="contentLinkItem" @click="(resumeShowActive(2)) , (itemToShow='howtofix')">How to fix it</li>
+                    <li class="contentLinkItem" @click="(resumeShowActive(3)) , (itemToShow='review')">Review</li>
+                </ul>
+            </div>
+            <div class="contentContainerRecapitilatif" v-if="itemToShow == 'overview'" >
+                <div class="descriptionContentContainer animate__animated animate__fadeInLeft animate__delay-1s">
+                    <div class="descriptionContentHeader">
+                        Your Kit<span class="special">Squid</span>
+                    </div>
+                    <div class="infoRearkits">
+                        <div class="quantityAndSizeReview">
+                            <img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">
+                            <span> 2 stickers  {{dimensionKit}} mm </span>
+                        </div>
+                        <div class="consignReview">
+                            <img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">
+                            <span> {{YourCut}} corners </span>
+                        </div>
+                         <div class="consignReview">
+                            <img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">
+                            <span v-if="NoExtra"> No extra stickers </span>
+                            <span v-else v-for =" itemEst in YourExtra"> {{itemEst.nomExtra}} </span> <span v-if="YourExtra.length > 1">+</span>
+                        </div>
+                        <div class="consignReview">
+                            <img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">
+                            <span> {{YourDesign}} </span>
+                        </div>
+                          <!-- <div class="consignReview" v-show="itemToTextShow == 'AllWindowcar'" >
+                            <img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">
+                            <span>  A graphic  proposal to the size of your rear window will be sent to you within  <br> 48 hours </span>
+                        </div> -->
+                         <div class="quantityAndSizeReview">
+                            <img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">
+                            <span> 1 Squeegee </span>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="photodescriptionContentContainer animate__animated animate__fadeInRigth animate__delay-1s">
+                    <div class="photoContainerdescription">
+                        Photo
+                    </div>
+                </div>
+            </div>
+            <div class="guideLineContainer d-lg-flex d-md-flex d-sm-block"  v-if="itemToShow == 'guideline'" >
+                <div class="guidelineDownload">
+                    <span class="text-white fw-bold display-5">Guideline</span>
+                    <div class="buttonDowload d-lg-flex d-md-flex d-sm-flex text-center">
+                        <div class="titleButton fw-bold">
+                            <span>Download</span>
+                        </div>
+                        <div class="imageDownLoad">
+                            <img src="../dist/assets/images/Customisateur/Dowload.png" alt="">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="guideLineSaveAre">
+                    <div class="safeAreZone text-center fw-bold d-lg-flex d-md-flex d-sm-flex">
+                        <span class="display-4 fw-bold">Safe Area</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="howTofixContainer mt-5" v-if="itemToShow == 'howtofix'">
+                <div class="howTofixVideoContainer">
+                    <iframe width="420" height="345" src="https://www.youtube.com/embed/5mwYmBdQuNI?autoplay=1&mute=1">
+                        </iframe>      
+                </div>
+
+            </div>
+        </div>
+        <div id="Groupe_84">
+            <div id="Pricing">
+                <span>Pricing</span>
+            </div>
+            <div id="Let_us_help">
+                <span>Let us help</span>
+            </div>
+            <div id="My_account">
+                <span>My account</span>
+            </div>
+            <div id="Contact__Support">
+                <span>Contact & Support</span>
+            </div>
+            <div id="FAQs">
+                <span>FAQs</span>
+            </div>
+            <div id="Stickers">
+                <span>Stickers</span>
+            </div>
+            <div id="Composition_of_one_kit">
+                <span>Composition of one kit</span>
+            </div>
+            <div id="How_to_fix_the_stickers">
+                <span>How to fix the stickers</span>
+            </div>
+            <div id="Options_for_stickers">
+                <span>Options for stickers</span>
+            </div>
+            <div id="Follow_us">
+                <span>Follow us</span>
+            </div>
+            <div id="Facebook">
+                <span>Facebook</span>
+            </div>
+            <div id="Instagram">
+                <span>Instagram</span>
+            </div>
+            <div id="Youtube">
+                <span>Youtube</span>
+            </div>
+            <div id="Privacy_and_Cookie_Policy">
+                <span>Privacy and Cookie Policy</span>
+            </div>
+            <div id="Terms_and_Conditions">
+                <span>Terms and Conditions</span>
+            </div>
+            <svg class="Ligne_3" viewBox="0 0 1366 5">
+                <path id="Ligne_3" d="M 0 0 L 1366 0">
+                </path>
+            </svg>
+            <div id="Copyright_2021_Flysoft_Enginee">
+                <span>Copyright 2021© Flysoft Engineering.</span>
+            </div>
+            <div id="ABN_16_998_486_520">
+                <span>ABN: 16 998 486 520</span>
+            </div>
+            <img id="Tentacule_footer_test_v2" src="../dist/assets/images/Tentacule_footer_test_v2.png">
+
+            <svg class="Rectangle_21">
+                <rect id="Rectangle_21" rx="26.5" ry="26.5" x="0" y="0" width="276" height="53">
+                </rect>
+            </svg>
+            <div id="Email">
+                <span>Email</span>
+            </div>
+            <svg class="Rectangle_22">
+                <rect id="Rectangle_22" rx="26.5" ry="26.5" x="0" y="0" width="276" height="53">
+                </rect>
+            </svg>
+            <div id="Subscribe">
+                <span>Subscribe</span>
+            </div>
+            <svg class="Ligne_4" viewBox="0 0 936 1">
+                <path id="Ligne_4" d="M 0 0 L 936 0">
+                </path>
+            </svg>
+        </div>
+        
+    </div>
+
+
+
+
+
+
+    <script src="../dist/plugin/jquery.min.js"></script>
+    <script src="../dist/plugin/responsive/js/bootstrap.min.js"></script>
+    <script src="../dist/assets/js/app.js"></script>
+</body>
+</html>
