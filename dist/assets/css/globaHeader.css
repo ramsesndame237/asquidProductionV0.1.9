@@ -1,0 +1,33 @@
+.globalHeader{
+    width: 1366px;
+    height: 201px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.generalContent{
+    border: solid red;
+    width: 1046px;
+    height: 124px;
+    display: flex;
+    margin-right: 55px;
+    margin-left: 181px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.logo{
+    width: 259px;
+    height: 106px;
+    margin-bottom: 17px;
+    margin-top: 1px;
+}
+.logo img{
+    width: 100%;
+    height: 100%;
+}
+
+.linkContainerZone{
+    border: solid yellow;
+    width: 787px;
+}
