@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../dist/assets/css/globaHeader.css">
 </head>
 <body>
-    <div class="accountContainer">
+    <div class="accountContainer" id="account">
         <header class="globalHeader">
             <div class="generalContent">
                 <div class="logoContainer">
@@ -60,10 +60,10 @@
         </header>
         <div class="accountBodyContainer">
             <div class="chooseTypeContainer">
-                <div class="profilContainerTitle">
+                <div class="profilContainerTitle titleProfile" @click="showProfileTitleActive(0)">
                     <span>My Profil</span>
                 </div>
-                <div class="orderHistoryContainer">
+                <div class="orderHistoryContainer titleProfile" @click="showProfileTitleActive(1)">
                     <span>Order History</span>
                 </div>
             </div>
