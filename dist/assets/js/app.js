@@ -19,7 +19,9 @@ var app = new Vue({
       YourExtra: [],
     NoneExtra:'None',
     YourDesign:"Normal",
-    YourQuantity:"1 kit Squid",
+      YourQuantity: "1 kit Squid",
+    initialQuatity:'1',
+    
     YourTotal:0,
     itemToShow: "",
       kitSize: [
@@ -93,10 +95,20 @@ var app = new Vue({
   },
     methods: {
       removeItem(itemId, value) {
-            console.log(itemId)
-        this.YourQuantity = itemId
-        this.YourTotal = this.YourTotal *  parseInt(value)
+        console.log(itemId)
         console.log(value)
+          this.YourQuantity = itemId
+        if (JSON.parse(localStorage.getItem('oldTotal') != 'null' && localStorage.getItem('oldTotal')).length > 0) {
+          let oldValue = JSON.parse(localStorage.getItem('oldTotal'))
+          this.YourTotal = this.YourTotal / parseInt(oldValue)
+          setTimeout(() => {
+            this.YourTotal = this.YourTotal * parseInt(value)
+            localStorage.setItem("oldTotal", JSON.stringify(value))
+          }, 300);
+        } else {
+          this.YourTotal = this.YourTotal * parseInt(value)
+          localStorage.setItem("oldTotal", JSON.stringify(value))
+        }
             this.dropChoose = false
       },
         resumeChoose(n) {
@@ -321,6 +333,7 @@ var app = new Vue({
   },
     mounted() {
       this.resumeChooseList = document.querySelectorAll(".contentLinkItem")
+      localStorage.setItem('oldTotal',JSON.stringify(this.initialQuatity))
       this.choseCutList = document.querySelectorAll(".cutKitContainer")
       this.noneExtra = document.querySelectorAll(".noneExtra")
       this.extraChooseList = document.querySelectorAll(".withExtra")

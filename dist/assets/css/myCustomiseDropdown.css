@@ -438,6 +438,20 @@
 		font-size: 16px;
 		color: rgba(0,38,51,1);
 	}
+	#Stickers_dw {
+	left: 429.5px;
+	top: 25.5px;
+	position: absolute;
+	overflow: visible;
+	width: 78px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: 'Avenir';
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(255,255,255,1);
+}
 	#Ligne_4 {
 		fill: transparent;
 		stroke: rgba(63,188,236,1);

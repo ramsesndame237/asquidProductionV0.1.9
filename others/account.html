@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../dist/assets/css/account.css">
     <link rel="stylesheet" href="../dist/assets/css/globaHeader.css">
+    <script src="../dist/plugin/vue.js"></script>
 </head>
 <body>
     <div class="accountContainer" id="account">
@@ -46,8 +47,8 @@
                                 </ul>
 
                             </li>
-                            <li class="link-item-list-item quote text-white"> <a href="quote.html">Quote</a></li>
-                            <li class="link-item-list-item buisiness">Business service</li>
+                            <li class="link-item-list-item quote text-white"> <a href="../quote.html">Quote</a></li>
+                            <li class="link-item-list-item buisiness"> <a href="../chooseYourmedia.html"> Business service</a></li>
                             <li class="StartMarking"> <a href="chooseYourmedia.html"> Start marking</a></li>
                         </ul>
 
@@ -67,8 +68,251 @@
                     <span>Order History</span>
                 </div>
             </div>
+
+            <div class="profilAccountContent" v-if="coditionToShow == 'personal'">
+                <div class="personalInformationContent">
+                    <div class="PersonaltitleContent">
+                        <span>Personal information</span>
+                    </div>
+                    <div class="personnalContent">
+                        <div class="nameInfo d-flex">
+                            <div class="username">
+                                <div class="titleLabel">
+                                    <span>First Name</span>
+                                </div>
+                                <div class="textInputLabel">
+                                    <input type="text">
+                                </div>
+                            </div>
+                            <div class="lastname">
+                                <div class="titleLabel">
+                                    <span>Last Name</span>
+                                </div>
+                                <div class="textInputLabel">
+                                    <input type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="companyInformation">
+                            <div class="titleLabel comp">
+                                <span>Company Name:</span>
+                            </div>
+                            <div class="companyInputLabel">
+                                <input type="text">
+                            </div>
+                        </div>
+                        <div class="contactContent d-flex">
+                            <div class="companyInformation">
+                                <div class="titleLabel comp">
+                                    <span>Email:</span>
+                                </div>
+                                <div class="companyInputLabel">
+                                    <input type="text">
+                                </div>
+                            </div>
+                            <div class="contactInformation">
+                                <div class="titleLabel comp">
+                                    <span>Contact Numbers:</span>
+                                </div>
+                                <div class="contactInputLabel">
+                                    <input type="text">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="companyInformation">
+                            <div class="titleLabel comp">
+                                <span>Password:</span>
+                            </div>
+                            <div class="companyInputLabel">
+                                <input type="password">
+                            </div>
+                        </div>
+                         <div class="contactContent d-flex">
+                            <div class="companyInformation">
+                                <div class="titleLabel comp">
+                                    <span>Adress:</span>
+                                </div>
+                                <div class="companyInputLabel adress">
+                                    <input type="text">
+                                </div>
+                                <div class="companyInputLabel adress">
+                                    <input type="text">
+                                </div>
+                                <div class="companyInputLabel adress">
+                                    <input type="text">
+                                </div>  
+                            </div>
+                            <div class="contactInformation">
+                                <div>
+                                    <div class="titleLabel comp">
+                                  <span>Town/City:</span>
+                                  </div>
+                                  <div class="contactInputLabel">
+                                      <input type="text">
+                                  </div>
+                                </div>
+                                <div class="titleLabel state">
+                                    <span>State</span>
+                                </div>
+                                <div class="dropdownStateMenue d-flex">
+                                    <div class="contentStateValue">
+
+                                    </div>
+                                    <hr class="separateur" /> 
+                                    <div class="dropdownIcon">
+                                        <img src="../dist/assets/images/arrowDown.png" alt="#">
+                                    </div>
+                                </div>
+
+                                <div class="titleLabel comp">
+                                    <span>Postcode</span>
+                                </div>
+                                <div class="postCodeInput d-flex">
+                                    <input type="text">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <hr class="bigSepartor" style="height: 468px;border-radius:8px">
+                <div class="aboutCarContent">
+                    <div class="aboutContentTitle">
+                        <span>About your car</span>
+                    </div>
+                    <div class="titleLabel state">
+                            <span>Brand</span>
+                    </div>
+                     <div class="dropdownStateMenue d-flex">
+                     <div class="contentStateValue">
+                    </div>
+                    <hr class="separateur" /> 
+                    <div class="dropdownIcon">
+                         <img src="../dist/assets/images/arrowDown.png" alt="#">
+                     </div>
+                    </div>
+                    <div class="titleLabel comp">
+                        <span>Model</span>
+                   </div>
+                    <div class="postCodeInput d-flex">
+                       <input type="text">
+                    </div>
+                     <div class="titleLabel state">
+                            <span>Years</span>
+                    </div>
+                     <div class="dropdownStateMenue d-flex" @click="dropChooseYear = !dropChooseYear">
+                        <div class="contentStateValue">
+                            <span>{{YearsChoose}}</span>
+                        </div>
+                        <hr class="separateur" /> 
+                        <div class="dropdownIcon">
+                            <img src="../dist/assets/images/arrowDown.png" alt="#">
+                        </div>
+                    </div>
+                    <div class="dropDowpcontainerToYearChoose" v-if="dropChooseYear">
+                         <div class="containerChoosing">
+                              <div  v-for="items in YearList" class="itemsChosse">
+                                   <span @click="YearItem(items)"> {{items}} </span>
+                               </div>
+                          </div>
+                     </div>
+
+                     <div class="updateButton">
+                         <span>Update</span>
+                     </div>
+                  
+
+                </div>
+
+            </div>
     
         </div>
+         <footer>
+            <div id="Groupe_84">
+                <div id="Pricing">
+                    <span>Pricing</span>
+                </div>
+                <div id="Let_us_help">
+                    <span>Let us help</span>
+                </div>
+                <div id="My_account">
+                    <span>My account</span>
+                </div>
+                <div id="Contact__Support">
+                    <span>Contact & Support</span>
+                </div>
+                <div id="FAQs">
+                    <span>FAQs</span>
+                </div>
+                <div id="Stickers_dw">
+                    <span>Stickers</span>
+                </div>
+                <div id="Composition_of_one_kit">
+                    <span>Composition of one kit</span>
+                </div>
+                <div id="How_to_fix_the_stickers">
+                    <span>How to fix the stickers</span>
+                </div>
+                <div id="Options_for_stickers">
+                    <span>Options for stickers</span>
+                </div>
+                <div id="Follow_us">
+                    <span>Follow us</span>
+                </div>
+                <div id="Facebook">
+                    <span>Facebook</span>
+                </div>
+                <div id="Instagram">
+                    <span>Instagram</span>
+                </div>
+                <div id="Youtube">
+                    <span>Youtube</span>
+                </div>
+                <div id="Privacy_and_Cookie_Policy">
+                    <span>Privacy and Cookie Policy</span>
+                </div>
+                <div id="Terms_and_Conditions">
+                    <span>Terms and Conditions</span>
+                </div>
+                <svg class="Ligne_3" viewBox="0 0 1366 5">
+                    <path id="Ligne_3" d="M 0 0 L 1366 0">
+                    </path>
+                </svg>
+                <div id="Copyright_2021_Flysoft_Enginee">
+                    <span>Copyright 2021© Flysoft Engineering.</span>
+                </div>
+                <div id="ABN_16_998_486_520">
+                    <span>ABN: 16 998 486 520</span>
+                </div>
+                <img id="Tentacule_footer_test_v2" src="dist/assets/images/Tentacule_footer_test_v2.png" alt="#">
+                    
+                <svg class="Rectangle_21">
+                    <rect id="Rectangle_21" rx="26.5" ry="26.5" x="0" y="0" width="276" height="53">
+                    </rect>
+                </svg>
+                <div id="Email">
+                    <span>Email</span>
+                </div>
+                <svg class="Rectangle_22">
+                    <rect id="Rectangle_22" rx="26.5" ry="26.5" x="0" y="0" width="276" height="53">
+                    </rect>
+                </svg>
+                <div id="Subscribe">
+                    <span>Subscribe</span>
+                </div>
+                <svg class="Ligne_4" viewBox="0 0 936 1">
+                    <path id="Ligne_4" d="M 0 0 L 936 0">
+                    </path>
+                </svg>
+            </div>
+            <!-- <div class="chatBox">
+                <i class="fa fa-fw">
+            </div> -->
+        </footer>
     </div>
+
+    <script src="../dist/assets/js/account.js"></script>
 </body>
 </html>

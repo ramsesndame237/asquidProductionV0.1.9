@@ -121,17 +121,23 @@
                         <div class="titleRearSquid mt-4">
                          <span>choose your <span style="color: #33ccff;"> cut:</span></span>
                         </div>
-                    <div class="containerCutSquid d-lg-grid d-md-grid d-sm-block">
-                        <div class="cutKitContainer" v-for="itemsCut in kitCut" @click="cutShowActive(itemsCut.id)">
-                            <div class="imageCut mt-1">
-                                <img :src="itemsCut.image" alt="">
+                        <div class="containerCutSquid d-lg-grid d-md-grid d-sm-block">
+                                <div class="messageLettering d-lg-flex d-md-flex d-sm-flex">
+                                    <span style="width: 127px;height: 88px;font-size: 16px;font-weight: lighter;">The lettering is a cut following the contour of the visual or the text</span>
+                                </div>
+                            <div class="cutKitContainer" v-for="itemsCut in kitCut" @click="cutShowActive(itemsCut.id)">
+                                <div class="imageCut mt-1">
+                                    <img :src="itemsCut.image" alt="">
+                                </div>
+                                <div class="typeCut d-flex fw-bold text-center align-content-center justify-content-center mt-4">
+                                    <span> {{itemsCut.nomCut}} </span>
+                                </div>
+                                 <div class="infoExtra d-flex fw-bold" v-if="itemsCut.nomCut == 'Lettering'">
+                                    <span>?</span>
+                                </div>
                             </div>
-                            <div class="typeCut d-flex fw-bold text-center align-content-center justify-content-center mt-4">
-                                <span> {{itemsCut.nomCut}} </span>
-                            </div>
-                        </div>
 
-                    </div>
+                        </div>
                     </div>
                     <div class="extraSquid">
                         <div class="titleRearSquid mt-4">
