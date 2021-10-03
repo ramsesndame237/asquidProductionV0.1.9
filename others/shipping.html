@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../dist/assets/css/shipping.css">
+    <link rel="stylesheet" href="../dist/assets/css/footer.css">
+    <script src="../dist/plugin/vue.js"></script>
+</head>
+<body>
+    <div class="shippingContentContainer" id="shipping">
+        <header class="cartHeader">
+            <div class="logoContainer">
+                <img src="../dist/assets/images/Adsquid_white_SF.png" alt="">
+            </div>
+            <div class="SocialAndLinkContainer">
+                <div class="socialLink">
+                    <div class="userAccount">
+                        <img src="../dist/assets/images/icon/user_V2.svg" alt="userAccount">
+                    </div>
+                    <div class="shoppingContainer">
+                        <img src="../dist/assets/images/icon/shopping-cart_V2.svg" alt="shopping-cart">
+                        <div class="numberofProduct">
+                            <span> {{numberOfProduct}} </span>
+                        </div>
+                    </div>
+                    <div class="search_utilisateur">
+                        <div class="search-icon">
+                            <img src="../dist/assets/images/icon/search.svg" alt="">
+                        </div>
+                        <div class="inputText">
+                            <input type="text" name="search" id="search" placeholder="Search">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="navLink">
+                    <div class="productLink">
+                        <span>Product</span>
+                    </div>
+                    <div class="quoteLink">
+                        <span><a href="quote.html">Quote</a></span>
+                    </div>
+                    <div class="busnessServiceLink">
+                        <span><a href="#">Business Service</a></span>
+                    </div>
+
+                </div>
+
+            </div>
+        </header>
+        <div class="breackrumb">
+            <div class="titleBreak">
+                <span>
+                    Your Address
+                </span>
+            </div>
+            <div class="descriBreak">
+                <span>
+                    Your cart/ <span style="color: #33CCFF;"> Your address</span>
+                </span>
+            </div>
+        </div>
+        <div class="shippingContainer">
+            <div class="shippingContent">
+                <div class="shippingTitle">
+                    <span>
+                        Shipping Adress
+                    </span>
+                </div>
+                <div class="LabelInputText">
+                    <div class="labelText">
+                        <span>
+                            Email*
+                        </span>
+                    </div>
+                    <div class="labelInput">
+                        <input type="email">
+                    </div>
+                </div>
+                <div class="personalInfo">
+                    <div class="firname">
+                        <div class="labelText">
+                            <span>
+                                First Name
+                            </span>
+                        </div>
+                        <div class="nameInput">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="lasName">
+                          <div class="labelText">
+                            <span>
+                                Last Name
+                            </span>
+                        </div>
+                        <div class="nameInput">
+                            <input type="text">
+                        </div>
+                    </div>
+                </div>
+                 <div class="LabelInputText">
+                    <div class="labelText">
+                        <span>
+                            Company Name
+                        </span>
+                    </div>
+                    <div class="labelInput">
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="LabelInputText">
+                    <div class="labelText">
+                        <span>
+                            Adress
+                        </span>
+                    </div>
+                    <div class="labelInput">
+                        <input type="text">
+                    </div>
+                </div>
+                   <div class="LabelInputText" style="margin-top: 23px;">
+                    <div class="labelInput">
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="LabelInputText">
+                    <div class="labelText">
+                        <span>
+                            Town/City
+                        </span>
+                    </div>
+                    <div class="labelInput">
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="placeStateContainer">
+                    <div class="countryContent">
+                        <div class="labelText">
+                            <span>
+                                Country
+                        </span>
+                        </div>
+                        <div class="contryInput">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="countryContent">
+                        <div class="labelText">
+                            <span>
+                                State
+                        </span>
+                        </div>
+                        <div class="contryInput">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="countryContent">
+                        <div class="labelText">
+                            <span>
+                                Postcode
+                        </span>
+                        </div>
+                        <div class="contryInput">
+                            <input type="text">
+                        </div>
+                    </div>
+                </div>
+               <div class="LabelInputText" style="margin-top: 23px;">
+                    <div class="labelText">
+                        <span>
+                            Contact Numbers*
+                        </span>
+                    </div>
+                    <div class="contactInput">
+                        <input type="number">
+                    </div>
+                </div>
+                <div class="billingAdress">
+                    <span>
+                        Billing address
+                    </span>
+                </div>
+               <div class="detailsInfo" @click="checkidt = !checkidt">
+                    <div class="checkInfo">
+                        <img src="../dist/assets/images/Carre.png" alt="#">
+                        <div class="checkArrow" v-if="checkidt">
+                            <img src="../dist/assets/images/Check_click.png" alt="#">
+                        </div>
+                    </div>
+                    <div class="itemsText agree">
+                        <span >Use my shipping address for billing.</span>
+                    </div>
+                </div>
+                <div class="paymentButton" @click="payment">
+                    <span style="font-weight: 900;font-size: 16px; color: #FFFF;">Payment</span>
+                    <div class="imgPa">
+                        <img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <hr style="height: 1128px;border-radius:8px">
+            <div class="cartShipping">
+                <div class="shippingSelling" v-for="(item, index) in carts" :key="index">
+                    <div class="previewContain">
+                        <img :src="item.visual" alt="">
+                    </div>
+                    <div class="descriptionContent">
+                        <div class="titleProduct">
+                            <span>
+                                Kit <span style="color: #33CCFF;font-weight:900;font: size 20px;"> Squid</span>
+                            </span>
+                        </div>
+                         <div class="productContainer">
+                                <div class="sizeLine">
+                                    <span style="font-size: 20px; font-weight: 900;color: #fff;">
+                                        Your size: 
+                                    </span>
+                                    <span style="font-size: 20; font-weight: 200;color: #fff;">
+                                        {{item.product.sizeProduct}}
+                                    </span>
+                                    <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
+                                </div>
+                                <div class="cutLine">
+                                    <span style="font-size: 20px; font-weight: 900;color: #fff;">
+                                        Your cut:
+                                    </span>
+                                    <span style="font-size: 20; font-weight: 200;color: #fff;">
+                                         {{item.product.cutProduct}}
+                                    </span>
+                                    <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
+                                </div>
+                                <div class="cutLine">
+                                    <span style="font-size: 20px; font-weight: 900;color: #fff;">
+                                        Your extra sticker:
+                                    </span>
+                                    <span style="font-size: 20; font-weight: 200;color: #fff;">
+                                         {{item.product.extraProduct}}
+                                    </span>
+                                    <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
+                                </div>
+                                 <div class="cutLine">
+                                    <span style="font-size: 20px; font-weight: 900;color: #fff;">
+                                        Your design: 
+                                    </span>
+                                    <span style="font-size: 20; font-weight: 200;color: #fff;">
+                                         {{item.product.designProduct}}
+                                    </span>
+                                    <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
+                                </div>
+                                 <div class="cutLine">
+                                    <span style="font-size: 20px; font-weight: 900;color: #fff;">
+                                        Quantity: 
+                                    </span>
+                                    <span style="font-size: 20; font-weight: 200;color: #fff;">
+                                         {{item.product.quantityProduct}}
+                                         <img src="../dist/assets/images/Customisateur" alt="">
+                                    </span>
+                                    <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
+                                </div>
+                                <div class="cutLine" style="margin-bottom: 48px;">
+                                    <span style="font-size: 20px; font-weight: 900;color: #fff;">
+                                        Total:
+                                    </span>
+                                    <span style="font-size: 20; font-weight: 900;color: #fff;">
+                                          $ {{item.product.totalAmountProduct}}
+                                    </span>
+                                    <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
+                                </div>
+                                
+                         </div>
+                    </div>
+                    <hr v-if="carts.lenght > 1" width="200px" style="margin-left: auto;">
+                </div>
+                    <hr width="200px" style="margin-left: auto;">
+                <div class="shippingInvoice">
+                    <div class="sizeLine">
+                                <span style="font-size: 20px; font-weight: 900;color: #fff;">
+                                    Shipping: 
+                                </span>
+                                <span style="font-size: 20px; font-weight: 900;color: #fff;">
+                                    $20
+                                </span>
+                                <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
+                     </div>
+                    <div class="sizeLine">
+                                <span style="font-size: 20px; font-weight: 900;color: #fff;">
+                                    GST (10%): 
+                                </span>
+                                <span style="font-size: 20px; font-weight: 900;color: #fff;">
+                                     $22,80
+                                </span>
+                                <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
+                     </div>address
+                       <div class="sizeLine">
+                                <span style="font-size: 20px; font-weight: 900;color: #fff;">
+                                    Total: 
+                                </span>
+                                <span style="font-size: 20px; font-weight: 900;color: #fff;">
+                                    $ {{totalShipping}}
+                                </span>
+                                <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
+                     </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+        <footer>
+             <div id="Groupe_84">
+            <div id="Pricing">
+                <span>Pricing</span>
+            </div>
+            <div id="Let_us_help">
+                <span>Let us help</span>
+            </div>
+            <div id="My_account">
+                <span>My account</span>
+            </div>
+            <div id="Contact__Support">
+                <span>Contact & Support</span>
+            </div>
+            <div id="FAQs">
+                <span>FAQs</span>
+            </div>
+            <div id="Stickers">
+                <span>Stickers</span>
+            </div>
+            <div id="Composition_of_one_kit">
+                <span>Composition of one kit</span>
+            </div>
+            <div id="How_to_fix_the_stickers">
+                <span>How to fix the stickers</span>
+            </div>
+            <div id="Options_for_stickers">
+                <span>Options for stickers</span>
+            </div>
+            <div id="Follow_us">
+                <span>Follow us</span>
+            </div>
+            <div id="Facebook">
+                <span>Facebook</span>
+            </div>
+            <div id="Instagram">
+                <span>Instagram</span>
+            </div>
+            <div id="Youtube">
+                <span>Youtube</span>
+            </div>
+            <div id="Privacy_and_Cookie_Policy">
+                <span>Privacy and Cookie Policy</span>
+            </div>
+            <div id="Terms_and_Conditions">
+                <span>Terms and Conditions</span>
+            </div>
+            <svg class="Ligne_3" viewBox="0 0 1366 5">
+                <path id="Ligne_3" d="M 0 0 L 1366 0">
+                </path>
+            </svg>
+            <div id="Copyright_2021_Flysoft_Enginee">
+                <span>Copyright 2021© Flysoft Engineering.</span>
+            </div>
+            <div id="ABN_16_998_486_520">
+                <span>ABN: 16 998 486 520</span>
+            </div>
+            <img id="Tentacule_footer_test_v2" src="../dist/assets/images/Tentacule_footer_test_v2.png">
+
+            <svg class="Rectangle_21">
+                <rect id="Rectangle_21" rx="26.5" ry="26.5" x="0" y="0" width="276" height="53">
+                </rect>
+            </svg>
+            <div id="Email">
+                <span>Email</span>
+            </div>
+            <svg class="Rectangle_22">
+                <rect id="Rectangle_22" rx="26.5" ry="26.5" x="0" y="0" width="276" height="53">
+                </rect>
+            </svg>
+            <div id="Subscribe">
+                <span>Subscribe</span>
+            </div>
+            <svg class="Ligne_4" viewBox="0 0 936 1">
+                <path id="Ligne_4" d="M 0 0 L 936 0">
+                </path>
+            </svg>
+        </div>
+        </footer>
+    </div>
+    <script src="../dist/assets/js/shipping.js"></script>
+</body>
+</html>

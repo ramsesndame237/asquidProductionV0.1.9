@@ -50,9 +50,9 @@
                         <ul class="link-item-list">
                             <li class="link-item-list-item dropdows ">Produit
                                 <ul class="dropdown-link-item">
-                                    <li><a href="kitSquid.html">Kit Squid</a></li>
-                                    <li><a href="flexiSquid.html">Flexi Squid</a></li>
-                                    <li><a href="RearSquid.html">Rear Squid</a></li>
+                                     <li><a href="kitSquid.html#Kit">Kit Squid</a></li>
+                                    <li><a href="flexiSquid.html#flexiSquidSelectioncontainer">Flexi Squid</a></li>
+                                    <li><a href="rearsquid.html#rearContainer">Rear Squid</a></li>
                                 </ul>
 
                             </li>
@@ -185,11 +185,13 @@
 								  <img src="../dist/assets/images/arrowDown.png" alt="">
 							  </div>
 						  </div>
-						  <div class="DropDowQuantityToChoose" v-if="dropChoose">
-							  <div class="quantityList mt-3 fw-bold"  v-for = "itemQuantity in kitQuantity">
-								  <span  @click="removeItem(itemQuantity.quantity,itemQuantity.value)">  {{itemQuantity.quantity}} </span>
-							  </div>
-						  </div>
+						 <div class="DropDowQuantityToChoose" v-if="dropChoose">
+                                    <div class="contentQuantity">
+                                        <div class="quantityList mt-3 fw-bold"  v-for = "itemQuantity in kitQuantity">
+                                            <span  @click="removeItemQuantity(itemQuantity.quantity,itemQuantity.value)">  {{itemQuantity.quantity}} </span>
+                                        </div>
+                                    </div>
+                                </div>
 						</div>
 					
 				</div>

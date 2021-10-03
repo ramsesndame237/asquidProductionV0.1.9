@@ -1,3 +1,10 @@
+    @font-face {
+        font-family: 'Avenir';
+        src: url('../fonts/Avenir/AvenirLTStd-Roman.woff'), url('../fonts/Avenir/AvenirLTStd-Black.woff'), url('../fonts/Avenir/AvenirLTStd-Book.woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
 *{
     margin:0;
     padding:0;
@@ -21,15 +28,16 @@ body{
     background:#002633;
     width:1366px ;
     height:193px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 5fr;
-    justify-content: center;
-    align-items: center;
+    display: flex;
+
 }
 
 .logoContainerHeader{
     width: 259px;
-    height:106px
+    height:106px;
+    margin-left: 48px;
+    margin-right: 46px;
+    margin-top: 44px;
 }
 .logoContainerHeader img{
  width: 100%;
@@ -37,22 +45,26 @@ body{
 }
 .titleContainer{
     width:300px;
-    border-left: 2px solid #fff;
     height: 65px;
-    margin-left: 2rem;
+    margin-top: 84px;
+    margin-left: 45.5px;
 }
 .actionButton{
     display: flex;
-    justify-content:flex-end;
-    align-items: flex-end;
+    margin-top: 86px;
+    margin-left: 569px;
 }
 .editButton{
     height: 54px;
     width: 111px;
     background:#fff;
     color: #002633;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 27px;
     border: solid 1px #919da1;
+    cursor: pointer;
 }
 .addOnCartButton{
     height:54px;
@@ -63,6 +75,10 @@ body{
     border: solid 1px #919da1;
     margin-left: 15px;
     margin-right:15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .previewInformation{
@@ -80,17 +96,20 @@ body{
     color:#002633;
     font-weight: 900;
     font-size: 20px;
-    margin-left:15px;
+    margin-left:26px;
+    margin-top: 19px;
+    margin-bottom: 18.5px;
 }
 .detailsInfo{
     display:flex;
 }
 .iconLeft{
-    border:solid;
     width: 30px;
     height: 30px;
-    margin-left: 15px;
-    margin-right:15px;
+    margin-bottom: 7px;
+    margin-left: 26px;
+    margin-right:20px;
+    filter:  invert(60%) sepia(51%) saturate(1228%) hue-rotate(168deg) brightness(107%) contrast(102%);
 }
 .iconLeft img{
     width:100%;
@@ -99,16 +118,49 @@ body{
 .agree{
     font-size:20px;
     font-weight: 900px;
+    margin-bottom: 17px;
     color:#002633;
 }
 .containerCanvasFabricPreview{
     width: 670px;
     height: 223px;
-    border:solid;
+    border:solid 1px #919da1;
     margin:auto;
     margin-top:25px;
 }
 .containerCanvasFabricPreview img{
     width:100%;
     height:100%;
+}
+.checkInfo{
+    width: 30px;
+    height: 30px;
+    margin-left: 26px;
+    margin-right: 19px;
+    cursor: pointer;
+    position: relative;
+}
+.checkInfo img{
+    width: 100%;
+    height: 100%;
+}
+.checkArrow{
+	position: absolute;
+	top: -7px;
+    left: 5px;
+	width: 32px;
+    height: 30px;   
+}
+.imgCheck{
+	width: 32px;
+    height: 30px;
+	margin-left: 65px;
+	margin-right: 7px;
+	margin-top: 16px;
+	cursor: pointer;
+	position: relative;
+}
+.imgCheck img{
+	width: 100%;
+	height: 100%;
 }

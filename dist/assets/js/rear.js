@@ -13,12 +13,31 @@ var app = new Vue({
             {id:'9',value:"Opel"},
             {id:'10',value:"Toyota"},
         ],
-        YearList:[],
+        YearList: [],
+        dropChoose:false,
         modelChooseList: [
             {id:'1',value:'Sprinter'}
         ],
         sizeChooseList: [],
-        designChooseList:[],
+        designChooseList: [],
+        kitQuantity: [
+        {
+          id:'1',quantity:'1 RearSquid',value:"1"
+        },
+         {
+          id:'2',quantity:'2 RearSquid',value:"2"
+        },
+          {
+          id:'3',quantity:'3 RearSquid',value:"3"
+        },
+           {
+          id:'4',quantity:'4 RearSquid',value:"4"
+        },
+        {
+          id:'5',quantity:'5 RearSquid',value:"5"
+        },
+
+      ],
         YourRearDesign:'',
         YourRearSize: '',
         YourModelChoose:'',
@@ -28,7 +47,8 @@ var app = new Vue({
         dropModelChoose: false,
         dropChooseYear: false,
         resumeChooseList: [],
-        quantityRearSquid:'1',
+        quantityRearSquid: '1',
+        YourRearQuantity:'1 RearSquid',
         itemToShow: "",
         itemToTextShow: '',
         sizePrice: 0,
@@ -38,6 +58,23 @@ var app = new Vue({
         
     },
     methods: {
+     removeItemQuantity(itemId, value) {
+        console.log(itemId)
+        console.log(value)
+          this.YourRearQuantity = itemId
+        if (JSON.parse(localStorage.getItem('oldTotalrear') != 'null' && localStorage.getItem('oldTotalrear')).length > 0) {
+          let oldValue = JSON.parse(localStorage.getItem('oldTotalrear'))
+          this.totalAmount = this.totalAmount / parseInt(oldValue)
+          setTimeout(() => {
+            this.totalAmount = this.totalAmount * parseInt(value)
+            localStorage.setItem("oldTotalrear", JSON.stringify(value))
+          }, 300);
+        } else {
+          this.totalAmount = this.totalAmount * parseInt(value)
+          localStorage.setItem("oldTotalrear", JSON.stringify(value))
+        }
+            this.dropChoose = false
+      },
         removeItem(itemId) {
             console.log(itemId)
             this.YourBrandChoose = itemId
@@ -69,6 +106,7 @@ var app = new Vue({
             console.log(n);
         },
         RearShowActive(n) {
+            this.removeItemQuantity(this.kitQuantity[0].quantity,this.kitQuantity[0].value)
             for (var i = 0; i < this.sizeChooseList.length; i++) {
                 this.sizeChooseList[i].classList.remove("Acitve")
             }
@@ -97,7 +135,7 @@ var app = new Vue({
             } else if (n == 2) {
                 this.sizePrice = 199
                 console.log(n)
-                this.YourRearSize = 'All window"  '
+                this.YourRearSize = 'All window'
                 let dataSize = {
                     width: "600",
                     height: "200"
@@ -128,16 +166,60 @@ var app = new Vue({
             } else if (n == 1) {
                 this.YourRearDesign = 'Graphic design'
                 this.totalAmount = this.totalAmount + 45
-                this.designChooseList[n].classList.add("Acitve")
             }
+            this.designChooseList[n].classList.add("Acitve")
 
         },
+        saveCommande() {
+              let data ="Rear Squid"
+            localStorage.setItem("CustomiseTitle", data)
+            let commande
+            if (this.YourRearSize == "All window") {
+
+                commande = {
+                nameProduct: data,
+                  sizeProduct: this.YourRearSize,
+                  designProduct: this.YourRearDesign,
+                  cutProduct:'',
+                  quantityProduct: this.YourRearQuantity,
+                  extraProduct:'',
+                    totalAmountProduct: this.totalAmount,
+                    CarInfo: [
+                        {
+                            YourBrand: this.YourBrandChoose,
+                            YourModel: this.YourModelChoose,
+                            YourYear:this.YourYearChoose
+                      }
+                  ]
+                }
+                
+            } else {
+                commande= {
+                  nameProduct: data,
+                  sizeProduct: this.YourRearSize,
+                  designProduct: this.YourRearDesign,
+                  cutProduct:'',
+                  quantityProduct: this.YourRearQuantity,
+                  extraProduct:'',
+                  totalAmountProduct:this.totalAmount
+                }
+            }
+
+
+        if (commande.sizeProduct != '' && commande.totalAmountProduct != '') {
+          window.location = "../../../customiser2.html"
+        } else {
+          alert("Veillez selectionner une taille")
+        }
+        localStorage.setItem('commande',JSON.stringify(commande))
+        }
     },
     mounted() {
         this.resumeChooseList = document.querySelectorAll(".contentLinkItem")
         this.sizeChooseList = document.querySelectorAll(".sizeRearContainer")
         this.designChooseList = document.querySelectorAll(".containerDesignRearSquid")
         console.log(this.designChooseList)
+        localStorage.setItem('oldTotalrear', JSON.stringify(this.quantityRearSquid))
         this.resumeShowActive(this.index = 0)
       this.itemToShow = 'overview'
           let currentYear = new Date().getFullYear();

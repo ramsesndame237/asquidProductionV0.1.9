@@ -1,7 +1,15 @@
+@font-face {
+        font-family: 'Avenir';
+        src: url('../fonts/Avenir/AvenirLTStd-Roman.woff'), url('../fonts/Avenir/AvenirLTStd-Black.woff'), url('../fonts/Avenir/AvenirLTStd-Book.woff');
+        font-weight: normal;
+        font-style: normal;
+}
+
 *{
     margin:0;
     padding:0;
     box-sizing: border-box;
+    font-family: 'Avenir';
 }
 
 body{
@@ -22,6 +30,7 @@ li,ul,ol,a{text-decoration:none;list-style:none;}
     max-height: 133px;
     height: 133px;
     margin:auto;
+    margin-top: 37px;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
@@ -68,6 +77,13 @@ li,ul,ol,a{text-decoration:none;list-style:none;}
     top: -8px;
     left:15px;
     color: #fff;
+    font-weight: 900;
+    overflow: hidden;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
 }
 .search_utilisateur{
     background: rgba(255,255,255,0.043);
@@ -121,7 +137,7 @@ li,ul,ol,a{text-decoration:none;list-style:none;}
     color:#fff;
 }
 .busnessServiceLink{
-    width:146px;
+    width:149px;
     height: 27px;
     font-size: 20px;
     color:#fff;
@@ -133,7 +149,6 @@ li,ul,ol,a{text-decoration:none;list-style:none;}
 .breackrumbCart{
     width: 1088px;
     height: 281px;
-    border:solid red;
     margin: auto;
 }
 
@@ -153,6 +168,7 @@ li,ul,ol,a{text-decoration:none;list-style:none;}
 }
 .continuousButton{
     width: 240px;
+    cursor: pointer;
     height: 54px;
     background: #fff;
     border: 1px solid #919DA1;
@@ -172,6 +188,7 @@ li,ul,ol,a{text-decoration:none;list-style:none;}
 }
 .shippingButton{
     width: 184px;
+    cursor: pointer;
     height: 54px;
     border-radius: 28px;
     background: #33CCFF;
@@ -179,20 +196,25 @@ li,ul,ol,a{text-decoration:none;list-style:none;}
     align-items:center;
     margin-right: 161px;
 }
-.panierContent{
+/* .panierContent{
     display:grid;
     grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+} */
+
+.panierContentContainer{
+    display: flex;
 }
 .viewProductCart{
-    border:solid yellow;
     margin-left: 161px;
+    margin-top: 61px;
+    margin-right: 39px;
 }
 .previewOfProduct{
     width: 458px;
-height: 152px;
-background: #ffff;
-border: 1px solid #707070;
-margin-top: 61px;
+    height: 152px;
+    background: #ffff;
+    border: 1px solid #707070;
 }
 
 .previewOfProduct img{
@@ -200,6 +222,20 @@ margin-top: 61px;
     height:100%;
 }
 .detailsProductCart{
-    border:solid red;
     margin-right:161px;
+    margin-top: 61px;
+}
+
+.sizeLine{
+    margin-top: 30px;
+}
+.cutLine{
+    margin-top: 18.5px;
+}
+.shippingInvoice{
+    margin-left: 662px;
+}
+.sizeLine input:focus{
+    border: none;
+    outline: none;
 }

@@ -35,6 +35,16 @@ window.onload = function() {
     }
 };
 
+window.onload = function () {
+    if (localStorage.getItem("editAgain") == 'true') {
+    console.log("edited")
+    json = localStorage.getItem("canvasSaveAs")
+     canvas.loadFromJSON(json, function() {
+        canvas.renderAll();
+    });
+}
+}
+
 
 
 function zoomIn() {
@@ -97,7 +107,6 @@ function zoomIn768() {
         objects[i].setCoords();
     }
 
-    alert(canvas.getWidth)
     canvas.renderAll();
 }
 
@@ -136,7 +145,9 @@ function zoomIn992() {
 
 function zoomIn1200() {
     var SCALE_FACTOR = .9;
+     zoom -= SCALE_FACTOR;
     canvasScale = canvasScale * SCALE_FACTOR;
+    document.querySelector(".containerSurfaceArea").style.transform = "scale(" + zoom + ")";
 
     canvas.setHeight(canvas.getHeight() * SCALE_FACTOR);
     canvas.setWidth(canvas.getWidth() * SCALE_FACTOR);
@@ -160,9 +171,6 @@ function zoomIn1200() {
 
         objects[i].setCoords();
     }
-    alert(canvas.getWidth())
-
-
     canvas.renderAll();
 }
 
@@ -194,9 +202,6 @@ function zoomIn1300() {
         objects[i].setCoords();
     }
 
-    alert(canvas.getWidth())
-
-
     canvas.renderAll();
 }
 function zoomIn1500(){
@@ -226,9 +231,6 @@ function zoomIn1500(){
         objects[i].setCoords();
     }
 
-    alert(canvas.getWidth())
-
-
     canvas.renderAll();
 
 }
@@ -239,7 +241,6 @@ function zoomIn1500(){
 var zoom = 1;
 var zoomStep = 0.2;
 function ZoomIn(){
-    console.log("on zoom")
     console.log($(".containerSurfaceArea"))
     document.querySelector(".containerSurfaceArea").style.transform = "scale(" + zoom + ")";
 
@@ -397,6 +398,7 @@ var myFunc = function() {
     text2 = new fabric.IText("Text", {
         id: "yourbuisness",
         fontSize: 30,
+        fontWeight:200,
         selectable: true,
         left: 450,
         top: 120,
@@ -495,6 +497,9 @@ var myFunc = function() {
         canvas.renderAll()
         canvas.setActiveObject(text5);
 
+    })
+    document.querySelector("#textCompany").addEventListener('click', function () {
+        console.log("k")
     })
 }();
 
@@ -607,8 +612,10 @@ $("#picker1").colorPick({
         if (backgContain == "") {
             let back = document.querySelector(".canvasAree")
             back.style.background = this.color
+            canvas.setBackgroundImage(null);
             canvas.backgroundColor = this.color
             canvas.renderAll()
+            console.log("vide")
         } else {
             console.log("okay")
             var mySVGsToInject = document.querySelector('img.inject-me');
@@ -635,11 +642,42 @@ $("#picker1").colorPick({
                     console.log(totalSVGsInjected)
                     mySVGsToInject.style.fill = this.color
                 });
+                setTimeout(() => {
+                    mySVGsToInject = document.querySelector("svg")
+                    console.log(mySVGsToInject)
+                    console.log("oooaojqdfijoqdsfioj")
+                    mySVGsToInject.style.fill = this.color
+                    console.log(mySVGsToInject)
+                    var svg = mySVGsToInject;
+                    svgData = new XMLSerializer().serializeToString(svg);
+                    base64Image = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+                    let data = base64Image
+                    console.log(data)
+                    fabric.Image.fromURL(data, function(img) {
+                        canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
+                        scaleX: canvas.width / img.width,
+                        scaleY: canvas.height / img.height
+                        });
+                    });
+
+                }, 500);
             } else {
                 mySVGsToInject = document.querySelector("svg")
                 console.log(mySVGsToInject)
                 console.log("oooaojqdfijoqdsfioj")
                 mySVGsToInject.style.fill = this.color
+                 var svg = mySVGsToInject;
+                    svgData = new XMLSerializer().serializeToString(svg);
+                    base64Image = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+                    let data = base64Image
+                    console.log(data)
+                    fabric.Image.fromURL(data, function(img) {
+                        canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
+                        scaleX: canvas.width / img.width,
+                        scaleY: canvas.height / img.height
+                        });
+                    });
+
             }
 
         }
@@ -820,13 +858,18 @@ document.getElementById('logoImport').addEventListener("change", function(e) {
     }
 });
 $('.imageBackgroundLayout').on('load', function () {
-    let data =$('.imageBackgroundLayout').attr('src')
-    fabric.Image.fromURL(data, function(img) {
-        canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
-           scaleX: canvas.width / img.width,
-           scaleY: canvas.height / img.height
-        });
-     });
+    let data = $('.imageBackgroundLayout').attr('src')
+    console.log("vide")
+    if (data == "") {
+        canvas.setBackgroundImage(null);
+    } else {
+        fabric.Image.fromURL(data, function(img) {
+            canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
+               scaleX: canvas.width / img.width,
+               scaleY: canvas.height / img.height
+            });
+         });
+    }
 });
 
 /**
@@ -991,7 +1034,11 @@ $('.imageBackgroundLayout').on('load', function () {
     updateModifications(true);
 },
     'object:added', function () {
-    updateModifications(true);
+        updateModifications(true);
+        canvas.loadFromJSON(json, function() {
+           canvas.renderAll();
+        });
+        
 });
 
 function updateModifications(savehistory) {
@@ -999,6 +1046,17 @@ function updateModifications(savehistory) {
         myjson = JSON.stringify(canvas);
         state.push(myjson);
     }
+    canvas.loadFromJSON(myjson, function() {
+        canvas.renderAll();
+    });
+}
+
+function saveAs(){
+    var json = canvas.toJSON();
+    canvas.loadFromJSON(json, function() {
+        canvas.renderAll();
+    });
+    localStorage.setItem('canvasSaveAs',JSON.stringify(json))
 }
 
 undo = function undo() {
@@ -1033,15 +1091,159 @@ redo = function redo() {
  }
  */
 
- function saveToCanvas(){
+function saveToCanvas() {
+     this.saveAs()
      console.log("nous pouvons bien save le produit")
      
      /**
       * we have to transform the canvas to image to preview it on the preview page 
       */
-
+        window.location = "../../../PreviewCanvas.html"
      var ContainsLayerCanvas = canvas.toDataURL();
      console.log(ContainsLayerCanvas)
      localStorage.setItem("imageToPreview",JSON.stringify(ContainsLayerCanvas))
 
- }
+}
+
+// window.onload = function () {
+//     var json =JSON.parse(localStorage.getItem("canvasSaveAs"));
+//       canvas.loadFromJSON(json, function() {
+//         canvas.renderAll();
+//     });
+// }
+
+/**
+ * this function is for resizing the canvas on screen 
+ */
+var bounds = [
+    {min:0,max:500,func:ZoomOut},
+    {min:501,max:850,func:ZoomOut},
+    {min:851,func:ZoomIn}
+];
+
+var resizeFn = function(){
+    var lastBoundry; // cache the last boundry used
+    return function(){
+        var width = window.innerWidth;
+        var boundry, min, max;
+        for(var i=0; i<bounds.length; i++){
+            boundry = bounds[i];
+            min = boundry.min || Number.MIN_VALUE;
+            max = boundry.max || Number.MAX_VALUE;
+            if(width > min && width < max 
+               && lastBoundry !== boundry){
+                lastBoundry = boundry;
+                return boundry.func.call(boundry);            
+            }
+        }
+    }
+};
+$(window).resize(resizeFn());
+$(document).ready(function(){
+    $(window).trigger('resize');
+});
+
+
+/**
+ * this part is for the chat part 
+ * 
+ */
+
+var element = $('.floating-chat');
+var myStorage = localStorage;
+
+if (!myStorage.getItem('chatID')) {
+    myStorage.setItem('chatID', createUUID());
+}
+
+setTimeout(function() {
+    element.addClass('enter');
+}, 1000);
+
+element.click(openElement);
+
+function openElement() {
+    var messages = element.find('.messages');
+    var textInput = element.find('.text-box');
+    element.find('>i').hide();
+    element.addClass('expand');
+    element.find('.chat').addClass('enter');
+    var strLength = textInput.val().length * 2;
+    textInput.keydown(onMetaAndEnter).prop("disabled", false).focus();
+    element.off('click', openElement);
+    element.find('.header button').click(closeElement);
+    element.find('#sendMessage').click(sendNewMessage);
+    messages.scrollTop(messages.prop("scrollHeight"));
+}
+
+function closeElement() {
+    element.find('.chat').removeClass('enter').hide();
+    element.find('>i').show();
+    element.removeClass('expand');
+    element.find('.header button').off('click', closeElement);
+    element.find('#sendMessage').off('click', sendNewMessage);
+    element.find('.text-box').off('keydown', onMetaAndEnter).prop("disabled", true).blur();
+    setTimeout(function() {
+        element.find('.chat').removeClass('enter').show()
+        element.click(openElement);
+    }, 500);
+}
+
+function createUUID() {
+    // http://www.ietf.org/rfc/rfc4122.txt
+    var s = [];
+    var hexDigits = "0123456789abcdef";
+    for (var i = 0; i < 36; i++) {
+        s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+    }
+    s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
+    s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
+    s[8] = s[13] = s[18] = s[23] = "-";
+
+    var uuid = s.join("");
+    return uuid;
+}
+
+function sendNewMessage() {
+    var userInput = $('.text-box');
+    var newMessage = userInput.html().replace(/\<div\>|\<br.*?\>/ig, '\n').replace(/\<\/div\>/g, '').trim().replace(/\n/g, '<br>');
+
+    if (!newMessage) return;
+
+    var messagesContainer = $('.messages');
+
+    messagesContainer.append([
+        '<li class="self">',
+        newMessage,
+        '</li>'
+    ].join(''));
+
+    // clean out old message
+    userInput.html('');
+    // focus on input
+    userInput.focus();
+
+    messagesContainer.finish().animate({
+        scrollTop: messagesContainer.prop("scrollHeight")
+    }, 250);
+}
+
+function onMetaAndEnter(event) {
+    if ((event.metaKey || event.ctrlKey) && event.keyCode == 13) {
+        sendNewMessage();
+    }
+}
+
+canvas.on('mouse:down', (options)=>{
+    if (options.target.type == 'i-text') {
+        console.log('on canvas mousedown', options.target ? options.target.type : '');
+        let layoutHeader = document.querySelector(".LayoutCustomTools")
+        layoutHeader.style.display = "none";
+        let textContainer = document.querySelector(".TextCustomTools")
+        textContainer.style.display="flex"
+    } else {
+        console.log("c'est pas un text")
+        console.log( options.target.type )
+    }
+});
+

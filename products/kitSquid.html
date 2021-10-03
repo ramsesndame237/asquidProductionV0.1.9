@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asquid | Kit Squid</title>
+    <link rel="icon" href="../dist/assets/images/logo.png">
     <link rel="stylesheet" href="../dist/assets/css/kitsquid.css">
     <link rel="stylesheet" href="../dist/assets/css/myCustomiseDropdown.css">
 
@@ -44,9 +45,9 @@
                         <ul class="link-item-list">
                             <li class="link-item-list-item dropdows ">Produit
                                 <ul class="dropdown-link-item">
-                                    <li><a href="kitSquid.html">Kit Squid</a></li>
-                                    <li><a href="flexiSquid.html">Flexi Squid</a></li>
-                                    <li><a href="RearSquid.html">Rear Squid</a></li>
+                                    <li><a href="kitSquid.html#Kit">Kit Squid</a></li>
+                                    <li><a href="flexiSquid.html#flexiSquidSelectioncontainer">Flexi Squid</a></li>
+                                    <li><a href="rearsquid.html#rearContainer">Rear Squid</a></li>
                                 </ul>
 
                             </li>
@@ -122,7 +123,7 @@
                          <span>choose your <span style="color: #33ccff;"> cut:</span></span>
                         </div>
                         <div class="containerCutSquid d-lg-grid d-md-grid d-sm-block">
-                                <div class="messageLettering d-lg-flex d-md-flex d-sm-flex">
+                                <div class="messageLettering d-lg-flex d-md-flex d-sm-flex animate__animated animate__fadeInUp" v-if="cutLettering">
                                     <span style="width: 127px;height: 88px;font-size: 16px;font-weight: lighter;">The lettering is a cut following the contour of the visual or the text</span>
                                 </div>
                             <div class="cutKitContainer" v-for="itemsCut in kitCut" @click="cutShowActive(itemsCut.id)">
@@ -144,6 +145,14 @@
                          <span>choose your <span style="color: #33ccff;"> extra stickers:</span></span>
                         </div>
                         <div class="containerExtraSquid d-lg-grid d-md-grid d-sm-block">
+                            <div class="messageExtraContainer d-sm-flex d-lg-flex d-md-flex">
+                                <span style="width: 254px;height: 88px;">Sitcker for the back of your vehicle: Kit XS: <span style="color: #002633; font-size: 16px; font-weight: 900;">600 x 200 mm </span> <br/> Kit S:<span style="color: #002633; font-size: 16px; font-weight: 900;">6 900 x 300 mm</span> <br/> Kit M | L | XL: <span style="color: #002633; font-size: 16px; font-weight: 900;">1,200 x 400 mm</span></span>
+                            </div>
+                            <div class="messageHoodContainer d-md-flex d-lg-flex d-sm-flex">
+                                <span style="width: 260px;height: 68px;">
+                                    Sitcker for the hood of your vehicle: Kit XS | S |M :<span style="color: #002633; font-size: 16px; font-weight: 900;"> 600 x 200 mm</span> <br/> Kit L | XL:<span style="color: #002633; font-size: 16px; font-weight: 900;">  900 x 300 mm </span>
+                                </span>
+                            </div>
                             <div class="extraKitContainer noneExtra d-flex fw-bold" @click="noneExtraShowActive(0)">
                                 <span>None</span>
                             </div>
@@ -166,6 +175,9 @@
                          <span>choose your <span style="color: #33ccff;"> design:</span></span>
                         </div>
                         <div class="containerDesignSquid d-lg-grid d-md-grid d-sm-block fw-bold ">
+                            <div class="messageDesign d-sm-flex d-lg-flex d-md-flex">
+                                <span style="width: 174px;height: 66px;font-size:16px;font-weight:lighter">You are not in a creative mood today, let us take care of your ad design</span>
+                            </div>
                             <div class="designKitContainer" v-for="itemDesign in KitDesign" @click="designShowActive(itemDesign.id)">
                                 <div class="imageDesignSquid">
                                     <img :src="itemDesign.image" alt="">
@@ -196,11 +208,13 @@
                                 <img src="../dist/assets/images/arrowDown.png" alt="">
                             </div>
                         </div>
-                        <div class="DropDowQuantityToChoose" v-if="dropChoose">
-                            <div class="quantityList mt-3 fw-bold"  v-for = "itemQuantity in kitQuantity">
-                                <span  @click="removeItem(itemQuantity.quantity,itemQuantity.value)">  {{itemQuantity.quantity}} </span>
-                            </div>
-                        </div>
+                         <div class="DropDowQuantityToChoose" v-if="dropChoose">
+                                    <div class="contentQuantity">
+                                        <div class="quantityList mt-3 fw-bold"  v-for = "itemQuantity in kitQuantity">
+                                            <span  @click="removeItemQuantity(itemQuantity.quantity,itemQuantity.value)">  {{itemQuantity.quantity}} </span>
+                                        </div>
+                                    </div>
+                          </div>
                     </div>
                     <div class="SumaryRearSquid mt-5">
                         <div class="titleSummary">
@@ -246,7 +260,7 @@
                             </div>
                             <div class="yourQuantityResume">
                                <div class="texteSummary">
-                                   <span>quantity:</span> {{YourQuantity}}
+                                   <span>quantity:</span> {{YourRearQuantity}}
                                </div>
                                 <div class="lineSummary">
                                     
@@ -264,11 +278,11 @@
 
                         <div class="RearactionButton">
                             <div class="uploadDesignRear">
-							<span>Upload My Design</span>
-						</div>
-						<div class="customizerRear">
-							<a href="../customiser2.html"> Customize</a>
-						</div>
+						    	<span>Upload My Design</span>
+						    </div>
+                            <div class="customizerRear" @click="saveCommande">
+                                <span>Customize</span>
+                            </div>
                             
                         </div>
                     </div>

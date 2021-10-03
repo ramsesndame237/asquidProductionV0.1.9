@@ -22,7 +22,7 @@ body{
 .d-sm-block{
 	display: block;
 }
-.mt-3{margin-top: 10px;} 
+.mt-3{margin-top: 20px;} 
 .fw-bold{font-weight: bold;}
 
 ul,li,a{text-decoration: none; list-style: none;}

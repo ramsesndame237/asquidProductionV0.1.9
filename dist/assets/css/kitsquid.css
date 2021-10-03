@@ -107,15 +107,18 @@ ul,li,a{text-decoration: none !important; list-style: none !important; }
     width: 550px;
     height: 60px;
     font-size: 20px;
-    font-weight: 900;
     cursor: pointer;
 }
 .link-item-list-item{
     margin-left: 25px;
     margin-right: 25px;
 }
+.quote{
+    font-weight: lighter;
+}
 .dropdows{
     position: relative;
+    font-weight: lighter;
 }
 .dropdows:hover .dropdown-link-item{
     visibility: visible;
@@ -292,9 +295,21 @@ border: solid red;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-gap: 20px;
 	width: 30rem;
+    position: relative;
 }
-.containerCutSquid{position: relative;}
-
+.messageDesign{
+    width: 231px;
+    height: 126px;
+    border: 1px solid #919DA1;
+    border-radius: 25px;
+    background: #fff;
+    position: absolute;
+    z-index: 1000;
+    right: 65px;
+    top: -65px;
+    justify-content: center;
+    align-items: center;
+}
 .extraKitContainer,.typeDesignSquid,.typeExtraSquid{
 	color: #002633;
 	justify-content: center;
@@ -349,4 +364,30 @@ text-align: center;
     z-index: 1000;
     justify-content: center;
     align-items: center;
+}
+.messageExtraContainer{
+    width: 314px;
+    height: 148px;
+    border: 1px solid #919DA1;
+    border-radius: 25px;
+    background: #fff;
+    position: absolute;
+    top: -60px;
+    left: -45px;
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+.messageHoodContainer{
+    width: 321px;
+    height: 128px;
+    border: 1px solid #919DA1;
+    border-radius: 25px;
+    background: #fff;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 1000;
+    bottom: 75px;
+    left: -215px;
 }

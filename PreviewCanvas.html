@@ -15,15 +15,16 @@
             <div class="logoContainerHeader">
                 <img src="dist/assets/images/logo.png" alt="">
             </div>
+            <hr style="height: 65px;border: 2px solid #FFFFFF;opacity: 1; width:2px;border-radius:8px;margin-top: 55px;">
             <div class="titleContainer">
-                <span>Your Kit <span style="color:aqua">Squid</span></span>
+                <span style="color: #FFFFFF;font-size:20px;font-weight:lighter">Your Kit <span style="color:aqua">Squid</span></span>
             </div>
             <div class="actionButton">
-                <div class="editButton">
-
+                <div class="editButton" @click="editAgain">
+                    <span style="color: #002633;font-size:16px;font-weight:900;"> Edit again</span>
                 </div>
-                <div class="addOnCartButton">
-
+                <div class="addOnCartButton" @click="AddCart">
+                    <span style="color: #FFFFFF;font-weight:900;font-size:16px">Add to cart</span>
                 </div>
 
             </div>
@@ -39,12 +40,14 @@
 
         <div class="previewBodyContainer">
             <div class="previewInformation">
-                <span class="titleInfo">
-                    Let’s check one more time
-                </span>
+                <div class="titleInfo">
+                    <span>
+                        Let’s check one more time
+                    </span>
+                </div>
                 <div class="detailsInfo">
                     <div class="iconLeft">
-                        <img src="dist/assets/images/" alt="">
+                        <img src="dist/assets/images/icon/up-arrow.svg" alt="">
                     </div>
                     <div class="itemsText">
                         <span>Lack of ortoghraphs or others repositionable</span>
@@ -52,18 +55,21 @@
                 </div>
                 <div class="detailsInfo">
                     <div class="iconLeft">
-                        <img src="dist/assets/images/" alt="">
+                        <img src="dist/assets/images/icon/up-arrow.svg" alt="">
                     </div>
                     <div class="itemsText">
                         <span>Your logo is well positioned and of good quality</span>
                     </div>
                 </div>
-                <div class="detailsInfo">
-                    <div class="iconLeft">
-                        <img src="dist/assets/images/" alt="">
+                <div class="detailsInfo" @click="checkidt = !checkidt">
+                    <div class="checkInfo">
+                        <img src="dist/assets/images/Carre.png" alt="#">
+                        <div class="checkArrow" v-if="checkidt">
+                            <img src="dist/assets/images/Check_click.png" alt="#">
+                        </div>
                     </div>
                     <div class="itemsText agree">
-                        <span>Yes! I checked everything.</span>
+                        <span style="font-size: 20px;font-weight: 900;width: 343px;height: 27px;">Yes! I checked everything.</span>
                     </div>
                 </div>
                 

@@ -55,6 +55,7 @@ customisateur entete
         width: 100%;
         height: 150px;
         display: flex;
+        background: #002633;
         align-items: center;
         justify-content: start;
     }
@@ -164,9 +165,7 @@ main off the customiser
     #mainCustomisateur {
         width: 100%;
         max-height: 2888px;
-        display: grid;
-        grid-template-columns: 1fr 8fr;
-        column-gap: 2px;
+        display: flex;
         border-top: solid #919da1;
     }
     
@@ -178,7 +177,7 @@ main off the customiser
     }
     
     .sidebarTools {
-        width: 120px;
+        width: 90px;
         height: auto;
     }
     
@@ -209,15 +208,292 @@ main off the customiser
         border-radius: 28px;
         height: 800px;
         overflow: auto;
+        margin-left: 12px;
+        margin-right: 12px;
     }
+    .chatGroup{
+        position: absolute;
+        bottom: 56px;
+        right: 69px;
+    }
+    .chatbutton{
+        width: 38px;
+        height: 29px;
+        background: #33CCFF 0% 0% no-repeat padding-box;
+        border-radius: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    .chatbutton img{
+        width: 100%;
+        height: 100%;
+    }
+
+
+.floating-chat {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: fixed;
+ bottom: 56px;
+right: 69px;
+  width: 70px;
+height: 70px;
+  transform: translateY(70px);
+  transition: all 250ms ease-out;
+  border-radius: 18px;
+  opacity: 0;
+  background: #33CCFF 0% 0% no-repeat padding-box;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.floating-chat.enter:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  opacity: 1;
+}
+.floating-chat.enter {
+  transform: translateY(0);
+  opacity: 0.6;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.14);
+}
+.floating-chat.expand {
+  width: 250px;
+  max-height: 400px;
+  height: 400px;
+  border-radius: 5px;
+  cursor: auto;
+  opacity: 1;
+}
+.floating-chat :focus {
+  outline: 0;
+  box-shadow: 0 0 3pt 2pt rgba(21, 21, 21, 0.3);
+}
+.floating-chat button {
+  background: transparent;
+  border: 0;
+  color: white;
+  text-transform: uppercase;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.floating-chat .chat {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  transition: all 250ms ease-out;
+  margin: auto;
+  background: #002633;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.floating-chat .chat.enter {
+  opacity: 1;
+  border-radius: 0;
+  margin: 10px;
+  width: auto;
+  height: auto;
+}
+.floating-chat .chat .header {
+  flex-shrink: 0;
+  padding-bottom: 10px;
+  display: flex;
+  background: transparent;
+}
+.floating-chat .chat .header .title {
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding: 0 5px;
+}
+.floating-chat .chat .header button {
+  flex-shrink: 0;
+}
+.floating-chat .chat .messages {
+  padding: 10px;
+  margin: 0;
+  list-style: none;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  flex-grow: 1;
+  border-radius: 4px;
+  background: transparent;
+}
+.floating-chat .chat .messages::-webkit-scrollbar {
+  width: 5px;
+}
+.floating-chat .chat .messages::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: rgba(25, 147, 147, 0.1);
+}
+.floating-chat .chat .messages::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(25, 147, 147, 0.2);
+}
+.floating-chat .chat .messages li {
+  position: relative;
+  clear: both;
+  display: inline-block;
+  padding: 14px;
+  margin: 0 0 20px 0;
+  font: 12px/16px "Noto Sans", sans-serif;
+  border-radius: 10px;
+  background-color: rgba(25, 147, 147, 0.2);
+  word-wrap: break-word;
+  max-width: 81%;
+}
+.floating-chat .chat .messages li:before {
+  position: absolute;
+  top: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  content: "";
+  background-size: cover;
+}
+.floating-chat .chat .messages li:after {
+  position: absolute;
+  top: 10px;
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 10px solid rgba(25, 147, 147, 0.2);
+}
+.floating-chat .chat .messages li.other {
+  animation: show-chat-odd 0.15s 1 ease-in;
+  -moz-animation: show-chat-odd 0.15s 1 ease-in;
+  -webkit-animation: show-chat-odd 0.15s 1 ease-in;
+  float: right;
+  margin-right: 45px;
+  color: #0ad5c1;
+}
+.floating-chat .chat .messages li.other:before {
+  right: -45px;
+  background-image: url(https://github.com/Thatkookooguy.png);
+}
+.floating-chat .chat .messages li.other:after {
+  border-right: 10px solid transparent;
+  right: -10px;
+}
+.floating-chat .chat .messages li.self {
+  animation: show-chat-even 0.15s 1 ease-in;
+  -moz-animation: show-chat-even 0.15s 1 ease-in;
+  -webkit-animation: show-chat-even 0.15s 1 ease-in;
+  float: left;
+  margin-left: 45px;
+  color: #0ec879;
+}
+.floating-chat .chat .messages li.self:before {
+  left: -45px;
+  background-image: url(https://github.com/ortichon.png);
+}
+.floating-chat .chat .messages li.self:after {
+  border-left: 10px solid transparent;
+  left: -10px;
+}
+.floating-chat .chat .footer {
+  flex-shrink: 0;
+  display: flex;
+  padding-top: 10px;
+  max-height: 90px;
+  background: transparent;
+}
+.floating-chat .chat .footer .text-box {
+  border-radius: 3px;
+  background: rgba(25, 147, 147, 0.2);
+  min-height: 100%;
+  width: 100%;
+  margin-right: 5px;
+  color: #0ec879;
+  overflow-y: auto;
+  padding: 2px 5px;
+}
+.floating-chat .chat .footer .text-box::-webkit-scrollbar {
+  width: 5px;
+}
+.floating-chat .chat .footer .text-box::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: rgba(25, 147, 147, 0.1);
+}
+.floating-chat .chat .footer .text-box::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(25, 147, 147, 0.2);
+}
+
+.numberofMessage{
+    background: #002633;
+    width: 30px;
+    height: 30px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -20px;
+    right: -10px;
+    border-radius: 50%;
+}
+
+@keyframes show-chat-even {
+  0% {
+    margin-left: -480px;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
+@-moz-keyframes show-chat-even {
+  0% {
+    margin-left: -480px;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
+@-webkit-keyframes show-chat-even {
+  0% {
+    margin-left: -480px;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
+@keyframes show-chat-odd {
+  0% {
+    margin-right: -480px;
+  }
+  100% {
+    margin-right: 0;
+  }
+}
+@-moz-keyframes show-chat-odd {
+  0% {
+    margin-right: -480px;
+  }
+  100% {
+    margin-right: 0;
+  }
+}
+@-webkit-keyframes show-chat-odd {
+  0% {
+    margin-right: -480px;
+  }
+  100% {
+    margin-right: 0;
+  }
+}
     /*
 * content area customisateur 
 */
     
-    .customisateurArea {
-        background: #F7FDFF;
-        height: 994px;
-    }
     
     .activeToolsItem {
         border: solid 4px #33ccff !important;
@@ -495,7 +771,8 @@ customisateur area
         text-align: center;
         justify-content: center;
         align-items: center;
-        height: 100%;
+        background: #F7FDFF;
+        flex: 1;
     }
     
     .containerSurfaceArea {
@@ -2446,14 +2723,13 @@ customisateur area
     }
     
     .zoomButtonContainer {
-        border: solid;
         width: 5rem;
         height: 8rem;
         position: absolute;
         right: 25px;
         top: 15rem;
     }
-    .zommButton,.dezommButton{
+    .zommButton,.dezommButton,.undoButton,.redoButton{
         width: 47px;
         height: 47px;
         border-radius:10px;
@@ -2462,21 +2738,28 @@ customisateur area
         margin-right: auto;
         z-index: 100;
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-    .zommButton{
-        background: green;
+    .undoButton img,.redoButton img{
+        width: 6px;
+        height: 11px;
     }
-    .dezommButton{
-        background:red;
+    .zommButton img{
+        width: 29px;
+        height: 30px;
+    }
+    .dezommButton img{
+        width: 29px;
+        height: 30px;   
     }
     .undoActionZone{
         width: 15rem;
         height:5rem;
-        border: solid;
         position: absolute;
         bottom:25px;
         left:45%;
-        justify-content: center;
     }
     .buttonQRcodeSend{
         background:#33ccff;
@@ -2521,60 +2804,3 @@ customisateur area
         -webkit-box-shadow: inset 0 0 6px red; 
     }
 
-
-    /**
-     * responsive of the page 
-     */
-
-    @media only screen and (min-width:240px) and (max-width: 1880px) {
-        .zommButton{
-            background: yellow;
-        }
-        .dezommButton{
-            background:blue;
-        }
-        .containerSurfaceArea {
-            border:solid blue;
-            width: 90%;
-            height:400px;
-        }
-        .importeZone #canvasUpload  {
-        }
-        .importeZone .canvasAree{
-            border:solid red;
-            width:90%;
-            height: 350px;
-
-        }
-
-        .ligneA {
-            left: 5px;
-        }
-        
-        .ligneB {
-            left: 5px;
-        }
-        
-        .ligneC {
-            border: 1px solid #919da1;
-            position: absolute;
-            bottom: 1%;
-            left: 5rem;
-            width: 40%;
-        }
-        
-        .widthCustomiser {
-            font-weight: 900;
-            position: absolute;
-            top: 96%;
-            left: 49%;
-        }
-        
-        .ligneD {
-            border: 1px solid #919da1;
-            position: absolute;
-            bottom: 1%;
-            right: 25px;
-            width: 42%;
-        }
-     }

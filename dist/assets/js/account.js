@@ -36,6 +36,7 @@ var app = new Vue({
     },
     mounted() {
         this.chooseTitleProfile = document.querySelectorAll(".titleProfile")
+       this.coditionToShow = JSON.parse(localStorage.getItem('typeAccount'))
         this.showProfileTitleActive(0)
            let currentYear = new Date().getFullYear();
             let earliestYear = 1870;

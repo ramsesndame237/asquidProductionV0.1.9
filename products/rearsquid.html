@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+        <title>Asquid | RearSquid</title>
+    <link rel="icon" href="../dist/assets/images/logo.png">
     <link rel="stylesheet" href="../dist/assets/css/rearSquid.css">
+    <link rel="stylesheet" href="../dist/assets/css/myCustomiseDropdown.css">
     <script src="../dist/plugin/vue.js"></script>
 </head>
 <body>
@@ -37,9 +39,9 @@
                         <ul class="link-item-list">
                             <li class="link-item-list-item dropdows ">Produit
                                 <ul class="dropdown-link-item">
-                                    <li><a href="kitSquid.html">Kit Squid</a></li>
-                                    <li><a href="flexiSquid.html">Flexi Squid</a></li>
-                                    <li><a href="RearSquid.html">Rear Squid</a></li>
+                                    <li><a href="kitSquid.html#Kit">Kit Squid</a></li>
+                                    <li><a href="flexiSquid.html#flexiSquidSelectioncontainer">Flexi Squid</a></li>
+                                    <li><a href="rearsquid.html#rearContainer">Rear Squid</a></li>
                                 </ul>
 
                             </li>
@@ -257,49 +259,23 @@
                         </div>
                     </div>
                     <div class="quantityChoose">
-                        		<!-- partial:index.partial.html -->
-								<div class="select-box">
-								<div class="select-box__current" tabindex="1">
-									<div class="select-box__value">
-									<input class="select-box__input"  type="radio" id="0" value="5" name="Ben" checked="checked"/>
-									<p class="select-box__input-text">5 RearSquid</p>
-									</div>
-									<div class="select-box__value">
-									<input class="select-box__input"  type="radio" id="1" value="4" name="Ben" checked="checked"/>
-									<p class="select-box__input-text">4 RearSquid</p>
-									</div>
-									<div class="select-box__value">
-									<input class="select-box__input"  type="radio" id="2" value="3" name="Ben" checked="checked"/>
-									<p class="select-box__input-text">3 RearSquid</p>
-									</div>
-									<div class="select-box__value">
-									<input class="select-box__input"  type="radio" id="3" value="2" name="Ben" checked="checked"/>
-									<p class="select-box__input-text">2 RearSquid</p>
-									</div>
-									<div class="select-box__value">
-									<input class="select-box__input"  type="radio" id="4" value="1" name="Ben" checked="checked"/>
-									<p class="select-box__input-text">1 RearSquid</p>
-									</div><img class="select-box__icon" src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true"/>
-								</div>
-								<ul class="select-box__list">
-									<li>
-									<label class="select-box__option" for="0" aria-hidden="aria-hidden">5 RearSquid</label>
-									</li>
-									<li>
-									<label class="select-box__option" for="1" aria-hidden="aria-hidden">4 RearSquid</label>
-									</li>
-									<li>
-									<label class="select-box__option" for="2" aria-hidden="aria-hidden">3 RearSquid</label>
-									</li>
-									<li>
-									<label class="select-box__option" for="3" aria-hidden="aria-hidden">2 RearSquid</label>
-									</li>
-									<li>
-									<label class="select-box__option" for="4" aria-hidden="aria-hidden">1 RearSquid</label>
-									</li>
-								</ul>
-								</div>
-								<!-- partial -->
+                        	<div class="containerQuantitySquid">
+                                <div class="choosequantityDropdow rearQuantityChoose d-lg-flex" @click="dropChoose = !dropChoose">
+                                    <div class="chooseQuantityName fw-bold">
+                                        <span style="color: #002633; font-size:16px;font-weight:900">{{YourRearQuantity}}</span>
+                                    </div>
+                                    <div class="arrowDownDrop rearDropDown">
+                                        <img src="../dist/assets/images/arrowDown.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="DropDowQuantityToChoose" v-if="dropChoose">
+                                    <div class="contentQuantity">
+                                        <div class="quantityList mt-3 fw-bold"  v-for = "itemQuantity in kitQuantity">
+                                            <span  @click="removeItemQuantity(itemQuantity.quantity,itemQuantity.value)">  {{itemQuantity.quantity}} </span>
+                                        </div>
+                                    </div>
+                                </div>
+                         </div>
                     </div>
                     <div class="SumaryRearSquid">
                         <div class="titleSummary">
@@ -308,7 +284,7 @@
                         <div class="SumaryRearSquidContainer">
                             <div class="yourSizeResume">
                                 <div class="texteSummary">
-                                    <span>Your size: </span> {{YourRearSize}}
+                                    <span style="color: #002633;font-weight:900;font-size:20px">Your size: </span> <span style="color: #002633; font-weight:200;font-size:20px"> {{YourRearSize}}</span>
                                 </div>
                                 <div class="lineSummary">
 
@@ -316,7 +292,7 @@
                             </div>
                             <div class="yourDesignResume">
                                 <div class="texteSummary">
-                                    <span>Your design:</span> {{YourRearDesign}}
+                                    <span style="color: #002633;font-weight:900;font-size:20px">Your design:</span><span style="color: #002633; font-weight:200;font-size:20px"> {{YourRearDesign}}</span>
                                 </div>
                                 <div class="lineSummary">
                                     
@@ -324,7 +300,7 @@
                             </div>
                             <div class="yourQuantityResume">
                                <div class="texteSummary">
-                                   <span>quantity:</span> {{quantityRearSquid}} Rear Squid
+                                   <span style="color: #002633;font-weight:900;font-size:20px">quantity:</span> <span style="color: #002633; font-weight:200;font-size:20px"> {{YourRearQuantity}}</span>
                                </div>
                                 <div class="lineSummary">
                                     
@@ -332,7 +308,7 @@
                             </div>
                             <div class="yourTotalSummary">
                                 <div class="texteSummary">
-                                    <span>Total</span>: $ {{totalAmount}}
+                                    <span style="color: #002633;font-weight:900;font-size:20px">Total:</span><span style="color: #002633;font-weight:900;font-size:20px"> $ {{totalAmount}}</span>
                                 </div>
                                 <div class="lineSummary">
                                 </div>
@@ -344,8 +320,8 @@
                             <div class="uploadDesignRear">
 							<span>Upload My Design</span>
 						</div>
-						<div class="customizerRear">
-							<a href="../customiser2.html"> Customize</a>
+						<div class="customizerRear" @click="saveCommande">
+							<span>Customize</span>
 						</div>
                             
                         </div>
@@ -357,10 +333,10 @@
           <div class="recaptilatusContainer">
             <div class="contentContainerRecap">
                 <ul class="contentLink">
-                    <li class="contentLinkItem" @click="(resumeShowActive(0) )&& (itemToShow='overview')">Overview</li>
-                    <li class="contentLinkItem" @click="(resumeShowActive(1)) && (itemToShow='guideline')">Guideline</li>
-                    <li class="contentLinkItem" @click="(resumeShowActive(2)) && (itemToShow='howtofix')">How to fix it</li>
-                    <li class="contentLinkItem" @click="(resumeShowActive(3)) && (itemToShow='review')">Review</li>
+                    <li class="contentLinkItem" @click="(resumeShowActive(0) ),(itemToShow='overview')">Overview</li>
+                    <li class="contentLinkItem" @click="(resumeShowActive(1)) ,(itemToShow='guideline')">Guideline</li>
+                    <li class="contentLinkItem" @click="(resumeShowActive(2)) ,(itemToShow='howtofix')">How to fix it</li>
+                    <li class="contentLinkItem" @click="(resumeShowActive(3)) ,(itemToShow='review')">Review</li>
                 </ul>
             </div>
             <div class="contentContainerRecapitilatif" v-if="itemToShow == 'overview'" >
@@ -387,13 +363,39 @@
                         </div>
 
                     </div>
-
                 </div>
                 <div class="photodescriptionContentContainer animate__animated animate__fadeInRigth animate__delay-1s">
                     <div class="photoContainerdescription">
                         Photo
                     </div>
                 </div>
+            </div>
+               <div class="guideLineContainer d-lg-flex d-md-flex d-sm-block"  v-if="itemToShow == 'guideline'" >
+                <div class="guidelineDownload">
+                    <span class="text-white fw-bold display-5">Guideline</span>
+                    <div class="buttonDowload d-lg-flex d-md-flex d-sm-flex text-center">
+                        <div class="titleButton fw-bold">
+                            <span>Download</span>
+                        </div>
+                        <div class="imageDownLoad">
+                            <img src="../dist/assets/images/Customisateur/Dowload.png" alt="">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="guideLineSaveAre">
+                    <div class="safeAreZone text-center fw-bold d-lg-flex d-md-flex d-sm-flex">
+                        <span class="display-4 fw-bold">Safe Area</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="howTofixContainer mt-5" v-if="itemToShow == 'howtofix'">
+                <div class="howTofixVideoContainer">
+                    <iframe width="420" height="345" src="https://www.youtube.com/embed/5mwYmBdQuNI?autoplay=1&mute=1">
+                        </iframe>      
+                </div>
+
             </div>
         </div>
         <div id="Groupe_84">

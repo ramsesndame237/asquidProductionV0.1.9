@@ -9,20 +9,22 @@
     <link rel="stylesheet" href="dist/plugin/animate.css">
     <link rel="icon" href="dist/assets/images/logo.png">
     <link rel="stylesheet" href="dist/assets/css/globaHeader.css">
+    <script src="dist/plugin/vue.js"></script>
+    <script src="dist/plugin/axios.js"></script>
 </head>
 <body>
-    <div class="main-body">
+    <div class="main-body" id="indexPage">
          <header class="globalHeader">
             <div class="generalContent">
                 <div class="logoContainer">
                     <div class="logo">
-                        <img src="../dist/assets/images/logo.png" alt="">
+                        <img src="../dist/assets/images/logo.png" alt="#">
                     </div>
-    
                 </div>
                 <div class="linkContainerZone">
                     <div class="socialLinkContainer">
-                        <div class="user">
+                        <span v-if="connected" @click="conditionConnect = !conditionConnect" style="font-size: 16px; color: #33CCFF; margin-top: 16px; cursor: pointer;" > Welcome {{username}} </span>
+                        <div class="user" @click="conditionConnect = !conditionConnect">
                             <img src="../dist/assets/images/icon/user_V2.svg" alt="">
                         </div>
                         <div class="shopping">
@@ -35,6 +37,31 @@
                             <div class="inputText">
                                 <input type="text" name="search" id="search" placeholder="Search">
                             </div>
+                        </div>
+                        <div class="profilConectContainer" v-if="conditionConnect && connected">
+                            <div class="myProfil" @click="TypeOnglet(0)">
+                                <a href="others/account.html">
+                                <span style="color: #002633;">
+                                    My profile
+                                </span>
+                                </a>
+                            </div>
+                            <div class="orderHistory" @click="TypeOnglet(1)">
+                                <a href="others/account.html">
+                                <span style="color: #002633;">
+                                    Order History
+                                </span>
+                                </a>
+                            </div>
+                            <hr style="width: 106px;margin-top:11px;opacity: 1; margin-left: 22px;">
+                             <div class="signOut" @click="signOut">
+                                <span style="color: #002633;">
+                                    Sign out
+                                </span>
+                                </a>
+                            </div>
+                            
+
                         </div>
 
                     </div>
@@ -62,14 +89,18 @@
         </header>
         <div class="sliderAsquid">
             <div class="customYourContainer">
-                <h2>Custom Your <span class="special">stickers</span><br>for your car</h2>
-                <p>
-                    You can let your imagination run wild to create the ad that suits you.
-                    Templates are available to help you in your creation process.
-                    Are you ready?
-                </p>
+                <div class="titleCustom">
+                    <h2 >Custom Your <span class="special">stickers</span><br>for your car:</h2>
+                </div>
+                <div class="paragrapheCustom">
+                    <p>
+                        You can let your imagination run wild to create the ad that suits you.
+                        Templates are available to help you in your creation process.<br>
+                        Are you ready?
+                    </p>
+                </div>
                 <div class="customizationNow">
-                    Start Making My Design
+                   <span style="color: #FFFFFF;font-size:20px;font-weight:bold;"> Start Making My Design</span>
                 </div>
             </div>
 
@@ -82,7 +113,7 @@
                 <div class="body-service">
                     <span class="service-title">Made in australia</span>
                     <p class="service-body">
-                        Printed in Noosa  Queensland
+                        Printed in Noosa<br>  Queensland
                     </p>
                 </div>
             </div>
@@ -92,9 +123,9 @@
                 </div>
                 <div class="body-service">
                     <span class="service-title">Easy to set up</span>
-                    <span class="service-body">
-                        With the squeegee and the Easy Apply RS™ system,you’ll get a clean,bubble-free installation  
-                    </span>
+                    <p class="service-body">
+                        With the squeegee and <br> the Easy Apply RS™ system,<br>you’ll get a clean,<br> bubble-free installation  
+                    </p>
                 </div>
 
             </div>
@@ -105,7 +136,7 @@
                 <div class="body-service">
                     <span class="service-title">Durability  </span>
                     <p class="service-body">
-                        All outdoor vinyls have UV protection
+                        All outdoor vinyls <br> have UV protection
                     </p>
                 </div>
             </div>
@@ -116,7 +147,7 @@
                 <div class="body-service">
                     <span class="service-title">Fast Delivery</span>
                     <p class="service-body">
-                        Get your order in 8 business 
+                        Get your order in 8 business days
                     </p>
                 </div>
             </div>
@@ -130,7 +161,7 @@
                     <span>Flexi</span><span class="special">Squid</span>
                 </div>
                 <div class="avertisementProduct">
-                    <span>Advertising support for rear glasses</span>
+                    <span style="font-size: 18px; font-weight: lighter;">Advertising support for rear glasses</span>
                 </div>
                 <div class="descriptionBody">
                     <ul class="descriptionList">
@@ -145,7 +176,7 @@
                                     </path>
                                 </svg>
                             </div>
-                            <div class="textDes">   Infinitely repositionable</div>
+                            <div class="textDes" style="font-size: 16px;">   Infinitely repositionable</div>
                         </div> </li>
                         <li><div id="up-arrow_ey">
                             <div id="Groupe_66_ez">
@@ -158,7 +189,7 @@
                                     </path>
                                 </svg>
                             </div>
-                            <div class="textDes"> Two different sizes</div>
+                            <div class="textDes" style="font-size: 16px;"> Two different sizes</div>
                         </div></li>
                         <li><div id="up-arrow_ey">
                             <div id="Groupe_66_ez">
@@ -171,12 +202,14 @@
                                     </path>
                                 </svg>
                             </div>
-                            <div class="textDes"> New type of advertising media</div>
+                            <div class="textDes" style="font-size: 16px;"> New type of advertising media</div>
                         </div></li>
                     </ul>
                 </div>
                 <div class="MyOwn">
-                    I Want My Own
+                    <span style="font: size 20px;font-weight:900">
+                        I Want My Own
+                    </span>
                 </div>
 
             </div>
@@ -184,7 +217,7 @@
         <div class="trustipilotContainer">
             <div class="containerTruti">
                 <div class="titleTrusti">
-                    <h2>Trustpilot</h2> 
+                    <h4>Trustpilot</h4> 
                 </div>
                 <div class="bodyTrustipilot">
                     <p>Reviews customer</p>
@@ -194,10 +227,12 @@
         <div class="moreThantCar">
             <div class="moreThanContainer">
                 <div class="morethanTitle">
-                    <h2> <span class="special"> More</span> than one car ? </h2>
+                    <span> <span class="special"> More</span> than one car ? </span>
                 </div>
                 <div class="morethanBody">
-                    Your are a company with several cars and you want a personalized quote.Do not hesitate to send us a request
+                    <span>
+                        Your are a company with several cars and you want a personalized quote.Do not hesitate to send us a request
+                    </span>
                 </div>
             </div>
             <div class="getQuote">
@@ -206,23 +241,6 @@
 
         </div>
         <div class="PartenerSection fadeInRight" data-wow-duration="1000ms" data-wow-delay="300ms">
-            <!-- <div class="hearderPatner">
-                <div class="line1">
-                    <svg class="Ligne_1" viewBox="0 0 352 3">
-                        <path id="Ligne_1" d="M 0 0 L 352 3">
-                        </path>
-                    </svg>
-                </div>
-                <div class="titlePatner">
-                    They trust us
-                </div>
-                <div class="line1">
-                    <svg class="Ligne_1" viewBox="0 0 352 3">
-                        <path id="Ligne_1" d="M 0 0 L 352 3">
-                        </path>
-                    </svg>
-                </div>
-            </div> -->
             <div id="Groupe_65">
                 <svg class="Ligne_1" viewBox="0 0 352 3">
                     <path id="Ligne_1" d="M 0 0 L 352 3">
@@ -237,7 +255,7 @@
                     </rect>
                 </svg>
                 <div id="They_trust_us">
-                    <span>They trust us</span>
+                    <span style="font-weight: 900;">They trust us</span>
                 </div>
                 <img id="Lily_flower_white" src="dist/assets/images/Lily_flower_white.png" alt="#">
                     
@@ -249,6 +267,100 @@
                     
             </div>
             
+        </div>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <span class="close">&times;</span>
+        <!-- Modal content -->
+        <div class="modal-content" v-if="itemTextToShow == 'Signin'" >
+            <div class="titleModal">
+                <span>
+                    Sign in to Adsquid
+                </span>
+            </div>
+            <div class="signupContainer">
+                <div class="emailInputLabel">
+                    <span>
+                        Email
+                    </span>
+                </div>
+                <div class="inputLabel">
+                    <input type="email" v-model="dataRegistration.email" placeholder="Exemple@adsquid.com.au" required>
+                </div>
+                 <div class="emailInputLabel">
+                    <span>
+                        Password
+                    </span>
+                </div>
+                <div class="inputLabel">
+                    <input v-model="dataRegistration.password" type="password" required>
+                </div>
+            </div>
+            <div class="btnContent" @click="SigninSave">
+                <span>My profile
+                    Continue
+                </span>
+            </div>
+            <div class="remember">
+                <div class="imgCheck" @click="checkidt = !checkidt">
+                    <img src="dist/assets/images/Carre.png" alt="#">
+                    <div class="checkArrow" v-if="checkidt">
+                        <img src="dist/assets/images/Check_click.png" alt="#">
+                    </div>
+                </div>
+                <span style="margin-top: 16px;width: 164px;height: 22px;">Remember Me</span>
+                <span style="color: #33CCFF; margin-top:16px;margin-left: 12px;">Forgot Password?</span>
+            </div>
+            <hr style="width: 150px; margin: auto;margin-top: 16px;">
+            <div class="notMember">
+                <span style="font-size: 20px;color: #002633;">
+                    Not a member yet? <span style="color: #33CCFF; cursor: pointer;" @click="itemTextToShow = 'Signup'"> Join now</span>
+                </span>
+            </div>
+        </div>
+        <div class="signinContainer" v-if="itemTextToShow == 'Signup'">
+             <div class="titleModal">
+                <span>
+                    Sign in to Adsquid
+                </span>
+            </div>
+            <div class="signupContainer">
+                 <div class="emailInputLabel">
+                    <span>
+                        Email
+                    </span>
+                </div>
+                <div class="inputLabel">
+                    <input type="email" v-model="dataRegistration.email" placeholder="Exemple@adsquid.com.au" required>
+                </div>
+             </div>
+             <div class="btnContent" @click="saveUser">
+                <span>
+                    Continue
+                </span>
+            </div>
+
+        </div>
+        <div class="signinContainer" v-if="itemTextToShow == 'confirmMail'">
+             <div class="titleModal">
+                <span>
+                    Sign in to Adsquid
+                </span>
+            </div>
+            <div class="signupContainer">
+               <span style="font-size:20px;font-weight:900;color: #002633; margin-left: 83px;">
+                   Email send with your password
+               </span>
+             </div>
+             <div class="btnContent">
+                <span>
+                    Continue
+                </span>
+            </div>
+
+        </div>
+
         </div>
         <div class="testimonialcontainer">
             <div id="Trustpilot_do">
@@ -344,5 +456,35 @@
 
     </div>
     
+    <script src="dist/assets/js/index.js"></script>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.querySelector(".user");
+        
+        // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+            
+            // When the user clicks the button, open the modal 
+            btn.onclick = function() {
+            console.log(modal)
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+        modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+        }
+</script>
 </body>
 </html>

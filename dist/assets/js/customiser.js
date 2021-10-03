@@ -1,306 +1,84 @@
-'use strict';
-(function() {
-    var image1 = document.createElement('img'),
-        image2 = document.createElement('img'),
-        image3 = document.createElement('img'),
-        canvas,
-        width = 1000,
-        height = 500,
-        randomColor = function randomColor() {
-            var letters = '0123456789ABCDEF';
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        };
+var element = $('.floating-chat');
+var myStorage = localStorage;
 
-    //fabric.Object.prototype.setControlsVisibility( {
-    //    ml: false,
-    //    mr: false
-    //} );
+if (!myStorage.getItem('chatID')) {
+    myStorage.setItem('chatID', createUUID());
+}
 
-    fabric.Canvas.prototype.customiseControls({
-        tl: {
-            action: 'rotate',
-            cursor: 'progress',
-        },
-        tr: {
-            action: 'scale',
-        },
-        bl: {
-            action: 'remove',
-            cursor: 'pointer',
-        },
-        br: {
-            action: 'moveUp',
-            cursor: 'pointer',
-        },
-        mb: {
-            action: 'moveDown',
-            cursor: 'pointer',
-        },
-        mr: {
-            action: function(e, target) {
-                target.set({
-                    left: 200,
-                });
-                canvas.renderAll();
-            },
-            cursor: 'pointer',
-        },
-        mt: {
-            action: {
-                'rotateByDegrees': 30,
-            },
-            cursor: 'pointer',
-        },
-        // only is hasRotatingPoint is not set to false
-        mtr: {
-            action: 'rotate',
-            cursor: 'cow.png',
-        },
-    });
+setTimeout(function() {
+    element.addClass('enter');
+}, 1000);
 
-    // basic settings
-    fabric.Object.prototype.customiseCornerIcons({
-        settings: {
-            borderColor: '#0094dd',
-            cornerSize: 25,
-            cornerShape: 'rect',
-            cornerBackgroundColor: 'black',
-        },
-        tl: {
-            icon: 'icons/rotate.svg',
-        },
-        tr: {
-            icon: 'icons/resize.svg',
-        },
-        ml: {
-            icon: '//maxcdn.icons8.com/Share/icon/Logos//google_logo1600.png',
-        },
-        mr: {
-            icon: 'icons/diagonal-resize.svg',
-        },
-        // only is hasRotatingPoint is not set to false
-        mtr: {
-            icon: 'icons/rotate.svg',
-        },
-    }, function() {
-        canvas.renderAll();
-    });
+element.click(openElement);
 
-    canvas = new fabric.Canvas('example', {
-        width: width,
-        height: height,
-    });
+function openElement() {
+    var messages = element.find('.messages');
+    var textInput = element.find('.text-box');
+    element.find('>i').hide();
+    element.addClass('expand');
+    element.find('.chat').addClass('enter');
+    var strLength = textInput.val().length * 2;
+    textInput.keydown(onMetaAndEnter).prop("disabled", false).focus();
+    element.off('click', openElement);
+    element.find('.header button').click(closeElement);
+    element.find('#sendMessage').click(sendNewMessage);
+    messages.scrollTop(messages.prop("scrollHeight"));
+}
 
-    image1.src = '../images/Customisateur/cat.jpg';
-    fabric.Image.fromURL(image1.src, function(img) {
-        img.set({
-            id: 'cat',
-            left: 500,
-            top: 100,
-            scaleX: 0.2,
-            scaleY: 0.2,
-            originX: 'center',
-            originY: 'center',
-            cornerStrokeColor: 'blue',
-        });
+function closeElement() {
+    element.find('.chat').removeClass('enter').hide();
+    element.find('>i').show();
+    element.removeClass('expand');
+    element.find('.header button').off('click', closeElement);
+    element.find('#sendMessage').off('click', sendNewMessage);
+    element.find('.text-box').off('keydown', onMetaAndEnter).prop("disabled", true).blur();
+    setTimeout(function() {
+        element.find('.chat').removeClass('enter').show()
+        element.click(openElement);
+    }, 500);
+}
 
-        // overwrite the prototype object based
-        img.customiseCornerIcons({
-            settings: {
-                borderColor: 'black',
-                cornerSize: 25,
-                cornerShape: 'rect',
-                cornerBackgroundColor: 'black',
-                cornerPadding: 10,
-            },
-            tl: {
-                icon: 'icons/rotate.svg',
-            },
-            tr: {
-                icon: 'icons/resize.svg',
-            },
-            bl: {
-                icon: 'icons/remove.svg',
-            },
-            br: {
-                icon: 'icons/up.svg',
-            },
-            mb: {
-                icon: 'icons/down.svg',
-            },
-            mt: {
-                icon: 'icons/acute.svg',
-            },
-            mr: {
-                icon: 'icons/repair-tools-cross.svg',
-            },
-            // only is hasRotatingPoint is not set to false
-            mtr: {
-                icon: 'icons/rotate.svg',
-            },
-        }, function() {
-            canvas.renderAll();
-        });
+function createUUID() {
+    // http://www.ietf.org/rfc/rfc4122.txt
+    var s = [];
+    var hexDigits = "0123456789abcdef";
+    for (var i = 0; i < 36; i++) {
+        s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+    }
+    s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
+    s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
+    s[8] = s[13] = s[18] = s[23] = "-";
 
-        canvas.add(img);
-        canvas.setActiveObject(img);
+    var uuid = s.join("");
+    return uuid;
+}
 
-    });
+function sendNewMessage() {
+    var userInput = $('.text-box');
+    var newMessage = userInput.html().replace(/\<div\>|\<br.*?\>/ig, '\n').replace(/\<\/div\>/g, '').trim().replace(/\n/g, '<br>');
 
-    image2.src = '../../../dist/assets/images/Customisateur/bear.jpg';
-    fabric.Image.fromURL(image2.src, function(img) {
-        img.set({
-            id: 'bear',
-            left: 100,
-            top: 100,
-            scaleX: 0.2,
-            scaleY: 0.2,
-            originX: 'center',
-            originY: 'center',
-        });
+    if (!newMessage) return;
 
-        // overwrite the prototype object based
-        img.customiseCornerIcons({
-            settings: {
-                borderColor: 'red',
-                cornerSize: 25,
-                cornerBackgroundColor: 'red',
-                cornerShape: 'circle',
-                cornerPadding: 10,
-            },
-            tl: {
-                icon: 'icons/rotate.svg',
-            },
-            tr: {
-                icon: 'icons/resize.svg',
-            },
-            bl: {
-                icon: 'icons/remove.svg',
-            },
-            br: {
-                icon: 'icons/up.svg',
-            },
-            mb: {
-                icon: 'icons/down.svg',
-            },
-            mt: {
-                icon: 'icons/acute.svg',
-            },
-            mr: {
-                icon: 'icons/repair-tools-cross.svg',
-            },
-            // only is hasRotatingPoint is not set to false
-            mtr: {
-                icon: 'icons/rotate.svg',
-            },
-        }, function() {
-            canvas.renderAll();
-        });
+    var messagesContainer = $('.messages');
 
-        canvas.add(img);
-    });
+    messagesContainer.append([
+        '<li class="self">',
+        newMessage,
+        '</li>'
+    ].join(''));
 
-    image3.src = '../images/Customisateur/owl.jpg';
-    fabric.Image.fromURL(image3.src, function(img) {
-        img.set({
-            id: 'owl',
-            left: 300,
-            top: 100,
-            scaleX: 0.05,
-            scaleY: 0.05,
-            originX: 'center',
-            originY: 'center',
-        });
+    // clean out old message
+    userInput.html('');
+    // focus on input
+    userInput.focus();
 
-        // overwrite the prototype object based
-        img.customiseCornerIcons({
-            settings: {
-                borderColor: randomColor(),
-                cornerSize: 25,
-                cornerBackgroundColor: 'red',
-                cornerShape: 'circle',
-                cornerPadding: 10,
-            },
-            tl: {
-                icon: 'icons/rotate.svg',
-                settings: {
-                    cornerShape: 'rect',
-                    cornerBackgroundColor: randomColor(),
-                    cornerPadding: 10,
-                    cornerSize: 35,
-                },
-            },
-            tr: {
-                icon: 'icons/resize.svg',
-                settings: {
-                    cornerShape: 'circle',
-                    cornerBackgroundColor: randomColor(),
-                    cornerPadding: 15,
-                    cornerSize: 20,
-                },
-            },
-            bl: {
-                icon: 'icons/remove.svg',
-                settings: {
-                    cornerShape: 'rect',
-                    cornerBackgroundColor: randomColor(),
-                    cornerPadding: 12,
-                },
-            },
-            br: {
-                icon: 'icons/up.svg',
-                settings: {
-                    cornerShape: 'circle',
-                    cornerBackgroundColor: randomColor(),
-                    cornerPadding: 17,
-                },
-            },
-            mb: {
-                icon: 'icons/down.svg',
-                settings: {
-                    cornerShape: 'rect',
-                    cornerBackgroundColor: randomColor(),
-                    cornerPadding: 5,
-                },
-            },
-            mt: {
-                icon: 'icons/acute.svg',
-                settings: {
-                    cornerShape: 'circle',
-                    cornerBackgroundColor: randomColor(),
-                    cornerPadding: 8,
-                },
-            },
-            mr: {
-                icon: 'icons/repair-tools-cross.svg',
-                settings: {
-                    cornerShape: 'rect',
-                    cornerBackgroundColor: randomColor(),
-                    cornerPadding: 10,
-                },
-            },
-            // only is hasRotatingPoint is not set to false
-            mtr: {
-                icon: 'icons/rotate.svg',
-            },
-        }, function() {
-            canvas.renderAll();
-        });
+    messagesContainer.finish().animate({
+        scrollTop: messagesContainer.prop("scrollHeight")
+    }, 250);
+}
 
-        canvas.add(img);
-    });
-
-    canvas.on({
-        'after:render': function() {
-            canvas.forEachObject(function(obj) {
-                document.querySelector('.' + obj.id)
-                    .innerText = obj.id + ' z-index: ' + canvas.getObjects().indexOf(obj);
-            });
-
-        },
-    });
-})();
+function onMetaAndEnter(event) {
+    if ((event.metaKey || event.ctrlKey) && event.keyCode == 13) {
+        sendNewMessage();
+    }
+}

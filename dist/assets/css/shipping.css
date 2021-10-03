@@ -1,0 +1,359 @@
+@font-face {
+        font-family: 'Avenir';
+        src: url('../fonts/Avenir/AvenirLTStd-Roman.woff'), url('../fonts/Avenir/AvenirLTStd-Black.woff'), url('../fonts/Avenir/AvenirLTStd-Book.woff');
+        font-weight: normal;
+        font-style: normal;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Avenir';
+}
+
+body{
+    background:#002633;
+    margin: 0;
+    padding: 0;
+}
+li,ul,ol,a{text-decoration:none;list-style:none;}
+
+.shippingContentContainer{
+    background: #002633;
+    max-width:1366px;
+    max-height:2453px;
+    margin:auto;
+}
+
+.cartHeader{
+    max-width:1046px;
+    max-height: 133px;
+    height: 133px;
+    margin:auto;
+    margin-top: 37px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.logoContainer{
+    width:259px;
+    height:106px;
+}
+.logoContainer img{
+    width:100%;
+    height:100%
+}
+.SocialAndLinkContainer{
+    width:787px;
+}
+.socialLink{
+    margin-left: 503px;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+.navLink{
+    margin-left: 425px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 52px;
+}
+.userAccount{
+    width:21px;
+    height: 25px;
+    color: #fff;
+}
+.shoppingContainer{
+    width: 23px;
+    height:25px;
+    position:relative;
+}
+.numberofProduct{
+    width: 18px;
+    height: 18px;
+    border-radius:50%;
+    background:#FF3366;
+    position: absolute;
+    top: -8px;
+    left:15px;
+    color: #fff;
+    font-weight: 900;
+    overflow: hidden;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+.search_utilisateur{
+    background: rgba(255,255,255,0.043);
+    padding: 10px;
+    border-radius:28px;
+    width: 184px;
+    height: 34px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.search_utilisateur input{
+    border: none;
+    color: #fff !important;
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+    background-color: transparent !important;
+}
+.search_utilisateur input:focus{
+    border: none;
+    background-color: transparent !important;
+    color: #fff;
+    outline: none;
+}
+.search-icon img{
+    filter: invert(100%) sepia(100%) saturate(100%) hue-rotate(86deg) brightness(100%) contrast(100%);
+    width: 29px;
+    height: 30px;
+}
+
+.userAccount img,.shoppingContainer img{
+    width: 100%;
+    height: 100%;
+    filter: invert(100%) sepia(100%) saturate(100%) hue-rotate(86deg) brightness(100%) contrast(100%);
+}
+.productLink{
+    width:69px;
+    height:27px;
+    font-size:20px;
+    color:#fff;
+}
+
+.quoteLink{
+    width: 57px;
+    height:27px;
+    font-size:20px;
+    color:#fff;
+}
+.busnessServiceLink{
+    width:149px;
+    height: 27px;
+    font-size: 20px;
+    color:#fff;
+}
+.quoteLink a,.busnessServiceLink a {
+    color:#fff;
+    text-decoration:none;
+}
+.breackrumb{
+    width: 1088px;
+    height: 281px;
+    margin-left: 139px;
+}
+.titleBreak{
+    width: 241px;
+    height: 52px;
+    color: #FFFFFF;
+    font-weight: 900;
+    font-size: 38px;
+    margin-left: 53px;
+    margin-top: 89px;
+}
+.descriBreak{
+    font-size: 16px;
+    font-weight: 100;
+    margin-left: 53px;
+    margin-top: 14px;
+    color: #fff;
+}
+
+.shippingContainer{
+    width: 1088px;
+    height: 1366px;
+    margin-top: 59px;
+    margin-left: 139px;
+    display: flex;
+}
+.shippingContent{
+    margin-right: 92.5px;
+}
+
+.shippingTitle{
+    width: 156px;
+    height: 27px;
+    color: #33CCFF;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: 23px;
+}
+.labelText{
+    color: #FFFFFF;
+    font-weight: 900;
+    font-size: 20px;
+    margin-top: 24px;
+    margin-left: 23px;
+}
+.labelInput{
+    width: 520px;
+    height: 40px;
+    border: 1px solid #919DA1;
+    border-radius: 25px;
+    margin-top: 6px;
+    margin-left: 23px;
+}
+.labelInput input,.nameInput input,.contryInput input,.contactInput input{
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    border: none;
+}
+.labelInput input:focus,.nameInput input:focus,.contryInput input:focus,.contactInput input:focus{
+    border: none;
+    outline: none;
+}
+.personalInfo{
+    display: flex;
+}
+.nameInput{
+    width: 253px;
+    height: 40px;
+    border: 1px solid #919DA1;
+    border-radius: 25px;
+    margin-left: 23px;
+    margin-top: 6px;
+}
+.contryInput{
+    width: 163px;
+    height: 40px;
+    border: 1px solid #919DA1;
+    border-radius: 25px;
+    margin-left: 23px;
+    margin-top: 6px;
+}
+.placeStateContainer{
+    display: flex;
+}
+.contactInput{
+    width: 338px;
+    height: 40px;
+    border: 1px solid #919DA1;
+    border-radius: 25px;
+    margin-left: 23px;
+    margin-top: 6px;
+}
+.billingAdress{
+    color: #33CCFF;
+    font-size: 20px;
+    font-weight: 100;
+    margin-left: 23px;
+    margin-top: 24px;
+    width: 135px;
+    height: 54px;
+}
+.detailsInfo{
+    margin-left: 23px;
+    display: flex;
+}
+.checkInfo{
+    width: 30px;
+    height: 30px;
+    margin-right: 13.87px;
+    position: relative;
+    cursor: pointer;
+}
+.checkInfo img{
+    width: 100%;
+    height: 100%;
+}
+.checkArrow{
+    width: 32px;
+    height: 30px;
+    position: absolute;
+    top: -5px;
+    left: 5px;
+}
+
+.checkArrow img{
+    width: 100%;
+    height: 100%;
+}
+.itemsText{
+    margin-top: 5px;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+.paymentButton{
+    width: 184px;
+    height: 54px;
+    background: #33CCFF 0% 0% no-repeat padding-box;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 361px;
+    margin-top: 23px;
+    cursor: pointer;
+}
+.imgPa{
+    width: 8px;
+height: 14px;
+margin-left: 36.61px;
+}
+.imgPa img{
+    width: 100%;
+    height: 100%;
+}
+.cartShipping{
+    width: 300px;
+    height: 1120px;
+    margin-left: 95px;
+}
+.previewContain{
+    width: 283px;
+    height: 96px;
+    border: 1px solid #707070;
+    margin-left: 8px;
+}
+.previewContain img{
+    width: 100%;
+    height: 100%;
+}
+.titleProduct{
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 900;
+    margin-top: 17px;
+    margin-bottom: 16px;
+}
+.sizeLine,.cutLine{
+    margin-bottom: 8px;
+}
+.shippingInvoice{
+    margin-top: 43px;
+}
+.choosePaymentMethod{
+    display: flex;
+    margin-top: 24px;
+    margin-bottom: 32px;
+    margin-left: 23px;
+}
+.bankMethods{
+    color: #FFFFFF;
+    font-weight: 900;
+    font-size: 20px;
+    margin-right: 25px;
+    cursor: pointer;
+}
+.paypalMethods{
+    color: #FFFFFF;
+    font-weight: 900;
+    font-size: 20px;
+    cursor: pointer;
+}
+.chooseLink{
+    border-bottom: 4px solid #33CCFF;
+}

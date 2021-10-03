@@ -5,6 +5,7 @@
     font-style: normal;
 }
 
+
 *{
     margin: 0;
     padding: 0;
@@ -12,6 +13,9 @@
     font-family: 'Avenir';
 }
 ul,li,a{text-decoration: none; list-style: none;}
+.d-lg-flex{
+	display: flex;
+}
 body{
     margin: 0;
     padding: 0;
@@ -104,15 +108,18 @@ body{
     width: 550px;
     height: 60px;
     font-size: 20px;
-    font-weight: 900;
     cursor: pointer;
 }
 .link-item-list-item{
     margin-left: 25px;
     margin-right: 25px;
 }
+.quote{
+    font-weight: lighter;
+}
 .dropdows{
     position: relative;
+    font-weight: lighter;
 }
 .dropdows:hover .dropdown-link-item{
     visibility: visible;
@@ -222,24 +229,33 @@ body{
     font-size: 18px;
     width: 33rem;
 }
+.rearQuantityChoose{
+	width: 184px !important;
+	height: 54px !important;
+}
+.rearDropDown{
+	width: 11px !important;
+	height: 8px !important;
+	margin-bottom: 24px;
+	margin-top: 15px;
+}
 .titleRearSquid,.titleRearSquidDesign,.titleQuantityRearSquid,.titleSummary{
     color: #fff;
     font-size: 20px;
     font-weight: 700;
-    margin-bottom: 2rem;
+    margin-bottom: 20px;
 }
 .titleRearSquidDesign{margin-top: 2rem;}
 .titleQuantityRearSquid{margin-top: 2rem;}
 .titleSummary{margin-top: 2rem;}
 .sizeRearContainer,.containerDesignRearSquid{
-    margin-top: 2rem;
     width: 140px;
     height: 140px;
     border-radius: 28px;
     background: #fff;
     cursor: pointer;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
     position: relative;
 }
 .containerDesignRearSquid {
@@ -417,236 +433,19 @@ body{
 	Responsive Grids
 *********************************************************/
 
-.rt-container {
-	margin: 0 auto;
-	padding-left:12px;
-	padding-right:12px;
-}
-.rt-row:before, .rt-row:after {
-  display: table;
-  line-height: 0;
-  content: "";
-}
-
-.rt-row:after {
-  clear: both;
-}
-[class^="col-rt-"] {
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  padding: 0 15px;
-  min-height: 1px;
-  position: relative;
-}
-
-
-@media (min-width: 768px) {
-  .rt-container {
-    width: 750px;
-  }
-  [class^="col-rt-"] {
-    float: left;
-    width: 49.9999999999%;
-  }
-  .col-rt-6, .col-rt-12 {
-    width: 100%;
-  }
-  
-}
-
-@media (min-width: 1200px) {
-	.rt-container {
-		width: 1170px;
-	}
-	.col-rt-1 {
-		width:16.6%;
-	}
-	.col-rt-2 {
-		width:30.33%;
-	}
-	.col-rt-3 {
-		width:50%;
-	}
-	.col-rt-4 {
-		width: 67.664%;
-	}
-	.col-rt-5 {
-		width: 83.33%;
-	}
-	
-
-}
-
-@media only screen and (min-width:240px) and (max-width: 768px){
-	 .ScriptTop h1, .ScriptTop ul {
-		text-align: center;
-	}
-	.ScriptTop h1{
-		margin-top:0;
-		margin-bottom:15px;
-	}
-	.ScriptTop ul{
-		 margin-top:12px;		
-	}
-	
-	.ScriptHeader h1,
-	.ScriptHeader h2, 
-	.scriptnav ul{
-		text-align:center;	
-	}
-	.scriptnav ul{
-		 margin-top:12px;		
-	}
-	#float-right{
-		float:none;	
-	}
-	
-}
-.select-box {
-  position: relative;
-  display: block;
-  border: solid #919da1 1px;
-  border-radius: 28px;
-  width: 184px;
-  height: 54px;
-  /* margin: 0 auto; */
-  font-family: 'Open Sans', 'Helvetica Neue', 'Segoe UI', 'Calibri', 'Arial', sans-serif;
-  font-size: 18px;
-  color: #60666d;
-}
-@media (min-width: 768px) {
-  .select-box {
-    width: 70%;
-  }
-}
-@media (min-width: 992px) {
-  .select-box {
-    width: 50%;
-  }
-}
-@media (min-width: 1200px) {
-  .select-box {
-    width: 184px;
-    margin-top: 20px;
-  }
-}
-.select-box__current {
-  position: relative;
-  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  outline: none;
-  border-radius: 28px;
-  overflow: hidden;
-}
-.select-box__current:focus + .select-box__list {
-  opacity: 1;
-  -webkit-animation-name: none;
-          animation-name: none;
-}
-.select-box__current:focus + .select-box__list .select-box__option {
-  cursor: pointer;
-}
-.select-box__current:focus .select-box__icon {
-  -webkit-transform: translateY(-50%) rotate(180deg);
-          transform: translateY(-50%) rotate(180deg);
-}
-.select-box__icon {
-  position: absolute;
-  top: 50%;
-  right: 15px;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  width: 20px;
-  opacity: 0.3;
-  -webkit-transition: 0.2s ease;
-  transition: 0.2s ease;
-}
-.select-box__value {
-  display: -webkit-box;
-  display: flex;
-}
-.select-box__input {
-  display: none;
-}
-.select-box__input:checked + .select-box__input-text {
-  display: block;
-}
-.select-box__input-text {
-  display: none;
-  width: 100%;
-  margin: 0;
-  padding: 15px;
-  background-color: #fff;
-}
-.select-box__list {
-  position: absolute;
-  width: 100%;
-  border: solid 1px #919da1;
-  border-radius: 25px;
-  overflow: auto;
-  padding: 0;
-  z-index: 100;
-  list-style: none;
-  opacity: 0;
-  -webkit-animation-name: HideList;
-          animation-name: HideList;
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
-  -webkit-animation-delay: 0.5s;
-          animation-delay: 0.5s;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-timing-function: step-start;
-          animation-timing-function: step-start;
-  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
-}
-.select-box__option {
-  display: block;
-  padding: 15px;
-  background-color: #fff;
-}
-.select-box__option:hover, .select-box__option:focus {
-  color: #fff;
-  background-color: #546c84;
-}
-
-@-webkit-keyframes HideList {
-  from {
-    -webkit-transform: scaleY(1);
-            transform: scaleY(1);
-  }
-  to {
-    -webkit-transform: scaleY(0);
-            transform: scaleY(0);
-  }
-}
-
-@keyframes HideList {
-  from {
-    -webkit-transform: scaleY(1);
-            transform: scaleY(1);
-  }
-  to {
-    -webkit-transform: scaleY(0);
-            transform: scaleY(0);
-  }
-}
-
 .SumaryRearSquidContainer{
     background: #fff;
     height: 305px;
     width: 460px;
-    border-radius: 28px;
+    border: 1px solid #919DA1;
+	border-radius: 25px;
     overflow: hidden;
 }
 .yourSizeResume,.yourDesignResume,.yourQuantityResume,.yourTotalSummary{
     width: 100%;
     height: 54px;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 40px !important;
+	margin-bottom: 0 !important;
     position: relative;
     overflow: hidden;
 }
@@ -698,356 +497,35 @@ body{
 .customizerRear a {
     color: #fff;
 }
-#Groupe_84 {
-		position: absolute;
-		width: 1366px;
-		height: 257px;
-		left: auto;
-        right: auto;
-		top: 2909pxœ;
-		overflow: visible;
-	}
-	#Pricing {
-		left: 214.5px;
-		top: 118.5px;
-		position: absolute;
-		overflow: visible;
-		width: 49px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#Let_us_help {
-		left: 214.5px;
-		top: 25.5px;
-		position: absolute;
-		overflow: visible;
-		width: 107px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 20px;
-		color: rgba(255,255,255,1);
-	}
-	#My_account {
-		left: 214.5px;
-		top: 60.5px;
-		position: absolute;
-		overflow: visible;
-		width: 83px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#Contact__Support {
-		left: 214.5px;
-		top: 89.5px;
-		position: absolute;
-		overflow: visible;
-		width: 134px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#FAQs {
-		left: 214.5px;
-		top: 147.5px;
-		position: absolute;
-		overflow: visible;
-		width: 37px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#Stickers {
-		left: 429.5px;
-		top: 25.5px;
-		position: absolute;
-		overflow: visible;
-		width: 78px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 20px;
-		color: rgba(255,255,255,1);
-	}
-	#Composition_of_one_kit {
-		left: 429.5px;
-		top: 60.5px;
-		position: absolute;
-		overflow: visible;
-		width: 163px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#How_to_fix_the_stickers {
-		left: 429.5px;
-		top: 89.5px;
-		position: absolute;
-		overflow: visible;
-		width: 157px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#Options_for_stickers {
-		left: 429.5px;
-		top: 118.5px;
-		position: absolute;
-		overflow: visible;
-		width: 138px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#Follow_us {
-		left: 674.5px;
-		top: 25.5px;
-		position: absolute;
-		overflow: visible;
-		width: 94px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 20px;
-		color: rgba(255,255,255,1);
-	}
-	#Facebook {
-		left: 674.5px;
-		top: 60.5px;
-		position: absolute;
-		overflow: visible;
-		width: 68px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#Instagram {
-		left: 674.5px;
-		top: 89.5px;
-		position: absolute;
-		overflow: visible;
-		width: 72px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#Youtube {
-		left: 674.5px;
-		top: 118.5px;
-		position: absolute;
-		overflow: visible;
-		width: 59px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#Privacy_and_Cookie_Policy {
-		left: 157.5px;
-		top: 198px;
-		position: absolute;
-		overflow: visible;
-		width: 180px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;	border: solid 4px #33ccff;
-		border-radius: 28px;
-		overflow: hidden;
-		color: rgba(255,255,255,1);
-	}
-	#Terms_and_Conditions {
-		left: 384.5px;
-		top: 198px;
-		position: absolute;
-		overflow: visible;
-		width: 154px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#Ligne_3 {
-		fill: transparent;
-		stroke: rgba(63,188,236,1);
-		stroke-width: 5px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Ligne_3 {
-		overflow: visible;
-		position: absolute;
-		width: 1366px;
-		height: 5px;
-		left: 0px;
-		top: 0px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Copyright_2021_Flysoft_Enginee {
-		left: 800.5px;
-		top: 198px;
-		position: absolute;
-		overflow: visible;
-		width: 266px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#ABN_16_998_486_520 {
-		left: 800.5px;
-		top: 220px;
-		position: absolute;
-		overflow: visible;
-		width: 148px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: 'Avenir';
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#Tentacule_footer_test_v2 {
-		position: absolute;
-		width: 212px;
-		height: 212px;
-		left: 1154px;
-		top: 45px;
-		overflow: visible;
-	}
-	#Rectangle_21 {
-		fill: rgba(255,255,255,1);
-		stroke: rgba(145,157,161,1);
-		stroke-width: 1px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Rectangle_21 {
-		position: absolute;
-		overflow: visible;
-		width: 276px;
-		height: 53px;
-		left: 950.5px;
-		top: 37px;
-	}
-	#Email {
-		opacity: 0.798;
-		left: 1069px;
-		top: 54px;
-		position: absolute;
-		overflow: visible;
-		width: 39px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: 'Avenir';
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(0,38,51,1);
-	}
-	#Rectangle_22 {
-		fill: rgba(51,204,255,1);
-	}
-	.Rectangle_22 {
-		position: absolute;
-		overflow: visible;
-		width: 276px;
-		height: 53px;
-		left: 950.5px;
-		top: 98px;
-	}
-	#Subscribe {
-		left: 1051.5px;
-		top: 113px;
-		position: absolute;
-		overflow: visible;
-		width: 77px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: 'Avenir';
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(0,38,51,1);
-	}
-	#Ligne_4 {
-		fill: transparent;
-		stroke: rgba(63,188,236,1);
-		stroke-width: 1px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Ligne_4 {
-		overflow: visible;
-		position: absolute;
-		width: 936px;
-		height: 1px;
-		left: 215.5px;
-		top: 183.5px;
-		transform: matrix(1,0,0,1,0,0);
-	}
+.contentQuantity{
+	 overflow:auto;
+    background:#fff;
+	border-radius: 25px;
+	height: 150px;
+}
+.contentQuantity::-webkit-scrollbar {
+  width: 4px;
+}
+
+.contentQuantity::-webkit-scrollbar-thumb {
+  background: #919DA1;
+  height: 5px;
+}
+
+.contentQuantity::-webkit-scrollbar-track-piece {
+  background: lightgray;
+}
+
+.contentQuantity::-webkit-scrollbar-button:start {
+  height: 5px;
+}
+.contentQuantity::-webkit-scrollbar-button:end {
+  height: 5px;
+}
+.mt-3{
+	margin-top: 20px;
+}
+
 
 	.contentContainerRecapitilatif{
 		display: flex;

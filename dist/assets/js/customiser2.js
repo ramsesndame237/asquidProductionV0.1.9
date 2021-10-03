@@ -158,6 +158,7 @@ var app = new Vue({
         underlineWidth: 0,
         sliceSize: 0,
         activeItemIndex: 0,
+        messageReceive:0,
         fontIconValue: "",
         fontFamillyChoose:'',
         showIconSocial: false,
@@ -182,18 +183,18 @@ var app = new Vue({
             {
                 id:'1',imageSrc:'dist/assets/images/Background/Bubble.svg'
             },
-            {
-                id:'2',imageSrc:'dist/assets/images/Background/Fond_couleur.svg'
-            },
-            {
-                id:'3',imageSrc:'dist/assets/images/Background/Bande.svg'
-            },
-            {
-                id:'4',imageSrc:'dist/assets/images/Background/Soleil.svg'
-            },
-            {
-                id:'5',imageSrc:'dist/assets/images/Background/Rond.svg'
-            }
+            // {
+            //     id:'2',imageSrc:'dist/assets/images/Background/Fond_couleur.svg'
+            // },
+            // {
+            //     id:'3',imageSrc:'dist/assets/images/Background/Bande.svg'
+            // },
+            // {
+            //     id:'4',imageSrc:'dist/assets/images/Background/Soleil.svg'
+            // },
+            // {
+            //     id:'5',imageSrc:'dist/assets/images/Background/Rond.svg'
+            // }
         ]
         ,
         categoryIconChoose: [
@@ -312,16 +313,18 @@ var app = new Vue({
                     i
                 ].className.replace(" activeToolsItem", "");
             }
-            let imagesSelectionner = this.selectBackgroundLayoutList[n].getElementsByTagName('img')[0].src;
-            console.log(imagesSelectionner)
-            console.log("olallalalalal")
-            this.imagesBackground = imagesSelectionner
+            if (n == 0) {
+                this.imagesBackground ="#"
+            } else {
+                let imagesSelectionner = this.selectBackgroundLayoutList[n].getElementsByTagName('img')[0].src;
+                this.imagesBackground = imagesSelectionner
+            }
             this.selectBackgroundLayoutList[n].className += " activeToolsItem";
             setTimeout(() => {
                 this.topnaveBackgroundLayoutList = document.querySelectorAll(".itemDesignLayout")
                 console.log(this.topnaveBackgroundLayoutList)
             }, 300);
-
+            
         },
         showActiveBackgroundTopnav(n) {
             for (var i = 0; i < this.topnaveBackgroundLayoutList.length; i++) {
@@ -411,25 +414,6 @@ var app = new Vue({
                 });
             }
 
-        },
-       
-        deleteItem() {
-            var canvas = window._canvas = new fabric.Canvas('c');
-
-            var rect = new fabric.Rect({
-                width: 100,
-                height: 75,
-                fill: 'rgba(255,0,0,0.5)',
-                rotatingPointOffset: 60
-            });
-            canvas.add(rect);
-            var object = canvas.getActiveObject();
-            console.log(object)
-            if (!object) {
-                alert('Please select the element to remove');
-                return '';
-            }
-            canvas.remove(object);
         },
          resumeImportChoose(n){
                  this.resumeImportShowActive(this.indx = n)

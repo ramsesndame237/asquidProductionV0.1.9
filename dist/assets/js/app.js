@@ -9,6 +9,7 @@ var app = new Vue({
     index: 0,
       indx: 0,
       dropChoose: false,
+      cutLettering:false,
       NoExtra: true,
       CutPrice: 0,
       extraPrice: 0,
@@ -291,6 +292,7 @@ var app = new Vue({
           }
         }
         else if (n == 2) {
+          this.cutLettering = !this.cutLettering
           this.YourCut = 'Lettering'
           localStorage.setItem("cutCustomizer",this.YourCut)
           if (this.Yoursize == 'Size XS "600 x 200 mm"') {
@@ -304,6 +306,10 @@ var app = new Vue({
           } else if (this.Yoursize == 'Size XL "2,000 x 600 mm"') {
             this.CutPrice = 439
           }
+
+          setTimeout(() => {
+            this.cutLettering =false
+          }, 2500);
         }
         this.YourTotal = this.YourTotal + this.CutPrice
         this.choseCutList[n].classList.add("actived")
@@ -328,6 +334,27 @@ var app = new Vue({
           this.designPrice = 45
         }
         this.YourTotal = this.YourTotal + this.designPrice
+      },
+      saveCommande() {
+          let data ="Kit Squid"
+        localStorage.setItem("CustomiseTitle", data)
+
+        let commande= {
+          nameProduct: data,
+          sizeProduct: this.Yoursize,
+          designProduct: this.YourDesign,
+          cutProduct:this.YourCut,
+          quantityProduct: this.YourQuantity,
+          extraProduct:this.YourExtra,
+          totalAmountProduct:this.YourTotal
+        }
+
+        if (commande.sizeProduct != '' && commande.totalAmountProduct != '') {
+          window.location = "../../../customiser2.html"
+        } else {
+          alert("Veillez selectionner une taille")
+        }
+        localStorage.setItem('commande',JSON.stringify(commande))
       }
 
   },
