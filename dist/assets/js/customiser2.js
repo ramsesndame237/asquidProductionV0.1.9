@@ -232,6 +232,7 @@ var app = new Vue({
             id: 'text0',
             value: '',
         }],
+        alignement:'left',
         sidebarItemList: [],
         selectBackgroundLayoutList: [],
         topnaveBackgroundLayoutList: [],

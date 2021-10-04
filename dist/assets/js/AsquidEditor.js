@@ -374,10 +374,11 @@ function boundingBox(bbox) {
 var myFunc = function() {
     text1 = new fabric.IText("Text", {
         id: "companyText",
-        fontSize: 70,
+        fontSize: 38,
         selectable: true,
-        left: 300,
-        top: 30,
+        left: 180,
+        top: 11,
+        fontWeight:900,
         text: "Company Name"
     })
     text1.setControlsVisibility({
@@ -397,11 +398,11 @@ var myFunc = function() {
     });
     text2 = new fabric.IText("Text", {
         id: "yourbuisness",
-        fontSize: 30,
-        fontWeight:200,
+        fontSize: 20,
+        fontWeight:100,
         selectable: true,
-        left: 450,
-        top: 120,
+        left: 274,
+        top: 71,
         text: "Your business"
     })
     text2.setControlsVisibility({
@@ -422,12 +423,12 @@ var myFunc = function() {
     })
     text3 = new fabric.IText("Text", {
         id: "activity",
-        fontSize: 35,
+        fontSize: 20,
         fontWeight: 'lighter',
         selectable: true,
-        left: 200,
-        top: 185,
-        text: "• Activity n°1 • Activity n°2 • Activity n°3"
+        left: 143,
+        top: 109,
+        text: "• Activity n°1  •  Activity n°2   • Activity n°3"
     })
     text3.setControlsVisibility({
         br: false,
@@ -447,12 +448,11 @@ var myFunc = function() {
     })
     text4 = new fabric.IText("Text", {
         id: "informationAdd",
-        fontSize: 30,
+        fontSize: 20,
+        fontWeight:'lighter',
         selectable: true,
-        originX: 'center',
-        originY: 'center',
-        left: 540,
-        top: 270,
+        left: 234,
+        top: 146,
         text: "Additional information"
     })
     text4.setControlsVisibility({
@@ -474,12 +474,12 @@ var myFunc = function() {
     })
     text5 = new fabric.IText("Text", {
         id: "adresseInformation",
-        fontSize: 30,
+        fontSize: 20,
         selectable: true,
-        left: 540,
-        top: 320,
-        originX: 'center',
-        originY: 'center',
+        fontWeight: 900,
+        color:'#002633',
+        left: 136,
+        top: 180,
         text: "04 00 000 000 - example@adsquid.com.au"
     })
     text5.setControlsVisibility({
@@ -794,30 +794,70 @@ let fontSelect = $(".fontSelect").on('DOMSubtreeModified', function() {
  */
 
 let boldButon = document.querySelector("#WeightModify")
+let italiqueButton = document.querySelector("#ObliqueText")
+let souligneBouton = document.querySelector("#soulignerText")
 console.log(boldButon)
 boldButon.addEventListener('click', function() {
-        console.log($("#WeightModify"))
-        canvas.getActiveObject().set("fontWeight", "bold")
-        canvas.renderAll();
-    })
+    dtEditText('bold'); 
+})
     /**
      * this function is to put a text in oblique
      */
 
-let italiqueButton = document.querySelector("#ObliqueText")
-italiqueButton.addEventListener("click", function() {
-    canvas.getActiveObject().set("fontStyle", "italic")
-    canvas.renderAll()
+italiqueButton.addEventListener("click", function () {
+     dtEditText('italic');
 })
 
 /**
  * this function is to underline a text 
  */
-let souligneBouton = document.querySelector("#soulignerText")
 souligneBouton.addEventListener("click", function() {
-    canvas.getActiveObject.set("textDecoration", "underline")
-    canvas.renderAll()
+   dtEditText('underline');
 })
+
+// Functions
+function dtEditText(action) {
+    var a = action;
+    var o = canvas.getActiveObject();
+    var t;
+
+    // If object selected, what type?
+    if (o) {
+        t = o.get('type');
+    }
+
+    if (o && t === 'i-text') {
+        switch(a) {
+            case 'bold':				
+                var isBold = dtGetStyle(o, 'fontWeight') === 'bold';
+                dtSetStyle(o, 'fontWeight', isBold ? '' : 'bold');
+            break;
+
+            case 'italic':
+                var isItalic = dtGetStyle(o, 'fontStyle') === 'italic';
+                dtSetStyle(o, 'fontStyle', isItalic ? '' : 'italic');
+            break;
+
+            case 'underline':
+                var isUnderline = dtGetStyle(o, 'textDecoration') === 'underline';
+                dtSetStyle(o, 'textDecoration', isUnderline ? '' : 'underline');
+            break;
+            canvas.renderAll();
+        }
+    }
+}
+
+// Get the style
+function dtGetStyle(object, styleName) {
+    return object[styleName];
+}
+
+// Set the style
+function dtSetStyle(object, styleName, value) {
+    object[styleName] = value;
+    object.set({dirty: true});
+    canvas.renderAll();
+}    
 
 
 

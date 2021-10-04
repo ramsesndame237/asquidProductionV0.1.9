@@ -292,8 +292,8 @@
 	}
 	#Email {
 		opacity: 0.798;
-		left: 1069px;
-		top: 54px;
+		left: 950.5px;
+		top: 38px;
 		position: absolute;
 		overflow: visible;
 		width: 39px;
@@ -304,6 +304,15 @@
 		font-weight: normal;
 		font-size: 16px;
 		color: rgba(0,38,51,1);
+	}
+	#Email input{
+		width: 276px;
+		height: 53px;
+		border-radius: 28px;
+		padding-left: 10px;
+		border: none;
+		outline: none;
+		text-align: center;
 	}
 	#Rectangle_22 {
 		fill: rgba(51,204,255,1);

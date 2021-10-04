@@ -9,11 +9,22 @@
     <link rel="stylesheet" href="dist/plugin/animate.css">
     <link rel="icon" href="dist/assets/images/logo.png">
     <link rel="stylesheet" href="dist/assets/css/globaHeader.css">
+    <link rel="stylesheet" href="dist/assets/css/footer.css">
     <script src="dist/plugin/vue.js"></script>
     <script src="dist/plugin/axios.js"></script>
 </head>
 <body>
     <div class="main-body" id="indexPage">
+        <div class="messageBox animate__animated animate__fadeInRight " v-if="messageInTheBox">
+            <div class="messageContent">
+                <span> {{messageInTheBox}} </span>
+
+            </div>
+            <div class="closeCross">
+                <img src="dist/assets/images/Customisateur/icons/Cross.png" alt="">
+            </div>
+
+        </div>
          <header class="globalHeader">
             <div class="generalContent">
                 <div class="logoContainer">
@@ -24,8 +35,9 @@
                 <div class="linkContainerZone">
                     <div class="socialLinkContainer">
                         <span v-if="connected" @click="conditionConnect = !conditionConnect" style="font-size: 16px; color: #33CCFF; margin-top: 16px; cursor: pointer;" > Welcome {{username}} </span>
-                        <div class="user" @click="conditionConnect = !conditionConnect">
-                            <img src="../dist/assets/images/icon/user_V2.svg" alt="">
+                        <div class="user" @click="(conditionConnect = !conditionConnect),(clicked =true)">
+                            <img src="dist/assets/images/Web_icon_2/user_click.png" v-if="clicked" alt="">
+                            <img src="../dist/assets/images/icon/user_V2.svg" v-else alt="">
                         </div>
                         <div class="shopping">
                             <img src="../dist/assets/images/icon/shopping-cart_V2.svg" alt="">
@@ -348,15 +360,13 @@
                     Sign in to Adsquid
                 </span>
             </div>
-            <div class="signupContainer">
-               <span style="font-size:20px;font-weight:900;color: #002633; margin-left: 83px;">
+            <div class="signupContainer" style=" margin-top: 49px;margin-left: 83px;">
+               <span style="font-size:20px;font-weight:900;color: #002633; ">
                    Email send with your password
                </span>
              </div>
-             <div class="btnContent">
-                <span>
-                    Continue
-                </span>
+            <div class="imageEmail">
+                <img src="dist/assets/images/Web_icon_2/email.png" alt="">
             </div>
 
         </div>
@@ -434,7 +444,7 @@
                     </rect>
                 </svg>
                 <div id="Email">
-                    <span>Email</span>
+                    <input type="email" placeholder="Email">
                 </div>
                 <svg class="Rectangle_22">
                     <rect id="Rectangle_22" rx="26.5" ry="26.5" x="0" y="0" width="276" height="53">

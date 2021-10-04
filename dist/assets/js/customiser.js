@@ -82,3 +82,79 @@ function onMetaAndEnter(event) {
         sendNewMessage();
     }
 }
+
+var canvasEl = document.getElementById('c');
+var canvas = new fabric.Canvas(canvasEl);
+
+// Add text to canvas
+var newText = new fabric.IText('Hello', {
+  fontFamily: 'Arial'
+});
+
+canvas.add(newText);
+var newText = new fabric.IText('Hello', {
+  fontFamily: 'Arial'
+});
+
+canvas.add(newText);
+
+// Text formatting actions
+var underline = document.getElementById('btn-underline');
+var bold = document.getElementById('btn-bold');
+var italic = document.getElementById('btn-italic');
+
+underline.addEventListener('click', function() {
+  dtEditText('underline');
+});
+
+bold.addEventListener('click', function() {
+  dtEditText('bold');
+}); 
+
+italic.addEventListener('click', function() {
+  dtEditText('italic');
+}); 
+
+// Functions
+function dtEditText(action) {
+    var a = action;
+    var o = canvas.getActiveObject();
+    var t;
+
+    // If object selected, what type?
+    if (o) {
+        t = o.get('type');
+    }
+
+    if (o && t === 'i-text') {
+        switch(a) {
+            case 'bold':				
+                var isBold = dtGetStyle(o, 'fontWeight') === 'bold';
+                dtSetStyle(o, 'fontWeight', isBold ? '' : 'bold');
+            break;
+
+            case 'italic':
+                var isItalic = dtGetStyle(o, 'fontStyle') === 'italic';
+                dtSetStyle(o, 'fontStyle', isItalic ? '' : 'italic');
+            break;
+
+            case 'underline':
+                var isUnderline = dtGetStyle(o, 'textDecoration') === 'underline';
+                dtSetStyle(o, 'textDecoration', isUnderline ? '' : 'underline');
+            break;
+            canvas.renderAll();
+        }
+    }
+}
+
+// Get the style
+function dtGetStyle(object, styleName) {
+    return object[styleName];
+}
+
+// Set the style
+function dtSetStyle(object, styleName, value) {
+    object[styleName] = value;
+    object.set({dirty: true});
+    canvas.renderAll();
+}    

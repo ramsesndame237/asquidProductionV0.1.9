@@ -4,11 +4,14 @@ var app = new Vue({
         return {
             checkidt: false,
             connected: false,
-            conditionConnect:false,
+            conditionConnect: false,
+            clicked:false,
             User: [],
+            messageInTheBox:'',
             userConnect: null,
             itemTextToShow: '',
-            username:'',
+            username: '',
+            baseUri:'http://localhost:3350/api/',
             dataRegistration: {
                 email: '',
                 name: '',
@@ -41,8 +44,33 @@ var app = new Vue({
          * function pour l'enregistrement d'un utilisateur
          */
 
-        saveUser() {
+        async saveUser() {
             console.log(this.dataRegistration.email)
+
+            let dataToSend = {
+                    email:this.dataRegistration.email ,
+                    password:"" ,
+                    name: "",
+                    lastName:"" ,
+                    companyName:"" ,
+                    tel1: "",
+                    tel2: "",
+                    tel3: "",
+                    city: "",
+                    state: "",
+                    postcode: "",
+                    brand: "",
+                    model: "",
+                    years: ""
+            }
+
+            await axios.post(this.baseUri + "auth/signup",dataToSend).then((response) => {
+              console.log(response)
+            }).catch((error) => {
+              console.log(error)
+          })
+
+
             let userToSave = {
                 idUser: this.uuidv4(),
                 Fname: this.dataRegistration.email.substring(0, this.dataRegistration.email.lastIndexOf("@")) || this.dataRegistration.name,
@@ -58,7 +86,6 @@ var app = new Vue({
                 email:this.dataRegistration.email
             }
 
-            console.log(axios)
             this.User.push(userToSave)
             localStorage.setItem('User', JSON.stringify(this.User))
             this.itemTextToShow ='confirmMail'

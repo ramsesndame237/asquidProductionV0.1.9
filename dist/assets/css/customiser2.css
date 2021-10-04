@@ -43,7 +43,7 @@
 */
     
     #cutomizateurContainer {
-        width: 100%;
+        max-width: 1336px;
         height: 100vh;
         margin: auto;
     }
@@ -239,7 +239,7 @@ main off the customiser
   justify-content: center;
   color: white;
   position: fixed;
- bottom: 56px;
+ bottom: 256px;
 right: 69px;
   width: 70px;
 height: 70px;
@@ -776,8 +776,8 @@ customisateur area
     }
     
     .containerSurfaceArea {
-        width: 80%;
-        height: 500px;
+        width: 100%;
+        height: 944px;
         position: relative;
         overflow: hidden;
         margin-top: 550x;
@@ -786,23 +786,32 @@ customisateur area
         transform: scale(1);
         transition: transform 0.3s ease-in-out;
     }
+    .importeZone {
+        position: relative;
+        width: 100%;
+        height: 450px;
+        margin-top: 200px;
+        display: flex;
+    }
     
     .importeZone #canvasUpload {
-        border: dashed 1px rgb(143, 132, 132);
-        background: transparent;
+        border: solid 1px rgb(143, 132, 132);
+        background: #fff;
         overflow: hidden;
+        width: 670px;
+        height: 223px;
+        margin-left: 89px;
+        position: relative;
     }
     
     .importeZone .canvasAree {
-        border: solid 1px #919da1;
-        height: 460px;
-        width: 1070px;
+        /* border: solid 1px #919da1; */
+        width: 759px;
+        height: 276px;
         margin: auto;
         display: flex;
         position: relative;
-        align-items: center;
-        justify-content: center;
-        background: #fff;
+        background: transparent !important; 
         overflow: hidden;
     }
     .SafeLineRemove{
@@ -824,46 +833,47 @@ customisateur area
     .ligneA {
         border: 1px solid #919da1;
         position: absolute;
-        height: 40%;
-        left: 35px;
+        left: 45px;
+        height: 88px;
     }
     
     .heightCustomiser {
         font-weight: 900;
         position: absolute;
         left: 0;
-        top: 43%;
+        top: 35%;
     }
     
     .ligneB {
         border: 1px solid #919da1;
         position: absolute;
-        bottom: 10%;
-        left: 35px;
-        height: 40%;
+        bottom: 53px;
+        left: 45px;
+        height: 88px;
     }
     
     .ligneC {
         border: 1px solid #919da1;
         position: absolute;
-        bottom: 1%;
+        bottom: 11px;
         left: 5rem;
-        width: 40%;
+        width: 288px;
     }
     
     .widthCustomiser {
         font-weight: 900;
         position: absolute;
-        top: 96%;
-        left: 49%;
+        left: 49.5%;
+        bottom: 0px;
+        font-size: 16px;
     }
     
     .ligneD {
         border: 1px solid #919da1;
         position: absolute;
-        bottom: 1%;
+        bottom: 11px;
         right: 25px;
-        width: 42%;
+        width: 293px;
     }
     
     .layoutQueekDesign {
@@ -966,12 +976,7 @@ customisateur area
         opacity: 0;
     }
     
-    .importeZone {
-        position: absolute;
-        width: 100%;
-        height: 450px;
-        top: 0;
-    }
+
     
     #canvas img,
     #canvas svg {
@@ -2727,39 +2732,44 @@ customisateur area
         height: 8rem;
         position: absolute;
         right: 25px;
-        top: 15rem;
+        top: 130px;
+        z-index: 1000;
     }
     .zommButton,.dezommButton,.undoButton,.redoButton{
         width: 47px;
         height: 47px;
         border-radius:10px;
         border: solid 1px #919da1;
-        margin-left: auto;
-        margin-right: auto;
+        /* margin-left: auto;
+        margin-right: auto; */
         z-index: 100;
         cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;
     }
+    .undoButton{margin-right: 10px;}
     .undoButton img,.redoButton img{
         width: 6px;
         height: 11px;
+        cursor: pointer;
     }
     .zommButton img{
         width: 29px;
         height: 30px;
+        cursor: pointer;
     }
     .dezommButton img{
         width: 29px;
-        height: 30px;   
+        height: 30px;  
+        cursor: pointer; 
     }
     .undoActionZone{
         width: 15rem;
         height:5rem;
         position: absolute;
-        bottom:25px;
-        left:45%;
+        bottom:225px;
+        left:432px;
     }
     .buttonQRcodeSend{
         background:#33ccff;
