@@ -157,4 +157,61 @@ function dtSetStyle(object, styleName, value) {
     object[styleName] = value;
     object.set({dirty: true});
     canvas.renderAll();
-}    
+}
+
+
+var text= "Happy Birthday"
+
+
+
+text1 = new fabric.IText("Text", {
+        id: "companyText",
+        fontSize: 38,
+        selectable: true,
+        left: 180,
+        top: 11,
+        fontWeight:900,
+        text: "Company Name"
+})
+    canvas.add(text1)
+    
+    $("#curve").on('click', function () {
+    var objIsActive = canvas.getActiveObject();
+    var headingText = [];
+        var startAngle = -158;
+        var textLength = objIsActive.length;
+
+var r = getTranslationDistance(objIsActive);
+var j=-1;
+var angleInterval = 116/textLength;
+for(var iterator=(-textLength/2), i=textLength-1; iterator<textLength/2;iterator++,i--) {
+  
+    var rotation = 90-(startAngle+(i)*angleInterval) ;
+   
+    headingText.push(new fabric.IText(objIsActive[i], {
+      
+        angle : j*((startAngle)+(i*angleInterval)),
+      shadow: 'rgba(0,0,0,0.5) 5px 5px 5px',
+     fontSize:28,
+        left: (r)*Math.cos((Math.PI/180)*rotation),
+        top: (r)*Math.sin((Math.PI/180)*rotation)
+       
+    }));
+      
+}
+
+var group2 = new fabric.Group(headingText, { left: 0, top: canvas.height/2 , fontFamily: 'Arial',  strokeWidth: 1,
+        
+        strokeStyle:"#fff"});
+canvas.add(group2);
+console.log(group2)
+
+function getTranslationDistance(objIsActive){
+    var boundingRectangle = $("<div id='tempdiv' style='display:table-cell;font-family:Arial; font-size:28px;'>"+objIsActive+"</div>").appendTo("#main");
+    
+    var translationDistance = $(boundingRectangle).width();
+    $(boundingRectangle).remove();
+    return translationDistance;
+}
+    
+    })

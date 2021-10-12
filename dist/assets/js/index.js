@@ -1,3 +1,5 @@
+var  baseUri='http://localhost:3350/api/'
+
 var app = new Vue({
     el: '#indexPage',
     data() {
@@ -11,7 +13,6 @@ var app = new Vue({
             userConnect: null,
             itemTextToShow: '',
             username: '',
-            baseUri:'http://localhost:3350/api/',
             dataRegistration: {
                 email: '',
                 name: '',
@@ -48,26 +49,27 @@ var app = new Vue({
             console.log(this.dataRegistration.email)
 
             let dataToSend = {
-                    email:this.dataRegistration.email ,
-                    password:"" ,
-                    name: "",
-                    lastName:"" ,
-                    companyName:"" ,
-                    tel1: "",
-                    tel2: "",
-                    tel3: "",
-                    city: "",
-                    state: "",
-                    postcode: "",
-                    brand: "",
-                    model: "",
-                    years: ""
+                name:"" ,
+                lastName: "",
+                companyName: "",
+                tel1:"",
+                tel2: "",
+                tel3: "",
+                city: "",
+                state:"",
+                postcode: "",
+                brand:"",
+                model: "",
+                years: "",
+                email:this.dataRegistration.email,
+                password:""
             }
 
-            await axios.post(this.baseUri + "auth/signup",dataToSend).then((response) => {
+            await api.post(this.baseUri + "auth/signup",dataToSend).then((response) => {
               console.log(response)
             }).catch((error) => {
-              console.log(error)
+                console.log(error)
+                console.log(dataToSend)
           })
 
 
@@ -94,18 +96,17 @@ var app = new Vue({
          * this fuction is to connecte a new user 
          */
 
-        SigninSave() {
-            let AllUser = JSON.parse(localStorage.getItem('User'))
-
-            console.log(AllUser)
-            AllUser.forEach(element => {
-                if (element.email == this.dataRegistration.email && element.password == this.dataRegistration.password) {
-                    this.userConnect = element
-                    localStorage.setItem('Userconnected',JSON.stringify(this.userConnect))
-                } else {
-                    alert('Incorect password or email')
-                }
-            });
+       async SigninSave() {
+            let user = {
+                email: this.dataRegistration.email,
+                password:this.dataRegistration.password
+            }
+            await axios.post(this.baseUri + "auth/signin", user).then((response) => {
+                console.log(response)
+            }).catch((error) => {
+                console.log(error)
+                console.log(axios)
+            })
         },
         TypeOnglet(n) {
             console.log(n)

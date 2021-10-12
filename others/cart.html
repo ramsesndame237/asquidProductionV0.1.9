@@ -116,8 +116,8 @@
                                 <span style="font-size: 20px; font-weight: 900;color: #fff;">
                                     Your extra sticker:
                                 </span>
-                                <span style="font-size: 20; font-weight: 200;color: #fff;">
-                                     {{item.product.extraProduct}}
+                                <span style="font-size: 20; font-weight: 200;color: #fff; font-size: 16px;" v-for="(items, index) in item.product.extraProduct" :key="index">
+                                     {{items}}
                                 </span>
                                 <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
                             </div>
@@ -161,7 +161,7 @@
                                     Shipping: 
                                 </span>
                                 <span style="font-size: 20px; font-weight: 900;color: #fff;">
-                                    $20
+                                    + ${{shippingPrice}}
                                 </span>
                                 <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
                      </div>
@@ -170,7 +170,7 @@
                                     GST (10%): 
                                 </span>
                                 <span style="font-size: 20px; font-weight: 900;color: #fff;">
-                                     $22,80
+                                     ${{GTS}}
                                 </span>
                                 <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
                      </div>

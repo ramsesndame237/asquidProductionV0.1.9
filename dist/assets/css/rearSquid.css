@@ -304,6 +304,12 @@ body{
     top: -8px;
     right: 0;
 }
+.interegationRearSquid:hover{
+    border:solid 4px #33ccff
+}
+.interegationRearSquid:hover + .messageContainer{
+    visibility: visible;
+}
 .chooseRearSquidCar{
 	margin-top: 2rem;
 	position: relative;
@@ -645,4 +651,24 @@ body{
 		font-weight: bold;
 		cursor: pointer;
 	}
+
+    .messageContainer{
+        width: 295px;
+        height: 193px;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 1px solid #919DA1;
+        border-radius: 25px;
+        display: flex;
+        align-items: center;
+        visibility: hidden;
+        justify-content: center;
+        position: absolute;
+        top: -75px;
+        right: 45px;
+    }
+    
+    .messageContent{
+        width: 235px;
+        height: 132px;
+    }
 

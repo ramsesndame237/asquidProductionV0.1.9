@@ -1,373 +1,440 @@
-#Groupe_84 {
-		position: absolute;
-		width: 1366px;
-		height: 257px;
-		left: auto;
-        right: auto;
-		top: 2909pxœ;
-		overflow: visible;
-	}
-	#Pricing {
-		left: 214.5px;
-		top: 118.5px;
-		position: absolute;
-		overflow: visible;
-		width: 49px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#Let_us_help {
-		left: 214.5px;
-		top: 25.5px;
-		position: absolute;
-		overflow: visible;
-		width: 107px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 20px;
-		color: rgba(255,255,255,1);
-	}
-	#My_account {
-		left: 214.5px;
-		top: 60.5px;
-		position: absolute;
-		overflow: visible;
-		width: 83px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#Contact__Support {
-		left: 214.5px;
-		top: 89.5px;
-		position: absolute;
-		overflow: visible;
-		width: 134px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#FAQs {
-		left: 214.5px;
-		top: 147.5px;
-		position: absolute;
-		overflow: visible;
-		width: 37px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#Stickers {
-		left: 429.5px;
-		top: 25.5px;
-		position: absolute;
-		overflow: visible;
-		width: 78px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 20px;
-		color: rgba(255,255,255,1);
-	}
-	#Composition_of_one_kit {
-		left: 429.5px;
-		top: 60.5px;
-		position: absolute;
-		overflow: visible;
-		width: 163px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#How_to_fix_the_stickers {
-		left: 429.5px;
-		top: 89.5px;
-		position: absolute;
-		overflow: visible;
-		width: 157px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#Options_for_stickers {
-		left: 429.5px;
-		top: 118.5px;
-		position: absolute;
-		overflow: visible;
-		width: 138px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#Follow_us {
-		left: 674.5px;
-		top: 25.5px;
-		position: absolute;
-		overflow: visible;
-		width: 94px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 20px;
-		color: rgba(255,255,255,1);
-	}
-	#Facebook {
-		left: 674.5px;
-		top: 60.5px;
-		position: absolute;
-		overflow: visible;
-		width: 68px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#Instagram {
-		left: 674.5px;
-		top: 89.5px;
-		position: absolute;
-		overflow: visible;
-		width: 72px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#Youtube {
-		left: 674.5px;
-		top: 118.5px;
-		position: absolute;
-		overflow: visible;
-		width: 59px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#Privacy_and_Cookie_Policy {
-		left: 157.5px;
-		top: 198px;
-		position: absolute;
-		overflow: visible;
-		width: 180px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;	border: solid 4px #33ccff;
-		border-radius: 28px;
-		overflow: hidden;
-		color: rgba(255,255,255,1);
-	}
-	#Terms_and_Conditions {
-		left: 384.5px;
-		top: 198px;
-		position: absolute;
-		overflow: visible;
-		width: 154px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#Ligne_3 {
-		fill: transparent;
-		stroke: rgba(63,188,236,1);
-		stroke-width: 5px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Ligne_3 {
-		overflow: visible;
-		position: absolute;
-		width: 1366px;
-		height: 5px;
-		left: 0px;
-		top: 0px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Copyright_2021_Flysoft_Enginee {
-		left: 800.5px;
-		top: 198px;
-		position: absolute;
-		overflow: visible;
-		width: 266px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Avenir;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#ABN_16_998_486_520 {
-		left: 800.5px;
-		top: 220px;
-		position: absolute;
-		overflow: visible;
-		width: 148px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: 'Avenir';
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(255,255,255,1);
-	}
-	#Tentacule_footer_test_v2 {
-		position: absolute;
-		width: 212px;
-		height: 212px;
-		left: 1154px;
-		top: 45px;
-		overflow: visible;
-	}
-	#Rectangle_21 {
-		fill: rgba(255,255,255,1);
-		stroke: rgba(145,157,161,1);
-		stroke-width: 1px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Rectangle_21 {
-		position: absolute;
-		overflow: visible;
-		width: 276px;
-		height: 53px;
-		left: 950.5px;
-		top: 37px;
-	}
-	#Email {
-		opacity: 0.798;
-		left: 950.5px;
-		top: 38px;
-		position: absolute;
-		overflow: visible;
-		width: 39px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: 'Avenir';
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(0,38,51,1);
-	}
-	#Email input{
-		width: 276px;
-		height: 53px;
-		border-radius: 28px;
-		padding-left: 10px;
-		border: none;
-		outline: none;
-		text-align: center;
-	}
-	#Rectangle_22 {
-		fill: rgba(51,204,255,1);
-	}
-	.Rectangle_22 {
-		position: absolute;
-		overflow: visible;
-		width: 276px;
-		height: 53px;
-		left: 950.5px;
-		top: 98px;
-	}
-	#Subscribe {
-		left: 1051.5px;
-		top: 113px;
-		position: absolute;
-		overflow: visible;
-		width: 77px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: 'Avenir';
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: rgba(0,38,51,1);
-	}
-	#Stickers_dw {
-	left: 429.5px;
-	top: 25.5px;
-	position: absolute;
-	overflow: visible;
-	width: 78px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: 'Avenir';
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(255,255,255,1);
+footer{
+	position: relative;
+	margin: 0;
+	padding: 0;
 }
-	#Ligne_4 {
-		fill: transparent;
-		stroke: rgba(63,188,236,1);
-		stroke-width: 1px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Ligne_4 {
-		overflow: visible;
-		position: absolute;
-		width: 936px;
-		height: 1px;
-		left: 215.5px;
-		top: 183.5px;
-		transform: matrix(1,0,0,1,0,0);
-	}
+
+.footerContainer{
+	margin-left: 215px;
+	margin-top: 27.5px;
+	display: flex;
+}
+.letContent{
+	margin-top: 7px;
+	width: 104px;
+	height: 114px;
+	overflow: hidden;
+}
+.followHelp{
+	margin-left: 80px;
+}
+.faqs,.contact{
+	margin-top: 7px;
+}
+.contact{
+	width: 61px;
+	height: 22px;
+}
+.faqs{
+	width: 39px;
+	height: 22px;
+}
+.myAccount{
+	width: 84px;
+	height: 22px;
+	font-size: 16px;
+}
+.faqs:hover,.contact:hover,.myAccount:hover{
+	border-bottom: solid #fff;
+}
+.instagram{
+	width: 71px;
+	height: 22px;
+}
+.facebook{
+	width: 70px;
+	height: 22px;
+	margin-top: 7px;
+}
+.youtube{
+	width: 59px;
+	height: 22px;
+	margin-top: 7px;
+}
+.instagram:hover{
+	border-bottom: solid #fff;
+}
+.facebook:hover,.youtube:hover{
+	border-bottom: solid #fff;
+}
+.newsletterContainer{
+	margin-left: 80px;
+}
+.emailContainer{
+	width: 276px;
+	height: 53px;
+	border: 1px solid #919DA1;
+	border-radius: 27px;
+}
+.emailContainer input{
+	width: 100%;
+	height: 100%;
+	border-radius: 27px;
+	border: none;
+	text-align: center;
+}
+.emailContainer input:focus{
+	border: none;
+	outline: none;
+}
+.subcribeBouton{
+	width: 276px;
+	height: 53px;
+	background: #33CCFF 0% 0% no-repeat padding-box;
+	border-radius: 27px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 900;
+	color: #fff;
+	margin-top: 17.5px;
+}
+.subcribeBouton:hover{
+	background: transparent;
+	border: solid 4px #33CCFF;
+	cursor: pointer;
+}
+.imageContainer{
+	position: absolute;
+	right: -20px;
+	width: 212px;
+	height: 212px;
+	top: 45px;
+	z-index: 1000;
+}
+.termsCondition{
+	margin-left: 215px;
+	display: flex;
+	border-top: solid #33CCFF 1px;
+	padding-top: 11px;
+	width: 942px;
+}
+.terms{
+	margin-right: 44px;
+	color: #fff;
+}
+.conditionsTerms{
+	margin-right: 199.5px;
+}
+.copyrigth{
+	color: #fff;
+	font-size: 16px;
+}
+
+.actionContent{
+	display: flex;
+	margin: auto;
+	width: 500px;
+	justify-content: center;
+	align-items: center;
+	margin-top: 17px;
+}
+.startingAgain{
+	width: 200px;
+	height: 54px;
+	background: #FFFFFF 0% 0% no-repeat padding-box;
+	box-shadow: 0px 3px 6px #00000038;
+	border: 1px solid #919DA1;
+	border-radius: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 20px;
+	color: #33CCFF;
+	cursor: pointer;
+	font-weight: 900;
+}
+.useAgain{
+    width: 200px;
+    height: 54px;
+    background: #33CCFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000038;
+    border-radius: 32px;
+    font-size: 20px;
+    font-weight: 900;
+    color: #fff;
+    display: flex;
+	cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    margin-left: 31px;
+}
+
+.visuel{
+	background: #fff;
+	width: 960px;
+	height: 460px;
+	margin: auto;
+	margin-top: 150px;
+	overflow: auto;
+	border-radius: 32px;
+}
+.cardVisuelContainer{
+	border: solid 1px #919DA1;
+	width: 283px;
+	height: 96px;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+.cardVisuelContainer img{
+	width: 100%;
+	height: 100%;
+}
+.graphicSupport{
+	width: 465px;
+	height: 159px;
+	background: #FFFFFF 0% 0% no-repeat padding-box;
+	border: 1px solid #919DA1;
+	border-radius: 25px;
+	margin: auto;
+	margin-top: 150px;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+.close{
+	width: 28px;
+	height: 28px;
+	background: #FFFFFF 0% 0% no-repeat padding-box;
+	border: 1px solid #33CCFF;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	right: -5px;
+	top: -15px;
+	z-index: 1000;
+}
+.graphicSupportKit{
+	width: 660px;
+	height: 193px;
+	background: #FFFFFF 0% 0% no-repeat padding-box;
+	border: 1px solid #919DA1;
+	border-radius: 25px;
+}
+
+.startContainer{
+	width: 31px;
+	height: 30px;
+}
+.startContainer img{
+	width: 100%;
+	height: 100%;
+}
+.carInformation{
+	margin-top: 39px;
+	width: 435px;
+	height: 509px;
+}
+.YourBrand{
+	display: flex;
+	margin-left: 30.5px;
+	cursor: pointer;
+	position: relative;
+}
+
+.TextLabel{
+	margin-right: 45px;
+	margin-top: 8px;
+}
+.selectBrandContainer{
+	display: flex;
+	width: 249px;
+	height: 40px;
+	background: #FFFFFF 0% 0% no-repeat padding-box;
+	border: 1px solid #919DA1;
+	border-radius: 25px;
+	cursor: pointer;
+}
+.brandChoose{
+	width: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.downDrop{
+	width: 14px;
+	height: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 14px;
+	margin-left: 15px;
+}
+.downDrop img{
+	width: 100%;
+	height: 100%;
+}
+.contentListOfBrandChoose{
+	width: 249px;
+	height: 180px;
+	padding-right: 15px;
+	position: absolute;
+	top: 42px;
+	right: 5px;
+	border-radius: 25px;
+	background: #fff;
+	z-index: 1000;
+}
+.ListOfBrandChoose{
+	width: 100%;
+	height: 170px;
+	overflow: auto;
+
+}
+.ListOfBrandChoose{
+	text-align: center;
+}
+.brandToChoose{
+	margin-top: 15px;
+}
+
+.ListOfBrandChoose::-webkit-scrollbar,.ListColorChoose::-webkit-scrollbar {
+    width: 2px;
+    border-radius: 8px;
+}
+
+.ListOfBrandChoose::-webkit-scrollbar-thumb,.ListColorChoose::-webkit-scrollbar-thumb {
+  background: #919DA1;
+  height: 2px;
+}
+
+.ListOfBrandChoose::-webkit-scrollbar-track-piece,.ListColorChoose::-webkit-scrollbar-track-piece {
+  background: lightgray;
+}
+
+.ListOfBrandChoose::-webkit-scrollbar-button:start,.ListColorChoose::-webkit-scrollbar-button:start {
+  height: 5px;
+}
+.ListOfBrandChoose::-webkit-scrollbar-button:end,.ListColorChoose::-webkit-scrollbar-button:end {
+  height: 5px;
+}
+.YourModel{
+	display: flex;
+	margin-left: 30.5px;
+	margin-top: 21px;
+}
+.YourModelContainer{
+	width: 249px;
+	height: 40px;
+	padding-right: 15px;
+	background: #FFFFFF 0% 0% no-repeat padding-box;
+	border: 1px solid #919DA1;
+	border-radius: 25px;
+}
+.YourModelContainer input{
+	width: 100%;
+	height: 100%;
+	border-radius: 25px;
+	text-align: center;
+}
+input{
+	border: none;
+	outline: none;
+	padding-left: 10px;
+}
+input:focus{
+	border: none;
+	outline: none;
+	padding-left: 10px;
+}
+.YourColor,.selectColorContainer,.colorChoose,.YourYear{
+	display: flex;
+}
+.YourColor,.YourYear{
+	margin-top: 21px;
+	margin-left: 30.5px;
+	position: relative;
+}
+.colorChoose{
+	width: 150px;
+	height: 40px;
+	background: #FFFFFF 0% 0% no-repeat padding-box;
+	border: 1px solid #919DA1;
+	border-radius: 25px;
+}
+.colorToChoose,.colorToSelect{
+	width: 80px;
+	height: 30px;
+	border: 1px solid #919DA1;
+	border-radius: 25px;
+	margin-top: 5px;
+	margin-left: 18px;
+	cursor: pointer;
+}
+.contentColorList{
+	width: 150px;
+	height: 135px;
+	padding-right: 15px;
+	background: #FFFFFF 0% 0% no-repeat padding-box;
+	border: 1px solid #707070;
+	border-radius: 25px;
+	position: absolute;
+	z-index: 1000;
+	top: 40px;
+}
+.ListColorChoose{
+	overflow: auto;
+	width: 100%;
+	height: 125px;
+}
+.selectedColor{
+	border: 4px solid #919DA1;
+}
+.TextLabelYear{
+	margin-top: 8px;
+	margin-right: 10px;
+}
+.rearContainerExtra{
+	width: 660px;
+	height: 158px;
+	background: #FFFFFF 0% 0% no-repeat padding-box;
+	border: 1px solid #919DA1;
+	border-radius: 25px;
+	 position: fixed;
+    top: 50%;
+    left: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.contentMessage{
+	width: 600px;
+	height: 112px;
+	text-align: center;
+}
+.MoreDetails{
+	width: 408px;
+	height: 100px;
+	background: #FFFFFF 0% 0% no-repeat padding-box;
+	border: 1px solid #919DA1;
+	border-radius: 25px;
+}
+.MoreDetails textarea {
+	width: 100%;
+	height: 100%;
+	border-radius: 25px;
+	border: none;
+	outline: none;
+	padding-left:20px;
+	padding-top: 10px;
+	margin-bottom: 39px;
+}
+textarea:focus{
+	border: none;
+	outline: none;
+	padding-left:20px;
+	padding-top: 10px;
+}
+
+@media only screen and (max-width: 1400px) {
+  .contentListOfBrandChoose{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+}

@@ -4,32 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Asquid | FlexiSquid</title>
+    <title>Asquid | Kit Squid</title>
     <link rel="icon" href="../dist/assets/images/logo.png">
-    <link rel="stylesheet" href="../dist/assets/css/flexiSquid.css">
-	 <link rel="stylesheet" href="../dist/plugin/animate.min.css">
-	 <link rel="stylesheet" href="../dist/assets/css/myCustomiseDropdown.css">
+    <link rel="stylesheet" href="../dist/assets/css/kitsquid.css">
+    <link rel="stylesheet" href="../dist/assets/css/myCustomiseDropdown.css">
+    <link rel="stylesheet" href="../dist/assets/css/footer.css">
+    <link rel="stylesheet" href="../dist/assets/css/utils.css">
+
+
+
+    <!--boostrapp-->
+    <!-- <link rel="stylesheet" href="../dist/plugin/responsive/css/bootstrap.min.css"> -->
+    <!--vue js -->
     <script src="../dist/plugin/vue.js"></script>
+
 </head>
 <body>
-    <div class="flexiSquidBody" id="flexiSquid">
-		 <div class="messageDesignChoose  animate__animated animate__fadeInDown" v-if="chooseDesign =='graphic'" >
-						 <div @click="chooseDesign =''" class="closeMessage">
-							 <span>X</span>
-						 </div>
-						 <div class="messageContent">
-							 <span style="color: #002633;font-size:20px;font-weight: 900;">A graphic proposal will be sent to you within 48 hours</span>
-						 </div>
-		</div>
-        <header>
-            <div class="header_container">
-                <div class="logo-container">
-                    <a href="index.html">
-                        <img src="../dist/assets/images/logo.png" alt="">
-                    </a>
-                </div>
-                <div class="link-container">
-                    <div class="social-link">
+    <div class="KitSquidBody" id="flexiSquid">
+        <header class="rearSquidHeader">
+            <div class="rearSquidHeaderLogo">
+                <img src="../dist/assets/images/logo.png" alt="logo asquid vehicule">
+                
+            </div>
+            <div class="socialLinkRearSquid">
+                  <div class="social-link">
                         <div class="user">
                             <img src="../dist/assets/images/icon/user_V2.svg" alt="">
                         </div>
@@ -50,203 +48,231 @@
                         <ul class="link-item-list">
                             <li class="link-item-list-item dropdows ">Produit
                                 <ul class="dropdown-link-item">
-                                     <li><a href="kitSquid.html#Kit">Kit Squid</a></li>
+                                    <li><a href="kitSquid.html#Kit">Kit Squid</a></li>
                                     <li><a href="flexiSquid.html#flexiSquidSelectioncontainer">Flexi Squid</a></li>
                                     <li><a href="rearsquid.html#rearContainer">Rear Squid</a></li>
                                 </ul>
 
                             </li>
-                            <li class="link-item-list-item quote">Quote</li>
+                            <li class="link-item-list-item">Quote</li>
                             <li class="link-item-list-item">Business service</li>
                         </ul>
                     </div>
-                </div>
+
             </div>
         </header>
-        <div class="flexiSquidBreacrumb">
-            <div id="Home_Choose_your_media_Your_ki">
-                <span>Home/ Choose your media/</span><span style="color:rgba(51,204,255,1);"> Your FlexiSquid</span>
-            </div>
-        </div>
-        <div class="flexiSquidSelectioncontainer" id="flexiSquidSelectioncontainer">
-            <div class="flexisSquidPicture">
-                <div class="pictureBox">
-                    <span>Photos </span>
+        <div class="KitSquidContainer">
+             <div class="rearSquidBreakcrumb">
+                <div class="Breakcrumbtitle">
+                    <span>Home/ Choose your media/</span><span style="color:rgba(51,204,255,1);"> Your Flexi Squid</span>
                 </div>
+            </div>
+            <div class="KitContainer" id="Kit">
+                <div class="photoKitSquidProduct">
 
-            </div>
-            <div class="detailsProductSquidSelection">
-                <div id="Your_FlexiSquid">
-                    <span>Your Flexi </span><span style="color:rgba(51,204,255,1);">Squid</span>
                 </div>
-                <div id="From_159">
-                    <span>From </span><span style="font-style:normal;font-weight:normal;">$159</span>
-                </div>
-                <svg class="Rectangle_28">
-                    <rect id="Rectangle_28" rx="0" ry="0" x="0" y="0" width="276" height="44">
-                    </rect>
-                </svg>
-                <div id="Review">
-                    <span>Review</span>
-                </div>
-                <div id="Movable_as_you">
-            		<span>Movable as you</span>
-                </div>
-                <div id="With_your_FelxiSquid_you_can_d">
-            		<span>With your FelxiSquid, you can dispose of your advertising at will. During the week you can give visibility to your company and during the weekend you can find your car without any advertising.<br/>Thanks to its four suction cups, you get a maximum hold.<br/>Two sizes are available.</span>
-                </div>
-                <div class="sizeChoose">
-                    	 <div id="Choose_your_size">
-                            <span>Choose your </span><span style="color:rgba(51,204,255,1);">size</span><span>:</span>
+                <div class="KitSquidDetailsContainer">
+                     <div class="kitSquidTitle">
+                        <span>Your Flexi  </span><span style="color:rgba(51,204,255,1);">Squid</span>
+                    </div>
+                    <div class="kitSquidPriceBase">
+                         <span>From </span><span style="font-style:normal;font-weight:bold;">$159</span>
+                    </div>
+                    <div class="reviewKitSquid">
+                        <span>Review</span>
+                    </div>
+                    <div class="descriptionRearSquid">
+                        <div class="tagsKitSquid">
+                            <span>Movable as you</span>
                         </div>
-                        <div class="flexiSizeChooseContainer">
-                                <div class="flexiSizeDimension" @click="FlexiShowActive(0)">
-                                    <div class="flexiImageSize">
-                                        <img  src="../dist/assets/images/Car_Stickers_Flexisquid_800.png" alt="car flexi 800 M">
+                        <div class="bodyDesciption">
+                          With your FelxiSquid, you can dispose of your advertising at will.
+                           During the week you can give visibility to your company and during 
+                          the weekend you can find your car without any advertising.<br>
+                           Thanks to its four suction cups, you get a maximum hold.<br> Two sizes are available.
+                        </div>
+                    </div>
+                    <div class="sizeKitSquid">
+                        <div class="titleRearSquid">
+                            <span>Choose your <span style="color: #33ccff;"> size:</span></span>
+                        </div>
 
-                                    </div>
-                                    <div class="flexiDescriptionSize">
-                                        <div>
-                                            <span>Size M</span>
+                        <div class="containerSizeSquid">
+                            <div class="sizeKitContainer" v-for = "itemsSize in kitSize " @click="sizeShowActive(itemsSize.id)">
+                                <div class="flexiRearSize">
+                                    <img :src="itemsSize.image" alt=" ">
+                                </div>
+                                    <div class="sizeTitleRearContainer">
+                                            <div class="titleRearSize">
+                                                <span>Size <span style="color: #002633; font-weight: bold;">{{itemsSize.nomSize}}</span></span>
+                                            </div>
+                                            <div class="quantityRearSize">
+                                                <span> <small>2 stickers</small></span>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <span class="dimensionQuantity">1 FlexiSquid</span>
-                                        </div>
-
+                                        <div class="sizeRearSquidC">
+                                            <span style="color: #33ccff;">
+                                                {{itemsSize.dimension}} mm
+                                            </span>
                                     </div>
-                                    <div class="flexiSize">
-                                        <span class="specialSizeFlexi">
-                                            800 x 250 mm
+                             </div>
+                        </div>
+                    </div>
+                    <div class="designSquid" style="margin-top: 39px;">
+                        <div class="titleRearSquid ">
+                         <span>choose your <span style="color: #33ccff;"> design:</span></span>
+                        </div>
+                        <div class="containerDesignSquid  fw-bold ">
+                            <div class="designKitContainer" v-for="itemDesign in KitDesign" @click="designShowActive(itemDesign.id)">
+                                <div class="imageDesignSquid" v-if="itemDesign.id == 1">
+                                    <img  :src="itemDesign.image" alt="">
+                                </div>
+                                <div class="typeDesignSquid" v-if="itemDesign.id == 1">
+                                    <span style="font-weight: 900;"> {{itemDesign.nomDesign}} </span>
+                                </div>
+                                <div class="typeDesignSquid" style="margin-top: 50px;" v-if="itemDesign.id == 0">
+                                    <span style="font-weight: 900;"> {{itemDesign.nomDesign}} </span>
+                                </div>
+                                <div class="messageNormalDesign" v-if="itemDesign.nomDesign == 'Normal'">
+                                    <div class="textContainer">
+                                        <span>
+                                            Printing of two identical stickers with the same position of elements
                                         </span>
-
                                     </div>
                                 </div>
-                                 <div class="flexiSizeDimension" @click="FlexiShowActive(1)">
-                                    <div class="flexiImageSize">
-                                        <img  src="../dist/assets/images/Car_Stickers_Flexisquid_950.png" alt="car flexi 800 M">
-
-                                    </div>
-                                    <div class="flexiDescriptionSize">
-                                        <div>
-                                            <span>Size L</span>
-                                        </div>
-                                        <div>
-                                            <span class="dimensionQuantity">1 FlexiSquid</span>
-                                        </div>
-
-                                    </div>
-                                    <div class="flexiSize">
-                                        <span class="specialSizeFlexi">
-                                            950 x 300 mm
+                                <div class="infoDesign" :id="'design'+ itemDesign.id" v-if="itemDesign.id == 1">
+                                    <span>?</span>
+                                </div>
+                                <div class="messageSymetricDesign" v-if="itemDesign.nomDesign == 'Symmetric'">
+                                    <div class="textSymetricContainer">
+                                        <span>
+                                            Printing of two different stickers in symmetry to each other.
+                                             Example: Your logo will be on the right side of the driver’s side and on the left side of the passenger’s side
                                         </span>
-
                                     </div>
 
                                 </div>
-
-                        </div>
-               </div>
-               <div class="Designhoose">
-                     <div id="Choose_your_size">
-                            <span>Choose your </span><span style="color:rgba(51,204,255,1);">design</span><span>:</span>
-                     </div>
-                     <div class="flexiSizeChooseContainer">
-                            <div class="flexiDesignDimension desingFlexi" @click="(FlexiDesignShowActive(0)),(chooseDesign='none')">
-								<div class="noneDesign">
-									<span>None</span>
-								</div>
 
                             </div>
-                            <div class="flexiDesignDimension desingFlexi" @click="(chooseDesign='graphic'),(FlexiDesignShowActive(1))">
-									<div class="ellipseFlexis">
-										<div>
-											<span style="color: #002633; font-size:16px;font-weight:900">?</span>
-										</div>
-									</div>
-									<div class="imgcontainer">
-										<img src="../dist/assets/images/Page produit/Design_assist.png" alt="">
-									</div>
-									<div class="textGraphic">
-										<span style="color: #002633;font-weight:900">Graphic support</span>
-									</div>
-                            </div>
-                     </div>
-				</div>
-				<div class="quantitychoose">
-					    <div id="Choose_your_size">
-                            <span>Choose your </span><span style="color:rgba(51,204,255,1);">quantity</span><span>:</span>
+
                         </div>
-						<div class="containerQuantity">
-							<div class="choosequantityDropdow d-lg-flex" @click="dropChoose = !dropChoose">
-							  <div class="chooseQuantityName fw-bold">
-								  <span>{{YourFlexiQuantity}}</span>
-							  </div>
-							  <div class="arrowDownDrop">
-								  <img src="../dist/assets/images/arrowDown.png" alt="">
-							  </div>
-						  </div>
-						 <div class="DropDowQuantityToChoose" v-if="dropChoose">
-                                    <div class="contentQuantity">
-                                        <div class="quantityList mt-3 fw-bold"  v-for = "itemQuantity in kitQuantity">
-                                            <span  @click="removeItemQuantity(itemQuantity.quantity,itemQuantity.value)">  {{itemQuantity.quantity}} </span>
-                                        </div>
-                                    </div>
+
+                    </div>
+                    <div class="quantitySquid">
+                        <div class="titleRearSquid ">
+                         <span>choose your <span style="color: #33ccff;"> quantity:</span></span>
+                        </div>
+                        <div class="containerQuantitySquid">
+                            <div class="choosequantityDropdow" @click="dropChoose = !dropChoose">
+                                <div class="chooseQuantityName" style="width: 97px !important; margin-left: 35px !important;">
+                                    <span>{{YourFlexiQuantity}}</span>
                                 </div>
-						</div>
-					
-				</div>
-				<div class="flexiSumary">
-					    <div id="Choose_your_size">
-                            <span style="color:rgba(51,204,255,1);">Summary</span><span>:</span>
+                                <hr style="height: 15px; margin-top: 18px; margin-right: 5px;">
+                                <div class="arrowDownDrop" style="width: 11px;height: 6px; margin-top:16px">
+                                    <img src="../dist/assets/images/arrowDown.png" alt="">
+                                </div>
+                            </div>
+                             <div class="DropDowQuantityToChoose" v-if="dropChoose">
+                                        <div class="contentQuantity">
+                                            <div class="quantityList" style="width: 94px;"  v-for = "itemQuantity in kitQuantity">
+                                                <span  @click="removeItem(itemQuantity.quantity,itemQuantity.value)">  {{itemQuantity.quantity}} </span>
+                                            </div>
+                                        </div>
+                              </div>
                         </div>
-						<div class="sumaryContainerFlexi">
-							<svg class="Ligne_5" viewBox="0 0 408 3">
-								<path id="Ligne_5" d="M 0 0 L 408 0">
-								</path>
-							</svg>
-							<svg class="Ligne_6" viewBox="0 0 408 3">
-								<path id="Ligne_6" d="M 0 0 L 408 0">
-								</path>
-							</svg>
-							<svg class="Ligne_7" viewBox="0 0 408 3">
-								<path id="Ligne_7" d="M 0 0 L 408 0">
-								</path>
-							</svg>
-							<svg class="Ligne_36" viewBox="0 0 408 3">
-								<path id="Ligne_36" d="M 0 0 L 408 0">
-								</path>
-							</svg>
-							<div id="Your_size">
-								<span style="color: #002633;font-size:20px;font-weight:900">Your size:</span><span> {{YourFlexisize}}</span>
-							</div>
-							<div id="Your_design">
-								<span style="color: #002633;font-size:20px;font-weight:900">Your design:</span><span> {{YourFlexiDesign}}</span>
-							</div>
-							<div id="Quantity">
-								<span style="color: #002633;font-size:20px;font-weight:900">Quantity:</span><span>{{YourFlexiQuantity}}</span>
-							</div>
-							<div id="Total">
-								<span style="color: #002633;font-size:20px;font-weight:900">Total:</span><span style="color: #002633;font-size:20px;font-weight:900"> $ {{YourFlexiTotalAmount}} </span>
-							</div>
-						</div>
-				</div>
-				<div class="actionFlexiButton">
-					<div class="btnContainerAction">
-						<div class="uploadDesignFlexi">
-							<span style="letter-spacing: 0px;color: #33CCFF;opacity: 1; font-size: 20px;font-weight: 900;">Upload My Design</span>
-						</div>
-						<div class="customizerFlexi" @click="customiseZer">
-							<span  style="letter-spacing: 0px;color: #FFFFFF;opacity: 1; font-size: 20px;font-weight: 900;"> Customize</span>
-						</div>
+                    </div>
+                    <div class="SumaryRearSquid ">
+                        <div class="titleSummary">
+                            <span style="color: #33ccff;">Summary</span>
+                        </div>
+                        <div class="SumaryRearSquidContainer" style="width: 460px;height: 305px;">
+                            <div class="yourSizeResume">
+                                <div class="texteSummary">
+                                    <span style="font-size: 20px;font-weight: 900; color: #002633;">Your size: </span> <span style="color: #002633;font-weight:100;font-size: 20px;"> {{YourFlexisize}}</span><span v-if="YourSizePrice >0" style="color: #002633;font: weight 900;font-size:20px" > ( + ${{YourSizePrice}}) </span>
+                                </div>
+                                <div class="lineSummary">
 
-					</div>
-				</div>
+                                </div>
+                            </div>
+                            <div class="yourSizeResume">
+                                <div class="texteSummary">
+                                    <span style="font-size: 20px;font-weight: 900; color: #002633;margin-right: 5px;">Your design: </span>  <span style="color: #002633;font-weight:100;font-size: 20px;">{{YourFlexiDesign}}</span> <span v-if="designPrice >0" style="color: #002633;font: weight 900;font-size:20px" > ( + ${{designPrice}}) </span>
+                                </div>
+                                <div class="lineSummary">
 
+                                </div>
+                            </div>
+                            <div class="yourSizeResume">
+                                <div class="texteSummary">
+                                    <span style="font-size: 20px;font-weight: 900; color: #002633;margin-right: 5px;">Quantity: </span>  <span style="color: #002633;font-weight:100;font-size: 20px;">{{YourFlexiQuantity}}</span>
+                                </div>
+                                <div class="lineSummary">
 
+                                </div>
+                            </div>
+                             <div class="yourSizeResume">
+                                <div class="texteSummary">
+                                    <span style="font-size: 20px;font-weight: 900; color: #002633;margin-right: 5px;">Total: </span>  <span style="color: #002633;font-weight:900;font-size: 20px;"> ${{YourFlexiTotalAmount}}</span> <span style="color: #002633;font-size: 16px;font-weight: 100;"> (no incl. GST) </span>
+                                </div>
+                                <div class="lineSummary">
+                                </div>
+                            </div>
+                            
+
+                        </div>
+
+                    </div>
+                    <div class="RearactionButton">
+                        <div class="uploadDesignRear">
+                            <span>Upload My Design</span>
+                        </div>
+                        <div class="customizerRear" @click="saveCommande">
+                            <span>Customize</span>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
+        </div>
+        <div id="myModal" class="modal">
+
+            <span  class="close">&times;</span>
+                <!-- Modal content -->
+                <div v-if="proposition" class="proposition">
+                    <div class="Kitmodal-content" >
+                        <div class="kitModalContent">
+                            <span>
+                                Would you like to start from scratch or use your already saved design (can be modified)?
+                            </span>
+                        </div>
+                    </div>
+                    <div class="actionContent">
+                        <div class="startingAgain" @click="startNew">
+                            <span>Starting Again</span>
+                        </div>
+                        <div class="useAgain" @click="useAgain">
+                            <span>
+                                Use My Design
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="visuel" v-if="visuel">
+                    <div class="cardVisuelContainer">
+                    </div>
+                </div>
+                <div v-if="grapic" class="graphicSupport animate__animated animate__fadeInUp">
+                    <div class="close">
+                        <span style="font-weight: 100;"  >&times;</span>
+                    </div>
+                    <span style="width: 379px;height: 54px; font-weight:900;font-size:20px">
+                        A graphic proposal will be sent to you within 48 hours
+                    </span>
+
+                </div>
 
         </div>
-		 <div class="recaptilatusContainer">
+          <div class="recaptilatusContainer">
             <div class="contentContainerRecap">
                 <ul class="contentLink">
                     <li class="contentLinkItem" @click="(resumeShowActive(0) ), (itemToShow='overview')">Overview</li>
@@ -258,42 +284,33 @@
             <div class="contentContainerRecapitilatif" v-if="itemToShow == 'overview'" >
                 <div class="descriptionContentContainer animate__animated animate__fadeInLeft animate__delay-1s">
                     <div class="descriptionContentHeader">
-                        Your Kit<span class="special">Squid</span>
+                        Your Flexi<span class="special">Squid</span>
                     </div>
                     <div class="infoRearkits">
-                        <div class="quantityAndSizeReview d-lg-flex">
-							<div class="imgContent">
-								<img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">
-							</div>
-							<div class="textContent" style="margin-left:25px;font-size:20px;">
-								<span> 2 FlexiSquid  {{YourFlexisize}} mm </span>
-							</div>
+                        <div class="quantityAndSizeReview">
+                            <img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">
+                            <span> {{quantite}} FlexiSquid  {{sizeC}} </span>
                         </div>
-                        <div class="consignReview d-lg-flex">
-							<div class="imgContent">
-								<img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">
-							</div>
-							<div class="textContent" style="margin-left:25px;font-size:20px;">
-								<span> 4 Suction cup</span>
-							</div>
+                        <div class="consignReview">
+                            <img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">
+                            <span> 4 Suction cup </span>
                         </div>
-                        <div class="consignReview  d-lg-flex" style="width: 69%;">
-							<div class="imgContent">
-								<img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">
-							</div>
-							<div class="textContent "style="width: 243px; height: 108px; margin-left:25px;font-size:20px;">
-								<span> One Way, allows to see from the inside to the outside. Does not interfere with your visibility </span>
-							</div>
+                             <div class="quantityAndSizeReview" style="display: flex;">
+                             <div>
+                                 <img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">
+                             </div>
+                            <div  style="width: 266px;height: 108px; text-align: left; margin-left: 5px;">
+                                <span > One Way, allows to see from the inside to the outside.<br> Does not interfere with your visibility </span>
+                            </div>
                         </div>
-                        <div class="consignReview d-lg-flex" v-show="chooseDesign == 'graphic'" >
-							<div class="imgContent">
-								<img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">
-							</div>
-							<div class="textContent" style="width:247px;height: 54px;margin-left:25px;font-size:20px;">
-								<span> A graphic proposal will be sent to you within 48 hours</span>
-							</div>
+                        <div class="consignReview" style="display: flex;" v-if="grapic">
+                            <div>
+                                <img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">
+                            </div>
+                            <div style="width: 243px;height: 54px;" >
+                                <span> A graphic proposal will be sent to you within 48 hours </span>
+                            </div>
                         </div>
-
                     </div>
 
                 </div>
@@ -303,12 +320,14 @@
                     </div>
                 </div>
             </div>
-            <div class="guideLineContainer d-lg-flex"  v-if="itemToShow == 'guideline'" >
+            <div class="guideLineContainer "  v-if="itemToShow == 'guideline'" >
                 <div class="guidelineDownload">
-                    <span class="text-white fw-bold display-5">Guideline</span>
-                    <div class="buttonDowload d-lg-flex d-md-flex d-sm-flex text-center">
-                        <div class="titleButton fw-bold">
-                            <span><a href="../dist/assets/images/Test_Guideline/FlexiSquid_800x250mm/Plexi-pub-800x250.psd" download> Download</a></span>
+                    <div style="color: #fff; font-weight: 900; font-size: 38px; margin-bottom: 19px;width: 170px;height: 52px;"> 
+                        <span>Guideline</span>
+                    </div>
+                    <div class="buttonDowload ">
+                        <div class="titleButton">
+                            <span>Download</span>
                         </div>
                         <div class="imageDownLoad">
                             <img src="../dist/assets/images/Download_v2.png" alt="">
@@ -317,7 +336,7 @@
 
                 </div>
                 <div class="guideLineSaveAre">
-                    <div class="safeAreZone text-center fw-bold d-lg-flex d-md-flex d-sm-flex">
+                    <div class="safeAreZone">
                         <span class="display-4 fw-bold">Safe Area</span>
                     </div>
 
@@ -331,85 +350,117 @@
 
             </div>
         </div>
-        <div id="Groupe_84">
-            <div id="Pricing">
-                <span>Pricing</span>
+         <footer>
+            <hr style="background: #33CCFF;height: 4px;">
+            <div class="footerContainer">
+                <div class="letUsHelp">
+                    <div class="titleContent">
+                        <span style="font-weight:900;font-size: 20px; color: #fff;">
+                            Let us help
+                        </span>
+                    </div>
+                    <div class="letContent">
+                        <div class="myAccount">
+                            <span>
+                                <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="">
+                                    My account
+                                </a>
+                            </span>
+                        </div>
+                        <div class="contact">
+                            <span>
+                                <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="">
+                                    Contact
+                                </a>
+                            </span>
+                        </div>
+                        <div class="faqs">
+                            <span>
+                                <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="">
+                                    FAQs
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="followHelp">
+                    <div class="titleContent">
+                        <span style="font-weight:900;font-size: 20px; color: #fff;">
+                            Follow us
+                        </span>
+                    </div>
+                    <div class="letContent">
+                        <div class="instagram">
+                            <span>
+                                <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="">
+                                    Instagram
+                                </a>
+                            </span>
+                        </div>
+                        <div class="facebook">
+                            <span>
+                                <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="">
+                                    Facebook
+                                </a>
+                            </span>
+                        </div>
+                        <div class="youtube">
+                            <span>
+                                <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="">
+                                    Youtube
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="newsletterContainer">
+                    <div class="emailContainer">
+                        <input type="email" placeholder="Email">
+                    </div>
+                    <div class="subcribeBouton">
+                        <span>
+                            Subscribe
+                        </span>
+                    </div>
+                </div>
             </div>
-            <div id="Let_us_help">
-                <span>Let us help</span>
+            <div class="termsCondition">
+                <div class="terms">
+                    <span>
+                        <a href="" style="color: #fff;">
+                            Privacy and Cookie Policy
+                        </a>
+                    </span>
+                </div>
+                <div class="conditionsTerms">
+                    <span>
+                        <a href="" style="color: #fff;">
+                            Terms and Conditions
+                        </a>
+                    </span>
+                </div>
+                <div class="copyrigth">
+                    <span>
+                        Copyright 2021© Flysoft Engineering & Adsquid.
+                    </span> <br>
+                    <span>
+                        ABN: 16 998 486 520
+                    </span>
+                </div>
             </div>
-            <div id="My_account">
-                <span>My account</span>
+            <div class="imageContainer">
+                <img src="../dist/assets/images/Tentacule_footer_test_v2.png" alt="#">
             </div>
-            <div id="Contact__Support">
-                <span>Contact & Support</span>
-            </div>
-            <div id="FAQs">
-                <span>FAQs</span>
-            </div>
-            <div id="Stickers">
-                <span>Stickers</span>
-            </div>
-            <div id="Composition_of_one_kit">
-                <span>Composition of one kit</span>
-            </div>
-            <div id="How_to_fix_the_stickers">
-                <span>How to fix the stickers</span>
-            </div>
-            <div id="Options_for_stickers">
-                <span>Options for stickers</span>
-            </div>
-            <div id="Follow_us">
-                <span>Follow us</span>
-            </div>
-            <div id="Facebook">
-                <span>Facebook</span>
-            </div>
-            <div id="Instagram">
-                <span>Instagram</span>
-            </div>
-            <div id="Youtube">
-                <span>Youtube</span>
-            </div>
-            <div id="Privacy_and_Cookie_Policy">
-                <span>Privacy and Cookie Policy</span>
-            </div>
-            <div id="Terms_and_Conditions">
-                <span>Terms and Conditions</span>
-            </div>
-            <svg class="Ligne_3" viewBox="0 0 1366 5">
-                <path id="Ligne_3" d="M 0 0 L 1366 0">
-                </path>
-            </svg>
-            <div id="Copyright_2021_Flysoft_Enginee">
-                <span>Copyright 2021© Flysoft Engineering.</span>
-            </div>
-            <div id="ABN_16_998_486_520">
-                <span>ABN: 16 998 486 520</span>
-            </div>
-            <img id="Tentacule_footer_test_v2" src="../dist/assets/images/Tentacule_footer_test_v2.png">
-
-            <svg class="Rectangle_21">
-                <rect id="Rectangle_21" rx="26.5" ry="26.5" x="0" y="0" width="276" height="53">
-                </rect>
-            </svg>
-            <div id="Email">
-                <span>Email</span>
-            </div>
-            <svg class="Rectangle_22">
-                <rect id="Rectangle_22" rx="26.5" ry="26.5" x="0" y="0" width="276" height="53">
-                </rect>
-            </svg>
-            <div id="Subscribe">
-                <span>Subscribe</span>
-            </div>
-            <svg class="Ligne_4" viewBox="0 0 936 1">
-                <path id="Ligne_4" d="M 0 0 L 936 0">
-                </path>
-            </svg>
-        </div>
-
+        </footer>
     </div>
+
+
+
+
+
+
+    <script src="../dist/plugin/jquery.min.js"></script>
+    <script src="../dist/plugin/responsive/js/bootstrap.min.js"></script>
     <script src="../dist/assets/js/flexi.js"></script>
 </body>
 </html>

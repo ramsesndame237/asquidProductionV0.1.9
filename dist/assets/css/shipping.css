@@ -357,3 +357,15 @@ margin-left: 36.61px;
 .chooseLink{
     border-bottom: 4px solid #33CCFF;
 }
+.payPalth{
+    width: 520px;
+}
+
+.paypal-button-number-0 {
+    border-radius: 32px !important;
+    background: #33CCFF;
+    border: solid;
+}
+@media only screen and (min-width: 500px){
+
+}

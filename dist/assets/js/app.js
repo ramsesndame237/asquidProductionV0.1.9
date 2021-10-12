@@ -6,25 +6,70 @@ var app = new Vue({
     extraChooseList:[],
     designChooseList:[],
     resumeChooseList: [],
+    info: [],
+      infoCut: [],
+    infoDesign:[],
     index: 0,
       indx: 0,
       dropChoose: false,
-      cutLettering:false,
+      dropModelChoose: false,
+      YeardropChoose:false,
+      tmp: false,
+      ToShow:false,
+      cutLettering: false,
+      proposition: false,
+      visuel:false,
       NoExtra: true,
       CutPrice: 0,
       extraPrice: 0,
-    designPrice:0,
+      designPrice: 0,
+      sizePrice:0,
       Yoursize: "",
+      YourCarColor: "",
+      YourCarModel: "",
+      MoreInfo:"",
     dimensionKit:"600 x 200",
     YourCut:"Rectangular",
       YourExtra: [],
+      YourExtraToSave:[],
+      YourColorSelectContainer:[],
     NoneExtra:'None',
     YourDesign:"Normal",
       YourQuantity: "1 kit Squid",
+    YourYearChoose:'',
+      YourBrandChoose: '',
     initialQuatity:'1',
-    
+    YearList:[],
     YourTotal:0,
-    itemToShow: "",
+      itemToShow: "",
+       brandChooseList: [
+            {id:'1',value:"Mercedes-Benz"},
+            {id:'2',value:"Peugeot"},
+            {id: '3', value:"Citroen"},
+            {id:'4',value:"Jeep"},
+            {id:'5',value:"Nissan"},
+            {id:'6',value:"Suzuki"},
+            {id:'7',value:"Hundai"},
+            {id:'8',value:"Audi"},
+            {id:'9',value:"Opel"},
+            {id: '10',value: "Toyota" },
+            {id:'11',value:"Holden"}
+      ],
+        colorChooseList: [
+            {id:'0',value:"#000000"},
+            {id:'1',value:"#696969 "},
+            {id: '2', value:"#c0c0c0"},
+            {id:'3',value:"#778899"},
+            {id:'4',value:"#ffffff"},
+            {id:'5',value:"#000080"},
+            {id:'6',value:"#ff0000"},
+            {id:'7',value:"#f5f5dc"},
+            {id:'8',value:"#8b4513"},
+            {id: '9',value: "#556b2f" },
+            {id:'10',value:"#ffff00"},
+          { id: '11', value: "#800080" },
+            {id:'12',value:"#ffa500"}
+        ],
       kitSize: [
         {
          id:"0",nomSize:'XS',dimension:'600 x 200',image:'../dist/assets/images/Size/Car_Stickers_XS.png'
@@ -55,7 +100,7 @@ var app = new Vue({
       ],
       KitExtra: [
         {
-       id:'0',nomExtra:'Large  Size  rear sticker',image:'../dist/assets/images/Extra/Car_Stickers_back_e.png'
+       id:'0',nomExtra:'Large Size rear sticker',image:'../dist/assets/images/Extra/Car_Stickers_back_e.png'
         },
         {
        id:'1',nomExtra:'Rear Squid  One Way',image:'../dist/assets/images/Extra/Car_Stickers_back_ez.png'
@@ -112,23 +157,44 @@ var app = new Vue({
         }
             this.dropChoose = false
       },
-        resumeChoose(n) {
+      brandItem(itemId, value) {
+         console.log(itemId)
+            this.YourBrandChoose = itemId
+            this.dropChoose = false
+      },
+      chooseColor(itemId) {
+        console.log(itemId)
+        this.YourCarColor = itemId.value
+        document.querySelector(".colorToChoose").style.background = itemId.value
+        for (let i = 0; i < this.YourColorSelectContainer.length; i++) {
+          this.YourColorSelectContainer[i].classList.remove("selectedColor")
+        }
+        this.YourColorSelectContainer[itemId.id].classList.add("selectedColor")
+        this.dropModelChoose = false
+      },
+      YearItem(itemId) {
+        this.YourYearChoose = itemId
+      },
+      resumeChoose(n) {
             this.resumeShowActive(this.indx = n)
             console.log(n)
-        },
-        resumeShowActive(n) {
+      },
+      resumeShowActive(n) {
             for (var i = 0; i < this.resumeChooseList.length; i++) {
                 this.resumeChooseList[i].classList.remove("active")
             }
 
             this.resumeChooseList[n].classList.add("active")
-        },
-        noneExtraChoose(n) {
+      },
+      noneExtraChoose(n) {
           this.noneExtraShowActive(this.index = n)
       },
       noneExtraShowActive(n) {
         for (let i = 0; i < this.extraChooseList.length; i++) {
             this.extraChooseList[i].classList.remove("actived")
+        }
+        if (this.extraPrice > 0) {
+          this.YourTotal = this.YourTotal - this.extraPrice
         }
         // for (let index = 0; index < this.noneExtra.length; index++) {
         //     this.nomExtra[index].classList.remove("actived")
@@ -138,6 +204,7 @@ var app = new Vue({
         }
         this.noneExtra[n].classList.add("actived")
         this.YourExtra = []
+        this.NoExtra = true
         this.extraPrice =0
       },
       withExtraChoone(n) {
@@ -146,10 +213,26 @@ var app = new Vue({
       },
       withExtraShowActive(n, item) {
         this.NoExtra = false
-        console.log(item)
         this.noneExtra[0].classList.remove("actived")
         if (this.extraChooseList[n].classList.contains("actived")) {
+          var id = item.id
+          this.YourExtra = this.YourExtra.filter(x => {
+            return x.id != id;
+          })
+          if (this.YourExtra.length > 1) {
+            console.log(item)
+            this.tmp = true
+            document.querySelector(".extraContent").classList.add("extraSummary")
+            document.querySelector(".SumaryRearSquidContainer").classList.add("correctWidth")
+          } else {
+            console.log(this.YourExtra)
+            this.tmp = false
+            document.querySelector(".SumaryRearSquidContainer").classList.remove("correctWidth")
+            document.querySelector(".extraContent").classList.remove("extraSummary")
+            
+          }
           this.extraChooseList[n].classList.remove("actived")
+          this.info[n].classList.remove("actived")
           if (n == 0) {
                 if (this.Yoursize == 'Size XS "600 x 200 mm"' || this.Yoursize == 'Size S "900 x 300 mm"') {
                  this.YourTotal = this.YourTotal - 25
@@ -158,48 +241,77 @@ var app = new Vue({
             this.YourTotal = this.YourTotal - 89
               this.extraPrice = this.extraPrice + this.extraPrice
             } else if (this.Yoursize == 'Size M "1,200 x 400 mm') {
-            this.YourTotal = this.YourTotal - 49
-                  
+              this.YourTotal = this.YourTotal - 49
             }
           } else if (n == 1) {
-            this.YourTotal =this.YourTotal - 199
+            this.YourTotal = this.YourTotal - 199
+            this.ToShow=false
           } else if (n == 2) {
-              if (this.Yoursize == 'Size XS "600 x 200 mm"' || this.Yoursize == 'Size S "900 x 300 mm"' || this.Yoursize == 'Size M "1,200 x 400 mm') {
-                 this.YourTotal = this.YourTotal - 25
-            } else if (this.Yoursize == 'Size L "1,500 x 500 mm"' ||this.Yoursize == 'Size XL "2,000 x 600 mm"' ) {
-            this.YourTotal = this.YourTotal - 49
-                
+                if (this.Yoursize == 'Size XS "600 x 200 mm"' || this.Yoursize == 'Size S "900 x 300 mm"' || this.Yoursize == 'Size M "1,200 x 400 mm') {
+                  this.YourTotal = this.YourTotal - 25
+              } else if (this.Yoursize == 'Size L "1,500 x 500 mm"' ||this.Yoursize == 'Size XL "2,000 x 600 mm"' ) {
+              this.YourTotal = this.YourTotal - 49
+                  
             } 
             
           }
         } else {
-          this.extraChooseList[n].classList.add("actived")
+            this.extraChooseList[n].classList.add("actived")
+            this.info[n].classList.add("actived")
           this.YourExtra.push(item)
-          console.log(this.YourExtra)
-
+          this.YourExtraToSave.push(item.nomExtra)
+          console.log(this.YourExtraToSave)
           if (n == 0) {
-            if (this.Yoursize == 'Size XS "600 x 200 mm"' || this.Yoursize == 'Size S "900 x 300 mm"') {
-              this.extraPrice = 25
-            } else if (this.Yoursize == 'Size L "1,500 x 500 mm"' ||this.Yoursize == 'Size XL "2,000 x 600 mm"' ) {
-              this.extraPrice = 89
-            } else if (this.Yoursize == 'Size M "1,200 x 400 mm') {
-              this.extraPrice = 49
+                if (this.Yoursize == 'Size XS "600 x 200 mm"' || this.Yoursize == 'Size S "900 x 300 mm"') {
+                  this.extraPrice = 25
+                } else if (this.Yoursize == 'Size L "1,500 x 500 mm"' ||this.Yoursize == 'Size XL "2,000 x 600 mm"' ) {
+                  this.extraPrice = 89
+                } else if (this.Yoursize == 'Size M "1,200 x 400 mm') {
+                  this.extraPrice = 49
+                }
             }
-          }
-          if (n == 1) {
-            this.extraPrice =199
-          } if (n == 2) {
-             if (this.Yoursize == 'Size XS "600 x 200 mm"' || this.Yoursize == 'Size S "900 x 300 mm"' || this.Yoursize == 'Size M "1,200 x 400 mm') {
-              this.extraPrice = 25
-            } else if (this.Yoursize == 'Size L "1,500 x 500 mm"' ||this.Yoursize == 'Size XL "2,000 x 600 mm"' ) {
-              this.extraPrice = 49
-            } 
-            
-          }
+            if (n == 1) {
+              this.extraPrice = 199
+              this.ToShow = true
+                          var modal = document.getElementById("myModal");
+                  // Get the <span> element that closes the modal
+                      var span = document.querySelector(".close");
+                      
+                      // When the user clicks the button, open the modal 
+                      console.log(span)
+                      modal.style.display = "block";
 
-          this.YourTotal = this.extraPrice + this.YourTotal
+                  // When the user clicks on <span> (x), close the modal
+                  span.onclick = function() {
+                  modal.style.display = "none";
+                  }
 
-
+                  // When the user clicks anywhere outside of the modal, close it
+                  window.onclick = function(event) {
+                  if (event.target == modal) {
+                      modal.style.display = "none";
+                  }
+              }
+              setTimeout(() => {
+                  modal.style.display = "none";
+              }, 5000);
+            } if (n == 2) {
+                if (this.Yoursize == 'Size XS "600 x 200 mm"' || this.Yoursize == 'Size S "900 x 300 mm"' || this.Yoursize == 'Size M "1,200 x 400 mm') {
+                  this.extraPrice = 25
+                } else if (this.Yoursize == 'Size L "1,500 x 500 mm"' ||this.Yoursize == 'Size XL "2,000 x 600 mm"' ) {
+                  this.extraPrice = 49
+                } 
+            }
+            if (this.YourExtra.length > 1) {
+              this.tmp = true
+              document.querySelector(".extraContent").classList.add("extraSummary")
+              document.querySelector(".SumaryRearSquidContainer").classList.add("correctWidth")
+            } else {
+              this.tmp = false
+              document.querySelector(".SumaryRearSquidContainer").classList.remove("correctWidth")
+              document.querySelector(".extraContent").classList.remove("extraSummary")
+            }
+            this.YourTotal = this.extraPrice + this.YourTotal
         }
       },
       sizeChooseSquid(n) {
@@ -260,12 +372,14 @@ var app = new Vue({
         this.YourTotal = this.YourTotal - this.CutPrice
         for (let i = 0; i < this.choseCutList.length; i++) {
           this.choseCutList[i].classList.remove("actived")
+          this.infoCut[0].classList.remove("actived")
         }
         if (n == 0) {
           this.YourCut = 'Rectangular'
           localStorage.setItem("cutCustomizer",this.YourCut)
           if (this.Yoursize == 'Size XS "600 x 200 mm"') {
             this.CutPrice = 49
+            this.sizePrice = this.CutPrice
           } else if (this.Yoursize == 'Size S "900 x 300 mm"') {
             this.CutPrice =99
           } else if (this.Yoursize == 'Size M "1,200 x 400 mm') {
@@ -281,6 +395,7 @@ var app = new Vue({
           localStorage.setItem("cutCustomizer",this.YourCut)
           if (this.Yoursize == 'Size XS "600 x 200 mm"') {
             this.CutPrice = 60
+            this.sizePrice = 0
           } else if (this.Yoursize == 'Size S "900 x 300 mm"') {
             this.CutPrice =109
           } else if (this.Yoursize == 'Size M "1,200 x 400 mm') {
@@ -297,6 +412,7 @@ var app = new Vue({
           localStorage.setItem("cutCustomizer",this.YourCut)
           if (this.Yoursize == 'Size XS "600 x 200 mm"') {
             this.CutPrice = 60
+            this.sizePrice = 0
           } else if (this.Yoursize == 'Size S "900 x 300 mm"') {
             this.CutPrice =109
           } else if (this.Yoursize == 'Size M "1,200 x 400 mm') {
@@ -310,6 +426,8 @@ var app = new Vue({
           setTimeout(() => {
             this.cutLettering =false
           }, 2500);
+        this.infoCut[0].classList.add("actived")
+
         }
         this.YourTotal = this.YourTotal + this.CutPrice
         this.choseCutList[n].classList.add("actived")
@@ -322,21 +440,28 @@ var app = new Vue({
         this.YourTotal = this.YourTotal -this.designPrice
         for (let i = 0; i < this.designChooseList.length; i++) {
           this.designChooseList[i].classList.remove("actived")
+          this.infoDesign[i].classList.remove("actived")
         }
         this.designChooseList[n].classList.add("actived")
+        this.infoDesign[n].classList.add("actived")
         if (n == 0) {
           this.designPrice = 0
+          this.YourDesign = 'Normal'
         }
         if (n == 1) {
           this.designPrice = 15
+          this.YourDesign = 'Symmetric'
         }
         if (n == 2) {
           this.designPrice = 45
+          this.YourDesign ='Graphic support'
         }
         this.YourTotal = this.YourTotal + this.designPrice
       },
       saveCommande() {
-          let data ="Kit Squid"
+        this.proposition = true
+        this.ToShow = false
+          let data ="Kit"
         localStorage.setItem("CustomiseTitle", data)
 
         let commande= {
@@ -345,17 +470,64 @@ var app = new Vue({
           designProduct: this.YourDesign,
           cutProduct:this.YourCut,
           quantityProduct: this.YourQuantity,
-          extraProduct:this.YourExtra,
+          extraProduct:this.YourExtraToSave,
           totalAmountProduct:this.YourTotal
         }
 
         if (commande.sizeProduct != '' && commande.totalAmountProduct != '') {
-          window.location = "../../../customiser2.html"
-        } else {
-          alert("Veillez selectionner une taille")
+           // Get the modal
+        var modal = document.getElementById("myModal");
+        // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+            
+            // When the user clicks the button, open the modal 
+            console.log(modal)
+            modal.style.display = "block";
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+        modal.style.display = "none";
         }
-        localStorage.setItem('commande',JSON.stringify(commande))
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+        }
+      } else {
+        alert("Veillez selectionner une taille")
       }
+      localStorage.setItem('commande',JSON.stringify(commande))
+    },
+    startNew() {
+
+      let product = {
+        nameProduct: "Kit Squid",
+        sizeProduct: this.Yoursize,
+        designProduct: this.YourDesign,
+        cutProduct: this.YourCut,
+        quantityProduct: this.YourQuantity,
+        extraProduct: this.YourExtraToSave,
+        carInformation: {
+          carBrand: this.YourBrandChoose,
+          carModel: this.YourCarModel,
+          carColor: this.YourCarColor,
+          moreInfo:this.MoreInfo
+        },
+        total:this.YourTotal
+      }
+      console.log(product)
+      var oldItems = JSON.parse(localStorage.getItem('TheProduct')) || [];
+      oldItems.push(product)
+      localStorage.setItem('TheProduct', JSON.stringify(oldItems));
+      window.location = "../../../customiser2.html"
+
+      
+    },
+     useAgain() {
+       this.proposition =false
+    }
 
   },
     mounted() {
@@ -364,9 +536,25 @@ var app = new Vue({
       this.choseCutList = document.querySelectorAll(".cutKitContainer")
       this.noneExtra = document.querySelectorAll(".noneExtra")
       this.extraChooseList = document.querySelectorAll(".withExtra")
+      this.info = document.querySelectorAll(".infoExtra")
+      this.infoCut = document.querySelectorAll(".infoCut")
+      this.infoDesign = document.querySelectorAll(".infoDesign")
       this.ChoseItemList = document.querySelectorAll(".sizeKitContainer");
       this.designChooseList = document.querySelectorAll(".designKitContainer")
-      console.log(this.designChooseList)
+      this.YourColorSelectContainer = document.querySelectorAll(".colorToSelect")
+      console.log(this.YearList)
+      let currentYear = new Date().getFullYear();
+            let earliestYear = 1990;
+
+        while (currentYear >= earliestYear) {
+                this.YearList.push(currentYear)
+                currentYear -= 1;
+            }
+      
+      for (let i = 0; i < this.YourColorSelectContainer.length; i++) {
+        this.YourColorSelectContainer[i].style.background = this.colorChooseList[i].value
+      }
+      console.log(this.infoCut)
         this.resumeShowActive(this.index = 0)
       this.itemToShow = 'overview'
     },

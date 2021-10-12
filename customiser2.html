@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="dist/assets/css/customisateurDropdown.css">
     <link rel="stylesheet" href="dist/plugin/responsive/css/bootstrap.min.css">
     <link rel="stylesheet" href="dist/assets/css/fontFamily.css">
+    <link rel="stylesheet" href="dist/assets/css/utils.css">
 
     <script src="dist/plugin/vue.js"></script>
 </head>
@@ -40,7 +41,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <div class="title-customizer-product text-white mt-4 mx-4">
-                                        <h1>{{titreProduct}}</h1>
+                                        <span style="font-size: 20px;">Your {{titreProduct}}</span> <span style="color: #33CCFF;font-size:20px"> Squid</span>
                                     </div>
                                 </li>
                             </ul>
@@ -174,31 +175,31 @@
                     <div class="TextContainer">
                         <div class="textInputToCanvas d-lg-flex d-md-flex d-sm-flex">
                             <input type="text" placeholder="Company name" value="Company name" id="companyText" class="defaultText">
-                            <div class="imageTextTocanvas" id="textCompany">
+                            <div class="imageTextTocanvas" id="textCompany" onclick="deleteTextField(0)">
                                 <img src="dist/assets/images/Customisateur/Trash.png" alt="#" >
                             </div>
                         </div>
                         <div class="textInputToCanvas d-lg-flex d-md-flex d-sm-flex">
                             <input type="text" placeholder="Your business" value="Your business" id="yourbuisness" class="defaultText">
-                            <div class="imageTextTocanvas">
+                            <div class="imageTextTocanvas" onclick="deleteTextField(1)">
                                 <img src="dist/assets/images/Customisateur/Trash.png" alt="">
                             </div>
                         </div>
                         <div class="textInputToCanvas d-lg-flex d-md-flex d-sm-flex">
                             <textarea type="text" rows="3" cols="25" placeholder="• Activity n°1 • Activity n°2  •Activity n°3" value=".Activity n°1 . Activity n°2.Activity n°3" id="activity" class="defaultText"></textarea>
-                            <div class="imageTextTocanvas">
+                            <div class="imageTextTocanvas" onclick="deleteTextField(2)">
                                 <img src="dist/assets/images/Customisateur/Trash.png" alt="">
                             </div>
                         </div>
                         <div class="textInputToCanvas d-lg-flex d-md-flex d-sm-flex">
                             <input type="text" placeholder="Additional information" id="informationAdd" value="Additional information" class="defaultText">
-                            <div class="imageTextTocanvas">
+                            <div class="imageTextTocanvas" onclick="deleteTextField(3)">
                                 <img src="dist/assets/images/Customisateur/Trash.png" alt="">
                             </div>
                         </div>
                         <div class="textInputToCanvas d-lg-flex d-md-flex d-sm-flex">
                             <textarea type="text" placeholder="04 00 000 000 - example@ Adsquid.com.au" value="04 00 000 000 - example@ Adsquid.com.au" id="adresseInformation" class="defaultText"></textarea>
-                            <div class="imageTextTocanvas">
+                            <div class="imageTextTocanvas" onclick="deleteTextField(4)">
                                 <img src="dist/assets/images/Customisateur/Trash.png" alt="">
                             </div>
                         </div>
@@ -466,53 +467,34 @@
                     </div>
                 </div>
                 <div class="TextCustomTools animdownDropate__animated animate__fadeInDown" v-show="textToShow == 'TextManipulate'">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col col-lg-3">
-                                <div class="fontFamilySelection">
-                                    <div class="choosequantityDropdow d-lg-flex d-md-flex d-sm-block" @click="dropChoose = !dropChoose">
-                                        <div class="chooseQuantityName  fw-bold">
-                                            <span class="fontSelect">{{fontFamillyChoose}}</span>
-                                        </div>
-                                        <div class="arrowDownDrop">
-                                            <img src="../dist/assets/images/arrowDown.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="DropDowQuantityToChoose" v-if="dropChoose">
-                                        <div class="quantityList mt-3 fw-bold" v-for="itemToFont in fontFamilyList">
-                                            <span @click="fontSelectFontion(itemToFont)">  {{itemToFont.fontName}} </span>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="fontFamilySelection">
+                        <div class="choosequantityDropdow d-lg-flex d-md-flex d-sm-block" @click="dropChoose = !dropChoose">
+                            <div class="chooseQuantityName  fw-bold">
+                                <span class="fontSelect">{{fontFamillyChoose}}</span>
                             </div>
-                            <div class="col col-lg-2" @click="FunctionToText = 'textSize'">
-                                <div class="customTextStyle">
-                                    <img src="dist/assets/images/Customisateur/Text_size_click.png" v-if="FunctionToText == 'textSize'" alt="">
-                                    <img src="dist/assets/images/Customisateur/Text_size.png" v-else alt="#">
-                                </div>
-                            </div>
-                            <div class="col col-lg-2" @click="FunctionToText ='backgroundColor'">
-                                <div class="backgroundTextSelection">
-                                    <div class="picker" id="picker2"></div>
-                                </div>
-                            </div>
-                            <div class="col col-lg-2">
-                                <div class="duplicationSelection" id="duplicate-item">
-                                    <img src="dist/assets/images/Customisateur/layers.png" alt="#">
-                                </div>
-                            </div>
-                            <div class="col col-lg-2">
-                                <div class="deleteSelection">
-                                    <img src="dist/assets/images/Customisateur/Trash.png" alt="#">
-                                </div>
-                            </div>
-                            <div class="col col-lg-1" id="duplicate-item" @click="FunctionToText='Duplicate'">
-                                <div class="otherfunctionSelection">
-                                    <img src="dist/assets/images/Customisateur/Duplicate_click.png" v-if="FunctionToText == 'Duplicate'" alt="">
-                                    <img src="dist/assets/images/Customisateur/Duplicate.png" v-else alt="">
-                                </div>
+                            <div class="arrowDownDrop">
+                                <img src="../dist/assets/images/arrowDown.png" alt="">
                             </div>
                         </div>
+                        <div class="DropDowQuantityToChoose" v-if="dropChoose">
+                            <div class="quantityList mt-3 fw-bold" v-for="itemToFont in fontFamilyList">
+                                <span @click="fontSelectFontion(itemToFont)">  {{itemToFont.fontName}} </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="customTextStyle" @click="FunctionToText = 'textSize'">
+                            <img src="dist/assets/images/Customisateur/Text_size_click.png" v-if="FunctionToText == 'textSize'" alt="">
+                            <img src="dist/assets/images/Customisateur/Text_size.png" v-else alt="#">
+                    </div>
+                    <div class="backgroundTextSelection" @click="FunctionToText ='backgroundColor'">
+                        <div class="picker" id="picker2"></div>
+                    </div>
+                    <div class="deleteSelection">
+                        <img src="dist/assets/images/Customisateur/Trash.png" alt="#">
+                    </div>
+                    <div class="otherfunctionSelection" @click="FunctionToText='Duplicate'" id="duplicate-item">
+                        <img src="dist/assets/images/Customisateur/Duplicate_click.png" v-if="FunctionToText == 'Duplicate'" alt="">
+                        <img src="dist/assets/images/Customisateur/Duplicate.png" v-else alt="">
                     </div>
                     <div class="styleTextContainer" v-show="FunctionToText == 'textSize'">
                         <div class="vertically-stacked-slider">
@@ -564,14 +546,17 @@
                             </div>
                             <div class="containerStyleFont d-lg-flex d-md-flex">
                                 <div class="alignement mt-2">
-                                    <img src="dist/assets/images/Customisateur/Alignement_gauche.png" @click="alignement = center" v-if="alignement == 'left'" alt="">
-                                    <img src="dist/assets/images/Customisateur/Alignement_droite.png" @click="alignement=right" v-if="alignement == 'right'" alt="">
-                                    <img src="dist/assets/images/Customisateur/Alignement_centre.png" @click="alignement = left" v-if="alignement == 'center'" alt="">
+                                    <img src="dist/assets/images/Customisateur/Alignement_gauche.png" onclick='changeAlign()' @click="alignement = 'center'" v-if="alignement == 'left'" alt="">
+                                    <img src="dist/assets/images/Customisateur/Alignement_droite.png" onclick='changeAlign()' @click="alignement='right'" v-if="alignement == 'right'" alt="">
+                                    <img src="dist/assets/images/Customisateur/Alignement_centre.png" onclick='changeAlign()' @click="alignement = 'left'" v-if="alignement == 'center'" alt="">
                                 </div>
                             </div>
                             <div class="containerStyleFont d-lg-flex d-md-flex">
                                 <div class="curve mt-2">
                                     <img src="dist/assets/images/Customisateur/curve.png" alt="">
+                                     <img src="dist/assets/images/Customisateur/curve_droit.png" onclick='changeAlign()' @click="curve = 'droit'" v-if="curve == 'droit'" alt="">
+                                    <img src="dist/assets/images/Customisateur/curve_bas.png" onclick='changeAlign()' @click="curve = 'bas'" v-if="curve == 'bas'" alt="">
+                                    <img src="dist/assets/images/Customisateur/curve_haut.png" onclick='changeAlign()' @click="curve='haut'" v-if="curve == 'haut'" alt="">
                                 </div>
                             </div>
 
@@ -603,32 +588,32 @@
                                 {{messageReceive}}
                             </span>
                         </div>
-                    <div class="chatbutton">
-                        <img src="dist/assets/images/Customisateur/chat.png" alt="">
-                    </div>
-                    <div class="chat">
-                        <div class="header">
-                            <span class="title">
-                                Chating box
-                            </span>
-                            <button>
-                                <i class="fa fa-times" aria-hidden="true"></i>
-                            </button>
-                                        
+                        <div class="chatbutton">
+                            <img src="dist/assets/images/Customisateur/chat.png" alt="">
                         </div>
-                        <ul class="messages">
-                            <li class="other">hello</li>
-                            <li class="other">please i have a problem</li>
-                            <li class="self">hi</li>
-                            <li class="self">What is your problem</li>
-                            <li class="other"> i don't no how to save my design </li>
-                        </ul>
-                        <div class="footer">
-                            <div class="text-box" contenteditable="true" disabled="true"></div>
-                            <button id="sendMessage">send</button>
+                        <div class="chat">
+                            <div class="header">
+                                <span class="title">
+                                    Chating box
+                                </span>
+                                <button>
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </button>
+                                            
+                            </div>
+                            <ul class="messages">
+                                <li class="other">hello</li>
+                                <li class="other">please i have a problem</li>
+                                <li class="self">hi</li>
+                                <li class="self">What is your problem</li>
+                                <li class="other"> i don't no how to save my design </li>
+                            </ul>
+                            <div class="footer">
+                                <div class="text-box" contenteditable="true" disabled="true"></div>
+                                <button id="sendMessage">send</button>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
 

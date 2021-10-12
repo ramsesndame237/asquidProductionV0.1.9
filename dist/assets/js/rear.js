@@ -157,15 +157,19 @@ var app = new Vue({
             this.RearDesignShowActive(this.indx = n);
             console.log(n)
         },
-        RearDesignShowActive(n) {
+      RearDesignShowActive(n) {
+        this.removeItemQuantity(this.kitQuantity[0].quantity,this.kitQuantity[0].value)
+          this.totalAmount = this.totalAmount - this.designPrice
             for (var i = 0; i < this.designChooseList.length; i++) {
                 this.designChooseList[i].classList.remove("Acitve")
             }
             if (n == 0) {
-                this.YourRearDesign = 'None'
+              this.YourRearDesign = 'None'
+              this.designPrice =0
             } else if (n == 1) {
-                this.YourRearDesign = 'Graphic design'
-                this.totalAmount = this.totalAmount + 45
+              this.YourRearDesign = 'Graphic design'
+              this.designPrice = 45
+                this.totalAmount = this.totalAmount + this.designPrice
             }
             this.designChooseList[n].classList.add("Acitve")
 

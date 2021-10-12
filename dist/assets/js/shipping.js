@@ -5,7 +5,10 @@ var app = new Vue({
             numberOfProduct: '0',
             carts: [],
             checkidt: false,
-            totalShipping:0
+            totalShipping: 0,
+            shippingPrice:0,
+            GTS: 0,
+            
         }
     },
     methods: {
@@ -17,8 +20,16 @@ var app = new Vue({
         let dataStorage = JSON.parse(localStorage.getItem("cartStorage"))
         this.numberOfProduct = dataStorage.length
         this.carts = dataStorage
-         this.carts.forEach(element => {
-           this.totalShipping += parseInt(element.product.totalAmountProduct)+20+22.8
+        this.carts.forEach(element => {
+            this.GTS = element.product.totalAmountProduct * 10 / 100
+            if (element.product.totalAmountProduct > 0 && element.product.totalAmountProduct < 150) {
+            this.shippingPrice = 15
+            } else if (element.product.totalAmountProduct > 151 && element.product.totalAmountProduct < 500) {
+                this.shippingPrice =20
+            } else if (element.product.totalAmountProduct > 501) {
+                this.shippingPrice =25
+            }
+           this.totalShipping += parseInt(element.product.totalAmountProduct)+this.shippingPrice+this.GTS
         });
         console.log(dataStorage.length)
     },

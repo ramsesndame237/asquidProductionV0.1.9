@@ -7,11 +7,12 @@
     <title>Adsquid</title>
     <link rel="stylesheet" href="dist/assets/css/style.css">
     <link rel="stylesheet" href="dist/plugin/animate.css">
-    <link rel="icon" href="dist/assets/images/logo.png">
+    <link rel="icon" href="dist/assets/images/Picto.png">
     <link rel="stylesheet" href="dist/assets/css/globaHeader.css">
     <link rel="stylesheet" href="dist/assets/css/footer.css">
+    <link rel="stylesheet" href="dist/assets/css/utils.css">
     <script src="dist/plugin/vue.js"></script>
-    <script src="dist/plugin/axios.js"></script>
+    <script src="dist/plugin/axios.min.js"></script>
 </head>
 <body>
     <div class="main-body" id="indexPage">
@@ -284,92 +285,92 @@
         <div id="myModal" class="modal">
 
             <span class="close">&times;</span>
-        <!-- Modal content -->
-        <div class="modal-content" v-if="itemTextToShow == 'Signin'" >
-            <div class="titleModal">
-                <span>
-                    Sign in to Adsquid
-                </span>
-            </div>
-            <div class="signupContainer">
-                <div class="emailInputLabel">
-                    <span>
-                        Email
-                    </span>
-                </div>
-                <div class="inputLabel">
-                    <input type="email" v-model="dataRegistration.email" placeholder="Exemple@adsquid.com.au" required>
-                </div>
-                 <div class="emailInputLabel">
-                    <span>
-                        Password
-                    </span>
-                </div>
-                <div class="inputLabel">
-                    <input v-model="dataRegistration.password" type="password" required>
-                </div>
-            </div>
-            <div class="btnContent" @click="SigninSave">
-                <span>My profile
-                    Continue
-                </span>
-            </div>
-            <div class="remember">
-                <div class="imgCheck" @click="checkidt = !checkidt">
-                    <img src="dist/assets/images/Carre.png" alt="#">
-                    <div class="checkArrow" v-if="checkidt">
-                        <img src="dist/assets/images/Check_click.png" alt="#">
+                <!-- Modal content -->
+                <div class="modal-content" v-if="itemTextToShow == 'Signin'" >
+                    <div class="titleModal">
+                        <span>
+                            Sign in to Adsquid
+                        </span>
+                    </div>
+                    <div class="signupContainer">
+                        <div class="emailInputLabel">
+                            <span>
+                                Email
+                            </span>
+                        </div>
+                        <div class="inputLabel">
+                            <input type="email" v-model="dataRegistration.email" placeholder="Exemple@adsquid.com.au" required>
+                        </div>
+                        <div class="emailInputLabel">
+                            <span>
+                                Password
+                            </span>
+                        </div>
+                        <div class="inputLabel">
+                            <input v-model="dataRegistration.password" type="password" required>
+                        </div>
+                    </div>
+                    <div class="btnContent" @click="SigninSave">
+                        <span>My profile
+                            Continue
+                        </span>
+                    </div>
+                    <div class="remember">
+                        <div class="imgCheck" @click="checkidt = !checkidt">
+                            <img src="dist/assets/images/Carre.png" alt="#">
+                            <div class="checkArrow" v-if="checkidt">
+                                <img src="dist/assets/images/Check_click.png" alt="#">
+                            </div>
+                        </div>
+                        <span style="margin-top: 16px;width: 164px;height: 22px;">Remember Me</span>
+                        <span style="color: #33CCFF; margin-top:16px;margin-left: 12px;">Forgot Password?</span>
+                    </div>
+                    <hr style="width: 150px; margin: auto;margin-top: 16px;">
+                    <div class="notMember">
+                        <span style="font-size: 20px;color: #002633;">
+                            Not a member yet? <span style="color: #33CCFF; cursor: pointer;" @click="itemTextToShow = 'Signup'"> Join now</span>
+                        </span>
                     </div>
                 </div>
-                <span style="margin-top: 16px;width: 164px;height: 22px;">Remember Me</span>
-                <span style="color: #33CCFF; margin-top:16px;margin-left: 12px;">Forgot Password?</span>
-            </div>
-            <hr style="width: 150px; margin: auto;margin-top: 16px;">
-            <div class="notMember">
-                <span style="font-size: 20px;color: #002633;">
-                    Not a member yet? <span style="color: #33CCFF; cursor: pointer;" @click="itemTextToShow = 'Signup'"> Join now</span>
-                </span>
-            </div>
-        </div>
-        <div class="signinContainer" v-if="itemTextToShow == 'Signup'">
-             <div class="titleModal">
-                <span>
-                    Sign in to Adsquid
-                </span>
-            </div>
-            <div class="signupContainer">
-                 <div class="emailInputLabel">
-                    <span>
-                        Email
+                <div class="signinContainer" v-if="itemTextToShow == 'Signup'">
+                    <div class="titleModal">
+                        <span>
+                            Sign in to Adsquid
+                        </span>
+                    </div>
+                    <div class="signupContainer">
+                        <div class="emailInputLabel">
+                            <span>
+                                Email
+                            </span>
+                        </div>
+                        <div class="inputLabel">
+                            <input type="email" v-model="dataRegistration.email" placeholder="Exemple@adsquid.com.au" required>
+                        </div>
+                    </div>
+                    <div class="btnContent" @click="saveUser">
+                        <span>
+                            Continue
+                        </span>
+                    </div>
+
+                </div>
+                <div class="signinContainer" v-if="itemTextToShow == 'confirmMail'">
+                    <div class="titleModal">
+                        <span>
+                            Sign in to Adsquid
+                        </span>
+                    </div>
+                    <div class="signupContainer" style=" margin-top: 49px;margin-left: 83px;">
+                    <span style="font-size:20px;font-weight:900;color: #002633; ">
+                        Email send with your password
                     </span>
-                </div>
-                <div class="inputLabel">
-                    <input type="email" v-model="dataRegistration.email" placeholder="Exemple@adsquid.com.au" required>
-                </div>
-             </div>
-             <div class="btnContent" @click="saveUser">
-                <span>
-                    Continue
-                </span>
-            </div>
+                    </div>
+                    <div class="imageEmail">
+                        <img src="dist/assets/images/Web_icon_2/email.png" alt="">
+                    </div>
 
-        </div>
-        <div class="signinContainer" v-if="itemTextToShow == 'confirmMail'">
-             <div class="titleModal">
-                <span>
-                    Sign in to Adsquid
-                </span>
-            </div>
-            <div class="signupContainer" style=" margin-top: 49px;margin-left: 83px;">
-               <span style="font-size:20px;font-weight:900;color: #002633; ">
-                   Email send with your password
-               </span>
-             </div>
-            <div class="imageEmail">
-                <img src="dist/assets/images/Web_icon_2/email.png" alt="">
-            </div>
-
-        </div>
+                </div>
 
         </div>
         <div class="testimonialcontainer">
@@ -380,93 +381,120 @@
                 <span>Reviews customer</span>
             </div>
         </div>
+        <div id="cookiePopup">
+            <h4>Cookie Policy & Privacy</h4>
+            <p>Our website uses cookies to provide your browsing experience and relavent informations.Before continuing to use our website, you agree & accept of our  <a href="#">Cookie Policy & Privacy</a></p>
+            <button id="acceptCookie">Accept</button> 
+        </div>
         <footer>
-            <div id="Groupe_84">
-                <div id="Pricing">
-                    <span>Pricing</span>
+            <hr style="background: #33CCFF;height: 4px;">
+            <div class="footerContainer">
+                <div class="letUsHelp">
+                    <div class="titleContent">
+                        <span style="font-weight:900;font-size: 20px; color: #fff;">
+                            Let us help
+                        </span>
+                    </div>
+                    <div class="letContent">
+                        <div class="myAccount">
+                            <span>
+                                <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="others/myAccount.html">
+                                    My account
+                                </a>
+                            </span>
+                        </div>
+                        <div class="contact">
+                            <span>
+                                <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="">
+                                    Contact
+                                </a>
+                            </span>
+                        </div>
+                        <div class="faqs">
+                            <span>
+                                <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="">
+                                    FAQs
+                                </a>
+                            </span>
+                        </div>
+                    </div>
                 </div>
-                <div id="Let_us_help">
-                    <span>Let us help</span>
+                <div class="followHelp">
+                    <div class="titleContent">
+                        <span style="font-weight:900;font-size: 20px; color: #fff;">
+                            Follow us
+                        </span>
+                    </div>
+                    <div class="letContent">
+                        <div class="instagram">
+                            <span>
+                                <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="">
+                                    Instagram
+                                </a>
+                            </span>
+                        </div>
+                        <div class="facebook">
+                            <span>
+                                <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="">
+                                    Facebook
+                                </a>
+                            </span>
+                        </div>
+                        <div class="youtube">
+                            <span>
+                                <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="">
+                                    Youtube
+                                </a>
+                            </span>
+                        </div>
+                    </div>
                 </div>
-                <div id="My_account">
-                    <span>My account</span>
+                <div class="newsletterContainer">
+                    <div class="emailContainer">
+                        <input type="email" placeholder="Email">
+                    </div>
+                    <div class="subcribeBouton">
+                        <span>
+                            Subscribe
+                        </span>
+                    </div>
                 </div>
-                <div id="Contact__Support">
-                    <span>Contact & Support</span>
-                </div>
-                <div id="FAQs">
-                    <span>FAQs</span>
-                </div>
-                <div id="Stickers_dw">
-                    <span>Stickers</span>
-                </div>
-                <div id="Composition_of_one_kit">
-                    <span>Composition of one kit</span>
-                </div>
-                <div id="How_to_fix_the_stickers">
-                    <span>How to fix the stickers</span>
-                </div>
-                <div id="Options_for_stickers">
-                    <span>Options for stickers</span>
-                </div>
-                <div id="Follow_us">
-                    <span>Follow us</span>
-                </div>
-                <div id="Facebook">
-                    <span>Facebook</span>
-                </div>
-                <div id="Instagram">
-                    <span>Instagram</span>
-                </div>
-                <div id="Youtube">
-                    <span>Youtube</span>
-                </div>
-                <div id="Privacy_and_Cookie_Policy">
-                    <span>Privacy and Cookie Policy</span>
-                </div>
-                <div id="Terms_and_Conditions">
-                    <span>Terms and Conditions</span>
-                </div>
-                <svg class="Ligne_3" viewBox="0 0 1366 5">
-                    <path id="Ligne_3" d="M 0 0 L 1366 0">
-                    </path>
-                </svg>
-                <div id="Copyright_2021_Flysoft_Enginee">
-                    <span>Copyright 2021© Flysoft Engineering.</span>
-                </div>
-                <div id="ABN_16_998_486_520">
-                    <span>ABN: 16 998 486 520</span>
-                </div>
-                <img id="Tentacule_footer_test_v2" src="dist/assets/images/Tentacule_footer_test_v2.png" alt="#">
-                    
-                <svg class="Rectangle_21">
-                    <rect id="Rectangle_21" rx="26.5" ry="26.5" x="0" y="0" width="276" height="53">
-                    </rect>
-                </svg>
-                <div id="Email">
-                    <input type="email" placeholder="Email">
-                </div>
-                <svg class="Rectangle_22">
-                    <rect id="Rectangle_22" rx="26.5" ry="26.5" x="0" y="0" width="276" height="53">
-                    </rect>
-                </svg>
-                <div id="Subscribe">
-                    <span>Subscribe</span>
-                </div>
-                <svg class="Ligne_4" viewBox="0 0 936 1">
-                    <path id="Ligne_4" d="M 0 0 L 936 0">
-                    </path>
-                </svg>
             </div>
-            <!-- <div class="chatBox">
-                <i class="fa fa-fw">
-            </div> -->
+            <div class="termsCondition">
+                <div class="terms">
+                    <span>
+                        <a href="" style="color: #fff;">
+                            Privacy and Cookie Policy
+                        </a>
+                    </span>
+                </div>
+                <div class="conditionsTerms">
+                    <span>
+                        <a href="others/termeEtCondition.html" style="color: #fff;">
+                            Terms and Conditions
+                        </a>
+                    </span>
+                </div>
+                <div class="copyrigth">
+                    <span>
+                        Copyright 2021© Flysoft Engineering & Adsquid.
+                    </span> <br>
+                    <span>
+                        ABN: 16 998 486 520
+                    </span>
+                </div>
+            </div>
+            <div class="imageContainer">
+                <img src="dist/assets/images/Tentacule_footer_test_v2.png" alt="#">
+            </div>
         </footer>
 
 
     </div>
     
+    <script src="dist/assets/js/config.js"></script>
     <script src="dist/assets/js/index.js"></script>
+    <script src="dist/assets/js/universal.js"></script>
 
     <script>
         // Get the modal

@@ -1,17 +1,35 @@
 .choosequantityDropdow{
 	border: solid 1px #919da1;
 	background: #fff;
-    width: 190px;
-    height: 60px;
+    width: 184px;
+    height: 54px;
+    display: flex;
     border-radius: 28px;
-    justify-content: space-around;
-    align-items: center;
+    /* justify-content: space-around; */
+    /* align-items: center; */
     cursor: pointer;
 }
 .chooseQuantityName,.quantityList{
     color: #002633;
     font-size: 16px;
     cursor: pointer;
+    font-weight: 900;
+}
+.quantityList{
+    margin-top: 15px;
+    width: 84px;
+    height: 22px;
+    margin-left: 50px;
+}
+.chooseQuantityName{
+    width: 84px;
+    height: 22px;
+    margin-left: 50px;
+    margin-right: 20px;
+    font-weight: 900;
+    font-size: 16px;
+    color: #002633;
+    margin-top: 16px;
 }
 .quantityList:hover{
     color: #919da1;
@@ -33,20 +51,24 @@
     text-align: center;
     border-radius: 25px;
     border: solid 1px #919da1;
+    display: flex;
+    align-items: center;
 }
 .contentQuantity{
 	 overflow:auto;
     background:#fff;
 	border-radius: 25px;
 	height: 150px;
+    width: 100%;
 }
 .contentQuantity::-webkit-scrollbar {
-  width: 4px;
+    width: 2px;
+    border-radius: 8px;
 }
 
 .contentQuantity::-webkit-scrollbar-thumb {
   background: #919DA1;
-  height: 5px;
+  height: 2px;
 }
 
 .contentQuantity::-webkit-scrollbar-track-piece {
@@ -68,6 +90,9 @@
     border-radius: 28px;
     overflow: hidden;
 }
+.correctWidth{
+    height: 483px;
+}
 .yourSizeResume,.yourDesignResume,.yourQuantityResume,.yourTotalSummary{
     width: 100%;
     height: 54px;
@@ -78,9 +103,9 @@
 }
 
 .lineSummary{
-    height: 3px;
+    height: 2px;
     border-radius: 28px;
-    width: 411px;
+    width: 408px;
     background: #002633;
     margin-left: auto;
     margin-right: auto;
@@ -92,7 +117,7 @@
     width: 411px;
     margin-top: 15px;
     font-weight: 900;
-    display: flex;
+    /* display: flex; */
 
 }
 .RearactionButton{
@@ -218,6 +243,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 5rem;
+        display: flex;
     }
     .buttonDowload{
         background: #fff;
@@ -228,6 +254,8 @@
         justify-content: space-around;
         align-items: center;
         cursor: pointer;
+        display: flex;
+        text-align: center;
     }
     .imageDownLoad{
         width: 30px;
@@ -240,6 +268,7 @@
     .titleButton{
         color: #002633;
         font-size: 18px;
+        font-weight: 900;
     }
     .guideLineSaveAre{
         background: #fff;
@@ -258,6 +287,10 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
+        display: flex;
+        font-size: 38px;
+        color: #002633;
+        font-weight: 900;
     }
     .howTofixVideoContainer{
         border:solid 1px #919da1;
@@ -277,4 +310,12 @@
 
     .actived{
         border: solid 4px #33ccff;
+        font-size: 15px;
+    }
+
+    .extraSummary{
+        height: 104px;
+    }
+    .contentText{
+        display: flex;
     }

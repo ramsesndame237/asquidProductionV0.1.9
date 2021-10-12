@@ -311,7 +311,7 @@ fabric.Object.prototype.customiseCornerIcons({
         cornerBackgroundColor: '#919da1',
     },
     tl: {
-        icon: '../../../dist/assets/images/Customisateur/icons/Rotation_nocercle.png',
+        icon: '../../../dist/assets/images/Customisateur/icons/rotate.svg',
     },
     tr: {
         icon: '../../../dist/assets/images/Customisateur/icons/resize.svg',
@@ -320,9 +320,9 @@ fabric.Object.prototype.customiseCornerIcons({
         icon: '//maxcdn.icons8.com/Share/icon/Logos//google_logo1600.png',
     },
     bl: {
-        icon: '../../../dist/assets/images/delete.svg',
+        icon: '../../../dist/assets/images/Customisateur/icons/remove.svg',
         settings: {
-            cornerSize: 30,
+            cornerSize: 25,
         }
     },
     mr: {
@@ -528,9 +528,9 @@ objIsActive.customiseCornerIcons({
         icon: '../../../dist/assets/images/Customisateur/icons/resize.svg',
     },
     bl: {
-        icon: '../../../dist/assets/images/delete.svg',
+        icon: '../../../dist/assets/images/Customisateur/icons/remove.svg',
         settings: {
-            cornerSize: 30,
+            cornerSize: 25,
         }
     },
 }, function() {
@@ -776,6 +776,7 @@ function uploadMetierImage() {
 }
 
 
+
 /**
  * this function is to change the font family of the text is active 
  */
@@ -857,7 +858,19 @@ function dtSetStyle(object, styleName, value) {
     object[styleName] = value;
     object.set({dirty: true});
     canvas.renderAll();
-}    
+}
+
+/**
+ * this function is to align text 
+ */
+var align = ["left", "center", "right"];
+
+function changeAlign(){
+    var val = align[Math.floor(Math.random() * align.length)];
+    let obj = canvas.getActiveObject()
+    obj.set('textAlign',val);
+    canvas.renderAll();
+}
 
 
 
@@ -899,7 +912,6 @@ document.getElementById('logoImport').addEventListener("change", function(e) {
 });
 $('.imageBackgroundLayout').on('load', function () {
     let data = $('.imageBackgroundLayout').attr('src')
-    console.log("vide")
     if (data == "") {
         canvas.setBackgroundImage(null);
     } else {
@@ -913,12 +925,39 @@ $('.imageBackgroundLayout').on('load', function () {
 });
 
 /**
+ * this function is to delele selecte obeject 
+ */
+
+let inputText = document.querySelectorAll(".textInputToCanvas")
+
+function deleteTextField(n){
+
+    if (n == 0) {
+        canvas.remove(text1);
+        console.log(inputText[n])
+        inputText[n].style.setProperty("display", "none", "important");
+    } else if (n == 1) {
+        canvas.remove(text2)
+        inputText[n].style.setProperty("display", "none", "important");
+    } else if (n == 2) {
+        canvas.remove(text3)
+        inputText[n].style.setProperty("display", "none", "important");
+    } else if (n == 3) {
+        canvas.remove(text4)
+        inputText[n].style.setProperty("display", "none", "important");
+    } else if (n == 4) {
+        canvas.remove(text5)
+        inputText[n].style.setProperty("display", "none", "important");
+    }
+    canvas.renderAll()
+}
+
+/**
  * this part is for setting configuration
  */
  var gridGroup;
  var grid = 50;
  $('#SafetyArea').on('click',function(){
-     console.log($('#SafetyArea').is(':checked'))
      if($('#SafetyArea').is(':checked')){
          $(".canvasAree").addClass("SafeLineRemove")
          $("#canvasUpload").addClass("canvasBorderChange")
@@ -1019,7 +1058,6 @@ $('.imageBackgroundLayout').on('load', function () {
         // Show QRCode div
         qrdiv.className = qrdivClassName;
         setTimeout(() => {
-            console.log(qrcode.getElementsByTagName('img')[0].src)
             let data =qrcode.getElementsByTagName('img')[0].src
             fabric.Image.fromURL(data, function(img) {
                 var oImg = img.set({
@@ -1056,7 +1094,6 @@ $('.imageBackgroundLayout').on('load', function () {
  * this function is for selected the background 
  */
  window.addEventListener("storage", function () {
-    console.log("okay ça change")
     document.querySelector('.my-key').textContent = e.key;
     document.querySelector('.my-old').textContent = e.oldValue;
     document.querySelector('.my-new').textContent = e.newValue;
@@ -1286,4 +1323,6 @@ canvas.on('mouse:down', (options)=>{
         console.log( options.target.type )
     }
 });
+
+
 

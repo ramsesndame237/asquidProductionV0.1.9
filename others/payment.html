@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../dist/assets/css/shipping.css">
     <link rel="stylesheet" href="../dist/assets/css/footer.css">
+    <link rel="stylesheet" href="../dist/assets/css/utils.css">
     <script src="../dist/plugin/vue.js"></script>
 </head>
 <body>
@@ -82,45 +83,50 @@
                         </span>
                     </div>
                 </div>
-                <div class="LabelInputText">
-                    <div class="labelText">
-                        <span>
-                            Card Number
-                        </span>
-                    </div>
-                    <div class="labelInput">
-                        <input style="padding-left: 20px;" placeholder="1234 5678 9012 3456" type="text">
-                    </div>
-                </div>
-                <div class="placeStateContainer">
-                    <div class="countryContent">
+                <div class="Bankth" v-show="paymentMode =='bank'">
+                    <div class="LabelInputText">
                         <div class="labelText">
                             <span>
-                                Expiry Date
-                        </span>
+                                Card Number
+                            </span>
                         </div>
-                        <div class="contryInput">
-                            <input style="padding-left: 20px;" type="text" placeholder="MM/YY">
+                        <div class="labelInput">
+                            <input style="padding-left: 20px;" placeholder="1234 5678 9012 3456" type="text">
                         </div>
                     </div>
-                    <div class="countryContent">
-                        <div class="labelText">
-                            <span>
-                                CVC / CVV
-                        </span>
+                    <div class="placeStateContainer">
+                        <div class="countryContent">
+                            <div class="labelText">
+                                <span>
+                                    Expiry Date
+                            </span>
+                            </div>
+                            <div class="contryInput">
+                                <input style="padding-left: 20px;" type="text" placeholder="MM/YY">
+                            </div>
                         </div>
-                        <div class="contryInput">
-                            <input style="padding-left: 20px;" type="text" placeholder="123">
+                        <div class="countryContent">
+                            <div class="labelText">
+                                <span>
+                                    CVC / CVV
+                            </span>
+                            </div>
+                            <div class="contryInput">
+                                <input style="padding-left: 20px;" type="text" placeholder="123">
+                            </div>
                         </div>
+                    </div>
+                   <div class="detailsInfo">
+                        <div class="itemsText agree" style="margin-top: 25px;">
+                            <span style="font-weigth:100;font-size:14px;width: 483px;height: 51px;" >By placing an order, you confirm that you have read and agree to our Privacy <br> Policy and Terms and Conditions.</span>
+                        </div>
+                    </div>
+                    <div class="paymentButton">
+                        <span style="font-weight: 900;font-size: 16px; color: #FFFF;">Pay & Place order</span>
                     </div>
                 </div>
-               <div class="detailsInfo" @click="checkidt = !checkidt">
-                    <div class="itemsText agree" style="margin-top: 25px;">
-                        <span style="font-weigth:100;font-size:14px;width: 483px;height: 51px;" >By placing an order, you confirm that you have read and agree to our Privacy <br> Policy and Terms and Conditions.</span>
-                    </div>
-                </div>
-                <div class="paymentButton">
-                    <span style="font-weight: 900;font-size: 16px; color: #FFFF;">Pay & Place order</span>
+                <div class="payPalth" v-show="paymentMode == 'payPal'">
+                    <div class="pill" ref="paypal"></div>
                 </div>
             </div>
             <hr style="height: 1128px;border-radius:8px">
@@ -203,7 +209,7 @@
                                     Shipping: 
                                 </span>
                                 <span style="font-size: 20px; font-weight: 900;color: #fff;">
-                                    $20
+                                    + ${{shippingPrice}}
                                 </span>
                                 <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
                      </div>
@@ -212,7 +218,7 @@
                                     GST (10%): 
                                 </span>
                                 <span style="font-size: 20px; font-weight: 900;color: #fff;">
-                                     $22,80
+                                    + ${{GTS}}
                                 </span>
                                 <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
                      </div>
@@ -232,85 +238,6 @@
             </div>
 
         </div>
-        <footer>
-             <div id="Groupe_84">
-            <div id="Pricing">
-                <span>Pricing</span>
-            </div>
-            <div id="Let_us_help">
-                <span>Let us help</span>
-            </div>
-            <div id="My_account">
-                <span>My account</span>
-            </div>
-            <div id="Contact__Support">
-                <span>Contact & Support</span>
-            </div>
-            <div id="FAQs">
-                <span>FAQs</span>
-            </div>
-            <div id="Stickers">
-                <span>Stickers</span>
-            </div>
-            <div id="Composition_of_one_kit">
-                <span>Composition of one kit</span>
-            </div>
-            <div id="How_to_fix_the_stickers">
-                <span>How to fix the stickers</span>
-            </div>
-            <div id="Options_for_stickers">
-                <span>Options for stickers</span>
-            </div>
-            <div id="Follow_us">
-                <span>Follow us</span>
-            </div>
-            <div id="Facebook">
-                <span>Facebook</span>
-            </div>
-            <div id="Instagram">
-                <span>Instagram</span>
-            </div>
-            <div id="Youtube">
-                <span>Youtube</span>
-            </div>
-            <div id="Privacy_and_Cookie_Policy">
-                <span>Privacy and Cookie Policy</span>
-            </div>
-            <div id="Terms_and_Conditions">
-                <span>Terms and Conditions</span>
-            </div>
-            <svg class="Ligne_3" viewBox="0 0 1366 5">
-                <path id="Ligne_3" d="M 0 0 L 1366 0">
-                </path>
-            </svg>
-            <div id="Copyright_2021_Flysoft_Enginee">
-                <span>Copyright 2021© Flysoft Engineering.</span>
-            </div>
-            <div id="ABN_16_998_486_520">
-                <span>ABN: 16 998 486 520</span>
-            </div>
-            <img id="Tentacule_footer_test_v2" src="../dist/assets/images/Tentacule_footer_test_v2.png">
-
-            <svg class="Rectangle_21">
-                <rect id="Rectangle_21" rx="26.5" ry="26.5" x="0" y="0" width="276" height="53">
-                </rect>
-            </svg>
-            <div id="Email">
-                <span>Email</span>
-            </div>
-            <svg class="Rectangle_22">
-                <rect id="Rectangle_22" rx="26.5" ry="26.5" x="0" y="0" width="276" height="53">
-                </rect>
-            </svg>
-            <div id="Subscribe">
-                <span>Subscribe</span>
-            </div>
-            <svg class="Ligne_4" viewBox="0 0 936 1">
-                <path id="Ligne_4" d="M 0 0 L 936 0">
-                </path>
-            </svg>
-        </div>
-        </footer>
     </div>
     <script src="../dist/assets/js/payment.js"></script>
 </body>

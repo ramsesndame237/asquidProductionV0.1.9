@@ -22,6 +22,7 @@ body{
     max-width: 1366px;
     max-height: 944px;
     margin: auto;
+    position: relative;
 }
 
 .canvasHeader{
@@ -89,6 +90,7 @@ body{
     padding: .5rem;
     margin: auto;
     margin-top: 3rem;
+    background: #fff;
 }
 .titleInfo{
     width: 379px;
