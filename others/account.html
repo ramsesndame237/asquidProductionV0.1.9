@@ -5,9 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../dist/assets/css/utils.css">
     <link rel="stylesheet" href="../dist/assets/css/account.css">
     <link rel="stylesheet" href="../dist/assets/css/globaHeader.css">
+    <link rel="stylesheet" href="../dist/assets/css/footer.css">
     <script src="../dist/plugin/vue.js"></script>
+    <script src="../dist/plugin/axios.min.js"></script>
 </head>
 <body>
     <div class="accountContainer" id="account">
@@ -15,12 +18,15 @@
             <div class="generalContent">
                 <div class="logoContainer">
                     <div class="logo">
-                        <img src="../dist/assets/images/logo.png" alt="">
+                        <a href="../index.html">
+                            <img src="../dist/assets/images/logo.png" alt="">
+                        </a>
                     </div>
     
                 </div>
                 <div class="linkContainerZone">
                     <div class="socialLinkContainer">
+                        <span v-if="connected"  style="font-size: 16px; color: #33CCFF; margin-top: 16px; cursor: pointer;" > Welcome {{username}} </span>
                         <div class="user">
                             <img src="../dist/assets/images/icon/user_V2.svg" alt="">
                         </div>
@@ -41,7 +47,7 @@
                         <ul class="link-item-list">
                             <li class="link-item-list-item dropdows ">Produit
                                 <ul class="dropdown-link-item">
-                                    <li><a href="products/kitSquid.html#Kit">Kit Squid</a></li>
+                                    <li><a href="../products/kitSquid.html#Kit">Kit Squid</a></li>
                                     <li><a href="products/flexiSquid.html#flexiSquidSelectioncontainer">FlexiSquid</a></li>
                                     <li><a href="products/rearsquid.html#rearContainer">Rear Squid</a></li>
                                 </ul>
@@ -81,7 +87,7 @@
                                     <span>First Name</span>
                                 </div>
                                 <div class="textInputLabel">
-                                    <input type="text">
+                                    <input type="text" v-model="user.name">
                                 </div>
                             </div>
                             <div class="lastname">
@@ -89,7 +95,7 @@
                                     <span>Last Name</span>
                                 </div>
                                 <div class="textInputLabel">
-                                    <input type="text">
+                                    <input type="text" v-model="user.lastName">
                                 </div>
                             </div>
                         </div>
@@ -98,7 +104,7 @@
                                 <span>Company Name:</span>
                             </div>
                             <div class="companyInputLabel">
-                                <input type="text">
+                                <input type="text" v-model="user.companyName">
                             </div>
                         </div>
                         <div class="contactContent d-flex">
@@ -107,7 +113,7 @@
                                     <span>Email:</span>
                                 </div>
                                 <div class="companyInputLabel">
-                                    <input type="text">
+                                    <input type="text" v-model="user.email">
                                 </div>
                             </div>
                             <div class="contactInformation">
@@ -115,7 +121,7 @@
                                     <span>Contact Numbers:</span>
                                 </div>
                                 <div class="contactInputLabel">
-                                    <input type="text">
+                                    <input type="text" v-model="user.tel1">
                                 </div>
                             </div>
 
@@ -125,7 +131,7 @@
                                 <span>Password:</span>
                             </div>
                             <div class="companyInputLabel">
-                                <input type="password">
+                                <input type="password" v-model="user.password">
                             </div>
                         </div>
                          <div class="contactContent d-flex">
@@ -133,13 +139,13 @@
                                 <div class="titleLabel comp">
                                     <span>Adress:</span>
                                 </div>
-                                <div class="companyInputLabel adress">
+                                <div class="companyInputLabel adress" v-model="user.tel2">
                                     <input type="text">
                                 </div>
-                                <div class="companyInputLabel adress">
+                                <div class="companyInputLabel adress" v-model="user.tel3">
                                     <input type="text">
                                 </div>
-                                <div class="companyInputLabel adress">
+                                <div class="companyInputLabel adress" v-model="user.tel3">
                                     <input type="text">
                                 </div>  
                             </div>
@@ -149,13 +155,16 @@
                                   <span>Town/City:</span>
                                   </div>
                                   <div class="contactInputLabel">
-                                      <input type="text">
+                                      <input type="text"v-model="user.city">
                                   </div>
                                 </div>
                                 <div class="titleLabel state">
                                     <span>State</span>
                                 </div>
-                                <div class="dropdownStateMenue d-flex">
+                                 <div class="contactInputLabel">
+                                      <input type="text"v-model="user.state">
+                                  </div>
+                                <!-- <div class="dropdownStateMenue d-flex">
                                     <div class="contentStateValue">
 
                                     </div>
@@ -163,13 +172,13 @@
                                     <div class="dropdownIcon">
                                         <img src="../dist/assets/images/arrowDown.png" alt="#">
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="titleLabel comp">
                                     <span>Postcode</span>
                                 </div>
                                 <div class="postCodeInput d-flex">
-                                    <input type="text">
+                                    <input type="text" v-model="user.postcode">
                                 </div>
                             </div>
 
@@ -182,29 +191,41 @@
                     <div class="aboutContentTitle">
                         <span>About your car</span>
                     </div>
-                    <div class="titleLabel state">
-                            <span>Brand</span>
-                    </div>
-                     <div class="dropdownStateMenue d-flex">
-                     <div class="contentStateValue">
-                    </div>
-                    <hr class="separateur" /> 
-                    <div class="dropdownIcon">
-                         <img src="../dist/assets/images/arrowDown.png" alt="#">
-                     </div>
+                    <div style="position: relative;">
+                        <div class="titleLabel state">
+                                <span>Brand</span>
+                        </div>
+                        <div class="dropdownStateMenue d-flex" @click="dropChoose = !dropChoose">
+                            <div class="contentStateValue">
+                                {{user.brand}}
+                            </div>
+                            <hr class="separateur"  /> 
+                            <div class="dropdownIcon">
+                                <img src="../dist/assets/images/arrowDown.png" alt="#">
+                            </div>
+                        </div>
+                           <div class="contentListOfBrandChooseProfil" v-if="dropChoose">
+                                <div class="ListOfBrandChooseProfil">
+                                   <div class="brandToChooseProfil" v-for="(item, index) in brandChooseList" :key="index">
+                                                <span @click="brandItem(item.value)" style="font-weight: 100;font-size: 16px;color: #002633;">
+                                                    {{item.value}}
+                                                </span>
+                                    </div>
+                               </div>
+                           </div>
                     </div>
                     <div class="titleLabel comp">
                         <span>Model</span>
                    </div>
                     <div class="postCodeInput d-flex">
-                       <input type="text">
+                       <input type="text" v-model="user.model">
                     </div>
                      <div class="titleLabel state">
                             <span>Years</span>
                     </div>
                      <div class="dropdownStateMenue d-flex" @click="dropChooseYear = !dropChooseYear">
                         <div class="contentStateValue">
-                            <span>{{YearsChoose}}</span>
+                            <span>{{user.years}}</span>
                         </div>
                         <hr class="separateur" /> 
                         <div class="dropdownIcon">
@@ -219,7 +240,7 @@
                           </div>
                      </div>
 
-                     <div class="updateButton">
+                     <div class="updateButton" @click ="userUpdate()">
                          <span>Update</span>
                      </div>
                   
@@ -227,92 +248,143 @@
                 </div>
 
             </div>
+            <div class="orderHistory" v-if="coditionToShow ==  'history'" v-for="(item, index) in commande" :key="index">
+                <div class="reviewOderHistory">
+                    <div class="title">
+                        <span>
+                            Order number: <span style="font-weight: 900;color: #fff;"> #0001 </span>
+                        </span>
+                        <br>
+                        <span>
+                            Date ordered: <span style="font-weight: 900;color: #fff;">30/09/2021</span>
+                        </span>
+                    </div>
+                    <div class="productDetailsHistory">
+                        <div class="globalHistory">
+                            <div class="historyContentOder">
+                                <div class="previewContainer">
+                                    <img src="#" alt="">
+                                </div>
+                            </div>
+                            <div class="historyTitleProduct">
+                                <span>
+                                    Kit <span style="color: #33CCFF;"> Squid</span>
+                                </span>
+                            </div>
+                            <div class="Yourdetail">
+                                <div class="labelDetailContainer">
+                                    <span style="font-style:20px;font-weight:900; color:#fff">
+                                        Your size:
+                                    </span>
+                                    <span style="font-style:20px;color:#fff">
+                                        value
+                                    </span>
+                                </div>
+                                <hr>
+                                <div class="labelDetailContainer">
+                                    <span style="font-style:20px;font-weight:900; color:#fff">
+                                        Your cut:
+                                    </span>
+                                    <span style="font-style:20px;color:#fff">
+                                        value
+                                    </span>
+                                </div>
+                                <hr>
+                                <div class="labelDetailContainer">
+                                    <span style="font-style:20px;font-weight:900; color:#fff">
+                                        Your extra sticker:
+                                    </span>
+                                    <span style="font-style:20px;color:#fff">
+                                        value
+                                    </span>
+                                </div>
+                                <hr>
+                                <div class="labelDetailContainer">
+                                    <span style="font-style:20px;font-weight:900; color:#fff">
+                                        Your design:
+                                    </span>
+                                    <span style="font-style:20px;color:#fff">
+                                        value
+                                    </span>
+                                </div>
+                                <hr>
+                                <div class="labelDetailContainer">
+                                    <span style="font-style:20px;font-weight:900; color:#fff">
+                                       Quantity:
+                                    </span>
+                                    <span style="font-style:20px;color:#fff">
+                                        value
+                                    </span>
+                                </div>
+                                <hr>
+                                 <div class="labelDetailContainer">
+                                    <span style="font-style:20px;font-weight:900; color:#fff">
+                                        Total:
+                                    </span>
+                                    <span style="font-style:20px; font-weight: 900; color:#fff">
+                                        value
+                                    </span>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <hr style="height: 429px; margin-left:50px;margin-right: 27.74px;">
+                <div class="reviewProgressHistory">
+                     <div class="title">
+                            <span>
+                                Statut: <span style="font-weight: 900;color: #fff;"> Order in progress of verifcation </span>
+                            </span>
+                    </div>
+                     <div class="productDetailsHistory" style="margin-top: 70px;">
+                        <div class="globalHistory">
+                            <div class="Yourdetail">
+                                <div class="labelDetailContainer">
+                                    <span style="font-style:20px;font-weight:900; color:#fff">
+                                        Your size:
+                                    </span>
+                                    <span style="font-style:20px;color:#fff">
+                                        value
+                                    </span>
+                                </div>
+                                <hr>
+                                <div class="labelDetailContainer">
+                                    <span style="font-style:20px;font-weight:900; color:#fff">
+                                        Your cut:
+                                    </span>
+                                    <span style="font-style:20px;color:#fff">
+                                        value
+                                    </span>
+                                </div>
+                                <hr>
+                                <div class="labelDetailContainer">
+                                    <span style="font-style:20px;font-weight:900; color:#fff">
+                                        Your extra sticker:
+                                    </span>
+                                    <span style="font-style:20px;color:#fff">
+                                        value
+                                    </span>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- <div class="commandeContainer" >
+                <span>
+                    You haven't a product commande 
+                </span>
+            </div> -->
     
         </div>
-         <footer>
-            <div id="Groupe_84">
-                <div id="Pricing">
-                    <span>Pricing</span>
-                </div>
-                <div id="Let_us_help">
-                    <span>Let us help</span>
-                </div>
-                <div id="My_account">
-                    <span>My account</span>
-                </div>
-                <div id="Contact__Support">
-                    <span>Contact & Support</span>
-                </div>
-                <div id="FAQs">
-                    <span>FAQs</span>
-                </div>
-                <div id="Stickers_dw">
-                    <span>Stickers</span>
-                </div>
-                <div id="Composition_of_one_kit">
-                    <span>Composition of one kit</span>
-                </div>
-                <div id="How_to_fix_the_stickers">
-                    <span>How to fix the stickers</span>
-                </div>
-                <div id="Options_for_stickers">
-                    <span>Options for stickers</span>
-                </div>
-                <div id="Follow_us">
-                    <span>Follow us</span>
-                </div>
-                <div id="Facebook">
-                    <span>Facebook</span>
-                </div>
-                <div id="Instagram">
-                    <span>Instagram</span>
-                </div>
-                <div id="Youtube">
-                    <span>Youtube</span>
-                </div>
-                <div id="Privacy_and_Cookie_Policy">
-                    <span>Privacy and Cookie Policy</span>
-                </div>
-                <div id="Terms_and_Conditions">
-                    <span>Terms and Conditions</span>
-                </div>
-                <svg class="Ligne_3" viewBox="0 0 1366 5">
-                    <path id="Ligne_3" d="M 0 0 L 1366 0">
-                    </path>
-                </svg>
-                <div id="Copyright_2021_Flysoft_Enginee">
-                    <span>Copyright 2021© Flysoft Engineering.</span>
-                </div>
-                <div id="ABN_16_998_486_520">
-                    <span>ABN: 16 998 486 520</span>
-                </div>
-                <img id="Tentacule_footer_test_v2" src="dist/assets/images/Tentacule_footer_test_v2.png" alt="#">
-                    
-                <svg class="Rectangle_21">
-                    <rect id="Rectangle_21" rx="26.5" ry="26.5" x="0" y="0" width="276" height="53">
-                    </rect>
-                </svg>
-                <div id="Email">
-                    <span>Email</span>
-                </div>
-                <svg class="Rectangle_22">
-                    <rect id="Rectangle_22" rx="26.5" ry="26.5" x="0" y="0" width="276" height="53">
-                    </rect>
-                </svg>
-                <div id="Subscribe">
-                    <span>Subscribe</span>
-                </div>
-                <svg class="Ligne_4" viewBox="0 0 936 1">
-                    <path id="Ligne_4" d="M 0 0 L 936 0">
-                    </path>
-                </svg>
-            </div>
-            <!-- <div class="chatBox">
-                <i class="fa fa-fw">
-            </div> -->
-        </footer>
     </div>
 
     <script src="../dist/assets/js/account.js"></script>
+    <script src="../dist/assets/js/config.js"></script>
 </body>
 </html>

@@ -144,6 +144,7 @@ ul,li,a{text-decoration: none !important; list-style: none !important; }
 .dropdown-link-item li{
     margin-top: 10px;
     margin-bottom: 10px;
+    margin-left: 36px;
     cursor: pointer;
     transition: all .2s;
 }
@@ -151,6 +152,9 @@ ul,li,a{text-decoration: none !important; list-style: none !important; }
 .dropdown-link-item li:hover{
     border: solid #33ccff;
     border-radius: 10px;
+}
+.dropdown-link-item li:hover img{
+    display: flex;
 }
 .rearSquidBreakcrumb{
     height: 80px;
@@ -167,14 +171,14 @@ ul,li,a{text-decoration: none !important; list-style: none !important; }
 	position: relative;
     width: 100%;
     margin-top: 3rem;
-    grid-template-columns: 1fr 1fr;
-    grid-row-gap: 30px;
-    grid-column-gap: 20px;
+    grid-template-columns: 1fr 2fr;
+    grid-row-gap: 50px;
+    grid-column-gap: 59px;
 }
 .photoKitSquidProduct{
 	 border-radius: 45px;
-    height: 478px;
-    width: 553px;
+    height: 460px;
+    width: 530px;
     background: #fff;
     border: solid 1px #919da1;
 }
@@ -229,12 +233,7 @@ ul,li,a{text-decoration: none !important; list-style: none !important; }
 	color: #fff;
 	font-size: 20px;
 	font-weight: 700;
-	margin-bottom: 27px;
-}
-
-
-.sizeKitSquid {
-	margin-top: 1rem;
+	margin-bottom: 35px;
 }
 
 
@@ -280,8 +279,8 @@ ul,li,a{text-decoration: none !important; list-style: none !important; }
 
 .containerSizeSquid{
 	grid-template-columns: 1fr 1fr 1fr;
-	grid-row-gap: 30px;
-    grid-column-gap: 20px;
+	grid-row-gap: 24px;
+    grid-column-gap: 24px;
     display: grid;
 	width: 30rem;
 }
@@ -307,8 +306,8 @@ border: solid red;
 }
 .containerExtraSquid,.containerDesignSquid,.containerCutSquid{
 	grid-template-columns: 1fr 1fr 1fr;
-    grid-row-gap: 30px;
-    grid-column-gap: 20px;
+    grid-row-gap: 24px;
+    grid-column-gap: 24px;
     display: grid;
 	width: 30rem;
     position: relative;
@@ -400,7 +399,7 @@ text-align: center;
 }
 
 .quantitySquid{
-    margin-top: 39px;
+    margin-top: 35px;
 }
 .messageLettering{
     width: 184px;
@@ -525,7 +524,7 @@ text-align: center;
     visibility: visible;
 }
 .SumaryRearSquid {
-    margin-top: 39px;
+    margin-top: 35px;
 }
 
 .Kitmodal-content{
@@ -549,4 +548,8 @@ text-align: center;
 height: 65px;
 margin: auto;
 
+}
+
+.descriptionRearSquid{
+    margin-bottom: 35px;
 }

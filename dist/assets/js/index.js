@@ -1,4 +1,3 @@
-var  baseUri='http://localhost:3350/api/'
 
 var app = new Vue({
     el: '#indexPage',
@@ -7,9 +6,12 @@ var app = new Vue({
             checkidt: false,
             connected: false,
             conditionConnect: false,
-            clicked:false,
+            numberOfProduct: '0',
+            clicked: false,
+            baseUri:'https://adsquid.herokuapp.com/api/',
             User: [],
-            messageInTheBox:'',
+            messageInTheBox: '',
+            success:false,
             userConnect: null,
             itemTextToShow: '',
             username: '',
@@ -29,10 +31,42 @@ var app = new Vue({
                     model: '',
                     yearModel:''
                 }]
-            }
+            },
+            productPresentation: {
+                name: "",
+                label: "",
+                description: "",
+                caracteristique: "",
+                photo:""
+            },
         }
     },
     methods: {
+        openModal() {
+            console.log("ooakakak")
+             // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        
+        // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+            modal.style.display = "block";
+            
+            // When the user clicks the button, open the modal 
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+        modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+        }
+        },
         /**
          * this function is to generate UUID
          */
@@ -66,7 +100,7 @@ var app = new Vue({
             }
 
             await api.post(this.baseUri + "auth/signup",dataToSend).then((response) => {
-              console.log(response)
+                console.log(response)
             }).catch((error) => {
                 console.log(error)
                 console.log(dataToSend)
@@ -90,7 +124,10 @@ var app = new Vue({
 
             this.User.push(userToSave)
             localStorage.setItem('User', JSON.stringify(this.User))
-            this.itemTextToShow ='confirmMail'
+            this.itemTextToShow = 'confirmMail'
+            setTimeout(() => {
+                this.itemTextToShow = 'Signin'
+            }, 1500);
         },
         /**
          * this fuction is to connecte a new user 
@@ -103,6 +140,17 @@ var app = new Vue({
             }
             await axios.post(this.baseUri + "auth/signin", user).then((response) => {
                 console.log(response)
+                localStorage.setItem("accessToken", JSON.stringify(response.data.accessToken))
+                localStorage.setItem("refreshToken", JSON.stringify(response.data.refreshToken))
+                this.username = response.data.name
+                this.itemTextToShow = ""
+                localStorage.setItem("userInfomation",JSON.stringify(response.data))
+                this.connected = true
+                localStorage.setItem("connect",this.connected)
+                var modal = document.getElementById("myModal");
+                modal.style.display = "none";
+
+                
             }).catch((error) => {
                 console.log(error)
                 console.log(axios)
@@ -117,20 +165,23 @@ var app = new Vue({
             }
         },
         signOut() {
-            localStorage.removeItem('Userconnected')
+            localStorage.removeItem('connect')
             window.location.reload()
         }
        
     },
     mounted() {
         this.itemTextToShow = 'Signin'
-        if (JSON.parse(localStorage.getItem('Userconnected')) != null && localStorage.getItem('Userconnected').length > 0) {
-            let userInfo = JSON.parse(localStorage.getItem('Userconnected'))
-            this.username = userInfo.Fname 
+        if (JSON.parse(localStorage.getItem('User')) != null && localStorage.getItem('User').length > 0) {
+            let userInfo = JSON.parse(localStorage.getItem('User'))
+            this.username = userInfo[0].Fname 
             this.connected = true
+            console.log(userInfo[0].Fname)
         }
 
-        localStorage.setItem('UserConnected',JSON.stringify(''))
+        this.connected = localStorage.getItem("connect")
+
+
     },
    
   })

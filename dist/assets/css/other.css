@@ -1,0 +1,503 @@
+@font-face {
+    font-family: 'Avenir';
+    src:url('../fonts/Avenir/AvenirLTStd-Roman.woff'), url('../fonts/Avenir/AvenirLTStd-Black.woff'), url('../fonts/Avenir/AvenirLTStd-Book.woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.activeTitle{
+    border-bottom: solid 4px #33CCFF;
+}
+.d-flex{
+    display: flex;
+}
+
+
+
+.accountContainer{
+    background: #002633;
+    max-width:1366px;
+    max-height: 1551px;
+    margin: auto;
+    width: 1366px;
+    height: 1551px;
+}
+
+.chooseTypeContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 33px;
+    margin-top: 48px;
+}
+
+.profilContainerTitle{
+    margin-left: 559px;
+    font-size: 20px;
+    width: 98px;
+    height: 27px;
+    font-weight: 900;
+    cursor: pointer;
+    font-family: 'Avenir';
+    color: #fff;
+}
+
+.orderHistoryContainer{
+    width: 132px;
+    height: 27px;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    font-weight: 900;
+    font-family: 'Avenir';
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.profilAccountContent{
+    display: grid;
+    grid-template-columns: 2fr .5fr 2fr; 
+    grid-gap: 63px;
+    margin-top: 60px;
+}
+.personalInformationContent{
+    margin-left: 214px;
+}
+.personnalContent{
+    margin-top: 24px;
+}
+.PersonaltitleContent{
+    width: 195px;
+    height: 27px;
+    color: #33CCFF;
+    font-size: 20px;
+    font-family: 'Avenir';
+}
+.titleLabel{
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    font-family: 'Avenir';
+}
+.textInputLabel{
+    width: 150px;
+    height: 40px;
+    border-radius: 25px;
+    opacity: 1;
+    margin-top: 6px;
+    overflow: hidden;
+}
+.textInputLabel input,.companyInputLabel input,.contactInputLabel input,.postCodeInput input{
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    border: 1px solid #919DA1;
+    text-align: center;
+}
+
+.textInputLabel input:focus,.companyInputLabel input:focus,.contactInputLabel input:focus,.postCodeInput input:focus{
+    outline: none;
+    border: none;
+}
+.lastname{
+    margin-left: 38px;
+}
+.comp{
+    margin-top: 6px;
+}
+.companyInputLabel{
+    width: 338px;
+    height: 40px;
+    border: 1px solid #919DA1;
+    border-radius: 25px;
+    opacity: 1;
+    margin-top: 6px;
+}
+.contactInformation {
+    margin-left: 33px;
+}
+.contactInputLabel{
+    width: 277px;
+    height: 40px;
+    border: 1px solid #919DA1;
+    border-radius: 25px;
+    opacity: 1;
+    margin-top: 6px;
+}
+.adress{
+    margin-top: 23px;
+}
+.dropdownStateMenue,.postCodeInput{
+    width: 188px;
+    height: 40px;
+    border: 1px solid #919DA1;
+    border-radius: 25px;
+    opacity: 1;
+    background: #fff;
+    cursor: pointer;
+    justify-content: space-between;
+}
+.dropdownIcon {
+    width: 14px;
+    height: 8px;
+    margin-right: 13px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+.contentStateValue{
+    border-left: 1px #919DA1;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dropdownIcon img{
+    width: 100%;
+    height: 100%;
+}
+.state{
+    margin-top: 20px;
+}
+
+.aboutContentTitle{
+ width: 203px;
+height: 27px;
+color: #33CCFF;
+opacity: 1;
+font-size: 20px;
+margin-right: 261px;   
+}
+
+.dropDowpcontainerToYearChoose{
+    background: #fff;
+    width: 203px;
+    height: 150px;
+    border-radius: 25px;
+    text-align: center;
+    overflow: auto;
+}
+.containerChoosing{
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.updateButton{
+    width: 184px;
+    height: 54px;
+    background: #33CCFF 0% 0% no-repeat padding-box;
+    border-radius: 30px;
+    opacity: 1;
+    margin-top: 337px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 900;
+    cursor: pointer;
+    margin-right: 156px;
+}
+
+.titleBreak{
+    width: 380px;
+    height: 52px;
+    color: #FFFFFF;
+    font-size: 38px;
+    font-weight: 900;
+    margin-left: 192px;
+    margin-top: 100px;
+    font-family: 'Avenir';
+}
+.subTitleBreak{
+    width: 249px;
+    height: 22px;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-family: 'Avenir';
+    margin-left: 192px;
+    margin-top: 14px;
+}
+.myAccountLoginAndRegister{
+    margin-left: 192px;
+    margin-top: 183px;
+    font-family: 'Avenir';
+    display: flex;
+}
+.loginContent{
+    margin-top: 24px;
+    width: 439px;
+    height: 291px;
+    padding: 10px;
+    overflow: hidden;
+}
+.labelText{
+    color: #FFFFFF;
+    font-size: 20px;
+    margin-bottom: 8px;
+    font-weight: 900;
+    font-family: 'Avenir';
+}
+.InputTextContent{
+    width: 420px;
+    height: 40px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #919DA1;
+    border-radius: 25px;
+    overflow: hidden;
+}
+input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    padding-left: 20px;
+}
+input:focus{
+   border: none;
+    outline: none; 
+}
+.remberMe{
+    width: 23px;
+    height: 23px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #919DA1;
+    border-radius: 6px;
+    position: relative;
+    margin-top: 49.79px;
+    cursor: pointer;
+}
+.remberMe img{
+    width: 100%;
+    height: 100%;
+}
+.checkMe{
+    position: absolute;
+    top: -3px;
+    left: 3px;
+    width: 25px;
+height: 23px;
+}
+.checkMe img{
+    width: 100%;
+    height: 100%;
+}
+.textRember{
+    margin-top: 55px;
+    color: #FFFFFF;
+    font-family: 'Avenir';
+    margin-left: 8px;
+    width: 164px;
+height: 22px;
+}
+.actionButton{
+    display: flex;
+}
+.loginButton{
+    width: 184px;
+    height: 54px;
+    background: #33CCFF 0% 0% no-repeat padding-box;
+    border-radius: 28px;
+    display: flex;
+    color: #FFFFFF;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 32px;
+    margin-left: 29px;
+    font-weight: 900;
+    cursor: pointer;
+}
+.fogetPassword{
+    width: 137px;
+    margin-top: 19px;
+    height: 22px;
+    color: #33CCFF;
+    font-size: 16px;
+    font-weight: 100;
+    margin-left: 265px;
+    cursor: pointer;
+}
+.registerContainer{
+    margin-left: 202px;
+}
+
+.termsContainer{
+    background: #002633;
+    max-width: 1366px;
+    max-height: 3549px;
+    margin: auto;
+    font-family: 'Avenir';
+}
+.termeAndConditionContent{
+    width: 1042px;
+    height: 2628px;
+    color: #FFFFFF;
+    margin-top: 163px;
+    margin-left: 179px;
+}
+.introTerme{
+    width: 1042px;
+    height: 22px;
+    font-family: 'Avenir';
+}
+.titleTermsContent{
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Avenir';
+    margin-top: 40px;
+}
+.intelectualContent,.accountContent,.saleContent,.paymentContent,.shippingContent,.consumerContent,.limitationContent,.indemnityContent{
+    font-family: 'Avenir';
+    width: 1082px;
+    margin-top: 20px;
+}
+.descriptionContent{
+    font-family: 'Avenir';
+    margin-top: 20px;
+
+}
+.ContactZone{
+    width: 1366px;
+    height: 1718px;
+    background: #002633 0% 0% no-repeat padding-box;
+    margin: auto;
+
+}
+.ContactContainer{
+    margin-bottom: 199px;
+}
+.contactContent{
+    margin-left: 192px;
+    margin-top: 51px;
+}
+.introContact{
+    width: 983px;
+height: 81px;
+color: #33CCFF;
+font-size: 20px;
+
+}
+.formContact{
+    margin-top: 31px;
+    font-family: 'Avenir';
+}
+.nameContainer{
+    margin-top: 14px;
+}
+.textLabelContact{
+    color: #FFFFFF;
+    font-weight: 900;
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+.inputContact{
+    width: 700px;
+    height: 40px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #919DA1;
+    border-radius: 25px;
+}
+.texteraContainer{
+    width: 700px;
+    height: 289px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #919DA1;
+    border-radius: 25px;
+}
+.texteraContainer textarea{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+}
+.actionAndContact{
+    display: flex;
+    margin-top: 46px;
+}
+.contactInformationL{
+    color: #33CCFF;
+    font-size: 14px;
+    font-weight: 100;
+}
+.sendButton{
+    width: 184px;
+    height: 54px;
+    background: #33CCFF 0% 0% no-repeat padding-box;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-weight: 900;
+    font-size: 20px;
+    margin-left: 194px;
+    cursor: pointer;
+}
+
+.welcomeContainer{
+    width: 660px;
+    height: 311px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    border-radius: 25px;
+    margin: auto;
+    position: relative;
+}
+.modalToContent{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.contentMessage{
+    width: 600px;
+    height: 266px;
+    margin-left: 30px;
+    font-size: 20px;
+    font-weight: 900;
+    color: #002633;
+    position: relative;
+    margin-top: 23px;
+}
+.flagContainer{
+    width: 200px;
+    height: 144px;
+    position: absolute;
+    z-index: 10000;
+    left: -38px;
+}
+.flagContainer img{
+    width: 100%;
+    height: 100%;
+}
+.close{
+    position: absolute !important;
+}
+.sendBoxContainer{
+    width: 505px;
+    height: 306px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    border-radius: 25px;
+    opacity: 1;
+    margin: auto;
+    position: relative;
+}
+.messageToContainer{
+    font-size: 20px;
+    color: #002633;
+    font-weight: 900;
+    margin-top: 57px;
+    margin-left: 28px;
+    text-align: center;
+}
+.imageContainerSend{
+    width: 72px;
+    height: 73px;
+    margin-left: 217px;
+    margin-top: 44px;
+}
+.imageContainerSend img{
+    width: 100%;
+    height: 100%;
+}

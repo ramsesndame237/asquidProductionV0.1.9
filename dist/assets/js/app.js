@@ -6,13 +6,16 @@ var app = new Vue({
     extraChooseList:[],
     designChooseList:[],
     resumeChooseList: [],
+    baseUri:'https://adsquid.herokuapp.com/api/',
     info: [],
       infoCut: [],
     infoDesign:[],
     index: 0,
       indx: 0,
       dropChoose: false,
+      numberOfProduct: '0',
       dropModelChoose: false,
+
       YeardropChoose:false,
       tmp: false,
       ToShow:false,
@@ -20,6 +23,9 @@ var app = new Vue({
       proposition: false,
       visuel:false,
       NoExtra: true,
+      largeExtraPrice: 0,
+      oneWayPrice: 0,
+      hoodPrice:0,
       CutPrice: 0,
       extraPrice: 0,
       designPrice: 0,
@@ -137,7 +143,13 @@ var app = new Vue({
           id:'5',quantity:'5 kit Squid',value:"5"
         },
 
-      ]
+      ],
+      product: {
+        photoProduit: "",
+        tagProduit: "",
+        description: "",
+        price:""
+      }
   },
     methods: {
       removeItem(itemId, value) {
@@ -158,7 +170,8 @@ var app = new Vue({
             this.dropChoose = false
       },
       brandItem(itemId, value) {
-         console.log(itemId)
+        console.log(itemId)
+        console.log(value)
             this.YourBrandChoose = itemId
             this.dropChoose = false
       },
@@ -234,23 +247,29 @@ var app = new Vue({
           this.extraChooseList[n].classList.remove("actived")
           this.info[n].classList.remove("actived")
           if (n == 0) {
-                if (this.Yoursize == 'Size XS "600 x 200 mm"' || this.Yoursize == 'Size S "900 x 300 mm"') {
-                 this.YourTotal = this.YourTotal - 25
+            if (this.Yoursize == 'Size XS "600 x 200 mm"' || this.Yoursize == 'Size S "900 x 300 mm"') {
+                  this.largeExtraPrice = -25
+                 this.YourTotal = this.YourTotal - this.largeExtraPrice
               
-            } else if (this.Yoursize == 'Size L "1,500 x 500 mm"' ||this.Yoursize == 'Size XL "2,000 x 600 mm"' ) {
-            this.YourTotal = this.YourTotal - 89
+            } else if (this.Yoursize == 'Size L "1,500 x 500 mm"' || this.Yoursize == 'Size XL "2,000 x 600 mm"') {
+              this.largeExtraPrice = -89
+            this.YourTotal = this.YourTotal - this.largeExtraPrice
               this.extraPrice = this.extraPrice + this.extraPrice
             } else if (this.Yoursize == 'Size M "1,200 x 400 mm') {
-              this.YourTotal = this.YourTotal - 49
+              this.largeExtraPrice= -49
+              this.YourTotal = this.YourTotal - this.largeExtraPrice
             }
           } else if (n == 1) {
-            this.YourTotal = this.YourTotal - 199
+            this.oneWayPrice = -199
+            this.YourTotal = this.YourTotal - this.oneWayPrice
             this.ToShow=false
           } else if (n == 2) {
-                if (this.Yoursize == 'Size XS "600 x 200 mm"' || this.Yoursize == 'Size S "900 x 300 mm"' || this.Yoursize == 'Size M "1,200 x 400 mm') {
-                  this.YourTotal = this.YourTotal - 25
-              } else if (this.Yoursize == 'Size L "1,500 x 500 mm"' ||this.Yoursize == 'Size XL "2,000 x 600 mm"' ) {
-              this.YourTotal = this.YourTotal - 49
+            if (this.Yoursize == 'Size XS "600 x 200 mm"' || this.Yoursize == 'Size S "900 x 300 mm"' || this.Yoursize == 'Size M "1,200 x 400 mm') {
+                  this.hoodPrice = -25
+                  this.YourTotal = this.YourTotal - this.hoodPrice
+            } else if (this.Yoursize == 'Size L "1,500 x 500 mm"' || this.Yoursize == 'Size XL "2,000 x 600 mm"') {
+              this.hoodPrice=-49
+              this.YourTotal = this.YourTotal - this.hoodPrice
                   
             } 
             
@@ -262,16 +281,20 @@ var app = new Vue({
           this.YourExtraToSave.push(item.nomExtra)
           console.log(this.YourExtraToSave)
           if (n == 0) {
-                if (this.Yoursize == 'Size XS "600 x 200 mm"' || this.Yoursize == 'Size S "900 x 300 mm"') {
-                  this.extraPrice = 25
-                } else if (this.Yoursize == 'Size L "1,500 x 500 mm"' ||this.Yoursize == 'Size XL "2,000 x 600 mm"' ) {
-                  this.extraPrice = 89
-                } else if (this.Yoursize == 'Size M "1,200 x 400 mm') {
-                  this.extraPrice = 49
+            if (this.Yoursize == 'Size XS "600 x 200 mm"' || this.Yoursize == 'Size S "900 x 300 mm"') {
+                  this.largeExtraPrice = 25
+                  this.extraPrice = this.extraPrice + this.largeExtraPrice
+            } else if (this.Yoursize == 'Size L "1,500 x 500 mm"' || this.Yoursize == 'Size XL "2,000 x 600 mm"') {
+              this.largeExtraPrice = 89
+                  this.extraPrice = this.extraPrice + this.largeExtraPrice
+            } else if (this.Yoursize == 'Size M "1,200 x 400 mm') {
+              this.largeExtraPrice = 49
+                  this.extraPrice = this.extraPrice + this.largeExtraPrice
                 }
             }
-            if (n == 1) {
-              this.extraPrice = 199
+          if (n == 1) {
+              this.oneWayPrice = 199
+              this.extraPrice = this.extraPrice +  this.oneWayPrice
               this.ToShow = true
                           var modal = document.getElementById("myModal");
                   // Get the <span> element that closes the modal
@@ -296,20 +319,13 @@ var app = new Vue({
                   modal.style.display = "none";
               }, 5000);
             } if (n == 2) {
-                if (this.Yoursize == 'Size XS "600 x 200 mm"' || this.Yoursize == 'Size S "900 x 300 mm"' || this.Yoursize == 'Size M "1,200 x 400 mm') {
-                  this.extraPrice = 25
-                } else if (this.Yoursize == 'Size L "1,500 x 500 mm"' ||this.Yoursize == 'Size XL "2,000 x 600 mm"' ) {
-                  this.extraPrice = 49
+              if (this.Yoursize == 'Size XS "600 x 200 mm"' || this.Yoursize == 'Size S "900 x 300 mm"' || this.Yoursize == 'Size M "1,200 x 400 mm') {
+                  this.hoodPrice = 25
+                  this.extraPrice = this.extraPrice +this.hoodPrice
+              } else if (this.Yoursize == 'Size L "1,500 x 500 mm"' || this.Yoursize == 'Size XL "2,000 x 600 mm"') {
+                this.hoodPrice = 49
+                  this.extraPrice = this.extraPrice + this.hoodPrice
                 } 
-            }
-            if (this.YourExtra.length > 1) {
-              this.tmp = true
-              document.querySelector(".extraContent").classList.add("extraSummary")
-              document.querySelector(".SumaryRearSquidContainer").classList.add("correctWidth")
-            } else {
-              this.tmp = false
-              document.querySelector(".SumaryRearSquidContainer").classList.remove("correctWidth")
-              document.querySelector(".extraContent").classList.remove("extraSummary")
             }
             this.YourTotal = this.extraPrice + this.YourTotal
         }
@@ -319,6 +335,7 @@ var app = new Vue({
         console.log(n)
       },
       sizeShowActive(n) {
+        this.YourTotal = this.YourTotal - this.sizePrice
         for (let i = 0; i < this.ChoseItemList.length; i++) {
           this.ChoseItemList[i].classList.remove("actived")
         }
@@ -327,37 +344,43 @@ var app = new Vue({
             let dataSize={
               width:"600",
               height:"200"
-            }
+           }
+           this.sizePrice = 49
             localStorage.setItem("customizerSize",JSON.stringify(dataSize))
         }else if(n == 1){
             this.Yoursize ='Size S "900 x 300 mm"'
             let dataSize={
               width:"900",
               height:"300"
-            }
+           }
+           this.sizePrice = 99
             localStorage.setItem("customizerSize",JSON.stringify(dataSize))
         }else if(n== 2){
             this.Yoursize ='Size M "1,200 x 400 mm"'
             let dataSize={
               width:"1,200",
               height:"400"
-            }
+           }
+           this.sizePrice = 169  
             localStorage.setItem("customizerSize",JSON.stringify(dataSize))
         }else if(n==3){
             this.Yoursize ='Size L "1,500 x 500 mm"'
             let dataSize={
               width:"1,500",
               height:"500"
-            }
-            localStorage.setItem("customizerSize",JSON.stringify(dataSize))
+           }
+           this.sizePrice = 269
+           localStorage.setItem("customizerSize", JSON.stringify(dataSize))
         }else if (n==4) {
             this.Yoursize ='Size XL "2,000 x 600 mm"'
             let dataSize={
               width:"2,000",
               height:"600"
-            }
+           }
+           this.sizePrice = 399
             localStorage.setItem("customizerSize",JSON.stringify(dataSize))
         }
+        this.YourTotal = this.YourTotal + this.sizePrice
 
         this.ChoseItemList[n].classList.add("actived")
         this.cutShowActive(0)
@@ -378,32 +401,30 @@ var app = new Vue({
           this.YourCut = 'Rectangular'
           localStorage.setItem("cutCustomizer",this.YourCut)
           if (this.Yoursize == 'Size XS "600 x 200 mm"') {
-            this.CutPrice = 49
-            this.sizePrice = this.CutPrice
+            this.CutPrice = 0
           } else if (this.Yoursize == 'Size S "900 x 300 mm"') {
-            this.CutPrice =99
+            this.CutPrice =0
           } else if (this.Yoursize == 'Size M "1,200 x 400 mm') {
-            this.CutPrice =169
+            this.CutPrice =0
           } else if (this.Yoursize == 'Size L "1,500 x 500 mm"') {
-            this.CutPrice =269
+            this.CutPrice =0
           } else if (this.Yoursize == 'Size XL "2,000 x 600 mm"') {
-            this.CutPrice = 399
+            this.CutPrice = 0
           }
         }
         else if (n == 1) {
           this.YourCut = 'Round'
           localStorage.setItem("cutCustomizer",this.YourCut)
           if (this.Yoursize == 'Size XS "600 x 200 mm"') {
-            this.CutPrice = 60
-            this.sizePrice = 0
+            this.CutPrice = 20
           } else if (this.Yoursize == 'Size S "900 x 300 mm"') {
-            this.CutPrice =109
+            this.CutPrice =20
           } else if (this.Yoursize == 'Size M "1,200 x 400 mm') {
-            this.CutPrice =189
+            this.CutPrice =30
           } else if (this.Yoursize == 'Size L "1,500 x 500 mm"') {
-            this.CutPrice =299
+            this.CutPrice =40
           } else if (this.Yoursize == 'Size XL "2,000 x 600 mm"') {
-            this.CutPrice = 439
+            this.CutPrice = 50
           }
         }
         else if (n == 2) {
@@ -411,16 +432,15 @@ var app = new Vue({
           this.YourCut = 'Lettering'
           localStorage.setItem("cutCustomizer",this.YourCut)
           if (this.Yoursize == 'Size XS "600 x 200 mm"') {
-            this.CutPrice = 60
-            this.sizePrice = 0
+            this.CutPrice = 20
           } else if (this.Yoursize == 'Size S "900 x 300 mm"') {
-            this.CutPrice =109
+            this.CutPrice =20
           } else if (this.Yoursize == 'Size M "1,200 x 400 mm') {
-            this.CutPrice =189
+            this.CutPrice =30
           } else if (this.Yoursize == 'Size L "1,500 x 500 mm"') {
-            this.CutPrice =299
+            this.CutPrice =40
           } else if (this.Yoursize == 'Size XL "2,000 x 600 mm"') {
-            this.CutPrice = 439
+            this.CutPrice = 50
           }
 
           setTimeout(() => {
@@ -458,7 +478,7 @@ var app = new Vue({
         }
         this.YourTotal = this.YourTotal + this.designPrice
       },
-      saveCommande() {
+      saveCommande() { 
         this.proposition = true
         this.ToShow = false
           let data ="Kit"

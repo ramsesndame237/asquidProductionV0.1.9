@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asquid | Kit Squid</title>
-    <link rel="icon" href="../dist/assets/images/logo.png">
+    <link rel="icon" href="../dist/assets/images/Picto.png">
     <link rel="stylesheet" href="../dist/assets/css/kitsquid.css">
     <link rel="stylesheet" href="../dist/assets/css/myCustomiseDropdown.css">
     <link rel="stylesheet" href="../dist/assets/css/footer.css">
@@ -17,14 +17,16 @@
     <!-- <link rel="stylesheet" href="../dist/plugin/responsive/css/bootstrap.min.css"> -->
     <!--vue js -->
     <script src="../dist/plugin/vue.js"></script>
+    <script src="../dist/plugin/axios.min.js"></script>
 
 </head>
 <body>
     <div class="KitSquidBody" id="kitSquid">
         <header class="rearSquidHeader">
             <div class="rearSquidHeaderLogo">
-                <img src="../dist/assets/images/logo.png" alt="logo asquid vehicule">
-                
+                 <a href="../index.html">
+                    <img src="../dist/assets/images/logo.png" alt="logo asquid vehicule">
+                </a>
             </div>
             <div class="socialLinkRearSquid">
                   <div class="social-link">
@@ -33,6 +35,9 @@
                         </div>
                         <div class="shopping">
                             <img src="../dist/assets/images/icon/shopping-cart_V2.svg" alt="">
+                            <div class="numberofProduct" v-if="numberOfProduct != '0'">
+                                <span> {{numberOfProduct}} </span>
+                            </div>
                         </div>
                         <div class="search_utilisateur">
                             <div class="search-icon">
@@ -47,18 +52,16 @@
                     <div class="link-item">
                         <ul class="link-item-list">
                             <li class="link-item-list-item dropdows ">Produit
-                                <ul class="dropdown-link-item">
-                                    <li><a href="kitSquid.html#Kit">Kit Squid</a></li>
-                                    <li><a href="flexiSquid.html#flexiSquidSelectioncontainer">Flexi Squid</a></li>
-                                    <li><a href="rearsquid.html#rearContainer">Rear Squid</a></li>
+                               <ul class="dropdown-link-item">
+                                    <li style="display:  flex;" class="linkToProduct"><a href="kitSquid.html#Kit">Kit Squid</a> <span><img src="../dist/assets/images/arrowDown2.png" alt=""></span> </li>
+                                    <li style="display:  flex;" class="linkToProduct"><a href="flexiSquid.html#flexiSquidSelectioncontainer">FlexiSquid</a><span><img src="../dist/assets/images/arrowDown2.png" alt=""></span></li>
+                                    <li style="display:  flex;" class="linkToProduct"><a href="rearsquid.html#rearContainer">Rear Squid</a><span><img src="../dist/assets/images/arrowDown2.png" alt=""></span></li>
                                 </ul>
 
                             </li>
                             <li class="link-item-list-item">Quote</li>
-                            <li class="link-item-list-item">Business service</li>
                         </ul>
                     </div>
-
             </div>
         </header>
         <div class="KitSquidContainer">
@@ -69,6 +72,7 @@
             </div>
             <div class="KitContainer" id="Kit">
                 <div class="photoKitSquidProduct">
+                    <img v-if="photoProduit" :src="photoProduit" alt="">
 
                 </div>
                 <div class="KitSquidDetailsContainer">
@@ -123,7 +127,7 @@
                              </div>
                         </div>
                     </div>
-                    <div class="cutKitSquid" style="margin-top: 39px;">
+                    <div class="cutKitSquid" style="margin-top: 35px;">
                         <div class="titleRearSquid">
                          <span>choose your <span style="color: #33ccff;"> cut:</span></span>
                         </div>
@@ -145,7 +149,7 @@
                              
                         </div>
                     </div>
-                    <div class="extraSquid" style="margin-top: 39px;">
+                    <div class="extraSquid" style="margin-top: 35px;">
                         <div class="titleRearSquid">
                             <span>choose your <span style="color: #33ccff;"> extra stickers:</span></span>
                         </div>
@@ -214,7 +218,7 @@
                                 <div class="contentListOfBrandChoose" v-if="dropChoose">
                                     <div class="ListOfBrandChoose">
                                         <div class="brandToChoose" v-for="(item, index) in brandChooseList" :key="index">
-                                            <span @click="brandItem(item.value)" style="font-weight: 100;font-size: 16px;color: #002633;">
+                                            <span @click="brandItem(item.value,index)" style="font-weight: 100;font-size: 16px;color: #002633;">
                                                 {{item.value}}
                                             </span>
                                         </div>
@@ -283,7 +287,7 @@
                                    </div>
                                </div>
                             </div>
-                              <div class="titleRearSquid" style="margin-top: 39px;">
+                              <div class="titleRearSquid" style="margin-top: 35px;">
                                <span>Additional  <span style="color: #33ccff;"> information:</span></span>
                              </div>
                              <div class="MoreDetails">
@@ -292,7 +296,7 @@
                         </div>
 
                     </div>
-                    <div class="designSquid" style="margin-top: 39px;">
+                    <div class="designSquid" style="margin-top: 35px;">
                         <div class="titleRearSquid ">
                          <span>choose your <span style="color: #33ccff;"> design:</span></span>
                         </div>
@@ -363,15 +367,14 @@
                     </div>
                     <div class="SumaryRearSquid ">
                         <div class="titleSummary">
-                            <span style="color: #33ccff;">Summary</span>
+                            <span style="color: #33ccff;">Summary</span>:
                         </div>
                         <div class="SumaryRearSquidContainer">
                             <div class="yourSizeResume">
-                                <div class="texteSummary">
+                                <div class="texteSummary" style="margin-top: 25px;">
                                     <span style="font-size: 20px;font-weight: 900; color: #002633;">Your size: </span> <span style="color: #002633;font-weight:100;font-size: 20px;"> {{Yoursize}}</span><span v-if="sizePrice >0" style="color: #002633;font: weight 900;font-size:20px" > (${{sizePrice}}) </span>
                                 </div>
                                 <div class="lineSummary">
-
                                 </div>
                             </div>
                              <div class="yourSizeResume">
@@ -382,18 +385,28 @@
 
                                 </div>
                             </div>
-                            <div class="yourSizeResume extraContent">
-                                <div class="texteSummary">
+                            <div class="yourSizeResume" v-if="NoExtra">
+                               <div class="texteSummary">
+                                   <span style="font-size: 20px;font-weight: 900; color: #002633;margin-right: 5px;">Your extra sticker: </span>  <span style="color: #002633;font-weight:100;font-size: 20px;">{{NoneExtra}}</span> <span v-if="designPrice >0" style="color: #002633;font: weight 900;font-size:20px" > ( + ${{designPrice}}) </span>
+                               </div>
+                               <div class="lineSummary">
+
+                               </div>
+                           </div>
+                            <div class="yourSizeResume" v-else>
+                                <div class="texteSummaryExtra">
                                     <div class="contentText">
-                                        <span style="font-size: 20px;font-weight: 900; color: #002633; margin-right: 5px;">Your extra sticker:</span>
-                                        <div v-if="tmp"  :key="index" style="width: 232px;height: auto; max-height: 78px; overflow: hidden;margin-left: 8px;">
-                                            <span style="color: #002633;font-weight:100;font-size: 20px;"  v-for="(item, index) in YourExtra">
-                                                {{item.nomExtra}} <br>  <span v-if="tmp" > +</span>
-                                            </span>
+                                         <span style="font-size: 20px;font-weight: 900; color: #002633;margin-right: 5px;">
+                                            Your extra sticker:
+                                        </span>
+                                        <div class="containerContent">
+                                            <div v-for="(item, index) in YourExtraToSave" :key="index">
+                                                <span style="font-weight: 100;">
+                                                    {{item}} <span></span>
+                                                </span>
+                                            </div>
                                         </div>
-                                        <!-- <span v-if="extraPrice >0" style="color: #002633;font: weight 900;font-size:20px" > ( + ${{extraPrice}}) </span> -->
-                                        <span v-else style="color: #002633;font-weight:100;font-size: 20px;"  v-for="iteme in YourExtra"> {{iteme.nomExtra}} </span>
-                                        <span  v-if="NoExtra" style="color: #002633;font-weight:100;font-size: 20px;">{{NoneExtra}} </span>
+
                                     </div>
                                     <div class="lineSummary">
                                     </div>
@@ -416,7 +429,7 @@
                                 </div>
                             </div>
                              <div class="yourSizeResume">
-                                <div class="texteSummary">
+                                <div class="texteSummary" style="margin-bottom: 25px;">
                                     <span style="font-size: 20px;font-weight: 900; color: #002633;margin-right: 5px;">Total: </span>  <span style="color: #002633;font-weight:900;font-size: 20px;"> ${{YourTotal}}</span> <span style="color: #002633;font-size: 16px;font-weight: 100;"> (ex.GST) </span>
                                 </div>
                                 <div class="lineSummary">
@@ -428,9 +441,9 @@
 
                     </div>
                     <div class="RearactionButton">
-                        <div class="uploadDesignRear">
+                        <!-- <div class="uploadDesignRear">
                             <span>Upload My Design</span>
-                        </div>
+                        </div> -->
                         <div class="customizerRear" @click="saveCommande">
                             <span>Customize</span>
                         </div>
@@ -549,7 +562,7 @@
                 </div>
                 <div class="guideLineSaveAre">
                     <div class="safeAreZone">
-                        <span class="display-4 fw-bold">Safe Area</span>
+                        <span class="display-4 fw-bold">{{dimensionKit}}</span>
                     </div>
 
                 </div>
@@ -672,6 +685,7 @@
 
 
     <script src="../dist/plugin/jquery.min.js"></script>
+    <script src="../dist/assets/js/config.js"></script>
     <script src="../dist/plugin/responsive/js/bootstrap.min.js"></script>
     <script src="../dist/assets/js/app.js"></script>
 </body>

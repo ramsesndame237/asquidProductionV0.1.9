@@ -22,6 +22,9 @@
     width: 1366px;
     height: 1551px;
 }
+.accountBodyContainer{
+    margin-bottom: 295px;
+}
 
 .chooseTypeContainer{
     display: grid;
@@ -139,7 +142,7 @@
     width: 14px;
     height: 8px;
     margin-right: 13px;
-    margin-top: 15px;
+    margin-top: 9px;
     cursor: pointer;
 }
 .contentStateValue{
@@ -196,237 +199,90 @@ margin-right: 261px;
     margin-right: 156px;
 }
 
-.titleBreak{
-    width: 380px;
-    height: 52px;
-    color: #FFFFFF;
-    font-size: 38px;
-    font-weight: 900;
-    margin-left: 192px;
-    margin-top: 100px;
-    font-family: 'Avenir';
-}
-.subTitleBreak{
-    width: 249px;
-    height: 22px;
-    color: #FFFFFF;
-    font-size: 16px;
-    font-family: 'Avenir';
-    margin-left: 192px;
-    margin-top: 14px;
-}
-.myAccountLoginAndRegister{
-    margin-left: 192px;
-    margin-top: 183px;
-    font-family: 'Avenir';
+.orderHistory{
+    width: 1088px;
+    height: 1612px;
+    margin-top: 56px;
+    margin-left: 140px;
     display: flex;
 }
-.loginContent{
-    margin-top: 24px;
-    width: 420px;
-    height: 291px;
-    padding: 10px;
-    overflow: hidden;
-}
-.labelText{
-    color: #FFFFFF;
-    font-size: 20px;
-    margin-bottom: 8px;
-    font-weight: 900;
-    font-family: 'Avenir';
-}
-.InputTextContent{
-    width: 420px;
-    height: 40px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #919DA1;
-    border-radius: 25px;
-    overflow: hidden;
-}
-input {
-    width: 100%;
-    height: 100%;
-    border: none;
-    outline: none;
-    border-radius: 25px;
-    padding-left: 20px;
-}
-input:focus{
-   border: none;
-    outline: none; 
-}
-.remberMe{
-    width: 23px;
-    height: 23px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #919DA1;
-    border-radius: 6px;
-    position: relative;
-    margin-top: 49.79px;
-    cursor: pointer;
-}
-.remberMe img{
-    width: 100%;
-    height: 100%;
-}
-.checkMe{
-    position: absolute;
-    top: -3px;
-    left: 3px;
-    width: 25px;
-height: 23px;
-}
-.checkMe img{
-    width: 100%;
-    height: 100%;
-}
-.textRember{
-    margin-top: 55px;
-    color: #FFFFFF;
-    font-family: 'Avenir';
-    margin-left: 8px;
-    width: 164px;
-height: 22px;
-}
-.actionButton{
-    display: flex;
-}
-.loginButton{
-    width: 184px;
-    height: 54px;
-    background: #33CCFF 0% 0% no-repeat padding-box;
-    border-radius: 28px;
-    display: flex;
-    color: #FFFFFF;
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 32px;
-    margin-left: 29px;
-    font-weight: 900;
-    cursor: pointer;
-}
-.fogetPassword{
-    width: 137px;
-    margin-top: 19px;
-    height: 22px;
+.title{
     color: #33CCFF;
-    font-size: 16px;
-    font-weight: 100;
-    margin-left: 265px;
+}
+.previewContainer{
+    width: 283px;
+    height: 96px;
+    border: solid 1px #919DA1;
+    margin-bottom: 17px;
+    margin-top: 50px;
+}
+.productDetailsHistory{
+    margin-top: 17px;
+    display: grid;
+    grid-gap: 20px 92px;
+    grid-template-columns: 1fr 1fr;
+}
+.labelDetailContainer{
+    margin-bottom: 12.5px;
+    margin-top: 12.5px;
+}
+.historyTitleProduct{
+    font-size: 20px;
+    font-weight: 900;
+    color:#fff ;
+}
+.Yourdetail{
+    margin-top: 16px;
+}
+.separateur{
+    height: 15px;
+    margin-top: 10px;
+}
+.contentListOfBrandChooseProfil{
+	width: 249px;
+	height: 180px;
+	padding-right: 15px;
+	position: absolute;
+	top: 70px;
+	left: -25px;
+	border-radius: 25px;
+	background: #fff;
+	z-index: 1000;
+}
+.ListOfBrandChooseProfil{
+	width: 100%;
+	height: 170px;
+	overflow: auto;
+
+}
+.ListOfBrandChooseProfil{
+	text-align: center;
+}
+.brandToChoose{
+	margin-top: 15px;
+}
+
+.ListOfBrandChooseProfil::-webkit-scrollbar,.ListColorChoose::-webkit-scrollbar {
+    width: 2px;
+    border-radius: 8px;
+}
+
+.ListOfBrandChooseProfil::-webkit-scrollbar-thumb,.ListColorChoose::-webkit-scrollbar-thumb {
+  background: #919DA1;
+  height: 2px;
+}
+
+.ListOfBrandChooseProfil::-webkit-scrollbar-track-piece,.ListColorChoose::-webkit-scrollbar-track-piece {
+  background: lightgray;
+}
+
+.ListOfBrandChooseProfil::-webkit-scrollbar-button:start,.ListColorChoose::-webkit-scrollbar-button:start {
+  height: 5px;
+}
+.ListOfBrandChooseProfil::-webkit-scrollbar-button:end,.ListColorChoose::-webkit-scrollbar-button:end {
+  height: 5px;
+}
+.brandToChooseProfil{
+	margin-top: 15px;
     cursor: pointer;
-}
-.registerContainer{
-    margin-left: 202px;
-}
-
-.termsContainer{
-    background: #002633;
-    max-width: 1366px;
-    max-height: 3549px;
-    margin: auto;
-    font-family: 'Avenir';
-}
-.termeAndConditionContent{
-    width: 1042px;
-    height: 2628px;
-    color: #FFFFFF;
-    margin-top: 163px;
-    margin-left: 179px;
-}
-.introTerme{
-    width: 1042px;
-    height: 22px;
-    font-family: 'Avenir';
-}
-.titleTermsContent{
-    font-size: 20px;
-    font-weight: 900;
-    font-family: 'Avenir';
-    margin-top: 40px;
-}
-.intelectualContent,.accountContent,.saleContent,.paymentContent,.shippingContent,.consumerContent,.limitationContent,.indemnityContent{
-    font-family: 'Avenir';
-    width: 1082px;
-    margin-top: 20px;
-}
-.descriptionContent{
-    font-family: 'Avenir';
-    margin-top: 20px;
-
-}
-
-.ContactContainer{
-    width: 1366px;
-    height: 1718px;
-    background: #002633 0% 0% no-repeat padding-box;
-    margin: auto;
-}
-.contactContent{
-    margin-left: 192px;
-    margin-top: 51px;
-}
-.introContact{
-    width: 983px;
-height: 81px;
-color: #33CCFF;
-font-size: 20px;
-
-}
-.formContact{
-    margin-top: 31px;
-    font-family: 'Avenir';
-}
-.nameContainer{
-    margin-top: 14px;
-}
-.textLabelContact{
-    color: #FFFFFF;
-    font-weight: 900;
-    font-size: 20px;
-    margin-bottom: 6px;
-}
-.inputContact{
-    width: 700px;
-    height: 40px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #919DA1;
-    border-radius: 25px;
-}
-.texteraContainer{
-    width: 700px;
-    height: 289px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #919DA1;
-    border-radius: 25px;
-}
-.texteraContainer textarea{
-    width: 100%;
-    height: 100%;
-    border: none;
-    outline: none;
-    border-radius: 25px;
-}
-.actionAndContact{
-    display: flex;
-    margin-top: 46px;
-}
-.contactInformationL{
-    color: #33CCFF;
-    font-size: 14px;
-    font-weight: 100;
-    margin-right: 194px;
-}
-.sendButton{
-    width: 184px;
-    height: 54px;
-    background: #33CCFF 0% 0% no-repeat padding-box;
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #FFFFFF;
-    font-weight: 900;
-    font-size: 20px;
 }

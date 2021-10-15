@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../dist/assets/css/shipping.css">
     <link rel="stylesheet" href="../dist/assets/css/footer.css">
     <script src="../dist/plugin/vue.js"></script>
+    <script src="../dist/plugin/axios.min.js"></script>
 </head>
 <body>
     <div class="shippingContentContainer" id="shipping">
@@ -77,7 +78,7 @@
                         </span>
                     </div>
                     <div class="labelInput">
-                        <input type="email">
+                        <input type="email" v-model="user.email">
                     </div>
                 </div>
                 <div class="personalInfo">
@@ -88,7 +89,7 @@
                             </span>
                         </div>
                         <div class="nameInput">
-                            <input type="text">
+                            <input type="text" v-model="user.name">
                         </div>
                     </div>
                     <div class="lasName">
@@ -98,7 +99,7 @@
                             </span>
                         </div>
                         <div class="nameInput">
-                            <input type="text">
+                            <input type="text" v-model="user.lastName">
                         </div>
                     </div>
                 </div>
@@ -109,7 +110,7 @@
                         </span>
                     </div>
                     <div class="labelInput">
-                        <input type="text">
+                        <input type="text" v-model="user.companyName">
                     </div>
                 </div>
                 <div class="LabelInputText">
@@ -119,12 +120,12 @@
                         </span>
                     </div>
                     <div class="labelInput">
-                        <input type="text">
+                        <input type="text" v-model="user.tel1">
                     </div>
                 </div>
                    <div class="LabelInputText" style="margin-top: 23px;">
                     <div class="labelInput">
-                        <input type="text">
+                        <input type="text" v-model="user.tel2">
                     </div>
                 </div>
                 <div class="LabelInputText">
@@ -134,7 +135,7 @@
                         </span>
                     </div>
                     <div class="labelInput">
-                        <input type="text">
+                        <input type="text" v-model="user.city">
                     </div>
                 </div>
                 <div class="placeStateContainer">
@@ -145,7 +146,7 @@
                         </span>
                         </div>
                         <div class="contryInput">
-                            <input type="text">
+                            <input type="text" v-model="user.country">
                         </div>
                     </div>
                     <div class="countryContent">
@@ -155,7 +156,7 @@
                         </span>
                         </div>
                         <div class="contryInput">
-                            <input type="text">
+                            <input type="text" v-model="user.state">
                         </div>
                     </div>
                     <div class="countryContent">
@@ -165,7 +166,7 @@
                         </span>
                         </div>
                         <div class="contryInput">
-                            <input type="text">
+                            <input type="text" v-model="user.postcode">
                         </div>
                     </div>
                 </div>
@@ -176,7 +177,7 @@
                         </span>
                     </div>
                     <div class="contactInput">
-                        <input type="number">
+                        <input type="number" v-model="user.tel1">
                     </div>
                 </div>
                 <div class="billingAdress">
@@ -206,7 +207,7 @@
             <div class="cartShipping">
                 <div class="shippingSelling" v-for="(item, index) in carts" :key="index">
                     <div class="previewContain">
-                        <img :src="item.visual" alt="">
+                        <img :src="item.visuelCommande" alt="">
                     </div>
                     <div class="descriptionContent">
                         <div class="titleProduct">
@@ -220,7 +221,7 @@
                                         Your size: 
                                     </span>
                                     <span style="font-size: 20; font-weight: 200;color: #fff;">
-                                        {{item.product.sizeProduct}}
+                                        {{item.sizeCommande}}
                                     </span>
                                     <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
                                 </div>
@@ -229,7 +230,7 @@
                                         Your cut:
                                     </span>
                                     <span style="font-size: 20; font-weight: 200;color: #fff;">
-                                         {{item.product.cutProduct}}
+                                         {{item.cutCommande}}
                                     </span>
                                     <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
                                 </div>
@@ -238,7 +239,7 @@
                                         Your extra sticker:
                                     </span>
                                     <span style="font-size: 20; font-weight: 200;color: #fff;">
-                                         {{item.product.extraProduct}}
+                                         {{item.extraCommande}}
                                     </span>
                                     <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
                                 </div>
@@ -247,7 +248,7 @@
                                         Your design: 
                                     </span>
                                     <span style="font-size: 20; font-weight: 200;color: #fff;">
-                                         {{item.product.designProduct}}
+                                         {{item.designCommande}}
                                     </span>
                                     <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
                                 </div>
@@ -256,8 +257,8 @@
                                         Quantity: 
                                     </span>
                                     <span style="font-size: 20; font-weight: 200;color: #fff;">
-                                         {{item.product.quantityProduct}}
-                                         <img src="../dist/assets/images/Customisateur" alt="">
+                                         {{item.quantityCommande}}
+                                         <!-- <img src="../dist/assets/images/Customisateur/up-arrow.png" alt=""> -->
                                     </span>
                                     <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
                                 </div>
@@ -266,7 +267,7 @@
                                         Total:
                                     </span>
                                     <span style="font-size: 20; font-weight: 900;color: #fff;">
-                                          $ {{item.product.totalAmountProduct}}
+                                          $ {{item.amountCommande}}
                                     </span>
                                     <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
                                 </div>
@@ -391,6 +392,7 @@
         </div>
         </footer>
     </div>
+    <script src="../dist/assets/js/config.js"></script>
     <script src="../dist/assets/js/shipping.js"></script>
 </body>
 </html>

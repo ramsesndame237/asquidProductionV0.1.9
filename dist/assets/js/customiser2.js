@@ -6,6 +6,7 @@ var app = new Vue({
         textToShowCustom:'',
         textToShow: "layout",
         background: false,
+        curve:'',
         textIconShow:'',
         dowloadLogo: false,
         dropChoose:false,
@@ -309,13 +310,14 @@ var app = new Vue({
             this.sidebarItemList[n].className += " activeToolsItem";
         },
         showActiveBackground(n) {
+            localStorage.setItem("selectBackground",n)
             for (var i = 0; i < this.selectBackgroundLayoutList.length; i++) {
                 this.selectBackgroundLayoutList[i].className = this.selectBackgroundLayoutList[
                     i
                 ].className.replace(" activeToolsItem", "");
             }
             if (n == 0) {
-                this.imagesBackground ="#"
+                this.imagesBackground =""
             } else {
                 let imagesSelectionner = this.selectBackgroundLayoutList[n].getElementsByTagName('img')[0].src;
                 this.imagesBackground = imagesSelectionner

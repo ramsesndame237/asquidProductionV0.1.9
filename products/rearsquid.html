@@ -5,19 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Asquid | RearSquid</title>
-    <link rel="icon" href="../dist/assets/images/logo.png">
+    <link rel="icon" href="../dist/assets/images/Picto.png">
     <link rel="stylesheet" href="../dist/assets/css/rearSquid.css">
     <link rel="stylesheet" href="../dist/assets/css/myCustomiseDropdown.css">
     <link rel="stylesheet" href="../dist/assets/css/footer.css">
     <link rel="stylesheet" href="../dist/assets/css/utils.css">
     <script src="../dist/plugin/vue.js"></script>
+    <script src="../dist/plugin/axios.min.js"></script>
 </head>
 <body>
     <div id="rearSquid" class="rearSquidBody">
         <header class="rearSquidHeader">
             <div class="rearSquidHeaderLogo">
-                <img src="../dist/assets/images/logo.png" alt="logo asquid vehicule">
-                
+                <a href="../index.html">
+                    <img src="../dist/assets/images/logo.png" alt="logo asquid vehicule">
+                </a>
             </div>
             <div class="socialLinkRearSquid">
                   <div class="social-link">
@@ -75,7 +77,9 @@
                          <span>From </span><span style="font-style:normal;font-weight:bold;">$49</span>
                     </div>
                     <div class="reviewRearSquid">
-                        <span>Review</span>
+                         <div class="startContainer">
+                            <img src="../dist/assets/images/Star/star.png" alt="">
+                        </div>
                     </div>
                     <div class="descriptionRearSquid">
                         <div class="tagsRearSquid">
@@ -110,7 +114,7 @@
                                             <span style="color: #33ccff;">
                                                 800 X 250 mm
                                             </span>
-                                        </div>
+                               </div>
                             </div>
                              <div class="sizeRearContainer" @click="RearShowActive(1)">
                                 <div class="imagesRearSize">
@@ -162,10 +166,113 @@
                         </div>
                     </div>
                     <div class="chooseRearSquidCar" v-show="itemToTextShow == 'AllWindowcar'">
-                         <div class="titleRearSquid">
+                         <!-- <div class="titleRearSquid">
                             <span>What's your <span style="color: #33ccff;"> car</span></span>
+                        </div> -->
+                        <div class="carInformation" v-show="ToShow">
+                        <div class="titleRearSquid">
+                            <span>What’s your  <span style="color: #33ccff;"> car:</span></span>
                         </div>
-                        <div class="chooseContainerCategorie">
+                        <div class="carInfomationContent">
+                            <div class="YourBrand">
+                                <div class="TextLabel">
+                                    <span style="font-size: 20px;font-weight: 900;color: #fff;">
+                                        Your brand:
+                                    </span>
+                                </div>
+                                <div class="selectBrandContainer" @click="(dropChoose = !dropChoose),(dropModelChoose = false)">
+                                    <div class="brandChoose">
+                                        <span>
+                                            {{YourBrandChoose}}
+                                        </span>
+                                    </div>
+                                    <hr style="height: 20px; margin-top: 10px;">
+                                    <div class="downDrop">
+                                        <img src="../dist/assets/images/arrowDown.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="contentListOfBrandChoose" v-if="dropChoose">
+                                    <div class="ListOfBrandChoose">
+                                        <div class="brandToChoose" v-for="(item, index) in brandChooseList" :key="index">
+                                            <span @click="brandItem(item.value)" style="font-weight: 100;font-size: 16px;color: #002633;">
+                                                {{item.value}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style="width: 408px; margin-top:21px;margin-left:30.5px">
+                            <div class="YourModel">
+                                 <div class="TextLabel">
+                                    <span style="font-size: 20px;font-weight: 900;color: #fff;">
+                                        Your model:
+                                    </span>
+                                </div>
+                                <div class="YourModelContainer">
+                                    <input type="text" v-model="YourModelChoose" placeholder="Vitro, Navarra…">
+                                </div>
+                            </div>
+                            <hr style="width: 408px; margin-top:21px;margin-left:30.5px">
+                            <div class="YourColor">
+                                <div class="TextLabel">
+                                    <span style="font-size: 20px;font-weight: 900;color: #fff;">
+                                        Color of vehicle:
+                                    </span>
+                                </div>
+                                <div class="selectColorContainer">
+                                    <div class="colorChoose" @click="dropModelChoose = !dropModelChoose">
+                                        <div class="colorToChoose">
+                                        </div>
+                                        <hr style="height: 20px; margin-left: 10px; margin-top: 10px;">
+                                        <div class="downDrop">
+                                            <img src="../dist/assets/images/arrowDown.png" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="contentColorList" v-show="dropModelChoose" >
+                                        <div class="ListColorChoose">
+                                            <div class="colorToSelect" v-for="(item, index) in colorChooseList" @click="chooseColor(item)" :key="index">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="YourYear">
+                                  <div class="TextLabelYear">
+                                    <span style="font-size: 20px;font-weight: 900;color: #fff;">
+                                        Year of vehicle:
+                                    </span>
+                                </div>
+                                <div class="selectBrandContainer" @click="(YeardropChoose = !YeardropChoose),(dropModelChoose = false)">
+                                    <div class="brandChoose">
+                                        <span>
+                                            {{YourYearChoose}}
+                                        </span>
+                                    </div>
+                                    <hr style="height: 20px; margin-top: 10px;">
+                                    <div class="downDrop">
+                                        <img src="../dist/assets/images/arrowDown.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="contentListOfBrandChoose" v-if="YeardropChoose">
+                                   <div class="ListOfBrandChoose">
+                                       <div class="brandToChoose"  v-for="(item, index) in YearList" @click="(YearItem(item)), (YeardropChoose = !YeardropChoose)" :key="index">
+                                           <span  style="font-weight: 100;font-size: 16px;color: #002633; cursor: pointer;">
+                                               {{item}}
+                                           </span>
+                                       </div>
+                                   </div>
+                               </div>
+                            </div>
+                              <div class="titleRearSquid" style="margin-top: 39px;">
+                               <span>Additional  <span style="color: #33ccff;"> information:</span></span>
+                             </div>
+                             <div class="MoreDetails">
+                                 <textarea name="more information" id="information" cols="30" rows="10"></textarea>
+                             </div>
+                        </div>
+
+                    </div>
+                        <!-- <div class="chooseContainerCategorie">
                             <div class="brandChosseRear">
                                 <div class="brandContainer">
                                     <span>Your brand:</span>
@@ -233,7 +340,7 @@
                                     </div>
 
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="designRearSquid">
                         <div class="titleRearSquidDesign">
@@ -288,7 +395,7 @@
                         <div class="SumaryRearSquidContainer">
                             <div class="yourSizeResume">
                                 <div class="texteSummary">
-                                    <span style="color: #002633;font-weight:900;font-size:20px">Your size: </span> <span style="color: #002633; font-weight:200;font-size:20px"> {{YourRearSize}}</span> <span v-if="sizePrice >0" style="color: #002633;font: weight 900;font-size:20px" > ( + ${{sizePrice}}) </span>
+                                    <span style="color: #002633;font-weight:900;font-size:20px">Your size: </span> <span style="color: #002633; font-weight:200;font-size:20px"> {{YourRearSize}}</span> <span v-if="sizePrice >0" style="color: #002633;font: weight 900;font-size:20px" > (${{sizePrice}}) </span>
                                 </div>
                                 <div class="lineSummary">
 
@@ -334,7 +441,7 @@
 
             </div>
         </div>
-               <div id="myModal" class="modal">
+        <div id="myModal" class="modal">
 
             <span  class="close">&times;</span>
                 <!-- Modal content -->
@@ -358,7 +465,8 @@
                     </div>
                 </div>
                 <div class="visuel" v-if="visuel">
-                    <div class="cardVisuelContainer">
+                    <div class="cardVisuelContainer" v-for="(item, index) in commande" :key="index" @click="custo(item)">
+                        <img :src="item.visuelCommande" alt="">
                     </div>
                 </div>
                 <div v-if="grapic" class="graphicSupportKit animate__animated animate__fadeInUp">
@@ -368,6 +476,21 @@
                     <span style="width: 379px;height: 54px; font-weight:900;font-size:20px">
                         A graphic proposal will be sent to you within 48 hours
                     </span>
+                </div>
+                <div v-show="ToShow" class="rearContainerExtra">
+                    <div class="contentMessage">
+                        <span style="color: #002633;font-weight: 900;font-size: 20px;">
+                            Thank you for choosing the “All Window”, a graphic proposal to the size of your rear
+                             window will be sent to you <br> within 48 hours 
+                            </span>
+                            <br>
+                            <span style="color: #33CCFF;font: size 16px;font-weight:100 ">
+                                Please fill out the form in order to have the most information about your vehicle
+                            </span>
+                    </div>
+                    <div class="close">
+                        <span style="font-weight: 100;"  >&times;</span>
+                    </div>
                 </div>
 
         </div>
@@ -545,6 +668,7 @@
         </footer>
       
     </div>
+    <script src="../dist/assets/js/config.js"></script>
     <script src="../dist/assets/js/rear.js"></script>
 </body>
 </html>

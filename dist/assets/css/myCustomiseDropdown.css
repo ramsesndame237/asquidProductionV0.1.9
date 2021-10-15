@@ -85,8 +85,8 @@
 
 .SumaryRearSquidContainer{
     background: #fff;
-    height: 435px;
-    width: 460px;
+    height: 475px;
+    width: 500px;
     border-radius: 28px;
     overflow: hidden;
 }
@@ -95,9 +95,7 @@
 }
 .yourSizeResume,.yourDesignResume,.yourQuantityResume,.yourTotalSummary{
     width: 100%;
-    height: 54px;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    height: 75px;
     position: relative;
     overflow: hidden;
 }
@@ -109,16 +107,21 @@
     background: #002633;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 0.5rem;
+    margin-top: 20px;
 }
 .texteSummary{
     margin-left: auto;
     margin-right: auto;
     width: 411px;
-    margin-top: 15px;
     font-weight: 900;
+    margin-top: 20px;
     /* display: flex; */
-
+}
+.texteSummaryExtra{
+     margin-left: auto;
+    margin-right: auto;
+    width: 411px;
+    font-weight: 900;
 }
 .RearactionButton{
     display: flex;
@@ -145,9 +148,19 @@
     background: #fff;
     color: #33ccff;
 }
+.uploadDesignRear:hover{
+    border: solid #33ccff;
+    background: transparent;
+    color: #33ccff;
+}
 .customizerRear{
     background: #33ccff;
     color: #fff ;
+}
+.customizerRear:hover{
+    border: solid #fff;
+    background: transparent;
+    color: #fff;
 }
 .customizerRear a {
     color: #fff;
@@ -318,4 +331,5 @@
     }
     .contentText{
         display: flex;
+        height: 54px;
     }

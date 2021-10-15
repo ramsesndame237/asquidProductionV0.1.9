@@ -9,12 +9,15 @@
     <link rel="stylesheet" href="dist/assets/css/utils.css">
 
     <script src="dist/plugin/vue.js"></script>
+    <script src="dist/plugin/axios.min.js"></script>
 </head>
 <body>
     <div class="previewCanvas" id="previewImageFinal">
         <header class="canvasHeader">
             <div class="logoContainerHeader">
-                <img src="dist/assets/images/logo.png" alt="">
+                <a href="index.html">
+                    <img src="dist/assets/images/logo.png" alt="">
+                </a>
             </div>
             <hr style="height: 65px;border: 2px solid #FFFFFF;opacity: 1; width:2px;border-radius:8px;margin-top: 55px;">
             <div class="titleContainer">
@@ -83,13 +86,99 @@
                                     </div>
                             </div>
                         </div>
+                          <div class="modal-content" v-if="itemTextToShow == 'Signin'" >
+                    <div class="titleModal">
+                        <span>
+                            Sign in to Adsquid
+                        </span>
+                    </div>
+                    <div class="signupContainer">
+                        <div class="emailInputLabel">
+                            <span>
+                                Email
+                            </span>
+                        </div>
+                        <div class="inputLabel">
+                            <input type="email" v-model="dataRegistration.email" placeholder="Exemple@adsquid.com.au" required>
+                        </div>
+                        <div class="emailInputLabel">
+                            <span>
+                                Password
+                            </span>
+                        </div>
+                        <div class="inputLabel">
+                            <input v-model="dataRegistration.password" type="password" required>
+                        </div>
+                    </div>
+                    <div class="btnContent" @click="SigninSave">
+                        <span>My profile
+                            Continue
+                        </span>
+                    </div>
+                    <div class="remember">
+                        <div class="imgCheck" @click="checkidt = !checkidt">
+                            <img src="dist/assets/images/Carre.png" alt="#">
+                            <div class="checkArrow" v-if="checkidt">
+                                <img src="dist/assets/images/Check_click.png" alt="#">
+                            </div>
+                        </div>
+                        <span style="margin-top: 16px;width: 164px;height: 22px;">Remember Me</span>
+                        <span style="color: #33CCFF; margin-top:16px;margin-left: 12px;">Forgot Password?</span>
+                    </div>
+                    <hr style="width: 150px; margin: auto;margin-top: 16px;">
+                    <div class="notMember">
+                        <span style="font-size: 20px;color: #002633;">
+                            Not a member yet? <span style="color: #33CCFF; cursor: pointer;" @click="itemTextToShow = 'Signup'"> Join now</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="signinContainer" v-if="itemTextToShow == 'Signup'">
+                    <div class="titleModal">
+                        <span>
+                            Sign in to Adsquid
+                        </span>
+                    </div>
+                    <div class="signupContainer">
+                        <div class="emailInputLabel">
+                            <span>
+                                Email
+                            </span>
+                        </div>
+                        <div class="inputLabel">
+                            <input type="email" v-model="dataRegistration.email" placeholder="Exemple@adsquid.com.au" required>
+                        </div>
+                    </div>
+                    <div class="btnContent" @click="saveUser">
+                        <span>
+                            Continue
+                        </span>
+                    </div>
+
+                </div>
+                <div class="signinContainer" v-if="itemTextToShow == 'confirmMail'">
+                    <div class="titleModal">
+                        <span>
+                            Sign in to Adsquid
+                        </span>
+                    </div>
+                    <div class="signupContainer" style=" margin-top: 49px;margin-left: 83px;">
+                    <span style="font-size:20px;font-weight:900;color: #002633; ">
+                        Email send with your password
+                    </span>
+                    </div>
+                    <div class="imageEmail">
+                        <img src="dist/assets/images/Web_icon_2/email.png" alt="">
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
 
     </div>
-    
+    <script src="dist/assets/js/config.js"></script>
     <script src="dist/assets/js/previewCanvas.js"></script>
+
 </body>
 </html>

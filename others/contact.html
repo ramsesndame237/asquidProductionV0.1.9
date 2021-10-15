@@ -5,16 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASQUID | Terms and Conditions</title>
-    <link rel="stylesheet" href="../dist/assets/css/account.css">
+    <title>ASQUID | Contact</title>
+    <link rel="stylesheet" href="../dist/assets/css/other.css">
     <link rel="stylesheet" href="../dist/assets/css/globaHeader.css">
     <link rel="stylesheet" href="../dist/assets/css/utils.css">
     <link rel="stylesheet" href="../dist/assets/css/footer.css">
     <link rel="icon" href="../dist/assets/images/Picto.png">
     <script src="../dist/plugin/vue.js"></script>
+    <script src="../dist/plugin/axios.min.js"></script>
 </head>
 <body>
-    <div class="termsContainer">
+    <div class="ContactZone" id="contactZone">
         <header class="globalHeader">
             <div class="generalContent">
                 <div class="logoContainer">
@@ -145,7 +146,7 @@
                                   Mail: info@adsquid.com.au 
                             </span>
                         </div>
-                        <div class="sendButton">
+                        <div class="sendButton" @click="sendMessage">
                             <span>
                                 Send
                             </span>
@@ -154,6 +155,45 @@
                 </div>
             </div>
     
+        </div>
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div></div>
+            <div class="welcomeContainer" v-show="welcome">
+                <div class="close" v-show="welcome">
+                    <span >&times;</span>
+                </div>
+                <div class="modalToContent">
+                    <div class="contentMessage">
+                        <span>
+                            Hello, because of my French nationality, my strong accent and my English mistakes, 
+                            I would like to start discussions by mail, or via the chat box. However, 
+                            if you wish to call me or vice versa, I remain at your disposal.
+                        </span>
+                        <div class="flagContainer">
+                            <img src="../dist/assets/images/Flag_v2.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sendBoxContainer" v-show="success">
+                 <div class="close" >
+                    <span >&times;</span>
+                </div>
+                <div class="messageToContainer">
+                    <span>
+                        Thank you for your request! <br> A reply will be sent to you as soon as possible <br>
+                        <span style="color: #33CCFF;font-size: 14px ;font-weight:100;">
+                            Within 24 to 48 hours
+                        </span>
+                    </span>
+                </div>
+                <div class="imageContainerSend">
+                    <img src="../dist/assets/images/Web_icon_2/email.png" alt="">
+                </div>
+
+            </div>
         </div>
         <footer>
            <hr style="background: #33CCFF;height: 4px;">
@@ -258,6 +298,6 @@
            </div>
        </footer>
     </div>
-
+<script src="../dist/assets/js/contact.js"></script>
 </body>
 </html>

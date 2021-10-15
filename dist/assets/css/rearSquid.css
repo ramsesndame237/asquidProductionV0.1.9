@@ -203,11 +203,11 @@ body{
     margin-top: 5px;
 }
 .reviewRearSquid{
-    background: #fff;
+    background: transparent;
      width: 276px;
     height: 44px;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     font-size: 20px;
     font-weight: 900;
@@ -491,15 +491,9 @@ body{
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    border: solid red;
 }
-.uploadDesignRear{
-    background: #fff;
-    color: #33ccff;
-}
-.customizerRear{
-    background: #33ccff;
-    color: #fff ;
-}
+
 .customizerRear a {
     color: #fff;
 }
@@ -671,4 +665,26 @@ body{
         width: 235px;
         height: 132px;
     }
+    .Kitmodal-content{
+    width: 515px;
+    height: 140px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #919DA1;
+    border-radius: 25px;
+    margin: auto;
+    margin-top: 250px;
+}
+.kitModalContent{
+    margin-top: 43px;
+    margin-left: 41px;
+    color: #002633;
+    font-weight: 900;
+    font-size: 20px;
+}
+.flexiRearSize{
+    width: 86px;
+height: 65px;
+margin: auto;
+
+}
 

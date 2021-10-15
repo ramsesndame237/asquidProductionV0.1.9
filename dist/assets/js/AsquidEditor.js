@@ -307,7 +307,8 @@ fabric.Object.prototype.customiseCornerIcons({
         borderColor: '#33ccff',
         cornerSize: 25,
         cornerShape: 'circle',
-        cornerPadding: 10,
+        strokeWidth:5,
+        cornerPadding: 5,
         cornerBackgroundColor: '#919da1',
     },
     tl: {
@@ -316,9 +317,9 @@ fabric.Object.prototype.customiseCornerIcons({
     tr: {
         icon: '../../../dist/assets/images/Customisateur/icons/resize.svg',
     },
-    ml: {
-        icon: '//maxcdn.icons8.com/Share/icon/Logos//google_logo1600.png',
-    },
+    // ml: {
+    //     icon: '//maxcdn.icons8.com/Share/icon/Logos//google_logo1600.png',
+    // },
     bl: {
         icon: '../../../dist/assets/images/Customisateur/icons/remove.svg',
         settings: {
@@ -335,6 +336,14 @@ fabric.Object.prototype.customiseCornerIcons({
 }, function() {
     canvas.renderAll();
 });
+fabric.Object.prototype.setControlsVisibility({
+        br: false,
+        ml: false,
+        mt: false,
+        mr: false,
+        mb: false,
+        mtr: false
+})
 
 
 /**
@@ -496,6 +505,7 @@ var myFunc = function() {
         text5.text = document.querySelector("#adresseInformation").value
         canvas.renderAll()
         canvas.setActiveObject(text5);
+        console.log("modification")
 
     })
     document.querySelector("#textCompany").addEventListener('click', function () {
@@ -560,39 +570,70 @@ $('#duplicate-item').on('click', function(event) {
  * function to add text in the input 
  * 
  */
-function addText() {
-    var idInput=1
+   var max_fields = 10; //maximum input boxes allowed
+    var wrapper = $(".TextContainer"); //Fields wrapper
+    var add_button = $(".add_field_button"); //Add button ID
+    var inputs
+    var x = 1; //initlal text box count
+    $(add_button).click(function(e) { //on add input button click
+        e.preventDefault();
+        if (x < max_fields) { //max input box allowed
+            x++;
+            let id = x
+         //text box increment
+            $(wrapper).append('<div class="textInputToCanvas d-lg-flex d-md-flex d-sm-flex"><div><input  data-id="'+x+'" class="addInput"  type="text" name="mytext[]" id="data_item_'+ id +'"/> <div class="imageTextTocanvas remove_field"><img src="dist/assets/images/Customisateur/Trash.png" alt=""></div></div></div>'); //add input box
+            
+        }
+        inputs = $(".addInput")
+           console.log(inputs)
+               
+                inputs.keyup(function (event) {
+                    console.log(event)
+                    console.log($(this).data('id'));
+                     id = $(this).data('id');
+                    newtext = $(this).val();
+                    input = $(this);
 
-    var html = '';
-    html += '<div id="inputFormRow">';
-    html += '<div class="input-group mb-3">';
-    html += '<input type="text" name="title[]"  placeholder="Double Tap and Type" >';
-    html += '<div class="input-group-append">';
-    html += ' <div class="imageTextTocanvas"><img src="dist/assets/images/Customisateur/Trash.png" alt=""></div>';
-    html += '</div>';
-    html += '</div>';
+                        objs = canvas.getObjects();
+                        objs.forEach(function(obj) {
+                            if (obj && obj.text == val) {
+                            obj.setText(newtext);
+                            canvas.renderAll();
+                            }
+                        });
+                })
+        var addToDeText = "inputs"+x
+          addToDeText = new fabric.IText('Double Tap and Type', {
+                left: 100,
+                 top: 100,
+                id: addToDeText,    
+                fontSize: 20,
+                fontWeight:100,
+            });
 
-    $('.TextContainer').append(html);
-
-    var oText = new fabric.IText('Double Tap and Type', {
-        left: 100,
-        top: 100,
+            addToDeText.setControlsVisibility({
+                br: false,
+                ml: false,
+                mt: false,
+                mr: false,
+                mb: false,
+                mtr: false
+            });
+            canvas.add(addToDeText);
+            addToDeText.bringToFront();
+            canvas.setActiveObject(addToDeText);
+            $('#fill, #font').trigger('change');
     });
 
-    oText.setControlsVisibility({
-        br: false,
-        ml: false,
-        mt: false,
-        mr: false,
-        mb: false,
-        mtr: false
-    });
-    canvas.add(oText);
-    oText.bringToFront();
-    canvas.setActiveObject(oText);
-    $('#fill, #font').trigger('change');
-}
 
+    $(wrapper).on("click", ".remove_field", function(e) { //user click on remove text
+        e.preventDefault();
+        $(this).parent('div').remove();
+        var removeInputs ="inputs" + x
+        canvas.remove(removeInputs);
+        console.log(removeInputs)
+        x--;
+    });
 /**
  * function pour changer la couleur de fond de l'image choisi
  */
@@ -618,7 +659,8 @@ $("#picker1").colorPick({
             console.log("vide")
         } else {
             console.log("okay")
-            var mySVGsToInject = document.querySelector('img.inject-me');
+            canvas.setBackgroundColor(null, canvas.renderAll.bind(canvas));
+            var mySVGsToInject = document.querySelector('.inject-me');
 
             if (mySVGsToInject !== null) {
                 console.log(mySVGsToInject)
@@ -752,8 +794,8 @@ function uploadMetierImage() {
                     var oImg = img.set({
                         left: canvas.getWidth() / 2,
                         top: canvas.getHeight() / 2,
-                        scaleX: 0.2,
-                        scaleY: 0.2,
+                        scaleX: 0.09,
+                        scaleY: 0.09,
                         originX: 'center',
                         originY: 'center',
                     });
@@ -912,17 +954,23 @@ document.getElementById('logoImport').addEventListener("change", function(e) {
 });
 $('.imageBackgroundLayout').on('load', function () {
     let data = $('.imageBackgroundLayout').attr('src')
-    if (data == "") {
-        canvas.setBackgroundImage(null);
-    } else {
+    selectBackground = localStorage.getItem("selectBackground")
+    console.log(selectBackground)
+    if (data != "") {
+        canvas.setBackgroundColor(null, canvas.renderAll.bind(canvas));
         fabric.Image.fromURL(data, function(img) {
             canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
-               scaleX: canvas.width / img.width,
-               scaleY: canvas.height / img.height
+                scaleX: canvas.width / img.width,
+                scaleY: canvas.height / img.height
             });
-         });
-    }
+        });
+    } 
 });
+$('#background0').on('click', function () {
+    canvas.setBackgroundImage(null);
+    canvas.setBackgroundColor(null, canvas.renderAll.bind(canvas));
+        canvas.renderAll()
+})
 
 /**
  * this function is to delele selecte obeject 
@@ -1113,7 +1161,7 @@ function deleteTextField(n){
     'object:added', function () {
         updateModifications(true);
         canvas.loadFromJSON(json, function() {
-           canvas.renderAll();
+            canvas.renderAll();
         });
         
 });
@@ -1132,6 +1180,9 @@ function saveAs(){
     var json = canvas.toJSON();
     canvas.loadFromJSON(json, function() {
         canvas.renderAll();
+         dataURL = canvas.toDataURL();
+        console.log(dataURL)
+        localStorage.setItem("imageToPreview",JSON.stringify(dataURL))
     });
     localStorage.setItem('canvasSaveAs',JSON.stringify(json))
 }
@@ -1170,24 +1221,16 @@ redo = function redo() {
 
 function saveToCanvas() {
      this.saveAs()
-     console.log("nous pouvons bien save le produit")
+    console.log("nous pouvons bien save le produit")
+    var dataURL
      
      /**
       * we have to transform the canvas to image to preview it on the preview page 
       */
-        window.location = "../../../PreviewCanvas.html"
-     var ContainsLayerCanvas = canvas.toDataURL();
-     console.log(ContainsLayerCanvas)
-     localStorage.setItem("imageToPreview",JSON.stringify(ContainsLayerCanvas))
+       window.location = "../../../PreviewCanvas.html"
 
 }
 
-// window.onload = function () {
-//     var json =JSON.parse(localStorage.getItem("canvasSaveAs"));
-//       canvas.loadFromJSON(json, function() {
-//         canvas.renderAll();
-//     });
-// }
 
 /**
  * this function is for resizing the canvas on screen 
@@ -1311,18 +1354,26 @@ function onMetaAndEnter(event) {
     }
 }
 
-canvas.on('mouse:down', (options)=>{
-    if (options.target.type == 'i-text') {
-        console.log('on canvas mousedown', options.target ? options.target.type : '');
+canvas.on('mouse:down', (options) => {
+    console.log(options)
+    if (options.target == null) {
+        console.log("bonjour");
         let layoutHeader = document.querySelector(".LayoutCustomTools")
-        layoutHeader.style.display = "none";
-        let textContainer = document.querySelector(".TextCustomTools")
-        textContainer.style.display="flex"
+            layoutHeader.style.display = "flex";
+            let textContainer = document.querySelector(".TextCustomTools")
+            textContainer.style.display="none" 
+        
     } else {
-        console.log("c'est pas un text")
-        console.log( options.target.type )
+            if (options.target.type == 'i-text') {
+            console.log('on canvas mousedown', options.target ? options.target.type : '');
+            let layoutHeader = document.querySelector(".LayoutCustomTools")
+            layoutHeader.style.display = "none";
+            let textContainer = document.querySelector(".TextCustomTools")
+            textContainer.style.display="flex"  
+        } 
     }
-});
+   
+});     
 
 
 

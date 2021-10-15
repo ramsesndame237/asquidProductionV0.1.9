@@ -29,6 +29,11 @@ ul,li,a{text-decoration: none !important; list-style: none !important;}
 		margin-left: 5px;
 		margin-right: 5px;
 	}
+	.shopping{
+		width: 23px;
+		height:25px;
+		position:relative;
+	}
 	.shopping img{
 		filter: invert(100%) sepia(100%) saturate(100%) hue-rotate(86deg) brightness(100%) contrast(100%);
 		width: 21px;
@@ -114,12 +119,11 @@ ul,li,a{text-decoration: none !important; list-style: none !important;}
 }
 .dropdown-link-item{
     position: absolute;
-    width: 180px;
-    /* height: 110px; */
+   width: 150px;
+	height: 120px;
     text-align: center;
     left: -50px;
     top: 35px;
-    padding: 10px;
     background: #fff;
     z-index: 10;
     color: #002633;
@@ -129,15 +133,19 @@ ul,li,a{text-decoration: none !important; list-style: none !important;}
     transition: all .2s;
 }
 .dropdown-link-item li{
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 9px;
+    /* margin-bottom: 10px; */
+	margin-left: 36px;
     cursor: pointer;
     transition: all .2s;
 }
 .dropdown-link-item li a {color: #002633;}
 .dropdown-link-item li:hover{
-    border: solid #33ccff;
-    border-radius: 10px;
+    border:  1px solid #33ccff;
+    border-radius: 8px;
+}
+.dropdown-link-item li:hover img{
+display: flex;
 }
 /* .dropdown-link-item li:hover::after{
     content: '';

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asquid | Customize</title>
+     <link rel="icon" href="dist/assets/images/Picto.png">
     <link rel="stylesheet" href="dist/assets/css/customiser2.css">
     <link rel="stylesheet" href="dist/plugin/bootstrap.min.css">
     <link rel="stylesheet" href="dist/plugin/animate.min.css">
@@ -154,7 +155,7 @@
                         </div>
                     </div>
                     <div class="visualDesignContainer">
-                        <div class="visualContent" v-for="itemP in backgroundLayout" @click="OnselectedBackground(itemP.id),(backgroundName ='sidebarItem')">
+                        <div class="visualContent" v-for="itemP in backgroundLayout" @click="OnselectedBackground(itemP.id),(backgroundName ='sidebarItem')" :id="'background' + itemP.id">
                             <img class="imageLayout" :src="itemP.imageSrc" alt="#">
                         </div>
                     </div>
@@ -205,7 +206,7 @@
                         </div>
 
                     </div>
-                    <div class="buttonAddText mt-5" onclick="addText()">
+                    <div class="buttonAddText add_field_button mt-5">
                         Add text
                     </div>
                 </div>
@@ -230,7 +231,7 @@
                             <span class="h5 fw-bold">Our library</span>
                         </div>
                     </div>
-                    <div class="logoImporterZone" v-if="jobTipe=='downloadLogo'">
+                    <div class="logoImporterZone" v-show="jobTipe=='downloadLogo'">
                         <div id="Download_your_Logo">
                             <span>Download your<br/>Logo</span>
                         </div>
@@ -576,7 +577,8 @@
                             </div>
                             <canvas id="canvasUpload" width="670" height="223" style="z-index: 100;">
                                 </canvas>
-                            <img :src="imagesBackground" class="imageBackgroundLayout  inject-me" style="opacity: 0;" alt="#">
+                            <img :src="imagesBackground" class="imageBackgroundLayout  inject-me"  alt="#">
+                            </div>
                         </div>
                         <div class="qrdiv " id="qrdiv">
                             <div class="qrcode" id="qrcode"></div>
@@ -594,12 +596,11 @@
                         <div class="chat">
                             <div class="header">
                                 <span class="title">
-                                    Chating box
+                                   Adsquid Messagerie
                                 </span>
                                 <button>
-                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                    <span>&times;</span>
                                 </button>
-                                            
                             </div>
                             <ul class="messages">
                                 <li class="other">hello</li>
@@ -610,7 +611,9 @@
                             </ul>
                             <div class="footer">
                                 <div class="text-box" contenteditable="true" disabled="true"></div>
-                                <button id="sendMessage">send</button>
+                                <div id="sendMessage">
+                                    <img src="dist/assets/images/Web_icon_2/send.png" alt="">
+                                </div>
                             </div>
                         </div>
                     </div>

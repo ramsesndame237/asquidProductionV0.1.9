@@ -19,7 +19,6 @@
         <div class="messageBox animate__animated animate__fadeInRight " v-if="messageInTheBox">
             <div class="messageContent">
                 <span> {{messageInTheBox}} </span>
-
             </div>
             <div class="closeCross">
                 <img src="dist/assets/images/Customisateur/icons/Cross.png" alt="">
@@ -36,12 +35,19 @@
                 <div class="linkContainerZone">
                     <div class="socialLinkContainer">
                         <span v-if="connected" @click="conditionConnect = !conditionConnect" style="font-size: 16px; color: #33CCFF; margin-top: 16px; cursor: pointer;" > Welcome {{username}} </span>
-                        <div class="user" @click="(conditionConnect = !conditionConnect),(clicked =true)">
+                        <div class="user" v-if="connected" @click="conditionConnect = !conditionConnect">
+                            <img src="dist/assets/images/Web_icon_2/user_click.png" v-if="clicked" alt="">
+                            <img src="../dist/assets/images/icon/user_V2.svg" v-else alt="">
+                        </div>
+                        <div class="user" v-else  @click="openModal">
                             <img src="dist/assets/images/Web_icon_2/user_click.png" v-if="clicked" alt="">
                             <img src="../dist/assets/images/icon/user_V2.svg" v-else alt="">
                         </div>
                         <div class="shopping">
                             <img src="../dist/assets/images/icon/shopping-cart_V2.svg" alt="">
+                            <div class="numberofProduct" v-if="numberOfProduct != '0'">
+                                <span> {{numberOfProduct}} </span>
+                            </div>
                         </div>
                         <div class="search_utilisateur">
                             <div class="search-icon">
@@ -51,7 +57,7 @@
                                 <input type="text" name="search" id="search" placeholder="Search">
                             </div>
                         </div>
-                        <div class="profilConectContainer" v-if="conditionConnect && connected">
+                        <div class="profilConectContainer" v-if="conditionConnect">
                             <div class="myProfil" @click="TypeOnglet(0)">
                                 <a href="others/account.html">
                                 <span style="color: #002633;">
@@ -82,11 +88,10 @@
                         <ul class="link-item-list">
                             <li class="link-item-list-item dropdows ">Produit
                                 <ul class="dropdown-link-item">
-                                    <li><a href="products/kitSquid.html#Kit">Kit Squid</a></li>
-                                    <li><a href="products/flexiSquid.html#flexiSquidSelectioncontainer">FlexiSquid</a></li>
-                                    <li><a href="products/rearsquid.html#rearContainer">Rear Squid</a></li>
+                                    <li style="display:  flex;" class="linkToProduct"><a href="products/kitSquid.html#Kit">Kit Squid</a> <span><img src="dist/assets/images/arrowDown2.png" alt=""></span> </li>
+                                    <li style="display:  flex;" class="linkToProduct"><a href="products/flexiSquid.html#flexiSquidSelectioncontainer">FlexiSquid</a><span><img src="dist/assets/images/arrowDown2.png" alt=""></span></li>
+                                    <li style="display:  flex;" class="linkToProduct"><a href="products/rearsquid.html#rearContainer">Rear Squid</a><span><img src="dist/assets/images/arrowDown2.png" alt=""></span></li>
                                 </ul>
-
                             </li>
                             <li class="link-item-list-item quote text-white"> <a href="quote.html">Quote</a></li>
                             <li class="link-item-list-item buisiness">Business service</li>
@@ -167,7 +172,8 @@
         </div>
         <div class="AboutProduct">
             <div class="ProductPicture">
-                <span>Photo ou vidéo</span>
+                <img v-if="productPresentation.photo" :src="productPresentation.photo" alt="">
+                <span v-else>Photo ou vidéo</span>
             </div>
             <div class="descriptionProduct">
                 <div class="titreDescription">
@@ -405,14 +411,14 @@
                         </div>
                         <div class="contact">
                             <span>
-                                <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="">
+                                <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="others/contact.html">
                                     Contact
                                 </a>
                             </span>
                         </div>
                         <div class="faqs">
                             <span>
-                                <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="">
+                                <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="others/faq.html">
                                     FAQs
                                 </a>
                             </span>
@@ -463,7 +469,7 @@
             <div class="termsCondition">
                 <div class="terms">
                     <span>
-                        <a href="" style="color: #fff;">
+                        <a target="blank" href="https://www.cookiepolicygenerator.com/live.php?token=yiKBRqEwHj6rnyH0GM6FAXpzAxjhgdrM" style="color: #fff;">
                             Privacy and Cookie Policy
                         </a>
                     </span>
@@ -496,33 +502,5 @@
     <script src="dist/assets/js/index.js"></script>
     <script src="dist/assets/js/universal.js"></script>
 
-    <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
-
-        // Get the button that opens the modal
-        var btn = document.querySelector(".user");
-        
-        // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-            
-            // When the user clicks the button, open the modal 
-            btn.onclick = function() {
-            console.log(modal)
-            modal.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-        modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-        }
-</script>
 </body>
 </html>

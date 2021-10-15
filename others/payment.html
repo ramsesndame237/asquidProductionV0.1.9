@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../dist/assets/css/footer.css">
     <link rel="stylesheet" href="../dist/assets/css/utils.css">
     <script src="../dist/plugin/vue.js"></script>
+    <script src="../dist/plugin/axios.min.js"></script>
 </head>
 <body>
     <div class="shippingContentContainer" id="paymentL">
@@ -133,7 +134,7 @@
             <div class="cartShipping">
                 <div class="shippingSelling" v-for="(item, index) in carts" :key="index">
                     <div class="previewContain">
-                        <img :src="item.visual" alt="">
+                        <img :src="item.visuelCommande" alt="">
                     </div>
                     <div class="descriptionContent">
                         <div class="titleProduct">
@@ -147,7 +148,7 @@
                                         Your size: 
                                     </span>
                                     <span style="font-size: 20; font-weight: 200;color: #fff;">
-                                        {{item.product.sizeProduct}}
+                                        {{item.sizeCommande}}
                                     </span>
                                     <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
                                 </div>
@@ -156,7 +157,7 @@
                                         Your cut:
                                     </span>
                                     <span style="font-size: 20; font-weight: 200;color: #fff;">
-                                         {{item.product.cutProduct}}
+                                         {{item.cutCommande}}
                                     </span>
                                     <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
                                 </div>
@@ -165,7 +166,7 @@
                                         Your extra sticker:
                                     </span>
                                     <span style="font-size: 20; font-weight: 200;color: #fff;">
-                                         {{item.product.extraProduct}}
+                                         {{item.extraCommande}}
                                     </span>
                                     <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
                                 </div>
@@ -174,7 +175,7 @@
                                         Your design: 
                                     </span>
                                     <span style="font-size: 20; font-weight: 200;color: #fff;">
-                                         {{item.product.designProduct}}
+                                         {{item.designCommande}}
                                     </span>
                                     <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
                                 </div>
@@ -183,7 +184,7 @@
                                         Quantity: 
                                     </span>
                                     <span style="font-size: 20; font-weight: 200;color: #fff;">
-                                         {{item.product.quantityProduct}}
+                                         {{item.quantityCommande}}
                                          <img src="../dist/assets/images/Customisateur" alt="">
                                     </span>
                                     <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
@@ -193,7 +194,7 @@
                                         Total:
                                     </span>
                                     <span style="font-size: 20; font-weight: 900;color: #fff;">
-                                          $ {{item.product.totalAmountProduct}}
+                                          $ {{item.amountCommande}}
                                     </span>
                                     <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
                                 </div>
@@ -232,13 +233,133 @@
                                 <hr style="width: 408px; margin-top:18.5px;border-radius:8px">
                      </div>
                 </div>
-
-
-
             </div>
+        </div>
+        <div id="myModal" class="modal">
+
+            <span  class="close">&times;</span>
+                <!-- Modal content -->
+                <div  class="rearContainerExtra">
+                      <div class="contentMessage">
+                        <span style="color: #002633;font-weight: 900;font-size: 20px;">
+                            Thank you for Your commande you will receive a mail with all the details of your product  
+                            </span>
+                            <br>
+                            <span style="color: #33CCFF;font: size 16px;font-weight:100 ">
+                                Please for the more best experience not the application
+                            </span>
+                    </div>
+                    <div class="close">
+                        <span style="font-weight: 100;"  >&times;</span>
+                    </div>
+                </div>
 
         </div>
+
+         <footer>
+           <hr style="background: #33CCFF;height: 4px;">
+           <div class="footerContainer">
+               <div class="letUsHelp">
+                   <div class="titleContent">
+                       <span style="font-weight:900;font-size: 20px; color: #fff;">
+                           Let us help
+                       </span>
+                   </div>
+                   <div class="letContent">
+                       <div class="myAccount">
+                           <span>
+                               <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="myAccount.html">
+                                   My account
+                               </a>
+                           </span>
+                       </div>
+                       <div class="contact">
+                           <span>
+                               <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="">
+                                   Contact
+                               </a>
+                           </span>
+                       </div>
+                       <div class="faqs">
+                           <span>
+                               <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="">
+                                   FAQs
+                               </a>
+                           </span>
+                       </div>
+                   </div>
+               </div>
+               <div class="followHelp">
+                   <div class="titleContent">
+                       <span style="font-weight:900;font-size: 20px; color: #fff;">
+                           Follow us
+                       </span>
+                   </div>
+                   <div class="letContent">
+                       <div class="instagram">
+                           <span>
+                               <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="">
+                                   Instagram
+                               </a>
+                           </span>
+                       </div>
+                       <div class="facebook">
+                           <span>
+                               <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="">
+                                   Facebook
+                               </a>
+                           </span>
+                       </div>
+                       <div class="youtube">
+                           <span>
+                               <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="">
+                                   Youtube
+                               </a>
+                           </span>
+                       </div>
+                   </div>
+               </div>
+               <div class="newsletterContainer">
+                   <div class="emailContainer">
+                       <input type="email" placeholder="Email">
+                   </div>
+                   <div class="subcribeBouton">
+                       <span>
+                           Subscribe
+                       </span>
+                   </div>
+               </div>
+           </div>
+           <div class="termsCondition">
+               <div class="terms">
+                   <span>
+                       <a href="" style="color: #fff;">
+                           Privacy and Cookie Policy
+                       </a>
+                   </span>
+               </div>
+               <div class="conditionsTerms">
+                   <span>
+                       <a href="termeEtCondition.html" style="color: #fff;">
+                           Terms and Conditions
+                       </a>
+                   </span>
+               </div>
+               <div class="copyrigth">
+                   <span>
+                       Copyright 2021© Flysoft Engineering & Adsquid.
+                   </span> <br>
+                   <span>
+                       ABN: 16 998 486 520
+                   </span>
+               </div>
+           </div>
+           <div class="imageContainer">
+               <img src="../dist/assets/images/Tentacule_footer_test_v2.png" alt="#">
+           </div>
+       </footer>
     </div>
+    <script src="../dist/assets/js/config.js"></script>
     <script src="../dist/assets/js/payment.js"></script>
 </body>
 </html>

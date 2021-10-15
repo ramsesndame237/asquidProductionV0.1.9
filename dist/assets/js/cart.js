@@ -4,6 +4,7 @@ var app = new Vue({
         return {
             dataSourceImagePreview: '',
             numberOfProduct: '0',
+                        baseUri:'https://adsquid.herokuapp.com/api/',
             carts: [],
             totalShipping: 0,
             GTS: 0,
@@ -24,23 +25,36 @@ var app = new Vue({
         }
     },
     mounted() {
+        // let cartContainer = []
         if(window.localStorage.getItem("imageToPreview") != null && window.localStorage.getItem.length > 0){
             this.dataSourceImagePreview = JSON.parse(window.localStorage.getItem("imageToPreview"))
         }
-        let dataStorage = JSON.parse(localStorage.getItem("cartStorage"))
-        this.numberOfProduct = dataStorage.length
-        this.carts = dataStorage
-        this.carts.forEach(element => {
-            this.GTS = element.product.totalAmountProduct * 10 / 100
-            if (element.product.totalAmountProduct > 0 && element.product.totalAmountProduct < 150) {
-            this.shippingPrice = 15
-            } else if (element.product.totalAmountProduct > 151 && element.product.totalAmountProduct < 500) {
-                this.shippingPrice =20
-            } else if (element.product.totalAmountProduct > 501) {
-                this.shippingPrice =25
-            }
-           this.totalShipping += parseInt(element.product.totalAmountProduct)+this.shippingPrice+this.GTS
-        });
-        console.log(dataStorage.length)
+       
+        axios.get(this.baseUri + "panniers").then((response) => {
+            console.log(response)
+            response.data.forEach(element => {
+                if (element.statutCommande ==  'notPaid') {
+                    // cartContainer.push(element)
+                    this.carts.push(element)
+                }
+            });
+            this.numberOfProduct = this.carts.length
+        }).catch((error) => {
+            console.log(error)
+        })
+        setTimeout(() => {
+            this.carts.forEach(element => {
+                 console.log(this.carts)
+                this.GTS = element.amountCommande * 10 / 100
+                if (element.amountCommande > 0 && element.amountCommande < 150) {
+                this.shippingPrice = 15
+                } else if (element.amountCommande > 151 && element.amountCommande < 500) {
+                    this.shippingPrice =20
+                } else if (element.amountCommande > 501) {
+                    this.shippingPrice =25
+                }
+               this.totalShipping += parseInt(element.amountCommande)+this.shippingPrice+this.GTS
+            });
+        }, 500);
     },
 })
