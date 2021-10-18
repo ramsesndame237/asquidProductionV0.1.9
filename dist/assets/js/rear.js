@@ -66,6 +66,7 @@ var app = new Vue({
       proposition: false,
       commande:[],
       visuel: false,
+      reset:false,
       grapic:false,
         dropChoose: false,
         dropModelChoose: false,
@@ -136,7 +137,9 @@ var app = new Vue({
             console.log(n);
         },
         RearShowActive(n) {
-            this.removeItemQuantity(this.kitQuantity[0].quantity,this.kitQuantity[0].value)
+          this.removeItemQuantity(this.kitQuantity[0].quantity, this.kitQuantity[0].value)
+            this.reset = true
+           this.YourFlexiTotalAmount = this.YourFlexiTotalAmount - this.YourSizePrice  
             for (var i = 0; i < this.sizeChooseList.length; i++) {
                 this.sizeChooseList[i].classList.remove("Acitve")
             }
@@ -165,6 +168,8 @@ var app = new Vue({
             } else if (n == 2) {
               this.sizePrice = 199
               this.ToShow = true
+              this.proposition = false,
+                this.grapic =false
                            var modal = document.getElementById("myModal");
                   // Get the <span> element that closes the modal
                       var span = document.querySelector(".close");
@@ -220,7 +225,30 @@ var app = new Vue({
               this.YourRearDesign = 'None'
               this.designPrice =0
             } else if (n == 1) {
+              this.grapic = true
+              this.proposition = false
+              this.ToShow = false
               this.YourRearDesign = 'Graphic design'
+                      // Get the modal
+                  var modal = document.getElementById("myModal");
+                  // Get the <span> element that closes the modal
+                      var span = document.querySelector(".close");
+                      
+                      // When the user clicks the button, open the modal 
+                      console.log(modal)
+                      modal.style.display = "block";
+
+                  // When the user clicks on <span> (x), close the modal
+                  span.onclick = function() {
+                  modal.style.display = "none";
+                  }
+
+                  // When the user clicks anywhere outside of the modal, close it
+                  window.onclick = function(event) {
+                  if (event.target == modal) {
+                      modal.style.display = "none";
+                  }
+                  }
               this.designPrice = 45
                 this.totalAmount = this.totalAmount + this.designPrice
             }
@@ -229,7 +257,8 @@ var app = new Vue({
         },
        saveCommande() {
         this.proposition = true
-        this.ToShow = false
+         this.ToShow = false
+         this.grapic = false
           let data ="Rear"
         localStorage.setItem("CustomiseTitle", data)
 
@@ -247,7 +276,7 @@ var app = new Vue({
            // Get the modal
         var modal = document.getElementById("myModal");
         // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
+            var span = document.querySelector(".close");
             
             // When the user clicks the button, open the modal 
             console.log(modal)

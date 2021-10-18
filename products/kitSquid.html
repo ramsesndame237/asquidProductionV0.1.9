@@ -72,7 +72,7 @@
             </div>
             <div class="KitContainer" id="Kit">
                 <div class="photoKitSquidProduct">
-                    <img v-if="photoProduit" :src="photoProduit" alt="">
+                    <img v-if="product.photoProduit" :src="product.photoProduit" alt="">
 
                 </div>
                 <div class="KitSquidDetailsContainer">
@@ -387,23 +387,44 @@
                             </div>
                             <div class="yourSizeResume" v-if="NoExtra">
                                <div class="texteSummary">
-                                   <span style="font-size: 20px;font-weight: 900; color: #002633;margin-right: 5px;">Your extra sticker: </span>  <span style="color: #002633;font-weight:100;font-size: 20px;">{{NoneExtra}}</span> <span v-if="designPrice >0" style="color: #002633;font: weight 900;font-size:20px" > ( + ${{designPrice}}) </span>
-                               </div>
+                                   <span style="font-size: 20px;font-weight: 900; color: #002633;margin-right: 5px;">Your extra sticker: </span>  <span style="color: #002633;font-weight:100;font-size: 20px;">{{NoneExtra}}</span> 
+                                </div>
                                <div class="lineSummary">
-
                                </div>
                            </div>
                             <div class="yourSizeResume" v-else>
-                                <div class="texteSummaryExtra">
+                                <div v-if="tmp">
+                                     <div class="texteSummary">
+                                   <span style="font-size: 20px;font-weight: 900; color: #002633;margin-right: 5px;">Your extra sticker: </span>  <span v-for="(item, index) in YourExtraToSave" style="color: #002633;font-weight:100;font-size: 20px;">{{item}}
+                                     <span v-if="item =='Large Size rear sticker'" style="font-weight: 900;color: #002633; font-size: 20px;"> $(+{{largeExtraPrice}} )</span>
+                                     <span v-if="item =='Rear Squid  One Way'" style="font-weight: 900;color: #002633; font-size: 20px;"> $(+{{oneWayPrice}} )</span>
+                                     <span v-if="item =='Hood sticker'" style="font-weight: 900;color: #002633; font-size: 20px;"> $(+{{hoodPrice}} )</span>
+                                    
+                                    </span> 
+                                </div>
+                               <div class="lineSummary">
+                               </div>
+                                </div>
+                                <div class="texteSummaryExtra" v-else>
                                     <div class="contentText">
                                          <span style="font-size: 20px;font-weight: 900; color: #002633;margin-right: 5px;">
                                             Your extra sticker:
                                         </span>
                                         <div class="containerContent">
                                             <div v-for="(item, index) in YourExtraToSave" :key="index">
-                                                <span style="font-weight: 100;">
-                                                    {{item}} <span></span>
+                                                <span style="font-weight: 100;"v-if="item =='Large Size rear sticker'">
+                                                    {{item}} <span style="font-weight: 900;color: #002633; font-size: 20px;"> $(+{{largeExtraPrice}} )</span> 
                                                 </span>
+                                                <!-- <span v-if="YourExtraToSave.length >1">
+                                                    +
+                                                </span> -->
+                                                <span style="font-weight: 100;"v-if="item =='Rear Squid  One Way'">
+                                                    {{item}} <span style="font-weight: 900;color: #002633; font-size: 20px;"> $(+{{oneWayPrice}} )</span> 
+                                                </span>
+                                                <span style="font-weight: 100;"v-if="item =='Hood sticker'">
+                                                    {{item}} <span style="font-weight: 900;color: #002633; font-size: 20px;"> $(+{{hoodPrice}} )</span> 
+                                                </span>
+
                                             </div>
                                         </div>
 
@@ -411,6 +432,7 @@
                                     <div class="lineSummary">
                                     </div>
                                 </div>
+
                             </div>
                             <div class="yourSizeResume">
                                 <div class="texteSummary">
@@ -474,6 +496,21 @@
                         </div>
                     </div>
                 </div>
+                <div v-show="grapic" class="graphicSupport animate__animated animate__fadeInUp">
+                    <div class="messageGraphicContent">
+                        <span style="width: 379px;height: 54px; font-weight:900;font-size:20px">
+                           Thank you for choosing the “Graphic support”, a graphic proposal will be sent to you within 48 hours
+                        </span><br>
+                        <span style="font-size: 16px;color: #33CCFF;font-weight: 100;">
+                            Please fill out the form in order to have the most information about your vehicle the information you want to appear on your advertisement. <br>
+                           Once this step is completed, you can go to the customization and click directly on the top right “Next” and access the order confirmation
+                        </span>
+                    </div>
+                    <div class="close">
+                        <span style="font-weight: 100;"  >&times;</span>
+                    </div>
+
+                </div>
                 <div class="visuel" v-if="visuel">
                     <div class="cardVisuelContainer">
                     </div>
@@ -512,16 +549,21 @@
                     <div class="infoRearkits">
                         <div class="quantityAndSizeReview">
                             <img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">
-                            <span> 2 stickers  {{dimensionKit}} mm </span>
+                            <span>{{theQuantitySticker}} stickers  {{dimensionKit}} mm </span>
                         </div>
                         <div class="consignReview">
                             <img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">
                             <span> {{YourCut}} corners </span>
                         </div>
-                         <div class="consignReview">
+                         <div class="consignReview" v-if="NoExtra">
                             <img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">
-                            <span v-if="NoExtra"> No extra stickers </span>
-                            <span v-else v-for =" itemEst in YourExtra"> {{itemEst.nomExtra}} </span> <span v-if="YourExtra.length > 1">+</span>
+                            <span> No extra stickers </span>
+                            <span v-else v-for =" itemEst in YourExtra"> {{itemEst.nomExtra}} </span> 
+                        </div>
+                          <div class="consignReview" v-else v-for =" itemEst in YourExtra">
+                            <img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">
+                            <span> {{initialQuatity}} </span>
+                            <span > {{itemEst.nomExtra}} </span> 
                         </div>
                         <div class="consignReview">
                             <img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">
@@ -545,7 +587,7 @@
                     </div>
                 </div>
             </div>
-            <div class="guideLineContainer "  v-if="itemToShow == 'guideline'" >
+            <div class="guideLineContainer "  v-show="itemToShow == 'guideline'" >
                 <div class="guidelineDownload">
                     <div style="color: #fff; font-weight: 900; font-size: 38px; margin-bottom: 19px;width: 170px;height: 52px;"> 
                         <span>Guideline</span>

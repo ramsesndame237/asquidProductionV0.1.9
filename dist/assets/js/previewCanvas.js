@@ -229,7 +229,14 @@ var app = new Vue({
             this.dataSourceImage = JSON.parse(window.localStorage.getItem("imageToPreview"))
             localStorage.setItem("editAgain", 'false')
             console.log("okayllls")
+            let previewCo = document.querySelector(".containerCanvasFabricPreview")
+             if (window.localStorage.getItem('cutCustomizer') != null && window.localStorage.getItem('cutCustomizer') == 'Round') {
+            previewCo.classList.add('roundedCanvas')
+        } else {
+            console.log(previewCo)
+        }
             
         }
+
     },
 })

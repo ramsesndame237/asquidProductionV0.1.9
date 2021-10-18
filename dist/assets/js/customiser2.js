@@ -165,7 +165,7 @@ var app = new Vue({
         showIconSocial: false,
         iconListCategoryChoose:[
             {
-                id:'1',title:'Media',description:'',image:[{id:'1',imageSrc:'dist/assets/images/Customisateur/Icone/Media/Fb_rond.png'},{id:'2',imageSrc:'dist/assets/images/Customisateur/Icone/Media/Snap_rond.png'},{id:'3',imageSrc:'dist/assets/images/Customisateur/Icone/Media/Youtube.png'}]
+                id:'1',title:'Media',description:'',image:[{id:'1',imageSrc:'dist/assets/images/Customisateur/Icone/Media/Fb_rond.png'},{id:'2',imageSrc:'dist/assets/images/Customisateur/Icone/Media/Snap_rond.png'},{id:'3',imageSrc:'dist/assets/images/Customisateur/Icone/Media/Youtube.png'},{id:'4',imageSrc:'dist/assets/images/Customisateur/Icone/Contact/Mail_rond.png'}]
             },
             {
                 id:'2',title:'Quote',description:'',image:[]
@@ -271,6 +271,13 @@ var app = new Vue({
     methods: {
         init() {
             this.sliceSize = 100 / this.items.length
+        },
+          diplas() {
+              console.log("do")
+              document.querySelector(".contentColor").style.display = "none";
+              setTimeout(() => {
+              document.querySelector(".contentColor").style.display = "flex";
+              }, 500);
         },
          removeItem(itemId) {
             console.log(itemId)

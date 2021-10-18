@@ -391,10 +391,12 @@
                     </div>
                 </div>
                 <div class="LayoutCustomTools animate__animated animate__fadeInDown  " v-show="textToShow == 'layout' ">
-                    <div class="layoutCustomContent backgr " id="backgroundLayout " @click="(clicked=!clicked) , (backgroundName ='') , (elementToEdit ='color') ">
-                        <div v-if="elementToEdit==''" class="picker" id="picker1"></div>
+                    <div class="layoutCustomContent backgr " id="backgroundLayout " @click="(clicked=!clicked) , (backgroundName ='color') , (elementToEdit ='color')">
+                        <div class="contentColor" > 
+                            <div  class="picker" id="picker1"></div>
+                        </div>
                     </div>
-                    <div class="layoutCustomContent" @click="(backgroundName ='topnavName'), (elementToEdit ='backgroundLayout') ,(clicked=false) ">
+                    <div class="layoutCustomContent" @click=" (diplas()) , (backgroundName ='topnavName'), (elementToEdit ='backgroundLayout') ,(clicked=false)">
                         <img src="dist/assets/images/Customisateur/background_v2_click.png" v-if="elementToEdit=='backgroundLayout'" alt="backgroundCliquer">
                         <img src="dist/assets/images/Customisateur/background_v2.png" v-else alt="Backgrounds">
                     </div>
@@ -403,7 +405,7 @@
                             <img class="imageLayoutTopnav " :src="items.imageSrc" alt="# ">
                         </div>
                     </div>
-                    <div class="layoutCustomContent" @click="(elementToEdit = 'dowloadLogo'), (clicked=!clicked), (backgroundName ='')">
+                    <div class="layoutCustomContent" @click="(diplas()) , (elementToEdit = 'dowloadLogo'), (clicked=!clicked), (backgroundName ='')">
                         <img src="dist/assets/images/icon/Customisateur/Image_click.png" v-if="elementToEdit=='dowloadLogo'" alt="">
                         <img src="dist/assets/images/icon/Customisateur/Image.png" v-else alt="">
                     </div>
@@ -457,13 +459,13 @@
 
                     </div>
                     <div class="layoutCustomContent ">
-                        <div class="QrcodeContainer" @click="(elementToEdit = 'AddQrCode') && (clicked=false) && (backgroundName ='') ">
+                        <div class="QrcodeContainer" @click="(diplas()),(elementToEdit = 'AddQrCode'), (clicked=false),(backgroundName ='AddQrCode') ">
                             <img src="dist/assets/images/icon/Customisateur/Qr_code_click.png" v-if="elementToEdit=='AddQrCode'" alt="">
                             <img src="dist/assets/images/icon/Customisateur/Qr_code.png" v-else alt="">
                         </div>
                         <div class="QrcodeContainerContent" v-if="elementToEdit =='AddQrCode'">
                             <input type="text" class="dataBox" name="data" placeholder="Https://exemple.com.au" id="dataBox">
-                            <div class="QrcodeButton" id="generateBtn" @click="mainQrCode">Add Qr code</div>
+                            <div class="QrcodeButton" id="generateBtn" onclick="mainQrCode()">Add Qr code</div>
                         </div>
                     </div>
                 </div>
@@ -525,7 +527,7 @@
                                 <output id="output"></output>
                             </div>
                         </div>
-                        <div class="styleFontComponent d-lg-flex">
+                        <div class="styleFontComponent  d-lg-flex">
                             <div class="containerStyleFont  d-lg-flex d-md-flex" id="WeightModify" @click="bold = !bold">
                                 <div class="fontImage mt-2">
                                     <img src="dist/assets/images/Customisateur/bold_click.png" v-if="bold"  alt="bold">
@@ -552,28 +554,28 @@
                                     <img src="dist/assets/images/Customisateur/Alignement_centre.png" onclick='changeAlign()' @click="alignement = 'left'" v-if="alignement == 'center'" alt="">
                                 </div>
                             </div>
-                            <div class="containerStyleFont d-lg-flex d-md-flex">
+                            <!-- <div class="containerStyleFont d-lg-flex d-md-flex">
                                 <div class="curve mt-2">
                                     <img src="dist/assets/images/Customisateur/curve.png" alt="">
                                      <img src="dist/assets/images/Customisateur/curve_droit.png" onclick='changeAlign()' @click="curve = 'droit'" v-if="curve == 'droit'" alt="">
                                     <img src="dist/assets/images/Customisateur/curve_bas.png" onclick='changeAlign()' @click="curve = 'bas'" v-if="curve == 'bas'" alt="">
                                     <img src="dist/assets/images/Customisateur/curve_haut.png" onclick='changeAlign()' @click="curve='haut'" v-if="curve == 'haut'" alt="">
                                 </div>
-                            </div>
+                            </div> -->
 
                         </div>
                     </div>
                 </div>
-                <div class="containerSurfaceArea ">
+                <div class="containerSurfaceArea "  @click="(elementToEdit  = ''),(backgroundName ='')">
                     <div class="importeZone">
                         <div class="canvasAree animate__animated animate__zoomIn animate__delay-2s">
                             <div class="rulesContainer">
-                                <div class="ligneA animate__animated animate__zoomIn animate__delay-1s "></div>
-                                <span class="heightCustomiser animate__animated animate__zoomIn animate__delay-2s ">{{customizerHeight}} mm</span>
-                                <div class="ligneB animate__animated animate__zoomIn animate__delay-1s "></div>
-                                <div class="ligneC animate__animated animate__zoomIn animate__delay-1s "></div>
-                                <span class="widthCustomiser animate__animated animate__zoomIn animate__delay-2s ">{{customizerWidth}} mm</span>
-                                <div class="ligneD animate__animated animate__zoomIn animate__delay-1s "></div>
+                                <div class="ligneA ruleres animate__animated animate__zoomIn animate__delay-1s "></div>
+                                <span class="heightCustomiser ruleresH animate__animated animate__zoomIn animate__delay-2s ">{{customizerHeight}} mm</span>
+                                <div class="ligneB ruleres animate__animated animate__zoomIn animate__delay-1s "></div>
+                                <div class="ligneC ruleres animate__animated animate__zoomIn animate__delay-1s "></div>
+                                <span class="widthCustomiser ruleresH animate__animated animate__zoomIn animate__delay-2s ">{{customizerWidth}} mm</span>
+                                <div class="ligneD ruleres animate__animated animate__zoomIn animate__delay-1s "></div>
                             </div>
                             <canvas id="canvasUpload" width="670" height="223" style="z-index: 100;">
                                 </canvas>

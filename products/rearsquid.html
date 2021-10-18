@@ -352,7 +352,7 @@
                                     <span>None</span>
                                 </div>
                             </div>
-                            <div class="containerDesignRearSquid" @click="RearDesignShowActive(1)">
+                            <div class="containerDesignRearSquid" @click="(RearDesignShowActive(1),(grapic = true))">
                                 <div class="imageDesign">
                                     <img src="../dist/assets/images/Page produit/Design_assist.png" alt="">
                                 </div>
@@ -428,9 +428,9 @@
                         </div>
 
                         <div class="RearactionButton">
-                            <div class="uploadDesignRear">
+                            <!-- <div class="uploadDesignRear">
 							<span>Upload My Design</span>
-						</div>
+						</div> -->
 						<div class="customizerRear" @click="saveCommande">
 							<span>Customize</span>
 						</div>
@@ -443,7 +443,7 @@
         </div>
         <div id="myModal" class="modal">
 
-            <span  class="close">&times;</span>
+            <!-- <span  class="close">&times;</span> -->
                 <!-- Modal content -->
                 <div v-if="proposition" class="proposition">
                     <div class="Kitmodal-content" >
@@ -469,14 +469,6 @@
                         <img :src="item.visuelCommande" alt="">
                     </div>
                 </div>
-                <div v-if="grapic" class="graphicSupportKit animate__animated animate__fadeInUp">
-                    <div class="close">
-                        <span style="font-weight: 100;"  >&times;</span>
-                    </div>
-                    <span style="width: 379px;height: 54px; font-weight:900;font-size:20px">
-                        A graphic proposal will be sent to you within 48 hours
-                    </span>
-                </div>
                 <div v-show="ToShow" class="rearContainerExtra">
                     <div class="contentMessage">
                         <span style="color: #002633;font-weight: 900;font-size: 20px;">
@@ -488,9 +480,24 @@
                                 Please fill out the form in order to have the most information about your vehicle
                             </span>
                     </div>
-                    <div class="close">
+                    <div class="close" v-show="ToShow">
                         <span style="font-weight: 100;"  >&times;</span>
                     </div>
+                </div>
+                <div v-show="grapic" class="graphicSupport animate__animated animate__fadeInUp">
+                    <div class="messageGraphicContent">
+                        <span style="width: 379px;height: 54px; font-weight:900;font-size:20px">
+                           Thank you for choosing the “Graphic support”, a graphic proposal will be sent to you within 48 hours
+                        </span><br>
+                        <span style="font-size: 16px;color: #33CCFF;font-weight: 100;">
+                            Please fill out the form in order to have the most information about your vehicle the information you want to appear on your advertisement. <br>
+                           Once this step is completed, you can go to the customization and click directly on the top right “Next” and access the order confirmation
+                        </span>
+                    </div>
+                    <div class="close" v-show="grapic">
+                        <span style="font-weight: 100;"  >&times;</span>
+                    </div>
+
                 </div>
 
         </div>

@@ -239,8 +239,8 @@ ul,li,a{text-decoration: none !important; list-style: none !important; }
 
 .sizeKitContainer,.designKitContainer,.cutKitContainer,.extraKitContainer{
 	padding: .5rem;
-    width: 140px;
-    height: 140px;
+    width: 150px;
+    height: 150px;
     border-radius: 20px;
     background: #fff;
     cursor: pointer;

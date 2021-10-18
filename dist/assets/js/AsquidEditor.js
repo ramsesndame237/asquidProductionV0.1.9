@@ -564,6 +564,16 @@ $('#duplicate-item').on('click', function(event) {
     }
 });
 
+/**
+ * this function is to delete an activate item 
+ */
+
+document.querySelector(".deleteSelection").addEventListener("click", () => {
+    let objToRemove = canvas.getActiveObject()
+    objToRemove.remove()
+    canvas.renderAll()
+    
+})
 
 
 /**
@@ -581,32 +591,33 @@ $('#duplicate-item').on('click', function(event) {
             x++;
             let id = x
          //text box increment
-            $(wrapper).append('<div class="textInputToCanvas d-lg-flex d-md-flex d-sm-flex"><div><input  data-id="'+x+'" class="addInput"  type="text" name="mytext[]" id="data_item_'+ id +'"/> <div class="imageTextTocanvas remove_field"><img src="dist/assets/images/Customisateur/Trash.png" alt=""></div></div></div>'); //add input box
+            $(wrapper).append('<div class="textInputToCanvas d-lg-flex d-md-flex d-sm-flex"><div><input  data-id="'+x+'" class="addInput" value="Double Tap and Type"  type="text" name="mytext[]" id="data_item_'+ id +'"/> <div class="imageTextTocanvas remove_field"><img src="dist/assets/images/Customisateur/Trash.png" alt=""></div></div></div>'); //add input box
             
         }
         inputs = $(".addInput")
-           console.log(inputs)
                
                 inputs.keyup(function (event) {
                     console.log(event)
                     console.log($(this).data('id'));
-                     id = $(this).data('id');
+                     id = "inputs" + $(this).data('id');
                     newtext = $(this).val();
                     input = $(this);
 
                         objs = canvas.getObjects();
                         objs.forEach(function(obj) {
-                            if (obj && obj.text == val) {
+                            console.log(input.id)
+                            if (obj && obj.id == id) {
                             obj.setText(newtext);
                             canvas.renderAll();
                             }
                         });
                 })
-        var addToDeText = "inputs"+x
-          addToDeText = new fabric.IText('Double Tap and Type', {
+          addToDeText = new fabric.IText('Text', {
+                id: "inputs" + x,
                 left: 100,
-                 top: 100,
-                id: addToDeText,    
+                top: 100,
+                selectable: true,
+                text:"Double Tap and Type",
                 fontSize: 20,
                 fontWeight:100,
             });
@@ -629,9 +640,15 @@ $('#duplicate-item').on('click', function(event) {
     $(wrapper).on("click", ".remove_field", function(e) { //user click on remove text
         e.preventDefault();
         $(this).parent('div').remove();
-        var removeInputs ="inputs" + x
-        canvas.remove(removeInputs);
-        console.log(removeInputs)
+        var removeInputs = "inputs" + x
+         objs = canvas.getObjects();
+                        objs.forEach(function(obj) {
+                            if (obj && obj.id == removeInputs) {
+                            obj.remove();
+                            canvas.renderAll();
+                            }
+                        });
+       
         x--;
     });
 /**
@@ -640,7 +657,7 @@ $('#duplicate-item').on('click', function(event) {
 
 
 $("#picker1").colorPick({
-    'initialColor': '#ecf0f1',
+    'initialColor': '#C2C2C2',
     'palette': ["#002633", "#33ccff", "#919DA1", "#6B4506", "#e67e22", "#d35400", "#e74c3c", "#c0392b", "#ecf0f1", "#fff"],
     'onColorSelected': function() {
         let backgContain = $('.canvasAree img').attr('src')
@@ -657,6 +674,15 @@ $("#picker1").colorPick({
             canvas.backgroundColor = this.color
             canvas.renderAll()
             console.log("vide")
+            let rulers = document.querySelectorAll(".ruleres")
+            rulers.forEach(element => {
+                element.style.background = this.color
+            });
+            let tailleRules = document.querySelectorAll(".ruleresH")
+            tailleRules.forEach(element => {
+                element.style.color = this.color
+            })
+            console.log(rulers)
         } else {
             console.log("okay")
             canvas.setBackgroundColor(null, canvas.renderAll.bind(canvas));
@@ -701,6 +727,14 @@ $("#picker1").colorPick({
                         scaleY: canvas.height / img.height
                         });
                     });
+                                let rulers = document.querySelectorAll(".ruleres")
+                    rulers.forEach(element => {
+                        element.style.background = this.color
+                    });
+                    let tailleRules = document.querySelectorAll(".ruleresH")
+                    tailleRules.forEach(element => {
+                        element.style.color = this.color
+                    })
 
                 }, 500);
             } else {
@@ -1070,14 +1104,12 @@ function deleteTextField(n){
         correctLevel: QRCode.CorrectLevel.H,
     });
 
-    generateBtn.onclick = function(e) {
-        const data = dataBox.value;
-        if (data) {
-            generateQRCode(data);
-        } else {
-            markDataBoxError();
-        }
-    };
+    const data = dataBox.value;
+    if (data) {
+        generateQRCode(data);
+    } else {
+        markDataBoxError();
+    }
 
     dataBox.onfocus = function(e) {
         const classList = dataBox.classList;

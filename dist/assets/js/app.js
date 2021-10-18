@@ -6,7 +6,8 @@ var app = new Vue({
     extraChooseList:[],
     designChooseList:[],
     resumeChooseList: [],
-    baseUri:'https://adsquid.herokuapp.com/api/',
+    // baseUri:'https://adsquid.herokuapp.com/api/',
+    baseUri:'http:0.0.0.0:8080/api/',
     info: [],
       infoCut: [],
     infoDesign:[],
@@ -21,6 +22,8 @@ var app = new Vue({
       ToShow:false,
       cutLettering: false,
       proposition: false,
+      reset: false,
+      grapic:false,
       visuel:false,
       NoExtra: true,
       largeExtraPrice: 0,
@@ -34,21 +37,21 @@ var app = new Vue({
       YourCarColor: "",
       YourCarModel: "",
       MoreInfo:"",
-    dimensionKit:"600 x 200",
-    YourCut:"Rectangular",
-      YourExtra: [],
-      YourExtraToSave:[],
-      YourColorSelectContainer:[],
-    NoneExtra:'None',
-    YourDesign:"Normal",
-      YourQuantity: "1 kit Squid",
-    YourYearChoose:'',
+      dimensionKit:"600 x 200",
+      YourCut:"Rectangular",
+        YourExtra: [],
+        YourExtraToSave:[],
+        YourColorSelectContainer:[],
+      NoneExtra:'None',
+      YourDesign:"Normal",
+        YourQuantity: "1 kit Squid",
+      YourYearChoose:'',
       YourBrandChoose: '',
-    initialQuatity:'1',
-    YearList:[],
-    YourTotal:0,
+      initialQuatity:'1',
+      YearList:[],
+      YourTotal:0,
       itemToShow: "",
-       brandChooseList: [
+      brandChooseList: [
             {id:'1',value:"Mercedes-Benz"},
             {id:'2',value:"Peugeot"},
             {id: '3', value:"Citroen"},
@@ -144,6 +147,7 @@ var app = new Vue({
         },
 
       ],
+      theQuantitySticker:2,
       product: {
         photoProduit: "",
         tagProduit: "",
@@ -155,6 +159,8 @@ var app = new Vue({
       removeItem(itemId, value) {
         console.log(itemId)
         console.log(value)
+        this.theQuantitySticker = value * 2
+        this.initialQuatity = value
           this.YourQuantity = itemId
         if (JSON.parse(localStorage.getItem('oldTotal') != 'null' && localStorage.getItem('oldTotal')).length > 0) {
           let oldValue = JSON.parse(localStorage.getItem('oldTotal'))
@@ -203,11 +209,22 @@ var app = new Vue({
           this.noneExtraShowActive(this.index = n)
       },
       noneExtraShowActive(n) {
+            this.ToShow=false
         for (let i = 0; i < this.extraChooseList.length; i++) {
             this.extraChooseList[i].classList.remove("actived")
         }
-        if (this.extraPrice > 0) {
-          this.YourTotal = this.YourTotal - this.extraPrice
+        if (this.reset) {
+          console.log("ookay")
+        } else {
+          if (this.largeExtraPrice > 0 || this.hoodPrice > 0 || this.extraPrice > 0) {
+             this.YourTotal = this.YourTotal - (this.largeExtraPrice + this.hoodPrice + this.oneWayPrice)
+            console.log((this.largeExtraPrice + this.hoodPrice + this.extraPrice))
+            this.largeExtraPrice = 0
+            this.hoodPrice = 0
+            this.oneWayPrice = 0
+          } else {
+            this.YourTotal = this.YourTotal +  this.largeExtraPrice + this.hoodPrice + this.oneWayPrice 
+          }
         }
         // for (let index = 0; index < this.noneExtra.length; index++) {
         //     this.nomExtra[index].classList.remove("actived")
@@ -217,6 +234,7 @@ var app = new Vue({
         }
         this.noneExtra[n].classList.add("actived")
         this.YourExtra = []
+        this.YourExtraToSave = []
         this.NoExtra = true
         this.extraPrice =0
       },
@@ -226,54 +244,65 @@ var app = new Vue({
       },
       withExtraShowActive(n, item) {
         this.NoExtra = false
+        this.reset = false
         this.noneExtra[0].classList.remove("actived")
         if (this.extraChooseList[n].classList.contains("actived")) {
           var id = item.id
+          
           this.YourExtra = this.YourExtra.filter(x => {
             return x.id != id;
           })
           if (this.YourExtra.length > 1) {
-            console.log(item)
             this.tmp = true
-            document.querySelector(".extraContent").classList.add("extraSummary")
-            document.querySelector(".SumaryRearSquidContainer").classList.add("correctWidth")
+            for (let i = 0; i < this.YourExtra.length; i++) {
+              this.YourExtraToSave = []
+              this.YourExtraToSave.push(this.YourExtra[i].nomExtra)
+            }
           } else {
             console.log(this.YourExtra)
+            this.YourExtraToSave = []
+            if (this.YourExtra.length > 0) {
+              this.YourExtraToSave.push(this.YourExtra[0].nomExtra)
+            } else {
+              this.YourExtraToSave = []
+              this.noneExtra[0].classList.add("actived")
+              this.YourExtra = []
+              this.NoExtra = true
+              this.extraPrice = 0
+            }
             this.tmp = false
-            document.querySelector(".SumaryRearSquidContainer").classList.remove("correctWidth")
-            document.querySelector(".extraContent").classList.remove("extraSummary")
-            
+            console.log(this.YourExtraToSave)
           }
           this.extraChooseList[n].classList.remove("actived")
           this.info[n].classList.remove("actived")
           if (n == 0) {
             if (this.Yoursize == 'Size XS "600 x 200 mm"' || this.Yoursize == 'Size S "900 x 300 mm"') {
                   this.largeExtraPrice = -25
-                 this.YourTotal = this.YourTotal - this.largeExtraPrice
+                  this.YourTotal = this.YourTotal + this.largeExtraPrice
               
             } else if (this.Yoursize == 'Size L "1,500 x 500 mm"' || this.Yoursize == 'Size XL "2,000 x 600 mm"') {
               this.largeExtraPrice = -89
-            this.YourTotal = this.YourTotal - this.largeExtraPrice
-              this.extraPrice = this.extraPrice + this.extraPrice
+            this.YourTotal = this.YourTotal + this.largeExtraPrice
             } else if (this.Yoursize == 'Size M "1,200 x 400 mm') {
               this.largeExtraPrice= -49
-              this.YourTotal = this.YourTotal - this.largeExtraPrice
+              this.YourTotal = this.YourTotal + this.largeExtraPrice
             }
           } else if (n == 1) {
             this.oneWayPrice = -199
-            this.YourTotal = this.YourTotal - this.oneWayPrice
+            this.YourTotal = this.YourTotal + this.oneWayPrice
             this.ToShow=false
           } else if (n == 2) {
             if (this.Yoursize == 'Size XS "600 x 200 mm"' || this.Yoursize == 'Size S "900 x 300 mm"' || this.Yoursize == 'Size M "1,200 x 400 mm') {
                   this.hoodPrice = -25
-                  this.YourTotal = this.YourTotal - this.hoodPrice
+                  this.YourTotal = this.YourTotal + this.hoodPrice
             } else if (this.Yoursize == 'Size L "1,500 x 500 mm"' || this.Yoursize == 'Size XL "2,000 x 600 mm"') {
               this.hoodPrice=-49
-              this.YourTotal = this.YourTotal - this.hoodPrice
+              this.YourTotal = this.YourTotal + this.hoodPrice
                   
             } 
             
           }
+          // this.YourTotal = this.YourTotal + this.extraPrice
         } else {
             this.extraChooseList[n].classList.add("actived")
             this.info[n].classList.add("actived")
@@ -283,18 +312,18 @@ var app = new Vue({
           if (n == 0) {
             if (this.Yoursize == 'Size XS "600 x 200 mm"' || this.Yoursize == 'Size S "900 x 300 mm"') {
                   this.largeExtraPrice = 25
-                  this.extraPrice = this.extraPrice + this.largeExtraPrice
+                  this.YourTotal = this.YourTotal + this.largeExtraPrice
             } else if (this.Yoursize == 'Size L "1,500 x 500 mm"' || this.Yoursize == 'Size XL "2,000 x 600 mm"') {
               this.largeExtraPrice = 89
-                  this.extraPrice = this.extraPrice + this.largeExtraPrice
+                  this.YourTotal = this.YourTotal + this.largeExtraPrice
             } else if (this.Yoursize == 'Size M "1,200 x 400 mm') {
               this.largeExtraPrice = 49
-                  this.extraPrice = this.extraPrice + this.largeExtraPrice
+                  this.YourTotal = this.YourTotal + this.largeExtraPrice
                 }
             }
           if (n == 1) {
               this.oneWayPrice = 199
-              this.extraPrice = this.extraPrice +  this.oneWayPrice
+              this.YourTotal = this.YourTotal +  this.oneWayPrice
               this.ToShow = true
                           var modal = document.getElementById("myModal");
                   // Get the <span> element that closes the modal
@@ -321,13 +350,13 @@ var app = new Vue({
             } if (n == 2) {
               if (this.Yoursize == 'Size XS "600 x 200 mm"' || this.Yoursize == 'Size S "900 x 300 mm"' || this.Yoursize == 'Size M "1,200 x 400 mm') {
                   this.hoodPrice = 25
-                  this.extraPrice = this.extraPrice +this.hoodPrice
+                  this.YourTotal = this.YourTotal +this.hoodPrice
               } else if (this.Yoursize == 'Size L "1,500 x 500 mm"' || this.Yoursize == 'Size XL "2,000 x 600 mm"') {
                 this.hoodPrice = 49
-                  this.extraPrice = this.extraPrice + this.hoodPrice
+                  this.YourTotal = this.YourTotal + this.hoodPrice
                 } 
             }
-            this.YourTotal = this.extraPrice + this.YourTotal
+            // this.YourTotal = this.extraPrice + this.YourTotal
         }
       },
       sizeChooseSquid(n) {
@@ -335,9 +364,17 @@ var app = new Vue({
         console.log(n)
       },
       sizeShowActive(n) {
-        this.YourTotal = this.YourTotal - this.sizePrice
-        for (let i = 0; i < this.ChoseItemList.length; i++) {
-          this.ChoseItemList[i].classList.remove("actived")
+        this.reset = true
+        if (this.sizePrice > 0) {
+          this.YourTotal = this.YourTotal - this.sizePrice
+        } else {
+          this.YourTotal = 0
+            }
+          for (let i = 0; i < this.ChoseItemList.length; i++) {
+              this.ChoseItemList[i].classList.remove("actived")
+              this.CutPrice = 0
+            this.designPrice = 0
+            this.YourTotal =0
         }
          if (n == 0) {
             this.Yoursize ='Size XS "600 x 200 mm"'
@@ -346,6 +383,7 @@ var app = new Vue({
               height:"200"
            }
            this.sizePrice = 49
+           this.dimensionKit = "600 x 200"
             localStorage.setItem("customizerSize",JSON.stringify(dataSize))
         }else if(n == 1){
             this.Yoursize ='Size S "900 x 300 mm"'
@@ -353,10 +391,12 @@ var app = new Vue({
               width:"900",
               height:"300"
            }
+           this.dimensionKit = "900 x 300"
            this.sizePrice = 99
             localStorage.setItem("customizerSize",JSON.stringify(dataSize))
         }else if(n== 2){
-            this.Yoursize ='Size M "1,200 x 400 mm"'
+           this.Yoursize = 'Size M "1,200 x 400 mm"'
+           this.dimensionKit = "1 200 x 400"
             let dataSize={
               width:"1,200",
               height:"400"
@@ -364,7 +404,8 @@ var app = new Vue({
            this.sizePrice = 169  
             localStorage.setItem("customizerSize",JSON.stringify(dataSize))
         }else if(n==3){
-            this.Yoursize ='Size L "1,500 x 500 mm"'
+           this.Yoursize = 'Size L "1,500 x 500 mm"'
+           this.dimensionKit =" 1 500 x 500"
             let dataSize={
               width:"1,500",
               height:"500"
@@ -372,7 +413,8 @@ var app = new Vue({
            this.sizePrice = 269
            localStorage.setItem("customizerSize", JSON.stringify(dataSize))
         }else if (n==4) {
-            this.Yoursize ='Size XL "2,000 x 600 mm"'
+           this.Yoursize = 'Size XL "2,000 x 600 mm"'
+           this.dimensionKit =" 2 000 x 600"
             let dataSize={
               width:"2,000",
               height:"600"
@@ -380,18 +422,24 @@ var app = new Vue({
            this.sizePrice = 399
             localStorage.setItem("customizerSize",JSON.stringify(dataSize))
         }
+
+        if (this.CutPrice > 0 || this.extraPrice > 0 || this.hoodPrice > 0 || this.largeExtraPrice > 0 || this.oneWayPrice > 0 || this.designPrice > 0) {
+          this.YourTotal =0
+        }
         this.YourTotal = this.YourTotal + this.sizePrice
 
         this.ChoseItemList[n].classList.add("actived")
-        this.cutShowActive(0)
-        this.designShowActive(0)
-        this.noneExtraShowActive(0)
+         this.cutShowActive(0)
+         this.designShowActive(0)
+         this.noneExtraShowActive(0)
       },
       cutChooseSquid(n) {
         this.cutShowActive(index = n)
         console.log(n)
       },
       cutShowActive(n) {
+        let guideLine = document.querySelector(".guideLineSaveAre")
+          let internalGuideline = document.querySelector(".safeAreZone")
         this.YourTotal = this.YourTotal - this.CutPrice
         for (let i = 0; i < this.choseCutList.length; i++) {
           this.choseCutList[i].classList.remove("actived")
@@ -411,6 +459,12 @@ var app = new Vue({
           } else if (this.Yoursize == 'Size XL "2,000 x 600 mm"') {
             this.CutPrice = 0
           }
+           if (guideLine.classList.contains("roundedActivated")) {
+            guideLine.classList.remove("roundedActivated")
+            internalGuideline.classList.remove("roundedActivated")
+           } else {
+             console.log("okay")
+          }
         }
         else if (n == 1) {
           this.YourCut = 'Round'
@@ -426,8 +480,12 @@ var app = new Vue({
           } else if (this.Yoursize == 'Size XL "2,000 x 600 mm"') {
             this.CutPrice = 50
           }
+
+            guideLine.classList.add("roundedActivated")
+            internalGuideline.classList.add("roundedActivated")
         }
         else if (n == 2) {
+
           this.cutLettering = !this.cutLettering
           this.YourCut = 'Lettering'
           localStorage.setItem("cutCustomizer",this.YourCut)
@@ -441,6 +499,10 @@ var app = new Vue({
             this.CutPrice =40
           } else if (this.Yoursize == 'Size XL "2,000 x 600 mm"') {
             this.CutPrice = 50
+          }
+           if (guideLine.classList.contains("roundedActivated")) {
+            guideLine.classList.remove("roundedActivated")
+            internalGuideline.classList.remove("roundedActivated")
           }
 
           setTimeout(() => {
@@ -493,32 +555,39 @@ var app = new Vue({
           extraProduct:this.YourExtraToSave,
           totalAmountProduct:this.YourTotal
         }
+        if (window.localStorage.getItem("userInfomation") != null && window.localStorage.getItem("userInfomation").length > 0) {
+                  if (commande.sizeProduct != '' && commande.totalAmountProduct != '') {
+                  // Get the modal
+                var modal = document.getElementById("myModal");
+                // Get the <span> element that closes the modal
+                    var span = document.getElementsByClassName("close")[0];
+                    
+                    // When the user clicks the button, open the modal 
+                    console.log(modal)
+                    modal.style.display = "block";
 
-        if (commande.sizeProduct != '' && commande.totalAmountProduct != '') {
-           // Get the modal
-        var modal = document.getElementById("myModal");
-        // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-            
-            // When the user clicks the button, open the modal 
-            console.log(modal)
-            modal.style.display = "block";
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                modal.style.display = "none";
+                }
 
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-        modal.style.display = "none";
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+                    }
+                 localStorage.setItem('commande',JSON.stringify(commande))
+                    
+              } else {
+                alert("Veillez selectionner une taille")
+              }
+                        
+       } else {
+           this.startNew()    
         }
 
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-        }
-      } else {
-        alert("Veillez selectionner une taille")
-      }
-      localStorage.setItem('commande',JSON.stringify(commande))
+      
     },
     startNew() {
 

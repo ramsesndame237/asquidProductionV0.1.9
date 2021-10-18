@@ -127,7 +127,7 @@
     display: flex;
     align-items:center;
     justify-content: flex-start;
-    margin-top: 2rem;
+    margin-top: 35px;
 	margin-bottom: 10rem;
 }
 .uploadDesignRear,.customizerRear{
@@ -137,7 +137,7 @@
 	border: 1px solid #919DA1;
 	border-radius: 32px;
     font-size: 20px;
-    margin-left: 20px;
+    margin-left: 295px;
     font-weight: 900;
     display: flex;
     align-items: center;
@@ -332,4 +332,8 @@
     .contentText{
         display: flex;
         height: 54px;
+    }
+
+    .roundedActivated{
+        border-radius: 25px;
     }

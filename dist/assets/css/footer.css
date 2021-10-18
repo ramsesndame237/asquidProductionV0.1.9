@@ -181,18 +181,21 @@ footer{
 	height: 100%;
 }
 .graphicSupport{
-	width: 465px;
-	height: 159px;
+	width: 660px;
+	height: 193px;
 	background: #FFFFFF 0% 0% no-repeat padding-box;
 	border: 1px solid #919DA1;
 	border-radius: 25px;
 	margin: auto;
 	margin-top: 150px;
 	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+}
+.messageGraphicContent{
 	text-align: center;
+	width: 600px;
+	height: 147px;
+	margin-left: 30px;
+	margin-top: 23px;
 }
 .close{
 	width: 28px;
