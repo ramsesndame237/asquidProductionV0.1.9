@@ -139,7 +139,7 @@ var app = new Vue({
         RearShowActive(n) {
           this.removeItemQuantity(this.kitQuantity[0].quantity, this.kitQuantity[0].value)
             this.reset = true
-           this.YourFlexiTotalAmount = this.YourFlexiTotalAmount - this.YourSizePrice  
+           this.totalAmount = this.totalAmount - this.sizePrice  
             for (var i = 0; i < this.sizeChooseList.length; i++) {
                 this.sizeChooseList[i].classList.remove("Acitve")
             }
@@ -153,7 +153,6 @@ var app = new Vue({
                     height: "250"
                 }
                 localStorage.setItem("customizerSize", JSON.stringify(dataSize))
-                this.totalAmount = this.sizePrice
             } else if (n == 1) {
                 console.log(n)
                 this.sizePrice = 69
@@ -164,7 +163,6 @@ var app = new Vue({
                     height: "300"
                 }
                 localStorage.setItem("customizerSize", JSON.stringify(dataSize))
-                this.totalAmount = this.sizePrice
             } else if (n == 2) {
               this.sizePrice = 199
               this.ToShow = true
@@ -204,9 +202,9 @@ var app = new Vue({
                 setTimeout(() => {
                     this.itemToTextShow = 'AllWindowcar'
                 }, 5000);
-                this.totalAmount = this.sizePrice
 
             }
+          this.totalAmount = this.totalAmount + this.sizePrice
 
             this.sizeChooseList[n].classList.add("Acitve");
             this.RearDesignShowActive(0)
@@ -223,7 +221,8 @@ var app = new Vue({
             }
             if (n == 0) {
               this.YourRearDesign = 'None'
-              this.designPrice =0
+              this.designPrice = 0
+              this.grapic = false
             } else if (n == 1) {
               this.grapic = true
               this.proposition = false
@@ -249,34 +248,34 @@ var app = new Vue({
                       modal.style.display = "none";
                   }
                   }
-              this.designPrice = 45
-                this.totalAmount = this.totalAmount + this.designPrice
-            }
+                this.designPrice = 45
+              }
+            this.totalAmount = this.totalAmount + this.designPrice
             this.designChooseList[n].classList.add("Acitve")
 
         },
-       saveCommande() {
-        this.proposition = true
-         this.ToShow = false
-         this.grapic = false
-          let data ="Rear"
+    saveCommande() {
+      this.proposition = true
+      this.visuel = false,
+        this.grapic = false
+          let data ="Flexi"
         localStorage.setItem("CustomiseTitle", data)
 
         let commande= {
           nameProduct: data,
-          sizeProduct: this.YourRearSize,
-          designProduct: this.YourRearDesign,
-          cutProduct:this.YourCut,
-          quantityProduct: this.YourRearQuantity,
+          sizeProduct: this.YourFlexisize,
+          designProduct: this.YourFlexiDesign,
+          cutProduct:"",
+          quantityProduct: this.YourFlexiQuantity,
           extraProduct:"",
-          totalAmountProduct:this.totalAmount
+          totalAmountProduct:this.YourFlexiTotalAmount
         }
-
+      if (window.localStorage.getItem("userInfomation") != null && window.localStorage.getItem("userInfomation").length > 0) {
         if (commande.sizeProduct != '' && commande.totalAmountProduct != '') {
            // Get the modal
         var modal = document.getElementById("myModal");
         // Get the <span> element that closes the modal
-            var span = document.querySelector(".close");
+            var span = document.querySelector("close");
             
             // When the user clicks the button, open the modal 
             console.log(modal)
@@ -297,6 +296,15 @@ var app = new Vue({
         alert("Veillez selectionner une taille")
       }
       localStorage.setItem('commande',JSON.stringify(commande))
+      } else {
+                if (commande.sizeProduct != '' && commande.totalAmountProduct != '') {
+                  this.startNew()
+          } else {
+            alert("Veillez selectionner une taille")
+          }
+      }
+
+        
     },
     startNew() {
 

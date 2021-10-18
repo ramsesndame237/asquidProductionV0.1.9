@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="../dist/assets/images/logo.png">
+    <link rel="stylesheet" href="../dist/assets/css/cart.css">
+    <link rel="stylesheet" href="../dist/assets/css/footer.css">
+    <script src="../dist/plugin/vue.js"></script>
+    <script src="../dist/plugin/axios.min.js"></script>
+</head>
+<body>
+
+    <div class="cartContainer" id="faq">
+        <header class="cartHeader">
+            <div class="logoContainer">
+                <img src="../dist/assets/images/Adsquid_white_SF.png" alt="">
+            </div>
+            <div class="SocialAndLinkContainer">
+                <div class="socialLink">
+                    <div class="userAccount">
+                        <img src="../dist/assets/images/icon/user_V2.svg" alt="userAccount">
+                    </div>
+                    <div class="shoppingContainer">
+                        <img src="../dist/assets/images/icon/shopping-cart_V2.svg" alt="shopping-cart">
+                        <div class="numberofProduct">
+                            <span> {{numberOfProduct}} </span>
+                        </div>
+                    </div>
+                    <div class="search_utilisateur">
+                        <div class="search-icon">
+                            <img src="../dist/assets/images/icon/search.svg" alt="">
+                        </div>
+                        <div class="inputText">
+                            <input type="text" name="search" id="search" placeholder="Search">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="navLink">
+                    <div class="productLink">
+                        <span>Product</span>
+                    </div>
+                    <div class="quoteLink">
+                        <span><a href="quote.html">Quote</a></span>
+                    </div>
+                    <div class="busnessServiceLink">
+                        <span><a href="#">Business Service</a></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+        <div class="CardBodyContainer">
+            <div class="breackrumbCart">
+                <div class="name">
+                    FAQs
+                </div>
+                <div style="color: #33CCFF;width: 102px;height: 22px; font-size: 16px;margin-top: 14px;margin-bottom: 104px;margin-left: 52px;margin-right: 974px;">
+                   <span style="color: #fff;">
+                       Home/
+                   </span>  FAQs
+                </div>
+            </div>
+            <div class="FaqContainer">
+                <div class="questionContent">
+                    <div class="titleOfTheContent">
+                        <span>
+                            Your Question:
+                        </span>
+                    </div>
+                    <div class="inputQuestionContent">
+                        <input type="text">
+                        <hr style="height:30px">
+                        <div class="imageDropdown">
+                            <img src="../dist/assets/images/arrowDown.png" alt="">
+                        </div>
+                    </div>
+                    <div class="questionContentList">
+                        <div class="ListQuestion">
+
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+    
+    <script src="../dist/assets/js/config.js"></script>
+    <script src="../dist/assets/js/faq.js"></script>
+</body>
+</html>
