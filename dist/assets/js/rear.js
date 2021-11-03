@@ -1,6 +1,7 @@
 var app = new Vue({
     el: '#rearSquid',
-    data: {
+  data: {
+      messageReceive:0,
         brandChooseList: [
             {id:'1',value:"Mercedes-Benz"},
             {id:'2',value:"Peugeot"},
@@ -31,13 +32,14 @@ var app = new Vue({
             {id:'8',value:"#8b4513"},
             {id: '9',value: "#556b2f" },
             {id:'10',value:"#ffff00"},
-          { id: '11', value: "#800080" },
+            { id: '11', value: "#800080" },
             {id:'12',value:"#ffa500"}
           ],
-          YourColorSelectContainer:[],
+      YourColorSelectContainer: [],
+      YourColorSelectContainerGraphic:[],
         sizeChooseList: [],
       designChooseList: [],
-        baseUri:'http://localhost:3350/api/',
+        baseUri:'http://localhost:8800/api/',
         kitQuantity: [
         {
           id:'1',quantity:'1 RearSquid',value:"1"
@@ -75,7 +77,8 @@ var app = new Vue({
         quantityRearSquid: '1',
         YourRearQuantity:'1 RearSquid',
         itemToShow: "",
-        itemToTextShow: '',
+      itemToTextShow: '',
+      dimensionKit:"600 x 200",
         sizePrice: 0,
         designPrice: 0,
         totalAmount:0,
@@ -170,16 +173,20 @@ var app = new Vue({
                 this.grapic =false
                            var modal = document.getElementById("myModal");
                   // Get the <span> element that closes the modal
-                      var span = document.querySelector(".close");
+                  modal.style.display = "block";
+                  
+              setTimeout(() => {
+                var span = document.querySelector(".close");
+                console.log(span)
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                   modal.style.display = "none";
+                }
+                
+              }, 500);
                       
                       // When the user clicks the button, open the modal 
-                      console.log(span)
-                      modal.style.display = "block";
 
-                  // When the user clicks on <span> (x), close the modal
-                  span.onclick = function() {
-                  modal.style.display = "none";
-                  }
 
                   // When the user clicks anywhere outside of the modal, close it
                   window.onclick = function(event) {
@@ -227,21 +234,23 @@ var app = new Vue({
               this.grapic = true
               this.proposition = false
               this.ToShow = false
-              this.YourRearDesign = 'Graphic design'
+              this.YourRearDesign = 'Graphic support'
                       // Get the modal
                   var modal = document.getElementById("myModal");
-                  // Get the <span> element that closes the modal
+                  modal.style.display = "block";
+                  setTimeout(() => {
+                    // Get the <span> element that closes the modal
                       var span = document.querySelector(".close");
                       
                       // When the user clicks the button, open the modal 
-                      console.log(modal)
-                      modal.style.display = "block";
+                          console.log(modal)
 
-                  // When the user clicks on <span> (x), close the modal
-                  span.onclick = function() {
-                  modal.style.display = "none";
-                  }
+                      // When the user clicks on <span> (x), close the modal
+                      span.onclick = function() {
+                        modal.style.display = "none";
+                      }
 
+                  }, 500);
                   // When the user clicks anywhere outside of the modal, close it
                   window.onclick = function(event) {
                   if (event.target == modal) {
@@ -261,17 +270,32 @@ var app = new Vue({
           let data ="Flexi"
         localStorage.setItem("CustomiseTitle", data)
 
-        let commande= {
-          nameProduct: data,
-          sizeProduct: this.YourFlexisize,
-          designProduct: this.YourFlexiDesign,
-          cutProduct:"",
-          quantityProduct: this.YourFlexiQuantity,
-          extraProduct:"",
-          totalAmountProduct:this.YourFlexiTotalAmount
-        }
+        // let commande= {
+        //   nameProduct: data,
+        //   sizeProduct: this.YourFlexisize,
+        //   designProduct: this.YourFlexiDesign,
+        //   cutProduct:"",
+        //   quantityProduct: this.YourFlexiQuantity,
+        //   extraProduct:"",
+        //   totalAmountProduct:this.YourFlexiTotalAmount
+        // }
+       let product = {
+        nameProduct: data,
+        sizeProduct: this.YourFlexisize,
+        designProduct: this.YourFlexiDesign,
+        cutProduct: this.YourCut,
+        quantityProduct: this.YourFlexiQuantity,
+        extraProduct: "",
+        carInformation: {
+          carBrand: this.YourBrandChoose,
+          carModel: this.YourCarModel,
+          carColor: this.YourCarColor,
+          moreInfo:this.MoreInfo
+        },
+        totalAmountProduct:this.YourFlexiTotalAmount
+      }
       if (window.localStorage.getItem("userInfomation") != null && window.localStorage.getItem("userInfomation").length > 0) {
-        if (commande.sizeProduct != '' && commande.totalAmountProduct != '') {
+        if (product.sizeProduct != '' && product.totalAmountProduct != '') {
            // Get the modal
         var modal = document.getElementById("myModal");
         // Get the <span> element that closes the modal
@@ -295,9 +319,9 @@ var app = new Vue({
       } else {
         alert("Veillez selectionner une taille")
       }
-      localStorage.setItem('commande',JSON.stringify(commande))
+      localStorage.setItem('commande',JSON.stringify(product))
       } else {
-                if (commande.sizeProduct != '' && commande.totalAmountProduct != '') {
+                if (product.sizeProduct != '' && product.totalAmountProduct != '') {
                   this.startNew()
           } else {
             alert("Veillez selectionner une taille")
@@ -352,6 +376,7 @@ var app = new Vue({
         this.sizeChooseList = document.querySelectorAll(".sizeRearContainer")
       this.designChooseList = document.querySelectorAll(".containerDesignRearSquid")
       this.YourColorSelectContainer = document.querySelectorAll(".colorToSelect")
+      this.YourColorSelectContainerGraphic = document.querySelectorAll(".colorToSelectGraphic")
         console.log(this.designChooseList)
         localStorage.setItem('oldTotalrear', JSON.stringify(this.quantityRearSquid))
         this.resumeShowActive(this.index = 0)
@@ -366,6 +391,9 @@ var app = new Vue({
          
       for (let i = 0; i < this.YourColorSelectContainer.length; i++) {
         this.YourColorSelectContainer[i].style.background = this.colorChooseList[i].value
+      }
+      for (let i = 0; i < this.YourColorSelectContainerGraphic.length; i++) {
+        this.YourColorSelectContainerGraphic[i].style.background = this.colorChooseList[i].value
       }
     },
   })

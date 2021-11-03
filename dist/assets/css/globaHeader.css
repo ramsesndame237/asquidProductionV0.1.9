@@ -114,7 +114,7 @@ ul,li,ol,a{
 		color: #fff;
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: flex-end;
 		height: 60px;
 		font-size: 20px;
 		font-weight: 900;
@@ -212,5 +212,6 @@ ul,li,ol,a{
 	border-radius: 16px;
 	position: absolute;
 	top: 40px;
+    z-index: 100;
 	left: 160px;
 }

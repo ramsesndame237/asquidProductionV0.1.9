@@ -184,18 +184,18 @@ var app = new Vue({
             {
                 id:'1',imageSrc:'dist/assets/images/Background/Bubble.svg'
             },
-            // {
-            //     id:'2',imageSrc:'dist/assets/images/Background/Fond_couleur.svg'
-            // },
-            // {
-            //     id:'3',imageSrc:'dist/assets/images/Background/Bande.svg'
-            // },
-            // {
-            //     id:'4',imageSrc:'dist/assets/images/Background/Soleil.svg'
-            // },
-            // {
-            //     id:'5',imageSrc:'dist/assets/images/Background/Rond.svg'
-            // }
+             {
+                 id:'2',imageSrc:'dist/assets/images/Background/Fond_couleur.svg'
+             },
+             {
+                 id:'3',imageSrc:'dist/assets/images/Background/Bande.svg'
+             },
+             {
+                 id:'4',imageSrc:'dist/assets/images/Background/Soleil.svg'
+             },
+             {
+                 id:'5',imageSrc:'dist/assets/images/Background/Rond.svg'
+             }
         ]
         ,
         categoryIconChoose: [
@@ -328,27 +328,34 @@ var app = new Vue({
             } else {
                 let imagesSelectionner = this.selectBackgroundLayoutList[n].getElementsByTagName('img')[0].src;
                 this.imagesBackground = imagesSelectionner
+                localStorage.setItem("imageUrl",JSON.stringify(this.imagesBackground))
             }
             this.selectBackgroundLayoutList[n].className += " activeToolsItem";
             setTimeout(() => {
                 this.topnaveBackgroundLayoutList = document.querySelectorAll(".itemDesignLayout")
-                console.log(this.topnaveBackgroundLayoutList)
+                console.log(this.imagesBackground)
             }, 300);
             
         },
         showActiveBackgroundTopnav(n) {
-            for (var i = 0; i < this.topnaveBackgroundLayoutList.length; i++) {
-                this.topnaveBackgroundLayoutList[i].classList.remove("activeToolsItem")
+            localStorage.setItem("selectBackground",n)
+            for (var i = 0; i < this.selectBackgroundLayoutList.length; i++) {
+                this.topnaveBackgroundLayoutList[i].className = this.topnaveBackgroundLayoutList[
+                    i
+                ].className.replace(" activeToolsItem", "");
             }
-            this.topnaveBackgroundLayoutList[n].classList.add("activeToolsItem");
-            let imagesSelectionner = this.topnaveBackgroundLayoutList[n].getElementsByTagName('img')[0].src;
-            console.log(imagesSelectionner)
-             this.imagesBackground = imagesSelectionner
-             if(n==0){
+            if (n == 0) {
                 this.imagesBackground =""
+            } else {
+                let imagesSelectionner = this.topnaveBackgroundLayoutList[n].getElementsByTagName('img')[0].src;
+                this.imagesBackground = imagesSelectionner
+                localStorage.setItem("imageUrl",JSON.stringify(this.imagesBackground))
             }
-
-            localStorage.setItem("localUrlChange",JSON.stringify(this.imagesBackground))
+            this.topnaveBackgroundLayoutList[n].className += " activeToolsItem";
+            setTimeout(() => {
+                this.topnaveBackgroundLayoutList = document.querySelectorAll(".itemDesignLayout")
+                console.log(this.imagesBackground)
+            }, 300);
 
         },
         changeTitle(item) {

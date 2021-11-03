@@ -233,19 +233,19 @@
     }
 
 	.infoRearkits{
-		margin-top: 1rem;
+		margin-top: 20px;
 		width: 28rem;
 	}
 	.quantityAndSizeReview{
 		font-size: 20px;
 		color: #fff;
-		margin-bottom: 1rem;
+		margin-bottom: 20px;
 	}
 	.consignReview {
 		font-size: 20px;
 		color: #fff;
 		width: 60%;
-		margin-bottom: 1rem;
+		margin-bottom: 20px;
 	}
 	.quantityAndSizeReview img, .consignReview img {
 		width: 10px;
@@ -287,7 +287,7 @@
         background: #fff;
         width: 70%;
         height: 300px;
-        border: solid 2px rgb(240, 119, 119);
+        border: 2px solid #FF3366;
         padding: 1rem;
     }
     .guidelineDownload{
@@ -325,6 +325,10 @@
         border: solid 4px #33ccff;
         font-size: 15px;
     }
+    .infoActived{
+        top: -18px;
+        right: -11px;
+    }
 
     .extraSummary{
         height: 104px;
@@ -336,4 +340,57 @@
 
     .roundedActivated{
         border-radius: 25px;
+    }
+    .trimAreaContainer{
+        display: flex;
+        margin-top: 37px;
+    }
+    .safeAreaContainer{
+        display: flex;
+        margin-top: 19px;
+    }
+    .trimAreaCard{
+        width: 80px;
+        height: 54px;
+        border: 2px solid #FF3366;
+        margin-right: 10px;
+        margin-bottom: 4px;
+    }
+    .titleTrim{
+        width: 97px;
+        height: 27px;
+        text-align: left;
+        font: normal normal 900 20px/27px Avenir;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        font-family: 'Avenir';
+    }
+    .bodyTrim{
+        width: 202px;
+        height: 54px;
+        text-align: left;
+        font: normal normal normal 20px/27px Avenir;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+    }
+    .safeAreaCard{
+        width: 80px;
+        height: 54px;
+        border: 2px dashed #33CCFF;
+        margin-right: 10px;
+    }
+    .titleSafe{
+        height: 27px;
+        text-align: left;
+        font: normal normal 900 20px/27px Avenir;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+    }
+    .bodySafe{
+        width: 202px;
+        height: 162px;
+        text-align: left;
+        font: normal normal normal 20px/27px Avenir;
+        letter-spacing: 0px;
+        color: #FFFFFF;
     }

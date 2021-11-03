@@ -61,6 +61,25 @@ height: 70px;
   opacity: 0.6;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.14);
 }
+  .chatGroup{
+        position: absolute;
+        bottom: 56px;
+        right: 69px;
+    }
+    .chatbutton{
+        width: 38px;
+        height: 29px;
+        background: #33CCFF 0% 0% no-repeat padding-box;
+        border-radius: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    .chatbutton img{
+        width: 100%;
+        height: 100%;
+    }
 .floating-chat.expand {
   width: 460px;
   max-height: 523px;
@@ -88,7 +107,7 @@ height: 70px;
   cursor: pointer;
 }
 .numberofMessage{
-    background: #002633;
+    background: #FF3366;
     width: 30px;
     height: 30px;
     font-weight: bold;
@@ -97,7 +116,8 @@ height: 70px;
     justify-content: center;
     border-radius: 50%;
     position: absolute;
-  top: -20px;
+  top: -10px;
+  z-index: 1000;
   left: -10px;
 }
 .floating-chat .chat {
@@ -116,6 +136,25 @@ height: 70px;
   right: 0;
   bottom: 0;
 }
+  .chatGroup{
+        position: absolute;
+        bottom: 56px;
+        right: 69px;
+    }
+    .chatbutton{
+        width: 38px;
+        height: 29px;
+        background: #33CCFF 0% 0% no-repeat padding-box;
+        border-radius: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    .chatbutton img{
+        width: 100%;
+        height: 100%;
+    }
 .floating-chat .chat.enter {
   opacity: 1;
   border-radius: 0;
@@ -266,7 +305,7 @@ height: 70px;
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 100; /* Sit on top */
   padding-top: 100px; /* Location of the box */
   left: 0;
   top: 0;
@@ -336,6 +375,7 @@ height: 70px;
     padding: 5px;
     border-radius: 10px;
     color: white;
+    cursor: pointer;
   }
 
 .numberofProduct{

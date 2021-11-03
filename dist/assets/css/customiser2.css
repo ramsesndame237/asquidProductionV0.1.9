@@ -158,6 +158,9 @@ next button
     
     .next-action-button:hover {
         transform: scale(1.1);
+        border: solid #fff;
+        color: #fff;
+        background: transparent;
     }
     /*
 main off the customiser 
@@ -212,25 +215,7 @@ main off the customiser
         margin-left: 12px;
         margin-right: 12px;
     }
-    .chatGroup{
-        position: absolute;
-        bottom: 56px;
-        right: 69px;
-    }
-    .chatbutton{
-        width: 38px;
-        height: 29px;
-        background: #33CCFF 0% 0% no-repeat padding-box;
-        border-radius: 18px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-    }
-    .chatbutton img{
-        width: 100%;
-        height: 100%;
-    }
+  
 
 
     /*
@@ -312,12 +297,48 @@ main off the customiser
     }
     
     .visualDesignContainer {
-        width: 235px;
-        height: 100%;
+        width: 245px;
+        height: 500px;
         padding: 3px;
         overflow: auto;
     }
-    
+    .fontyContainer{
+        height: 160px;
+        margin-top: 5px;
+        width: 100%;
+        overflow: auto;
+    }
+    .fontyContainer::-webkit-scrollbar-track{
+        -webkit-box-shadow: inset 0 0 6px #919da1;
+        background-color: #F5F5F5;
+    }
+    .fontyContainer::-webkit-scrollbar
+        {
+            width: 4px;
+            border-radius: 8px;
+            background-color: #F5F5F5;
+        }
+        .fontyContainer::-webkit-scrollbar-thumb
+        {
+            background-color: #919da1;
+            border: 2px solid #555555;
+        }
+
+    .visualDesignContainer::-webkit-scrollbar-track{
+        -webkit-box-shadow: inset 0 0 6px #919da1;
+        background-color: #F5F5F5;
+    }
+    .visualDesignContainer::-webkit-scrollbar
+        {
+            width: 4px;
+            border-radius: 8px;
+            background-color: #F5F5F5;
+        }
+    .visualDesignContainer::-webkit-scrollbar-thumb
+        {
+            background-color: #919da1;
+            border: 2px solid #555555;
+        }
     .visualContent {
         width: 229px;
         height: 96px;
@@ -333,7 +354,9 @@ main off the customiser
         cursor: pointer;
         transition: all .3s;
     }
-    
+    .force-overflow{
+	    min-height: 450px;
+    }
     .visualContent:hover {
         transform: scale(1.05);
     }
@@ -368,7 +391,7 @@ main off the customiser
         cursor: pointer;
         position: relative;
         transition: all .3s;
-        margin-top: 33.75px;
+        margin-top: 29px;
     }
     
     .layoutCustomContent img {
@@ -382,7 +405,7 @@ main off the customiser
     }
     
     .layoutCustomContent {
-        margin-left: 50px;
+        margin-left: 80px;
     }
     
     .colorPops {
@@ -763,11 +786,10 @@ customisateur area
         position: absolute;
         border: solid;
         width: 249px;
-        height: 170px;
-        padding: 5px;
+        height: 220px;      
+        background: #FFFFFF 0% 0% no-repeat padding-box;
         border: 1px solid #919DA1;
         border-radius: 25px;
-        background:#fff;
         left: -100px;
     }
     
@@ -1414,7 +1436,19 @@ customisateur area
         top: 35%;
         cursor: pointer;
     }
-    
+    .imageTextTocanvas .img-top {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 99;
+    }
+    .imgs{
+        display: none;
+    }
+     .imageTextTocanvas:hover .img-top {
+        display: inline;
+    }
     .imageTextTocanvas img {
         width: 100%;
         height: 100%;
@@ -1876,6 +1910,13 @@ customisateur area
         gap: 10px;
         padding: 5px;
     }
+    .containerJobMediaTop{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+        margin-left: 20px;
+        margin-top: 10px;
+    }
     
     .containerVisualJob {
         border: solid 1px #919da1;
@@ -1892,17 +1933,24 @@ customisateur area
         padding: 2px;
         transition: all .3s;
     }
-    .imageToSelect{
-        width: 47px !important;
-        height: 47px !important;
-    }
     .imageToSelect img{
         width: 100%;
         height: 100%;
     }
+
     
     .containerVisualJob:hover {
         transform: scale(1.09);
+    }
+    .containerVisualJobTop {
+        width: 60px;
+        height: 60px;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border-radius: 12px;
+    }
+    .containerVisualJobTop img{
+        width: 100%;
+        height: 100%;
     }
     
     .containerJobMedia img {
@@ -1940,7 +1988,6 @@ customisateur area
         width: 100%;
         height: 100%;
         border-radius: 28px;
-        justify-content: space-between;
         align-items: center;
         cursor: pointer;
         padding: 10px;
@@ -1948,6 +1995,9 @@ customisateur area
     .choosequantityDropdowHeader{
         width: 232px;
         height: 40px;
+        margin-top: 19px;
+        margin-left: 8.43px;
+       background: #FFFFFF 0% 0% no-repeat padding-box;
         border: 1px solid #919DA1;
         border-radius: 25px;
     }
@@ -1957,6 +2007,9 @@ customisateur area
         color: #002633;
         font-size: 16px;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .chooseQuantityName {
@@ -1968,8 +2021,9 @@ customisateur area
     }
     
     .arrowDownDrop {
-        width: 15px;
-        height: 15px;
+        width: 14px;
+        height: 8px;
+        margin-top: 8px;
     }
     
     .arrowDownDrop img {
@@ -1978,8 +2032,11 @@ customisateur area
     }
     
     .DropDowQuantityToChoose {
-        width: 250px;
+        width: 200px;
         height: 180px;
+        padding-right: 20px;
+        margin-left: auto;
+        margin-right: auto;
         background: #fff;
         text-align: center;
         border-radius: 25px;
@@ -2014,8 +2071,8 @@ customisateur area
     }
     .undoButton{margin-right: 10px;}
     .undoButton img,.redoButton img{
-        width: 15px;
-        height: 30px;
+        width: 6px;
+        height: 11px;
         cursor: pointer;
     }
     .zommButton img{

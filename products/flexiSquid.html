@@ -22,12 +22,11 @@
 </head>
 <body>
     <div class="KitSquidBody" id="flexiSquid">
-        <header class="rearSquidHeader">
+    <header class="rearSquidHeader">
             <div class="rearSquidHeaderLogo">
-                <a href="../index.html">
+                 <a href="../index.html">
                     <img src="../dist/assets/images/logo.png" alt="logo asquid vehicule">
                 </a>
-                
             </div>
             <div class="socialLinkRearSquid">
                   <div class="social-link">
@@ -36,6 +35,9 @@
                         </div>
                         <div class="shopping">
                             <img src="../dist/assets/images/icon/shopping-cart_V2.svg" alt="">
+                            <div class="numberofProduct" v-if="numberOfProduct != '0'">
+                                <span> {{numberOfProduct}} </span>
+                            </div>
                         </div>
                         <div class="search_utilisateur">
                             <div class="search-icon">
@@ -50,18 +52,16 @@
                     <div class="link-item">
                         <ul class="link-item-list">
                             <li class="link-item-list-item dropdows ">Produit
-                                <ul class="dropdown-link-item">
-                                    <li><a href="kitSquid.html#Kit">Kit Squid</a></li>
-                                    <li><a href="flexiSquid.html#flexiSquidSelectioncontainer">Flexi Squid</a></li>
-                                    <li><a href="rearsquid.html#rearContainer">Rear Squid</a></li>
+                               <ul class="dropdown-link-item">
+                                    <li style="display:  flex;" class="linkToProduct"><a href="kitSquid.html#Kit">Kit Squid</a> <span><img src="../dist/assets/images/arrowDown2.png" alt=""></span> </li>
+                                    <li style="display:  flex;" class="linkToProduct"><a href="flexiSquid.html#flexiSquidSelectioncontainer">FlexiSquid</a><span><img src="../dist/assets/images/arrowDown2.png" alt=""></span></li>
+                                    <li style="display:  flex;" class="linkToProduct"><a href="rearsquid.html#rearContainer">Rear Squid</a><span><img src="../dist/assets/images/arrowDown2.png" alt=""></span></li>
                                 </ul>
 
                             </li>
                             <li class="link-item-list-item">Quote</li>
-                            <li class="link-item-list-item">Business service</li>
                         </ul>
                     </div>
-
             </div>
         </header>
         <div class="KitSquidContainer">
@@ -325,6 +325,39 @@
                     </div>
                 </div>
             </div>
+            <div class="floating-chat" id="chat">
+                                <div class="numberofMessage">
+                                    <span>
+                                        {{messageReceive}}
+                                    </span>
+                                </div>
+                                <div class="chatbutton">
+                                    <img src="../dist/assets/images/Customisateur/chat.png" alt="">
+                                </div>
+                                <div class="chat">
+                                    <div class="header">
+                                        <span class="title">
+                                           Adsquid Messagerie
+                                        </span>
+                                        <button>
+                                            <span>&times;</span>
+                                        </button>
+                                    </div>
+                                    <ul class="messages">
+                                        <li class="other">hello</li>
+                                        <li class="other">please i have a problem</li>
+                                        <li class="self">hi</li>
+                                        <li class="self">What is your problem</li>
+                                        <li class="other"> i don't no how to save my design </li>
+                                    </ul>
+                                    <div class="footer">
+                                        <div class="text-box" contenteditable="true" disabled="true"></div>
+                                        <div id="sendMessage">
+                                            <img src="../dist/assets/images/Web_icon_2/send.png" alt="">
+                                        </div>
+                                    </div>
+                    </div>
+             </div>
         </div>
         <div id="myModal" class="modal">
 
@@ -351,6 +384,7 @@
                 </div>
                 <div class="visuel" v-show="visuel">
                     <div class="cardVisuelContainer">
+                        <img src="" alt="">
                     </div>
                 </div>
                 <div v-show="grapic" class="graphicSupport animate__animated animate__fadeInUp">
@@ -418,7 +452,7 @@
                     </div>
                 </div>
             </div>
-            <div class="guideLineContainer "  v-if="itemToShow == 'guideline'" >
+           <div class="guideLineContainer "  v-show="itemToShow == 'guideline'" >
                 <div class="guidelineDownload">
                     <div style="color: #fff; font-weight: 900; font-size: 38px; margin-bottom: 19px;width: 170px;height: 52px;"> 
                         <span>Guideline</span>
@@ -431,11 +465,43 @@
                             <img src="../dist/assets/images/Download_v2.png" alt="">
                         </div>
                     </div>
+                    <div class="trimAreaContainer">
+                        <div class="trimAreaCard">                         
+                        </div>
+                        <div class="descriptionCardTrim">
+                            <div class="titleTrim">
+                                <span>
+                                    Trim Area
+                                </span>
+                            </div>
+                            <div class="bodyTrim">
+                                <span>
+                                    This is where we aim to cut.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="safeAreaContainer">
+                        <div class="safeAreaCard">
+                        </div>
+                        <div class="descriptionCardSafe">
+                            <div class="titleSafe">
+                                <span>
+                                    Safe Area
+                                </span>
+                            </div>
+                            <div class="bodySafe">
+                                <span>
+                                    Make sure any important parts ( text and logos) are inside of the safe area.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="guideLineSaveAre">
                     <div class="safeAreZone">
-                        <span class="display-4 fw-bold">Safe Area</span>
+                        <span class="display-4 fw-bold">{{dimensionKit}}</span>
                     </div>
 
                 </div>
@@ -561,5 +627,6 @@
     <script src="../dist/assets/js/config.js"></script>
     <script src="../dist/plugin/responsive/js/bootstrap.min.js"></script>
     <script src="../dist/assets/js/flexi.js"></script>
+    <script src="../dist/assets/js/all.js"></script>
 </body>
 </html>

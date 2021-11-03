@@ -44,7 +44,7 @@
                         <span>Product</span>
                     </div>
                     <div class="quoteLink">
-                        <span><a href="quote.html">Quote</a></span>
+                        <span><a href="../quote.html">Quote</a></span>
                     </div>
                     <div class="busnessServiceLink">
                         <span><a href="#">Business Service</a></span>
@@ -73,18 +73,51 @@
                             Your Question:
                         </span>
                     </div>
-                    <div class="inputQuestionContent">
-                        <input type="text">
+                    <div class="inputQuestionContent" @click="dropQuestion = !dropQuestion">
+                        <div class="inputTextQuestion">
+                            <span style="font-weight: 900;">
+                                {{questionChoose}}
+                            </span>
+                        </div>
                         <hr style="height:30px">
                         <div class="imageDropdown">
                             <img src="../dist/assets/images/arrowDown.png" alt="">
                         </div>
                     </div>
-                    <div class="questionContentList">
+                    <div class="questionContentList" v-show="dropQuestion">
                         <div class="ListQuestion">
+                            <div class="questionLabel" v-for="(item, index) in faq" :key="index" style="margin-top: 25px;" @click="selectQuestion(item)">
+                                <span>
+                                    {{item.TitreQuestion}}
+                                </span>
+                            </div>
 
                         </div>
                     </div>
+                    <div class="titleOfTheContent" style="margin-top: 14px;">
+                        <span>
+                            Answers:
+                        </span>
+                    </div>
+                    <div class="anwserListContent" v-if="aswer">
+                        <div class="listAnswer">
+                            <div class="responseLabel" v-for="(item, index) in responses" :key="index">
+                                <span>
+                                    {{item.responseQuestion}}
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="anwserListContent" v-else>
+                        <div class="listAnswer">
+                            <span>
+                                No Answers
+                            </span>
+
+                        </div>
+                    </div>
+
                 </div>
                 
             </div>

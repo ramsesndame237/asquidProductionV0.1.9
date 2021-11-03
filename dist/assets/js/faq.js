@@ -2,26 +2,93 @@ var app = new Vue({
     el:'#faq',
     data() {
         return {
-            dataSourceImagePreview: '',
             numberOfProduct: '0',
-                        baseUri:'https://adsquid.herokuapp.com/api/',
+            baseUri: 'https://adsquid.herokuapp.com/api/',
             carts: [],
-            totalShipping: 0,
-            GTS: 0,
-            shippingPrice:0
+            dropQuestion: false,
+            aswer:false,
+            questionChoose: "",
+            responses:[],
+            faq: [
+                {
+                    id: "1",
+                    TitreQuestion: "I already have a logo, can I use it on my adhesive kit?",
+                    descriptionQuestion: "this is to explain if is possible to use own logo on and adhesive kit",
+                    response: [
+                        {
+                            id:"1",
+                            idQuestion : "1",
+                            responseQuestion:""
+                        },
+                    ]
+                },
+                {
+                    id: "2",
+                    TitreQuestion: " I have found the visual that suits me, but the dimensions of the markings you propose do not correspond to my vehicle?",
+                    descriptionQuestion: "explain how to do if the size is not correspond on a vehicle",
+                    response: [
+                        {
+                            id:"2",
+                            idQuestion : "2",
+                            responseQuestion:""
+                        }
+                    ]
+                },
+                {
+                    id: "3",
+                    TitreQuestion: "What is the lifespan of your products?",
+                    descriptionQuestion: "",
+                    response: [
+                        {
+                            id:"3",
+                            idQuestion : "3",
+                            responseQuestion:"Our products are made of high quality materials.Their life span may vary depending on the product chosen."
+                        },
+                         {
+                            id:"4",
+                            idQuestion : "3",
+                            responseQuestion:" - Adhesive: 5 years "
+                        },
+                          {
+                            id:"5",
+                            idQuestion : "3",
+                            responseQuestion:" - Micro-perforated: 2 years "
+                        },
+                        {
+                            id:"6",
+                            idQuestion: "3",
+                            responseQuestion:" -Plexipub: 5 to 7 years"
+                        }
+                          
+                    ]
+                },
+                {
+                    id: "4",
+                    TitreQuestion: "Is it difficult to put the adhesive kit on?",
+                    descriptionQuestion: "",
+                    response: [
+                        {
+                            id:"7",
+                            idQuestion : "4",
+                            responseQuestion:""
+                        }
+                    ]
+                },
+
+            ]
         }
     },
     methods: {
-        shipping() {
-            window.location = "../../../others/shipping.html"
-            let data = {
-                price: this.totalShipping,
-                product:this.carts
+        selectQuestion(itemSelect) {
+            console.log(itemSelect)
+            this.questionChoose = itemSelect.TitreQuestion
+            this.responses = itemSelect.response
+            this.dropQuestion = false
+            if (this.responses.length >0) {
+                this.aswer = true
+            } else {
+                this.aswer = false
             }
-            localStorage.setItem("otherToPay",JSON.stringify(data))
-        },
-        shopping() {
-            window.location ="../../../chooseYourmedia.html"
         }
     },
     mounted() {
@@ -42,19 +109,5 @@ var app = new Vue({
         }).catch((error) => {
             console.log(error)
         })
-        setTimeout(() => {
-            this.carts.forEach(element => {
-                 console.log(this.carts)
-                this.GTS = element.amountCommande * 10 / 100
-                if (element.amountCommande > 0 && element.amountCommande < 150) {
-                this.shippingPrice = 15
-                } else if (element.amountCommande > 151 && element.amountCommande < 500) {
-                    this.shippingPrice =20
-                } else if (element.amountCommande > 501) {
-                    this.shippingPrice =25
-                }
-               this.totalShipping += parseInt(element.amountCommande)+this.shippingPrice+this.GTS
-            });
-        }, 500);
     },
 })

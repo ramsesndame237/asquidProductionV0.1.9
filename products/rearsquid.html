@@ -362,6 +362,109 @@
                             </div>
                         </div>
                     </div>
+                    <div class="carInformation" v-show="YourRearDesign == 'Graphic support'">
+                        <div class="titleRearSquid">
+                            <span>What’s your  <span style="color: #33ccff;"> car:</span></span>
+                        </div>
+                        <div class="carInfomationContent">
+                            <div class="YourBrand" v-if="itemToTextShow != 'AllWindowcar' " >
+                                <div class="TextLabel">
+                                    <span style="font-size: 20px;font-weight: 900;color: #fff;">
+                                        Your brand:
+                                    </span>
+                                </div>
+                                <div class="selectBrandContainer" @click="(dropChoose = !dropChoose),(dropModelChoose = false)">
+                                    <div class="brandChoose">
+                                        <span>
+                                            {{YourBrandChoose}}
+                                        </span>
+                                    </div>
+                                    <hr style="height: 20px; margin-top: 10px;">
+                                    <div class="downDrop">
+                                        <img src="../dist/assets/images/arrowDown.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="contentListOfBrandChoose" v-if="dropChoose">
+                                    <div class="ListOfBrandChoose">
+                                        <div class="brandToChoose" v-for="(item, index) in brandChooseList" :key="index">
+                                            <span @click="brandItem(item.value,index)" style="font-weight: 100;font-size: 16px;color: #002633;">
+                                                {{item.value}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr v-if="itemToTextShow != 'AllWindowcar'" style="width: 408px; margin-top:21px;margin-left:30.5px">
+                            <div class="YourModel" v-if="itemToTextShow != 'AllWindowcar' " >
+                                 <div class="TextLabel">
+                                    <span style="font-size: 20px;font-weight: 900;color: #fff;">
+                                        Your model:
+                                    </span>
+                                </div>
+                                <div class="YourModelContainer">
+                                    <input type="text" v-model="YourModelChoose" placeholder="Vitro, Navarra…">
+                                </div>
+                            </div>
+                            <hr v-show="itemToTextShow != 'AllWindowcar'" style="width: 408px; margin-top:21px;margin-left:30.5px">
+                            <div class="YourColor" v-if="itemToTextShow != 'AllWindowcar'" >
+                                <div class="TextLabel">
+                                    <span style="font-size: 20px;font-weight: 900;color: #fff;">
+                                        Color of vehicle:
+                                    </span>
+                                </div>
+                                <div class="selectColorContainer">
+                                    <div class="colorChoose" @click="dropModelChoose = !dropModelChoose">
+                                        <div class="colorToChoose">
+                                        </div>
+                                        <hr style="height: 20px; margin-left: 10px; margin-top: 10px;">
+                                        <div class="downDrop">
+                                            <img src="../dist/assets/images/arrowDown.png" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="contentColorList" v-show="dropModelChoose" >
+                                        <div class="ListColorChoose">
+                                            <div class="colorToSelect" v-for="(item, index) in colorChooseList" @click="chooseColor(item)" :key="index">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="YourYear" v-if="itemToTextShow != 'AllWindowcar'" >
+                                  <div class="TextLabelYear">
+                                    <span style="font-size: 20px;font-weight: 900;color: #fff;">
+                                        Year of vehicle:
+                                    </span>
+                                </div>
+                                <div class="selectBrandContainer" @click="(YeardropChoose = !YeardropChoose),(dropModelChoose = false)">
+                                    <div class="brandChoose">
+                                        <span>
+                                            {{YourYearChoose}}
+                                        </span>
+                                    </div>
+                                    <hr style="height: 20px; margin-top: 10px;">
+                                    <div class="downDrop">
+                                        <img src="../dist/assets/images/arrowDown.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="contentListOfBrandChoose" v-if="YeardropChoose">
+                                   <div class="ListOfBrandChoose">
+                                       <div class="brandToChoose"  v-for="(item, index) in YearList" @click="(YearItem(item)), (YeardropChoose = !YeardropChoose)" :key="index">
+                                           <span  style="font-weight: 100;font-size: 16px;color: #002633; cursor: pointer;">
+                                               {{item}}
+                                           </span>
+                                       </div>
+                                   </div>
+                               </div>
+                            </div>
+                            <div class="titleRearSquid" style="margin-top: 35px;">
+                               <span>Additional  <span style="color: #33ccff;"> information:</span></span>
+                             </div>
+                             <div class="MoreDetails">
+                                 <textarea name="more information" id="information" cols="30" rows="10"></textarea>
+                             </div>
+                        </div>
+
+                    </div>
                     <div class="quantityRearSquid">
                         <div class="titleQuantityRearSquid">
                             <span>choose your <span style="color: #33ccff;"> quantity</span></span>
@@ -440,6 +543,39 @@
                 </div>
 
             </div>
+            <div class="floating-chat" id="chat">
+                                <div class="numberofMessage">
+                                    <span>
+                                        {{messageReceive}}
+                                    </span>
+                                </div>
+                                <div class="chatbutton">
+                                    <img src="../dist/assets/images/Customisateur/chat.png" alt="">
+                                </div>
+                                <div class="chat">
+                                    <div class="header">
+                                        <span class="title">
+                                           Adsquid Messagerie
+                                        </span>
+                                        <button>
+                                            <span>&times;</span>
+                                        </button>
+                                    </div>
+                                    <ul class="messages">
+                                        <li class="other">hello</li>
+                                        <li class="other">please i have a problem</li>
+                                        <li class="self">hi</li>
+                                        <li class="self">What is your problem</li>
+                                        <li class="other"> i don't no how to save my design </li>
+                                    </ul>
+                                    <div class="footer">
+                                        <div class="text-box" contenteditable="true" disabled="true"></div>
+                                        <div id="sendMessage">
+                                            <img src="../dist/assets/images/Web_icon_2/send.png" alt="">
+                                        </div>
+                                    </div>
+                    </div>
+             </div>
         </div>
         <div id="myModal" class="modal">
 
@@ -480,7 +616,7 @@
                                 Please fill out the form in order to have the most information about your vehicle
                             </span>
                     </div>
-                    <div class="close" v-show="ToShow">
+                    <div class="close" v-if="ToShow">
                         <span style="font-weight: 100;"  >&times;</span>
                     </div>
                 </div>
@@ -494,7 +630,7 @@
                            Once this step is completed, you can go to the customization and click directly on the top right “Next” and access the order confirmation
                         </span>
                     </div>
-                    <div class="close" v-show="grapic">
+                    <div class="close" v-if="grapic">
                         <span style="font-weight: 100;"  >&times;</span>
                     </div>
 
@@ -541,7 +677,7 @@
                     </div>
                 </div>
             </div>
-              <div class="guideLineContainer "  v-if="itemToShow == 'guideline'" >
+           <div class="guideLineContainer "  v-show="itemToShow == 'guideline'" >
                 <div class="guidelineDownload">
                     <div style="color: #fff; font-weight: 900; font-size: 38px; margin-bottom: 19px;width: 170px;height: 52px;"> 
                         <span>Guideline</span>
@@ -554,11 +690,43 @@
                             <img src="../dist/assets/images/Download_v2.png" alt="">
                         </div>
                     </div>
+                    <div class="trimAreaContainer">
+                        <div class="trimAreaCard">                         
+                        </div>
+                        <div class="descriptionCardTrim">
+                            <div class="titleTrim">
+                                <span>
+                                    Trim Area
+                                </span>
+                            </div>
+                            <div class="bodyTrim">
+                                <span>
+                                    This is where we aim to cut.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="safeAreaContainer">
+                        <div class="safeAreaCard">
+                        </div>
+                        <div class="descriptionCardSafe">
+                            <div class="titleSafe">
+                                <span>
+                                    Safe Area
+                                </span>
+                            </div>
+                            <div class="bodySafe">
+                                <span>
+                                    Make sure any important parts ( text and logos) are inside of the safe area.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="guideLineSaveAre">
                     <div class="safeAreZone">
-                        <span class="display-4 fw-bold">Safe Area</span>
+                        <span class="display-4 fw-bold">{{dimensionKit}}</span>
                     </div>
 
                 </div>
@@ -673,9 +841,11 @@
                 <img src="../dist/assets/images/Tentacule_footer_test_v2.png" alt="#">
             </div>
         </footer>
-      
     </div>
     <script src="../dist/assets/js/config.js"></script>
     <script src="../dist/assets/js/rear.js"></script>
+    <script src="../dist/plugin/jquery.min.js"></script>
+    <script src="../dist/assets/js/all.js"></script>
+
 </body>
 </html>

@@ -250,7 +250,11 @@ ul,li,a{text-decoration: none !important; list-style: none !important; }
 .imagesRearSize,.imageCut,.imageExtraSquid,.imageDesignSquid{
     margin-top: 10px;
 }
-
+.imagesRearSize{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .imageExtraSquid{
     width: 77px;
     height: 63px;
@@ -313,8 +317,8 @@ border: solid red;
     position: relative;
 }
 .messageDesign{
-    width: 231px;
-    height: 126px;
+    width: 310px;
+    height: 84px;
     border: 1px solid #919DA1;
     border-radius: 25px;
     background: #fff;
@@ -363,7 +367,7 @@ border: solid red;
 	border: solid 2px #33ccff;
 	background: #fff;
 	color: #002633;
-	top: -10px;
+	top: -15px;
 	right: 0;
 	cursor: pointer;
 }
@@ -402,12 +406,13 @@ text-align: center;
     margin-top: 35px;
 }
 .messageLettering{
-    width: 184px;
-    height: 148px;
-    border: 1px solid #919DA1;
+   width: 292px;
+   height: 84px;
     border-radius: 25px;
     position: absolute;
-    background:#fff;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #919DA1;
+    border-radius: 25px;
     top: -70px;
     right: 45px;
     z-index: 1000;
@@ -417,8 +422,8 @@ text-align: center;
     transition: all .3s;
 }
 .messageExtraContainer{
-    width: 314px;
-    height: 148px;
+    width: 292px;
+    height: 128px;
     border: 1px solid #919DA1;
     border-radius: 25px;
     background: #fff;
@@ -457,8 +462,8 @@ text-align: center;
     right: 40px;
 }
 .messageWayContainer{
-    width: 295px;
-    height: 193px;
+    width: 292px;
+    height: 172px;
     border: 1px solid #919DA1;
     border-radius: 25px;
     background: #fff;
@@ -469,8 +474,8 @@ text-align: center;
 
 }
 .messageNormalDesign{
-    width: 232px;
-    height: 126px;
+    width: 292px;
+    height: 88px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #919DA1;
     border-radius: 25px;
@@ -483,20 +488,26 @@ text-align: center;
 }
 
 .containerText{
-    width: 235px;
+    width: 252px;
     height: 132px;
+    text-align: left;
+    letter-spacing: 0px;
     color: #002633;
     margin-left: 30px;
     margin-top: 30px;
 }
 .textContainer{
-    width: 172px;
-    height: 66px;
-    margin-left: 30px;
+   width: 252px;
+    height: 44px;
+    margin-left: 20px;
+    text-align: left;
+    font: normal normal normal 16px/22px 'Avenir';
+    letter-spacing: 0px;
+    color: #002633;
 }
 .messageSymetricDesign{
-    width: 316px;
-    height: 170px;
+    width: 300px;
+    height: 150px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #919DA1;
     border-radius: 25px;
@@ -509,9 +520,13 @@ text-align: center;
     z-index: 1000;
 }
 .textSymetricContainer{
-    width: 259px;
+    width: 260px;
     height: 110px;
-    margin-left: 30px;
+    margin-left: 20px;
+    text-align: left;
+    font: normal normal normal 16px/22px 'Avenir';
+    letter-spacing: 0px;
+    color: #002633;
 }
 #design2:hover + .messageDesign {
     visibility: visible;

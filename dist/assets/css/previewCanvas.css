@@ -206,7 +206,7 @@ body{
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
-	margin-left: 138px;
+	/* margin-left: 138px; */
 	margin-top: 23px;
 }
 .imgCheck{

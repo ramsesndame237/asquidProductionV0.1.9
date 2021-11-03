@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ADSQUID | payment</title>
+    <link rel="icon" href="../dist/assets/images/Picto.png">
     <link rel="stylesheet" href="../dist/assets/css/shipping.css">
     <link rel="stylesheet" href="../dist/assets/css/footer.css">
     <link rel="stylesheet" href="../dist/assets/css/utils.css">
@@ -15,7 +16,9 @@
     <div class="shippingContentContainer" id="paymentL">
         <header class="cartHeader">
             <div class="logoContainer">
-                <img src="../dist/assets/images/Adsquid_white_SF.png" alt="">
+                <a href="../index.html">
+                    <img src="../dist/assets/images/Adsquid_white_SF.png" alt="">
+                </a>
             </div>
             <div class="SocialAndLinkContainer">
                 <div class="socialLink">
@@ -45,9 +48,9 @@
                     <div class="quoteLink">
                         <span><a href="quote.html">Quote</a></span>
                     </div>
-                    <div class="busnessServiceLink">
+                    <!-- <div class="busnessServiceLink">
                         <span><a href="#">Business Service</a></span>
-                    </div>
+                    </div> -->
 
                 </div>
 
@@ -134,7 +137,7 @@
             <div class="cartShipping">
                 <div class="shippingSelling" v-for="(item, index) in carts" :key="index">
                     <div class="previewContain">
-                        <img :src="item.visuelCommande" alt="">
+                        <img :src="item.visuel" alt="">
                     </div>
                     <div class="descriptionContent">
                         <div class="titleProduct">
@@ -234,10 +237,12 @@
                      </div>
                 </div>
             </div>
+            
         </div>
+        
         <div id="myModal" class="modal">
 
-            <span  class="close">&times;</span>
+            <!-- <span  class="close">&times;</span> -->
                 <!-- Modal content -->
                 <div  class="rearContainerExtra">
                       <div class="contentMessage">
@@ -248,6 +253,22 @@
                             <span style="color: #33CCFF;font: size 16px;font-weight:100 ">
                                 Please for the more best experience not the application
                             </span>
+                             <div class="actionContent">
+                                <div class="startingAgain" >
+                                    <span> 
+                                        <a style="color: #fff;" href="../index.html">
+                                            Go Home
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="useAgain" >
+                                    <span>
+                                        <a style="color: #fff;" href="../chooseYourmedia.html">
+                                            Continue Shopping
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
                     </div>
                     <div class="close">
                         <span style="font-weight: 100;"  >&times;</span>
@@ -361,5 +382,7 @@
     </div>
     <script src="../dist/assets/js/config.js"></script>
     <script src="../dist/assets/js/payment.js"></script>
+    <script src="../dist/assets/js/all.js"></script>
+
 </body>
 </html>

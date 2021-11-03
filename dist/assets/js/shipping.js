@@ -7,11 +7,12 @@ var app = new Vue({
             checkidt: false,
             totalShipping: 0,
             shippingPrice: 0,
-                        baseUri:'https://adsquid.herokuapp.com/api/',
+            // baseUri: 'https://adsquid.herokuapp.com/api/',
+            baseUri:'http://localhost:8800/api/',
+             
             GTS: 0,
                user: {
                 email: "",
-                password: "",
                 name:  "",
                 lastName: "",
                 companyName: "",
@@ -19,7 +20,7 @@ var app = new Vue({
                 tel2:"" ,
                 tel3:"" ,
                 city:"" ,
-                   state: "",
+                state: "",
                 country:"",
                 postcode: "",
                 brand: "",
@@ -29,8 +30,52 @@ var app = new Vue({
         }
     },
     methods: {
-        payment() {
-            window.location ="../../../others/payment.html"
+        async payment() {
+            if (localStorage.getItem("userInfomation") != null && localStorage.getItem("userInfomation").length > 0) {
+                            window.location = "../../../others/payment.html"
+            } else {
+                if (this.checkidt) {
+                    if (this.user.name == '' && this.user.tel1 == '' && this.user.country == '' && this.user.state == '' && this.user.city == '') {
+                        alert("please fill the form to have shipping adress for billing")
+                    } else {
+                        let data = {
+                             email: this.user.email,
+                            name:  this.user.name,
+                            lastName: this.user.lastName,
+                            companyName: this.user.companyName,
+                            tel1:this.user.te1 ,
+                            city:this.user.city ,
+                            state: this.user.state,
+                            country:this.user.country,
+                            postcode: this.user.postcode,
+                            brand: this.user.brand,
+                            model: this.user.model,
+                            years: this.user.years
+                        }
+                         axios.post(this.baseUri + "clients",data).then((respone) => {
+                            window.location = "../../../others/payment.html"
+                            console.log(respone)
+                            localStorage.setItem("shippingAdress", JSON.stringify(respone.data))
+
+                        }).catch((error) => {
+                            console.log(this.user)
+                            console.log(error.response)
+                        })
+                    }
+                    
+                } else {
+                    alert("Please You have to active shipping adress for billing")
+                }
+            }
+        },
+        saveShipping() {
+            this.checkidt = !this.checkidt
+            if (this.checkidt) {
+                localStorage.setItem("shippingAdresse", JSON.stringify(this.user))
+            } else {
+                localStorage.removeItem("shippingAdresse")
+            }
+            
         }
     },
     mounted() {
@@ -38,7 +83,26 @@ var app = new Vue({
             this.dataSourceImagePreview = JSON.parse(window.localStorage.getItem("imageToPreview"))
         }
        
-        axios.get(this.baseUri + "panniers").then((response) => {
+
+        if (localStorage.getItem("userInfomation") != null && localStorage.getItem("userInfomation").length > 0) {
+            let localUser = JSON.parse(localStorage.getItem("userInfomation"))
+            console.log(localUser)
+            this.id = localUser.id
+            this.user.name = localUser.name
+            this.user.lastName = localUser.lastName
+            this.user.tel1 = localUser.tel1
+            this.user.tel2 = localUser.tel2
+            this.user.tel3 = localUser.tel3
+            this.user.years = localUser.years
+            this.user.email = localUser.email
+            this.user.brand = localUser.brand
+            this.user.model = localUser.model
+            this.user.state = localUser.state
+            this.user.city = localUser.city
+            this.user.postcode = localUser.postcode
+            this.user.companyName = localUser.companyName
+
+             axios.get(this.baseUri + "panniers" + "/" + this.id).then((response) => {
             console.log(response)
             response.data.forEach(element => {
                 if (element.statutCommande ==  'notPaid') {
@@ -47,40 +111,54 @@ var app = new Vue({
                 }
             });
             this.numberOfProduct = this.carts.length
-        }).catch((error) => {
-            console.log(error)
-        })
-        setTimeout(() => {
-            this.carts.forEach(element => {
-                 console.log(this.carts)
-                this.GTS = element.amountCommande * 10 / 100
-                if (element.amountCommande > 0 && element.amountCommande < 150) {
-                this.shippingPrice = 15
-                } else if (element.amountCommande > 151 && element.amountCommande < 500) {
-                    this.shippingPrice =20
-                } else if (element.amountCommande > 501) {
-                    this.shippingPrice =25
-                }
-               this.totalShipping += parseInt(element.amountCommande)+this.shippingPrice+this.GTS
-            });
-        }, 500);
+            }).catch((error) => {
+                console.log(error)
+            })
+            let totalProductAmount = 0
+            setTimeout(() => {
+                this.carts.forEach(element => {
+                    console.log(this.carts)
+                    totalProductAmount = totalProductAmount + parseInt(element.amountCommande)
+                    console.log(totalProductAmount)
+                    this.GTS = totalProductAmount * 10 / 100
+                    if (element.amountCommande > 0 && element.amountCommande < 150) {
+                    this.shippingPrice = 15
+                    } else if (element.amountCommande > 151 && element.amountCommande < 500) {
+                        this.shippingPrice =20
+                    } else if (element.amountCommande > 501) {
+                        this.shippingPrice =25
+                    }
+                });
+                this.totalShipping = totalProductAmount + this.shippingPrice+this.GTS
+            }, 500);
 
-        let localUser = JSON.parse(localStorage.getItem("userInfomation"))
-        console.log(localUser)
-        this.id = localUser.id
-        this.user.name = localUser.name
-        this.user.lastName = localUser.lastName
-        this.user.tel1 = localUser.tel1
-        this.user.tel2 = localUser.tel2
-        this.user.tel3 = localUser.tel3
-        this.user.years = localUser.years
-        this.user.email = localUser.email
-        this.user.brand = localUser.brand
-        this.user.model = localUser.model
-        this.user.state = localUser.state
-        this.user.city = localUser.city
-        this.user.postcode = localUser.postcode
-        this.user.companyName = localUser.companyName
+        } else {
+              data = JSON.parse(localStorage.getItem("cartStorage"))
+            data.forEach((elt) => {
+                if (elt.statutCommande == 'notPaid') {
+                    this.carts.push(elt)
+                }
+            })
+            let totalProductAmount = 0
+            setTimeout(() => {
+                this.carts.forEach(element => {
+                    console.log(this.carts)
+                    totalProductAmount = totalProductAmount + parseInt(element.amountCommande)
+                    console.log(totalProductAmount)
+                    this.GTS = totalProductAmount * 10 / 100
+                    if (element.amountCommande > 0 && element.amountCommande < 150) {
+                    this.shippingPrice = 15
+                    } else if (element.amountCommande > 151 && element.amountCommande < 500) {
+                        this.shippingPrice =20
+                    } else if (element.amountCommande > 501) {
+                        this.shippingPrice =25
+                    }
+                });
+                this.totalShipping = totalProductAmount + this.shippingPrice+this.GTS
+            }, 500);
+                this.numberOfProduct = this.carts.length
+        }
+
 
     },
 })

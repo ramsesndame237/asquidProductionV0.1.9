@@ -3,28 +3,19 @@ var app = new Vue({
     data() {
         return {
             checkidt: false,
+            paidFor:true,
             totalShipping: 0,
-            index:0,
+            index: 0,
+            id: "",
+            idClient:'',
             chooseBankMode: [],
             numberOfProduct: '0',
-                        baseUri:'https://adsquid.herokuapp.com/api/',
+            // baseUri:'https://adsquid.herokuapp.com/api/',
+            baseUri:'http://0.0.0.0:8800/api/',
             description:"",
             carts: [],
             shippingPrice: 0,
-            commandes: {
-                 ProduitCommande: "",
-                amountCommande: "",
-                statutCommande: "",
-                sizeCommande: "",
-                cutCommande: "",
-                ExtraCommande: "",
-                designCommande: "",
-                quantityCommande: "",
-                visuelCommande: "",
-                VisuelModify:"",
-                DateOrdered: "",
-                OrderNumber:""
-            },
+            commandes:[],
             GTS: 0,
             paymentMode:"bank"
         }
@@ -86,36 +77,84 @@ var app = new Vue({
                         },
                 onApprove: async (data, actions) => {
                     const order = await actions.order.capture();
-                    this.paidFor = true;
                     console.log(order);
-
-                    api.post(this.baseUri + "commandes", this.commandes).then((response) => {
-                        console.log(response)
-                           var modal = document.getElementById("myModal");
-
-                        // Get the button that opens the modal
-                        
-                        // Get the <span> element that closes the modal
-                            var span = document.getElementsByClassName("close")[0];
-                            modal.style.display = "block";
-                            
-                            // When the user clicks the button, open the modal 
-
-                        // When the user clicks on <span> (x), close the modal
-                        span.onclick = function() {
-                        modal.style.display = "none";
+                      this.commandes.forEach(async (element) => {
+                        console.log(element)
+                        let dataToSend = {
+                            ProduitCommande : element.ProduitCommande,
+                            amountCommande: this.totalShipping,
+                            amountProduct: element.amountProduct,
+                            OrderStatus:"Order in progress of verifcation",
+                            statutCommande: "Paid",
+                            paymentMode: "Paypal",
+                            shippingCommande:this.shippingPrice,
+                            sizeCommande: element.sizeCommande,
+                            cutCommande: element.cutCommande || "",
+                            ExtraCommande: element.ExtraCommande,
+                            designCommande: element.designCommande,
+                            quantityCommande: element.quantityCommande,
+                            visuelCommande: element.visuelCommande,
+                            VisuelModify:JSON.stringify(JSON.parse(localStorage.getItem("canvasSaveAs"))),
+                            DateOrdered: element.DateOrdered,
+                            OrderNumber: element.OrderNumber,
+                            idUser: this.id,
+                            idClient:this.idClient
                         }
+                          console.log(dataToSend)
+                          
+                        await api.post(this.baseUri + "commandes", dataToSend).then((response) => {
+                            console.log(response)
 
-                        // When the user clicks anywhere outside of the modal, close it
-                        window.onclick = function(event) {
-                        if (event.target == modal) {
-                            modal.style.display = "none";
+                            this.carts.forEach((element) => {
+                                console.log(element.idPannier)
+                                let data = {
+                                    ProduitCommande: element.ProduitCommande,
+                                    amountCommande: element.amountCommande,
+                                    statutCommande: "Paid",
+                                    sizeCommande: element.sizeCommande,
+                                    cutCommande: element.cutCommande,
+                                    ExtraCommande: element.ExtraCommande,
+                                    designCommande: element.designCommande,
+                                    quantityCommande: element.quantityCommande,
+                                    visuelCommande: element.visuelCommande,
+                                    idUser:element.idUser
+                                }
+
+                                api.put(this.baseUri + "panniers" + "/" + element.idPannier,data).then((response) => {
+                                    console.log(response)
+                                }).catch((error) =>{
+                                    console.log(error)
+                                })
+                            })
+                            this.paidFor = true;
+                        }).catch((error) => {
+                            console.log(error)
+                            console.log(dataToSend)
+                             })
+                        if (this.paidFor) {
+                                var modal = document.getElementById("myModal");
+        
+                                // Get the button that opens the modal
+                                
+                                // Get the <span> element that closes the modal
+                                    var span = document.getElementsByClassName("close")[0];
+                                    modal.style.display = "block";
+                                    
+                                    // When the user clicks the button, open the modal 
+        
+                                // When the user clicks on <span> (x), close the modal
+                                span.onclick = function() {
+                                modal.style.display = "none";
+                                }
+        
+                                // When the user clicks anywhere outside of the modal, close it
+                                window.onclick = function(event) {
+                                if (event.target == modal) {
+                                    modal.style.display = "none";
+                                }
+                                }
                         }
-                        }
-                    }).catch((error) => {
-                        console.log(error)
                     })
-                    
                 },
                 onError: err => {
                     console.log(err);
@@ -126,6 +165,92 @@ var app = new Vue({
 
     },
     mounted() {
+        // setTimeout(() => {
+        //       this.commandes.forEach(async (element) => {
+        //                 console.log(element)
+        //                 let dataToSend = {
+        //                     ProduitCommande : element.ProduitCommande,
+        //                     amountCommande: this.totalShipping,
+        //                     amountProduct: element.amountProduct,
+        //                     OrderStatus:"Order in progress of verifcation",
+        //                     statutCommande: "Paid",
+        //                     paymentMode: "Paypal",
+        //                     shippingCommande:this.shippingPrice,
+        //                     sizeCommande: element.sizeCommande,
+        //                     cutCommande: element.cutCommande || "",
+        //                     ExtraCommande: element.ExtraCommande,
+        //                     designCommande: element.designCommande,
+        //                     quantityCommande: element.quantityCommande,
+        //                     visuelCommande: element.visuelCommande,
+        //                     VisuelModify:JSON.stringify(JSON.parse(localStorage.getItem("canvasSaveAs"))),
+        //                     DateOrdered: element.DateOrdered,
+        //                     OrderNumber: element.OrderNumber,
+        //                     idUser: this.id,
+        //                     idClient:this.idClient
+        //                 }
+        //                   console.log(dataToSend)
+                          
+        //                 await api.post(this.baseUri + "commandes", dataToSend).then((response) => {
+        //                     console.log(response)
+
+        //                     if (localStorage.getItem("userInfomation") != null && localStorage.getItem("userInfomation").length > 0) {
+        //                         this.carts.forEach((element) => {
+        //                             console.log(element.idPannier)
+        //                             let data = {
+        //                                 ProduitCommande: element.ProduitCommande,
+        //                                 amountCommande: element.amountCommande,
+        //                                 statutCommande: "Paid",
+        //                                 sizeCommande: element.sizeCommande,
+        //                                 cutCommande: element.cutCommande,
+        //                                 ExtraCommande: element.ExtraCommande,
+        //                                 designCommande: element.designCommande,
+        //                                 quantityCommande: element.quantityCommande,
+        //                                 visuelCommande: element.visuelCommande,
+        //                                 idUser:element.idUser
+        //                             }
+    
+        //                             api.put(this.baseUri + "panniers" + "/" + element.idPannier,data).then((response) => {
+        //                                 console.log(response)
+        //                             }).catch((error) =>{
+        //                                 console.log(error)
+        //                             })
+        //                         })
+                                
+        //                     } else {
+        //                         console.log("")
+        //                     }
+
+        //                     this.paidFor = true;
+        //                 }).catch((error) => {
+        //                     console.log(error)
+        //                     console.log(dataToSend)
+        //                      })
+        //                 if (this.paidFor) {
+        //                         var modal = document.getElementById("myModal");
+        
+        //                         // Get the button that opens the modal
+                                
+        //                         // Get the <span> element that closes the modal
+        //                             var span = document.getElementsByClassName("close")[0];
+        //                             modal.style.display = "block";
+                                    
+        //                             // When the user clicks the button, open the modal 
+        
+        //                         // When the user clicks on <span> (x), close the modal
+        //                         span.onclick = function() {
+        //                         modal.style.display = "none";
+        //                         }
+        
+        //                         // When the user clicks anywhere outside of the modal, close it
+        //                         window.onclick = function(event) {
+        //                         if (event.target == modal) {
+        //                             modal.style.display = "none";
+        //                         }
+        //                         }
+        //                 }
+        //             })
+        // }, 1200);
+         let totalProductAmount = 0
          const script = document.createElement("script");
         script.src ="https://www.paypal.com/sdk/js?client-id=AVZGaqNc95i9JZe1ziluR5cPOB1ORfYl6IDaciax1vetSTSuzQKDGJReeZEyegHG_ZvbCWCOPoxanzE7";
         script.addEventListener("load", this.setLoaded);
@@ -134,24 +259,11 @@ var app = new Vue({
        if(window.localStorage.getItem("imageToPreview") != null && window.localStorage.getItem.length > 0){
             this.dataSourceImagePreview = JSON.parse(window.localStorage.getItem("imageToPreview"))
        }
-
-        let localCommande = JSON.parse(localStorage.getItem("commande"))
-        console.log(localCommande)
-        this.commandes.ProduitCommande = localCommande.nameProduct
-        this.commandes.amountCommande = this.totalShipping
-        this.commandes.statutCommande = localCommande.statutCommande || ""
-         this.commandes.sizeCommande= localCommande.sizeProduct,
-         this.commandes.cutCommande= localCommande.cutCommande || "",
-         this.commandes.ExtraCommande= localCommande.extraProduct,
-          this.commandes.designCommande= localCommande.designProduct,
-          this.commandes.quantityCommande= localCommande.quantityProduct,
-          this.commandes.visuelCommande= JSON.parse(localStorage.getItem("imageToPreview")),
-          this.commandes.VisuelModify=JSON.parse(localStorage.getItem("canvasSaveAs")) + '',
-        this.commandes.DateOrdered= ""+ new Date,
-        this.commandes.OrderNumber="#"+ this.odernumber(6)
-        console.log(this.commandes)
-       
-        axios.get(this.baseUri + "panniers").then((response) => {
+        
+        if (localStorage.getItem("userInfomation") != null && localStorage.getItem("userInfomation").length > 0) {
+            let localUser = JSON.parse(window.localStorage.getItem("userInfomation"))
+            this.id = localUser.id
+             axios.get(this.baseUri + "panniers" + "/"+ this.id).then((response) => {
             console.log(response)
             response.data.forEach(element => {
                 if (element.statutCommande ==  'notPaid') {
@@ -159,14 +271,18 @@ var app = new Vue({
                     this.carts.push(element)
                 }
             });
+                 
             this.numberOfProduct = this.carts.length
         }).catch((error) => {
             console.log(error)
         })
+        let totalProductAmount = 0
         setTimeout(() => {
             this.carts.forEach(element => {
-                 console.log(this.carts)
-                this.GTS = element.amountCommande * 10 / 100
+                console.log(this.carts)
+                totalProductAmount = totalProductAmount + parseInt(element.amountCommande)
+                console.log(totalProductAmount)
+                this.GTS = totalProductAmount * 10 / 100
                 if (element.amountCommande > 0 && element.amountCommande < 150) {
                 this.shippingPrice = 15
                 } else if (element.amountCommande > 151 && element.amountCommande < 500) {
@@ -174,9 +290,83 @@ var app = new Vue({
                 } else if (element.amountCommande > 501) {
                     this.shippingPrice =25
                 }
-               this.totalShipping += parseInt(element.amountCommande)+this.shippingPrice+this.GTS
             });
+            this.totalShipping = totalProductAmount + this.shippingPrice+this.GTS
         }, 500);
+            console.log(this.carts)
+        
+        setTimeout(() => {
+            this.carts.forEach(element => {
+                console.log(element)
+                var currentDate = new Date();
+                let data = {
+                    ProduitCommande : element.ProduitCommande,
+                    amountCommande: this.totalShipping,
+                    amountProduct:element.amountCommande,
+                    statutCommande : element.statutCommande || "",
+                    sizeCommande: element.sizeCommande,
+                    cutCommande: element.cutCommande || "",
+                    ExtraCommande: element.ExtraCommande,
+                    designCommande: element.designCommande,
+                    quantityCommande: element.quantityCommande,
+                    visuelCommande: element.visuelCommande,
+                    VisuelModify:JSON.parse(localStorage.getItem("canvasSaveAs")) + '',
+                    DateOrdered: currentDate.toLocaleDateString('en-US') + "",
+                    OrderNumber:"#"+ this.odernumber(6)
+                }
+                this.commandes.push(data)
+            })
+        },1000);
+        console.log(this.id)
+
+
+        } else {
+           let  datez = JSON.parse(localStorage.getItem("cartStorage"))
+            datez.forEach((elt) => {
+                if (elt.statutCommande == 'notPaid') {
+                    this.carts.push(elt)
+                }
+            })
+                this.numberOfProduct = this.carts.length
+            this.carts.forEach(element => {
+                
+                console.log(element)
+                console.log(this.carts)
+                    totalProductAmount = totalProductAmount + parseInt(element.amountCommande)
+                    console.log(totalProductAmount)
+                    this.GTS = totalProductAmount * 10 / 100
+                    if (element.amountCommande > 0 && element.amountCommande < 150) {
+                    this.shippingPrice = 15
+                    } else if (element.amountCommande > 151 && element.amountCommande < 500) {
+                        this.shippingPrice =20
+                    } else if (element.amountCommande > 501) {
+                        this.shippingPrice =25
+                    }
+                this.totalShipping = totalProductAmount + this.shippingPrice + this.GTS
+                var currentDate = new Date();
+                let data = {
+                    ProduitCommande : element.ProduitCommande,
+                    amountCommande: this.totalShipping,
+                    amountProduct:element.amountCommande,
+                    statutCommande : element.statutCommande || "",
+                    sizeCommande: element.sizeCommande,
+                    cutCommande: element.cutCommande || "",
+                    ExtraCommande: element.ExtraCommande,
+                    designCommande: element.designCommande,
+                    quantityCommande: element.quantityCommande,
+                    visuelCommande: element.visuelCommande,
+                    VisuelModify:JSON.parse(localStorage.getItem("canvasSaveAs")) + '',
+                    DateOrdered: currentDate.toLocaleDateString('en-US') + "",
+                    OrderNumber:"#"+ this.odernumber(6)
+                }
+                this.commandes.push(data)
+                let currentClient = JSON.parse(localStorage.getItem("shippingAdress"))
+                console.log(currentClient)
+                this.idClient = currentClient.idClient
+            })
+        }
+       
+       
         this.chooseBankMode = document.querySelectorAll(".bank")
         this.resumeShowActive(index = 0)
     },

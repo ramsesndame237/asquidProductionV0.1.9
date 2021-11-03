@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ADSQUID | Preview</title>
     <link rel="stylesheet" href="dist/assets/css/previewCanvas.css">
     <link rel="stylesheet" href="dist/assets/css/utils.css">
-
+    <link rel="icon" href="dist/assets/images/Picto.png">
     <script src="dist/plugin/vue.js"></script>
     <script src="dist/plugin/axios.min.js"></script>
 </head>
@@ -110,10 +110,18 @@
                             <input v-model="dataRegistration.password" type="password" required>
                         </div>
                     </div>
-                    <div class="btnContent" @click="SigninSave">
-                        <span>My profile
-                            Continue
-                        </span>
+                    <div style="display: flex; margin-left: 38px; justify-content: space-between;">
+                        <div class="btnContent" @click="SigninSave">
+                            <span>
+                                Continue
+                            </span>
+                        </div>
+                        <div class="btnContent" @click="visitor">
+                            <span>
+                                visitor
+                            </span>
+                        </div>
+
                     </div>
                     <div class="remember">
                         <div class="imgCheck" @click="checkidt = !checkidt">

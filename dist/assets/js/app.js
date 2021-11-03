@@ -1,6 +1,7 @@
 var app = new Vue({
     el: '#kitSquid',
-    data: {
+  data: {
+      messageReceive:0,
     ChoseItemList: [],
     choseCutList:[],
     extraChooseList:[],
@@ -19,7 +20,8 @@ var app = new Vue({
 
       YeardropChoose:false,
       tmp: false,
-      ToShow:false,
+      ToShow: false,
+      extratoshow:false,
       cutLettering: false,
       proposition: false,
       reset: false,
@@ -182,13 +184,25 @@ var app = new Vue({
             this.dropChoose = false
       },
       chooseColor(itemId) {
-        console.log(itemId)
         this.YourCarColor = itemId.value
-        document.querySelector(".colorToChoose").style.background = itemId.value
-        for (let i = 0; i < this.YourColorSelectContainer.length; i++) {
-          this.YourColorSelectContainer[i].classList.remove("selectedColor")
+        console.log(itemId)
+
+        if (this.ToShow) {
+          document.querySelector(".colorToChoose").style.background = itemId.value
+          for (let i = 0; i < this.YourColorSelectContainer.length; i++) {
+            this.YourColorSelectContainer[i].classList.remove("selectedColor")
+          }
+          this.YourColorSelectContainer[itemId.id].classList.add("selectedColor")
+          
+        } else {
+          document.querySelector(".YourColorGraphic").style.background = itemId.value
+
+          for (let i = 0; i < this.YourColorSelectContainerGraphic.length; i++) {
+            this.YourColorSelectContainerGraphic[i].classList.remove("selectedColor")
+          }
+            this.YourColorSelectContainerGraphic[itemId.id].classList.add("selectedColor")
+
         }
-        this.YourColorSelectContainer[itemId.id].classList.add("selectedColor")
         this.dropModelChoose = false
       },
       YearItem(itemId) {
@@ -247,6 +261,7 @@ var app = new Vue({
         this.reset = false
         this.noneExtra[0].classList.remove("actived")
         if (this.extraChooseList[n].classList.contains("actived")) {
+            this.info[n].classList.remove("actived")
           var id = item.id
           
           this.YourExtra = this.YourExtra.filter(x => {
@@ -324,19 +339,25 @@ var app = new Vue({
           if (n == 1) {
               this.oneWayPrice = 199
               this.YourTotal = this.YourTotal +  this.oneWayPrice
-              this.ToShow = true
+            this.ToShow = true
+            this.extratoshow = true
+              this.grapic = false
+            
                           var modal = document.getElementById("myModal");
-                  // Get the <span> element that closes the modal
-                      var span = document.querySelector(".close");
-                      
-                      // When the user clicks the button, open the modal 
-                      console.log(span)
-                      modal.style.display = "block";
+              modal.style.display = "block";
+              setTimeout(() => {
+                // Get the <span> element that closes the modal
+                    var span = document.querySelector(".close");
+                    
+                    // When the user clicks the button, open the modal 
+                    console.log(span)
 
-                  // When the user clicks on <span> (x), close the modal
-                  span.onclick = function() {
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
                   modal.style.display = "none";
-                  }
+                }
+                
+              }, 500);
 
                   // When the user clicks anywhere outside of the modal, close it
                   window.onclick = function(event) {
@@ -444,6 +465,7 @@ var app = new Vue({
         for (let i = 0; i < this.choseCutList.length; i++) {
           this.choseCutList[i].classList.remove("actived")
           this.infoCut[0].classList.remove("actived")
+          this.infoCut[0].classList.remove("infoActived")
         }
         if (n == 0) {
           this.YourCut = 'Rectangular'
@@ -508,7 +530,8 @@ var app = new Vue({
           setTimeout(() => {
             this.cutLettering =false
           }, 2500);
-        this.infoCut[0].classList.add("actived")
+          this.infoCut[0].classList.add("actived")
+          this.infoCut[0].classList.add("infoActived")
 
         }
         this.YourTotal = this.YourTotal + this.CutPrice
@@ -523,9 +546,11 @@ var app = new Vue({
         for (let i = 0; i < this.designChooseList.length; i++) {
           this.designChooseList[i].classList.remove("actived")
           this.infoDesign[i].classList.remove("actived")
+          this.infoDesign[i].classList.remove("infoActived")
         }
         this.designChooseList[n].classList.add("actived")
         this.infoDesign[n].classList.add("actived")
+        this.infoDesign[n].classList.add("infoActived")
         if (n == 0) {
           this.designPrice = 0
           this.YourDesign = 'Normal'
@@ -535,8 +560,33 @@ var app = new Vue({
           this.YourDesign = 'Symmetric'
         }
         if (n == 2) {
+          this.grapic = true
+          this.proposition = false
+          this.extratoshow = false
+              // this.ToShow = false
           this.designPrice = 45
-          this.YourDesign ='Graphic support'
+          this.YourDesign = 'Graphic support'
+             var modal = document.getElementById("myModal");
+                  modal.style.display = "block";
+                  setTimeout(() => {
+                    // Get the <span> element that closes the modal
+                      var span = document.querySelector(".close");
+                      
+                      // When the user clicks the button, open the modal 
+                          console.log(modal)
+
+                      // When the user clicks on <span> (x), close the modal
+                      span.onclick = function() {
+                        modal.style.display = "none";
+                      }
+
+                  }, 500);
+                  // When the user clicks anywhere outside of the modal, close it
+                  window.onclick = function(event) {
+                  if (event.target == modal) {
+                      modal.style.display = "none";
+                  }
+                  }
         }
         this.YourTotal = this.YourTotal + this.designPrice
       },
@@ -592,7 +642,7 @@ var app = new Vue({
     startNew() {
 
       let product = {
-        nameProduct: "Kit Squid",
+        nameProduct: "Kit",
         sizeProduct: this.Yoursize,
         designProduct: this.YourDesign,
         cutProduct: this.YourCut,
@@ -604,19 +654,33 @@ var app = new Vue({
           carColor: this.YourCarColor,
           moreInfo:this.MoreInfo
         },
-        total:this.YourTotal
+        totalAmountProduct:this.YourTotal
       }
       console.log(product)
       var oldItems = JSON.parse(localStorage.getItem('TheProduct')) || [];
       oldItems.push(product)
       localStorage.setItem('TheProduct', JSON.stringify(oldItems));
+      localStorage.setItem('commande',JSON.stringify(product))
       window.location = "../../../customiser2.html"
 
       
     },
      useAgain() {
        this.proposition =false
-    }
+      },
+      downloadZip() {
+        var zip = new JSZip();
+        var folder =zip.folder("Guidline")
+        console.log(folder)
+        folder.file("../../assets/images/Test_Guideline/FlexiSquid_800x250mm/Plexi-pub-800x250.ai"); //requires filesaver.js
+        folder.file("myfile2.txt");
+          zip.generateAsync({type:"blob"})
+               .then(function(content) {
+                //see FileSaver.js
+                saveAs(content, "Guidline.zip");
+      });
+
+     }
 
   },
     mounted() {
@@ -631,6 +695,7 @@ var app = new Vue({
       this.ChoseItemList = document.querySelectorAll(".sizeKitContainer");
       this.designChooseList = document.querySelectorAll(".designKitContainer")
       this.YourColorSelectContainer = document.querySelectorAll(".colorToSelect")
+      this.YourColorSelectContainerGraphic = document.querySelectorAll(".colorToSelectGraphic")
       console.log(this.YearList)
       let currentYear = new Date().getFullYear();
             let earliestYear = 1990;
@@ -642,6 +707,9 @@ var app = new Vue({
       
       for (let i = 0; i < this.YourColorSelectContainer.length; i++) {
         this.YourColorSelectContainer[i].style.background = this.colorChooseList[i].value
+      }
+      for (let i = 0; i < this.YourColorSelectContainerGraphic.length; i++) {
+        this.YourColorSelectContainerGraphic[i].style.background = this.colorChooseList[i].value
       }
       console.log(this.infoCut)
         this.resumeShowActive(this.index = 0)

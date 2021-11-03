@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ADSQUID | Shipping</title>
     <link rel="stylesheet" href="../dist/assets/css/shipping.css">
+    <link rel="icon" href="../dist/assets/images/Picto.png">
     <link rel="stylesheet" href="../dist/assets/css/footer.css">
     <script src="../dist/plugin/vue.js"></script>
     <script src="../dist/plugin/axios.min.js"></script>
@@ -44,9 +45,9 @@
                     <div class="quoteLink">
                         <span><a href="quote.html">Quote</a></span>
                     </div>
-                    <div class="busnessServiceLink">
+                    <!-- <div class="busnessServiceLink">
                         <span><a href="#">Business Service</a></span>
-                    </div>
+                    </div> -->
 
                 </div>
 
@@ -120,7 +121,7 @@
                         </span>
                     </div>
                     <div class="labelInput">
-                        <input type="text" v-model="user.tel1">
+                        <input type="text" v-model="user.tel3">
                     </div>
                 </div>
                    <div class="LabelInputText" style="margin-top: 23px;">
@@ -185,7 +186,7 @@
                         Billing address
                     </span>
                 </div>
-               <div class="detailsInfo" @click="checkidt = !checkidt">
+               <div class="detailsInfo" @click="saveShipping">
                     <div class="checkInfo">
                         <img src="../dist/assets/images/Carre.png" alt="#">
                         <div class="checkArrow" v-if="checkidt">
@@ -207,7 +208,7 @@
             <div class="cartShipping">
                 <div class="shippingSelling" v-for="(item, index) in carts" :key="index">
                     <div class="previewContain">
-                        <img :src="item.visuelCommande" alt="">
+                        <img :src="item.visuel" alt="">
                     </div>
                     <div class="descriptionContent">
                         <div class="titleProduct">

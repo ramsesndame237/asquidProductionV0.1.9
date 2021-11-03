@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ADSQUID | Account-Profile</title>
+    <link rel="icon" href="../dist/assets/images/Picto.png">
     <link rel="stylesheet" href="../dist/assets/css/utils.css">
     <link rel="stylesheet" href="../dist/assets/css/account.css">
     <link rel="stylesheet" href="../dist/assets/css/globaHeader.css">
@@ -139,14 +140,14 @@
                                 <div class="titleLabel comp">
                                     <span>Adress:</span>
                                 </div>
-                                <div class="companyInputLabel adress" v-model="user.tel2">
-                                    <input type="text">
+                                <div class="companyInputLabel adress" >
+                                    <input type="text" v-model="user.tel2">
                                 </div>
-                                <div class="companyInputLabel adress" v-model="user.tel3">
-                                    <input type="text">
+                                <div class="companyInputLabel adress">
+                                    <input type="text" v-model="user.tel3">
                                 </div>
-                                <div class="companyInputLabel adress" v-model="user.tel3">
-                                    <input type="text">
+                                <div class="companyInputLabel adress" >
+                                    <input type="text" v-model="user.tel3">
                                 </div>  
                             </div>
                             <div class="contactInformation">
@@ -243,8 +244,6 @@
                      <div class="updateButton" @click ="userUpdate()">
                          <span>Update</span>
                      </div>
-                  
-
                 </div>
 
             </div>
@@ -252,23 +251,23 @@
                 <div class="reviewOderHistory">
                     <div class="title">
                         <span>
-                            Order number: <span style="font-weight: 900;color: #fff;"> #0001 </span>
+                            Order number: <span style="font-weight: 900;color: #fff;"> {{item.OrderNumber}} </span>
                         </span>
                         <br>
                         <span>
-                            Date ordered: <span style="font-weight: 900;color: #fff;">30/09/2021</span>
+                            Date ordered: <span style="font-weight: 900;color: #fff;"> {{item.DateOrdered}} </span>
                         </span>
                     </div>
                     <div class="productDetailsHistory">
                         <div class="globalHistory">
                             <div class="historyContentOder">
                                 <div class="previewContainer">
-                                    <img src="#" alt="">
+                                    <img :src="item.visuelCommande" alt="">
                                 </div>
                             </div>
                             <div class="historyTitleProduct">
                                 <span>
-                                    Kit <span style="color: #33CCFF;"> Squid</span>
+                                    {{item.ProduitCommande}} <span style="color: #33CCFF;"> Squid</span>
                                 </span>
                             </div>
                             <div class="Yourdetail">
@@ -277,7 +276,7 @@
                                         Your size:
                                     </span>
                                     <span style="font-style:20px;color:#fff">
-                                        value
+                                        {{item.sizeCommande}}
                                     </span>
                                 </div>
                                 <hr>
@@ -286,7 +285,7 @@
                                         Your cut:
                                     </span>
                                     <span style="font-style:20px;color:#fff">
-                                        value
+                                        {{item.cutCommande}}
                                     </span>
                                 </div>
                                 <hr>
@@ -295,7 +294,7 @@
                                         Your extra sticker:
                                     </span>
                                     <span style="font-style:20px;color:#fff">
-                                        value
+                                        {{item.ExtraCommande}}
                                     </span>
                                 </div>
                                 <hr>
@@ -304,7 +303,7 @@
                                         Your design:
                                     </span>
                                     <span style="font-style:20px;color:#fff">
-                                        value
+                                        {{item.designCommande}}
                                     </span>
                                 </div>
                                 <hr>
@@ -313,7 +312,7 @@
                                        Quantity:
                                     </span>
                                     <span style="font-style:20px;color:#fff">
-                                        value
+                                        {{item.quantityCommande}}
                                     </span>
                                 </div>
                                 <hr>
@@ -322,7 +321,7 @@
                                         Total:
                                     </span>
                                     <span style="font-style:20px; font-weight: 900; color:#fff">
-                                        value
+                                        {{item.amountProduct}}
                                     </span>
                                 </div>
                                 <hr>
@@ -343,28 +342,28 @@
                             <div class="Yourdetail">
                                 <div class="labelDetailContainer">
                                     <span style="font-style:20px;font-weight:900; color:#fff">
-                                        Your size:
+                                        Shipping:
                                     </span>
                                     <span style="font-style:20px;color:#fff">
-                                        value
+                                        {{item.shippingCommande}}
                                     </span>
                                 </div>
                                 <hr>
-                                <div class="labelDetailContainer">
+                                <!-- <div class="labelDetailContainer">
                                     <span style="font-style:20px;font-weight:900; color:#fff">
                                         Your cut:
                                     </span>
                                     <span style="font-style:20px;color:#fff">
                                         value
                                     </span>
-                                </div>
-                                <hr>
+                                </div> -->
+                                <!-- <hr> -->
                                 <div class="labelDetailContainer">
-                                    <span style="font-style:20px;font-weight:900; color:#fff">
-                                        Your extra sticker:
+                                    <span style="font-size:16px;font-weight:900; color:#fff">
+                                       Total:
                                     </span>
-                                    <span style="font-style:20px;color:#fff">
-                                        value
+                                    <span style="font-size:16px;color:#fff;font-weight: 900;">
+                                        ${{item.amountCommande}}
                                     </span>
                                 </div>
                                 <hr>
@@ -375,11 +374,6 @@
                 </div>
 
             </div>
-            <!-- <div class="commandeContainer" >
-                <span>
-                    You haven't a product commande 
-                </span>
-            </div> -->
     
         </div>
     </div>

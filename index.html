@@ -44,10 +44,12 @@
                             <img src="../dist/assets/images/icon/user_V2.svg" v-else alt="">
                         </div>
                         <div class="shopping">
-                            <img src="../dist/assets/images/icon/shopping-cart_V2.svg" alt="">
-                            <div class="numberofProduct" v-if="numberOfProduct != '0'">
-                                <span> {{numberOfProduct}} </span>
-                            </div>
+                            <a href="others/cart.html">
+                                <img src="../dist/assets/images/icon/shopping-cart_V2.svg" alt="">
+                                <div class="numberofProduct" v-if="numberOfProduct != '0'">
+                                    <span> {{numberOfProduct}} </span>
+                                </div>
+                            </a>
                         </div>
                         <div class="search_utilisateur">
                             <div class="search-icon">
@@ -94,7 +96,7 @@
                                 </ul>
                             </li>
                             <li class="link-item-list-item quote text-white"> <a href="quote.html">Quote</a></li>
-                            <li class="link-item-list-item buisiness">Business service</li>
+                            <!-- <li class="link-item-list-item buisiness">Business service</li> -->
                             <li class="StartMarking"> <a href="chooseYourmedia.html"> Start marking</a></li>
                         </ul>
 
@@ -387,10 +389,43 @@
                 <span>Reviews customer</span>
             </div>
         </div>
+         <div class="floating-chat" id="chat">
+                                <div class="numberofMessage">
+                                    <span>
+                                        {{messageReceive}}
+                                    </span>
+                                </div>
+                                <div class="chatbutton">
+                                    <img src="../dist/assets/images/Customisateur/chat.png" alt="">
+                                </div>
+                                <div class="chat">
+                                    <div class="header">
+                                        <span class="title">
+                                           Adsquid Messagerie
+                                        </span>
+                                        <button>
+                                            <span>&times;</span>
+                                        </button>
+                                    </div>
+                                    <ul class="messages">
+                                        <li class="other">hello</li>
+                                        <li class="other">please i have a problem</li>
+                                        <li class="self">hi</li>
+                                        <li class="self">What is your problem</li>
+                                        <li class="other"> i don't no how to save my design </li>
+                                    </ul>
+                                    <div class="footer">
+                                        <div class="text-box" contenteditable="true" disabled="true"></div>
+                                        <div id="sendMessage">
+                                            <img src="../dist/assets/images/Web_icon_2/send.png" alt="">
+                                        </div>
+                                    </div>
+                    </div>
+             </div>
         <div id="cookiePopup">
             <h4>Cookie Policy & Privacy</h4>
             <p>Our website uses cookies to provide your browsing experience and relavent informations.Before continuing to use our website, you agree & accept of our  <a href="#">Cookie Policy & Privacy</a></p>
-            <button id="acceptCookie">Accept</button> 
+            <button onclick="acceptCookieFunc()" id="acceptCookie">Accept</button> 
         </div>
         <footer>
             <hr style="background: #33CCFF;height: 4px;">
@@ -497,10 +532,62 @@
 
 
     </div>
+    <script>
+                // set cookie according to you
+        var cookieName= "CodingStatus";
+        var cookieValue="Coding Adsquid";
+        var cookieExpireDays= 30;
+        // when users click accept button
+        let acceptCookie= document.getElementById("acceptCookie");
+        function acceptCookieFunc (){
+            
+            createCookie(cookieName, cookieValue, cookieExpireDays);
+        }
+        // function to set cookie in web browser
+        let createCookie= function(cookieName, cookieValue, cookieExpireDays){
+        let currentDate = new Date();
+        currentDate.setTime(currentDate.getTime() + (cookieExpireDays*24*60*60*1000));
+        let expires = "expires=" + currentDate.toGMTString();
+        document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
+        if(document.cookie){
+            document.getElementById("cookiePopup").style.display = "none";
+        }else{
+            alert("Unable to set cookie. Please allow all cookies site from cookie setting of your browser");
+        }
+        }
+        // get cookie from the web browser
+        let getCookie= function(cookieName){
+        let name = cookieName + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+        }
+        // check cookie is set or not
+        let checkCookie = function () {
+            let check=getCookie(cookieName);
+            if(check==""){
+                document.getElementById("cookiePopup").style.display = "block";
+            }else{
+                document.getElementById("cookiePopup").style.display = "none";
+            }
+        }
+ checkCookie();
+    </script>
     
-    <script src="dist/assets/js/config.js"></script>
-    <script src="dist/assets/js/index.js"></script>
     <script src="dist/assets/js/universal.js"></script>
+    <script src="dist/assets/js/config.js"></script>
+    <script src="dist/plugin/jquery.min.js"></script>
+    <script src="dist/assets/js/index.js"></script>
+    <script src="dist/assets/js/all.js"></script>
 
 </body>
 </html>

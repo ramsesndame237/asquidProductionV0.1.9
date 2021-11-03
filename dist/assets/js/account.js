@@ -12,7 +12,8 @@ var app = new Vue({
             id:'',
             dropChooseYear: false,
             coditionToShow: 'personal',
-                        baseUri:'https://adsquid.herokuapp.com/api/',
+            // baseUri:'https://adsquid.herokuapp.com/api/',
+            baseUri:'http://0.0.0.0:8800/api/',
             user: {
                 email: "",
                 password: "",
@@ -114,8 +115,9 @@ var app = new Vue({
             this.connected = true
             console.log(userInfo[0].Fname)
           }
-        axios.get(this.baseUri + "commandes").then((response) => {
+        axios.get(this.baseUri + "commandes" + "/" + this.id).then((response) => {
             this.commande = response.data
+            console.log(response)
         }).catch((error) => {
             console.log(error)
         })

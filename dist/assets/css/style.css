@@ -5,6 +5,7 @@ ul,li,a{text-decoration: none !important; list-style: none !important;}
     max-height: 2888px;
     margin: auto;
     border: solid 1px solid #919da1;
+	position: relative;
 }
 .header_container{
     display: flex;
@@ -72,7 +73,7 @@ ul,li,a{text-decoration: none !important; list-style: none !important;}
 		width: 28px;
 		height: 28px;
 	}
-	.link-item-list{
+	/* .link-item-list{
 		color: #fff;
 		display: flex;
 		align-items: center;
@@ -84,7 +85,7 @@ ul,li,a{text-decoration: none !important; list-style: none !important;}
 	}
 	.link-item-list-item a{
 		color: #fff;
-	}
+	} */
 .StartMarking{
     border: 1px #919da1;
     background: #33ccff;

@@ -1,0 +1,422 @@
+@font-face {
+    font-family: 'Avenir';
+    src:url('../fonts/Avenir/AvenirLTStd-Roman.woff'), url('../fonts/Avenir/AvenirLTStd-Black.woff'), url('../fonts/Avenir/AvenirLTStd-Book.woff');
+    font-weight: normal;
+    font-style: normal;
+}
+ul,li,a{text-decoration: none !important; list-style: none !important;}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Avenir';
+}
+body{
+    margin: 0;
+    padding: 0;
+    background: #002633;
+}
+.phoneContainer{
+    max-width: 414px;
+    width: 414px;
+    max-height: 897px;
+    height: 809px;
+    background: #002633;
+}
+.headerPhone{
+    height: 80px;
+    width: 100%;
+    display: flex;
+}
+.logoPhoneContainer{
+    height: 40px;
+    width: 96.82px;
+    margin-top: 8px;
+    margin-left: 16px;
+}
+.logoPhoneContainer img{
+    width: 100%;
+    height: 100%;
+}
+.GetQuote{
+    height: 30px;
+    width: 100px;
+    background: #33CCFF;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 189.18px;
+    margin-top: 18px;
+    margin-right: 12px;
+}
+.GetQuote a {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 900;
+}
+.phoneBannerContainer{
+    width: 100%;
+    height: 159px;
+    background: url('../images/bg-banner.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    position: relative;
+    border: solid 1px #002633;
+}
+.pubcontainer{
+    width: 253px;
+    height: 110px;
+    background: #0026338C 0% 0% no-repeat padding-box;
+    border-radius: 18px;
+    margin-left: 143px;
+    margin-right: 11px;
+    margin-top: 25px;
+}
+.titlePub{
+   font: normal normal 900 14px/19px 'Avenir';
+   color: #fff;
+    width: 206px;
+    height: 19px;
+    margin-top: 14px;
+    margin-left: 33px;
+}
+.descriptionPub{
+    width: 229px;
+    height: 56px;   
+    font: normal normal normal 10px/14px 'Avenir';
+    color: #fff;
+    text-align: right;
+    margin-top: 8px;
+}
+
+.photoOfProduct{
+    width: 158px;
+    height: 136px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 18px;
+    margin-top: 40px;
+    margin-left: 16px;
+    font: normal normal 900 12px/16px 'Avenir';
+    color: #002633;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.photoOfProduct img{
+    width: 100%;
+    height: 100%;
+}
+.productPhoneDescription{
+    display: flex;
+}
+.detailsDescription{
+    width: 170px;
+    height: 122px;
+    margin-left: 29px;
+    margin-top: 54px;
+}
+.nameOfProduct{
+    width: 78px;
+    height: 19px;
+    text-align: center;
+    font: normal normal 900 14px/19px 'Avenir';
+    color: #fff;
+    margin-left: 101px;
+}
+.titleOfDescription{
+    width: 178px;
+    height: 14px;
+    font: normal normal normal 10px/14px 'Avenir';
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    margin-left: 12px;
+    margin-top: 8px;
+}
+.indicatorImage{
+    width: 14px;
+    height: 14px;
+    margin-right: 11px;
+}
+.indicatorImage img{
+    width: 100%;
+    height: 100%;
+}
+.listItems{
+    display: flex;
+    text-align: center;
+    font: normal normal normal 10px/14px 'Avenir';
+    letter-spacing: 0px;
+    margin-top: 8px;
+    color: #FFFFFF;
+}
+.titeReview{
+    text-align: left;
+    font: normal normal normal 6px/8px 'Avenir';
+    letter-spacing: 0px;
+    color: #33CCFC;
+    margin-left: 12px;
+}
+.noteReview{
+    width: 15px;
+    height: 14px;
+    margin-top: 6.72px;
+}
+.noteReview img{
+    width: 100%;
+    height: 100%;
+}
+.moreThanCarPhone{
+    background: url('../images/flotte-auto.png');
+    width: 413px;
+    height: 144px;
+    margin-top: 15px;
+    overflow: hidden;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: 1px solid #707070;
+    margin-top: 32px;
+}
+.detailsInfoMore{
+    margin-top: 32px;
+    margin-left: 16px;
+    width: 280px;
+    height: 80px;
+    background: #0026338C 0% 0% no-repeat padding-box;
+    border-radius: 14px;
+    color: #fff;
+    overflow: hidden;
+}
+.moreCarTitle{
+    width: 129px;
+    height: 19px;
+    text-align: right;
+    font: normal normal 900 14px/19px Avenir;
+    letter-spacing: 0px;
+    margin-left: 13px;
+    margin-top: 14px;
+}
+.moreDescription{
+    width: 256px;
+    height: 28px;
+    margin-left: 13px;
+    margin-top: 5px;
+    text-align: left;
+    font: normal normal normal 10px/14px Avenir;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+}
+.titleContainer{
+    display: flex;
+    margin-left: 10px;
+    margin-top: 13px;
+}
+.titleContainer hr{
+    width: 139px;
+    height: 0px;
+    border: 2px solid #32CBFE;
+    border-radius: 4px;
+}
+.imageContainer{
+    display: flex;
+    margin-left: 61px;
+    margin-top: 15px;
+}
+.logoCompanyContainer img{
+    width: 100%;
+    height: 100%;
+}
+footer{
+    margin-top: 9px;
+    position: relative;
+}
+.contactFooterContainer{
+    margin-left: 65.31px;
+}
+.contactTitle{
+    width: 37px;
+    height: 14px;
+    text-align: left;
+    font: normal normal 900 10px/14px Avenir;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+}
+.contactInfo{
+    text-align: left;
+    font: normal normal normal 8px/11px Avenir;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    width: 188px;
+    height: 22px;
+}
+.logoFooter{
+    width: 81px;
+    height: 81px;
+    position: absolute;
+    left: 333px;
+    top: 8px;
+    z-index: 1000;
+}
+.logoFooter img{
+    width: 100%;
+    height: 100%;
+}
+.copyRightContainer{
+    text-align: center;
+    text-align: left;
+    font: normal normal normal 6px/8px 'Avenir';
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    margin-left: 141px;
+}
+.messageQuotePhone{
+    width: 386px;
+    height: 52px;
+    text-align: left;
+    font: normal normal normal 10px/14px 'Avenir';
+    letter-spacing: 0px;
+    color: #33CCFC;
+    margin-left: 16px;
+}
+.quoteFormContainer{
+    margin-left: 16px;
+}
+.titleLabel{
+    text-align: left;
+    font: normal normal 900 10px/14px 'Avenir';
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    margin-top: 10px;
+}
+.inputLabel{
+    width: 386px;
+    height: 22px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 0.5px solid #919DA1;
+    border-radius: 25px;
+    margin-top: 5px;
+}
+input{
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+    font-size: 8px;
+    color: #002633;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+}
+input:focus{
+    border: none;
+    outline: none;
+}
+.inputContainerDropDown{
+    display: flex;
+    width: 386px;
+    height: 22px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 0.5px solid #919DA1;
+    border-radius: 25px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.dropImage{
+    width: 8px;
+    height: 5px;
+    margin-left: 6.47px;
+}
+.dropImage img{
+    width: 100%;
+    height: 100%;
+}
+.inputLabelDescription{
+    width: 386px;
+    height: 158px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 0.5px solid #919DA1;
+    border-radius: 18px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+textarea{
+    width: 100%;
+    height: 100%;
+    color: #002633;
+    padding-left: 20px;
+    font-size: 8px;
+    border: none;
+    outline: none;
+}
+textarea:focus{
+    border: none;
+    outline: none;
+}
+.sendButton{
+    width: 100px;
+    height: 30px;
+    background: #33CCFF 0% 0% no-repeat padding-box;
+    border-radius: 30px;
+    display: flex;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-family: 'Avenir';
+    font-size: 14px;
+    margin-top: 20px;
+    margin-left: 290px;
+    margin-bottom: 93px;
+    margin-right: 12px;
+}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+	border: 1px solid #919DA1;
+	opacity: 1;
+  margin: auto;
+  padding: 20px;
+  width: 460px;
+  height: 523px;
+  border-radius: 32px;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.titleModal{
+	width: 330px;
+	height: 52px;
+	color: #33CCFF;
+	font-size: 38px;
+	font-weight: 900;
+	margin-left: 65px;
+	margin-top: 38px;
+}

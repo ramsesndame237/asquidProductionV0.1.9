@@ -6,54 +6,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asquid | Quote</title>
     <link rel="stylesheet" href="dist/assets/css/quote.css">
+    <link rel="stylesheet" href="dist/assets/css/globaHeader.css">
+    <link rel="stylesheet" href="dist/assets/css/footer.css">
+    <link rel="stylesheet" href="dist/assets/css/utils.css">
     <link rel="stylesheet" href="dist/plugin/responsive/css/bootstrap.min.css">
+    <link rel="icon" href="dist/assets/images/Picto.png">
     <script src="dist/plugin/vue.js"></script>
-    <link rel="icon" href="dist/assets/images/logo.png">
+    <script src="dist/plugin/axios.min.js"></script>
 </head>
 <body>
     <div class="QuoteBody" id="QuotePage">
-          <header>
-            <div class="header_container animate__animated animate__bounce animate__delay-2s">
-                <div class="logo-container">
-                      <a href="index.html"><img src="dist/assets/images/logo.png" alt=""></a> 
+        <header class="globalHeader">
+            <div class="generalContent">
+                <div class="logoContainer">
+                    <div class="logo">
+                        <img src="../dist/assets/images/logo.png" alt="#">
+                    </div>
                 </div>
-                <div class="link-container">
-                    <div class="social-link">
-                        <div class="user">
-                            <img src="dist/assets/images/icon/user_V2.svg" alt="">
+                <div class="linkContainerZone">
+                    <div class="socialLinkContainer">
+                        <span v-if="connected" @click="conditionConnect = !conditionConnect" style="font-size: 16px; color: #33CCFF; margin-top: 16px; cursor: pointer;" > Welcome {{username}} </span>
+                        <div class="user" v-if="connected" @click="conditionConnect = !conditionConnect">
+                            <img src="dist/assets/images/Web_icon_2/user_click.png" v-if="clicked" alt="">
+                            <img src="../dist/assets/images/icon/user_V2.svg" v-else alt="">
+                        </div>
+                        <div class="user" v-else  @click="openModal">
+                            <img src="dist/assets/images/Web_icon_2/user_click.png" v-if="clicked" alt="">
+                            <img src="../dist/assets/images/icon/user_V2.svg" v-else alt="">
                         </div>
                         <div class="shopping">
-                            <img src="dist/assets/images/icon/shopping-cart_V2.svg" alt="">
+                            <img src="../dist/assets/images/icon/shopping-cart_V2.svg" alt="">
+                            <div class="numberofProduct" v-if="numberOfProduct != '0'">
+                                <span> {{numberOfProduct}} </span>
+                            </div>
                         </div>
                         <div class="search_utilisateur">
                             <div class="search-icon">
-                                <img src="dist/assets/images/icon/search.svg" alt="">
+                                <img src="../dist/assets/images/icon/search.svg" alt="">
                             </div>
                             <div class="inputText">
                                 <input type="text" name="search" id="search" placeholder="Search">
                             </div>
                         </div>
+                        <div class="profilConectContainer" v-if="conditionConnect">
+                            <div class="myProfil" @click="TypeOnglet(0)">
+                                <a href="others/account.html">
+                                <span style="color: #002633;">
+                                    My profile
+                                </span>
+                                </a>
+                            </div>
+                            <div class="orderHistory" @click="TypeOnglet(1)">
+                                <a href="others/account.html">
+                                <span style="color: #002633;">
+                                    Order History
+                                </span>
+                                </a>
+                            </div>
+                            <hr style="width: 106px;margin-top:11px;opacity: 1; margin-left: 22px;">
+                             <div class="signOut" @click="signOut">
+                                <span style="color: #002633;">
+                                    Sign out
+                                </span>
+                                </a>
+                            </div>
+                            
+
+                        </div>
 
                     </div>
-                    <div class="link-item">
+                    <div class="pageLinkContainer">
                         <ul class="link-item-list">
                             <li class="link-item-list-item dropdows ">Produit
                                 <ul class="dropdown-link-item">
-                                    <li><a href="./products/kitSquid.html#Kit">Kit Squid</a></li>
-                                    <li><a href="./products/flexiSquid.html#flexiSquidSelectioncontainer">FlexiSquid</a></li>
-                                    <li><a href="./products/rearsquid.html#rearContainer">Rear Squid</a></li>
+                                    <li style="display:  flex;" class="linkToProduct"><a href="products/kitSquid.html#Kit">Kit Squid</a> <span><img src="dist/assets/images/arrowDown2.png" alt=""></span> </li>
+                                    <li style="display:  flex;" class="linkToProduct"><a href="products/flexiSquid.html#flexiSquidSelectioncontainer">FlexiSquid</a><span><img src="dist/assets/images/arrowDown2.png" alt=""></span></li>
+                                    <li style="display:  flex;" class="linkToProduct"><a href="products/rearsquid.html#rearContainer">Rear Squid</a><span><img src="dist/assets/images/arrowDown2.png" alt=""></span></li>
                                 </ul>
-
                             </li>
-                            <li class="link-item-list-item">Quote</li>
-                            <li class="link-item-list-item">Business service</li>
+                            <li class="link-item-list-item quote text-white"> <a href="quote.html">Quote</a></li>
+                            <!-- <li class="link-item-list-item buisiness">Business service</li> -->
                             <li class="StartMarking"> <a href="chooseYourmedia.html"> Start marking</a></li>
                         </ul>
-                    </div>
 
+
+                    </div>
+    
                 </div>
             </div>
+
         </header>
+            <div class="breackrumbCart">
+                <div class="name">
+                    Quote
+                </div>
+                <div style="color: #33CCFF;width: 102px;height: 22px; font-size: 16px;margin-top: 14px;margin-bottom: 51px;margin-left: 52px;margin-right: 974px;">
+                   <span style="color: #fff;">
+                       Home/
+                   </span>  Quote
+                </div>
+                 <div class="notice">
+                    <span>
+                        Please complete the form below to request a quote. Once I have received your information I will be able to provide you with a more detailed quote.
+                    </span>
+                </div>
+            </div>
 
         <div class="QuoteContainer">
             <div class="formulaireQuoteContainer">
@@ -88,20 +145,13 @@
                     </div>
                     <div class="inputContainer">
                        <div class="choosequantityDropdow d-lg-flex d-md-flex d-sm-block" @click="dropChoose = !dropChoose">
-                           <div class="container">
-                               <div class="row">
-                                   <div class="col col-11">
                                        <div class="chooseQuantityName  text-center fw-bold">
                                            <span>{{subjetChoose}}</span>
                                        </div>
-                                   </div>
-                                   <div class="col col-1">
+                                   <hr style="height: 20px; border: solid 1px;">
                                        <div class="arrowDownDrop">
                                            <img src="../dist/assets/images/arrowDown.png" alt="">
                                        </div>
-                                   </div>
-                               </div>
-                           </div>
                         </div>
                         <div class="DropDowQuantityToChoose" v-if="dropChoose">
                             <div class="quantityList mt-3 fw-bold"  v-for = "itemSubject in subjectQuote">
@@ -116,20 +166,13 @@
                     </div>
                     <div class="inputContainer">
                        <div class="choosequantityDropdow d-lg-flex d-md-flex d-sm-block" @click="dropChooseVehicle = !dropChooseVehicle">
-                           <div class="container">
-                               <div class="row">
-                                   <div class="col col-11">
                                        <div class="chooseQuantityName  text-center fw-bold">
                                            <span>{{QuantityVehicle}}</span>
                                        </div>
-                                   </div>
-                                   <div class="col col-1">
+                                   <hr style="height: 20px; border: solid 1px;">
                                        <div class="arrowDownDrop">
                                            <img src="../dist/assets/images/arrowDown.png" alt="">
                                        </div>
-                                   </div>
-                               </div>
-                           </div>
                         </div>
                         <div class="DropDowQuantityToChoose" v-if="dropChooseVehicle">
                             <div class="quantityList mt-3 fw-bold"  v-for =  "itemVehicleIntevale in quantityVehiculeInterval">
@@ -243,10 +286,154 @@
                         <textarea type="text" class="descriptionZone"> </textarea>
                     </div>
                 </div>
-                <div class="buttonToSend float-lg-end"  v-if="isTheEnd">
+                <div class="buttonToSend float-lg-end" @click="sendQuote"  v-if="isTheEnd">
+                    <span>
+                        send
+                    </span>
                 </div>
             </div>
         </div>
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div></div>
+            <div class="welcomeContainer" v-show="welcome">
+                <div class="close" v-show="welcome">
+                    <span >&times;</span>
+                </div>
+                <div class="modalToContent">
+                    <div class="contentMessage">
+                        <span>
+                            Hello, because of my French nationality, my strong accent and my English mistakes, 
+                            I would like to start discussions by mail, or via the chat box. However, 
+                            if you wish to call me or vice versa, I remain at your disposal.
+                        </span>
+                        <div class="flagContainer">
+                            <img src="../dist/assets/images/Flag_v2.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sendBoxContainer" v-show="success">
+                 <div class="close" >
+                    <span >&times;</span>
+                </div>
+                <div class="messageToContainer">
+                    <span>
+                        Thank you for your request! <br> A reply will be sent to you as soon as possible <br>
+                        <span style="color: #33CCFF;font-size: 14px ;font-weight:100;">
+                            Within 24 to 48 hours
+                        </span>
+                    </span>
+                </div>
+                <div class="imageContainerSend">
+                    <img src="../dist/assets/images/Web_icon_2/email.png" alt="">
+                </div>
+
+            </div>
+        </div>
+        <footer>
+            <hr style="background: #33CCFF;height: 4px;">
+            <div class="footerContainer">
+                <div class="letUsHelp">
+                    <div class="titleContent">
+                        <span style="font-weight:900;font-size: 20px; color: #fff;">
+                            Let us help
+                        </span>
+                    </div>
+                    <div class="letContent">
+                        <div class="myAccount">
+                            <span>
+                                <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="others/myAccount.html">
+                                    My account
+                                </a>
+                            </span>
+                        </div>
+                        <div class="contact">
+                            <span>
+                                <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="others/contact.html">
+                                    Contact
+                                </a>
+                            </span>
+                        </div>
+                        <div class="faqs">
+                            <span>
+                                <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="others/faq.html">
+                                    FAQs
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="followHelp">
+                    <div class="titleContent">
+                        <span style="font-weight:900;font-size: 20px; color: #fff;">
+                            Follow us
+                        </span>
+                    </div>
+                    <div class="letContent">
+                        <div class="instagram">
+                            <span>
+                                <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="">
+                                    Instagram
+                                </a>
+                            </span>
+                        </div>
+                        <div class="facebook">
+                            <span>
+                                <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="">
+                                    Facebook
+                                </a>
+                            </span>
+                        </div>
+                        <div class="youtube">
+                            <span>
+                                <a style="color: #fff;list-style: none;font-size: 16px;font-weight: lighter;" href="">
+                                    Youtube
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="newsletterContainer">
+                    <div class="emailContainer">
+                        <input type="email" placeholder="Email">
+                    </div>
+                    <div class="subcribeBouton">
+                        <span>
+                            Subscribe
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="termsCondition">
+                <div class="terms">
+                    <span>
+                        <a target="blank" href="https://www.cookiepolicygenerator.com/live.php?token=yiKBRqEwHj6rnyH0GM6FAXpzAxjhgdrM" style="color: #fff;">
+                            Privacy and Cookie Policy
+                        </a>
+                    </span>
+                </div>
+                <div class="conditionsTerms">
+                    <span>
+                        <a href="others/termeEtCondition.html" style="color: #fff;">
+                            Terms and Conditions
+                        </a>
+                    </span>
+                </div>
+                <div class="copyrigth">
+                    <span>
+                        Copyright 2021© Flysoft Engineering & Adsquid.
+                    </span> <br>
+                    <span>
+                        ABN: 16 998 486 520
+                    </span>
+                </div>
+            </div>
+            <div class="imageContainer">
+                <img src="dist/assets/images/Tentacule_footer_test_v2.png" alt="#">
+            </div>
+        </footer>
 
     </div>
 

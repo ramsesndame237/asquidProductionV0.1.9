@@ -230,7 +230,8 @@ footer{
 .carInformation{
 	margin-top: 39px;
 	width: 435px;
-	height: 509px;
+	max-height: 509px;
+	height: auto;
 }
 .YourBrand{
 	display: flex;
@@ -361,7 +362,7 @@ input:focus{
 	border: 1px solid #919DA1;
 	border-radius: 25px;
 }
-.colorToChoose,.colorToSelect{
+.colorToChoose,.colorToSelect,.colorToSelectGraphic,.colorToChooseGraphic{
 	width: 80px;
 	height: 30px;
 	border: 1px solid #919DA1;
@@ -395,7 +396,7 @@ input:focus{
 }
 .rearContainerExtra{
 	width: 660px;
-	height: 158px;
+	height: 258px;
 	background: #FFFFFF 0% 0% no-repeat padding-box;
 	border: 1px solid #919DA1;
 	border-radius: 25px;

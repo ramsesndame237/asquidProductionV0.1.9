@@ -3,7 +3,8 @@ var app = new Vue({
     data() {
         return {
             dataSourceImage: '',
-                        baseUri:'https://adsquid.herokuapp.com/api/',
+            // baseUri:'https://adsquid.herokuapp.com/api/',
+            baseUri:'http://0.0.0.0:8800/api/',
             checkidt: false,
             carts: [],
             itemTextToShow: '',
@@ -44,46 +45,78 @@ var app = new Vue({
             console.log("okay")
             var modal = document.getElementById("myModal");
            modal.style.display = "none";
+           if (localStorage.getItem("userInfomation") != null && localStorage.getItem("userInfomation").length > 0) {
+               setTimeout(async () => {
+                   var cart = {
+                         visual: JSON.parse(window.localStorage.getItem("imageToPreview")),
+                         product:JSON.parse(localStorage.getItem("commande"))
+                     }
+                 var stored = JSON.parse(localStorage.getItem("cartStorage")) || [];
+     
+                 if (stored != null & stored.length > 0) {
+                     stored.push(cart)
+                     localStorage.setItem("cartStorage", JSON.stringify(this.carts))
+                 } else {
+                    
+                     this.carts.push(cart)
+                     localStorage.setItem("cartStorage", JSON.stringify(this.carts))
+                 }
+                   let commande = JSON.parse(localStorage.getItem("commande"))
+                   let dataToCart = {
+                       ProduitCommande: commande.nameProduct,
+                       amountCommande: commande.totalAmountProduct,
+                       statutCommande: "notPaid",
+                       sizeCommande: commande.sizeProduct,
+                       cutCommande: commande.cutProduct,
+                       ExtraCommande: commande.extraProduct[0] || '',
+                       designCommande: commande.designProduct,
+                       quantityCommande: commande.quantityProduct,
+                       visuelCommande: JSON.parse(window.localStorage.getItem("imageToPreview")),
+                       idUser:this.id
+                   }
+                   console.log(dataToCart)
+                   await api.post(this.baseUri + "panniers", dataToCart).then((response) => {
+                       console.log(response)
+                       window.location = "../../../others/cart.html"
+                   }).catch((error) => {
+                       console.log(error)
+                   })
+    
+                   
+               }, 1000);
+               
+           } else {
+               console.log("okay")
+                   let commande = JSON.parse(localStorage.getItem("commande"))
+               let dataToCart = {
+                        idPannier:this.uuidv4(),
+                       ProduitCommande: commande.nameProduct,
+                       amountCommande: commande.totalAmountProduct,
+                       statutCommande: "notPaid",
+                       sizeCommande: commande.sizeProduct,
+                       cutCommande: commande.cutProduct,
+                       ExtraCommande: commande.extraProduct[0] || '',
+                       designCommande: commande.designProduct,
+                       quantityCommande: commande.quantityProduct,
+                       visuel: JSON.parse(window.localStorage.getItem("imageToPreview")),
+                   }
+                 var stored = JSON.parse(localStorage.getItem("cartStorage")) || [];
+     
+                 if (stored != null & stored.length > 0) {
+                     stored.push(dataToCart)
+                     localStorage.setItem("cartStorage", JSON.stringify(this.carts))
+                 } else {
+                    
+                     this.carts.push(dataToCart)
+                     localStorage.setItem("cartStorage", JSON.stringify(this.carts))
+                       window.location = "../../../others/cart.html"
+                 }
+           }
+
+           
            
 
             
-            setTimeout(async () => {
-                var cart = {
-                      visual: JSON.parse(window.localStorage.getItem("imageToPreview")),
-                      product:JSON.parse(localStorage.getItem("commande"))
-                  }
-              var stored = JSON.parse(localStorage.getItem("cartStorage")) || [];
-  
-              if (stored != null & stored.length > 0) {
-                  stored.push(cart)
-                  localStorage.setItem("cartStorage", JSON.stringify(this.carts))
-              } else {
-                 
-                  this.carts.push(cart)
-                  localStorage.setItem("cartStorage", JSON.stringify(this.carts))
-              }
-                let commande = JSON.parse(localStorage.getItem("commande"))
-                let dataToCart = {
-                     ProduitCommande: commande.nameProduct,
-                    amountCommande: commande.totalAmountProduct,
-                    statutCommande: "notPaid",
-                    sizeCommande: commande.sizeProduct,
-                    cutCommande: commande.cutProduct,
-                    ExtraCommande: commande.extraProduct[0] || '',
-                    designCommande: commande.designProduct,
-                    quantityCommande: commande.quantityProduct,
-                    visuelCommande: JSON.parse(window.localStorage.getItem("imageToPreview")),
-                    idUser:this.id
-                }
-                await api.post(this.baseUri + "panniers", dataToCart).then((response) => {
-                    console.log(response)
-                    window.location = "../../../others/cart.html"
-                }).catch((error) => {
-                    console.log(error)
-                })
-
-                
-            }, 1000);
         },
         
         checkCart() {
@@ -170,7 +203,6 @@ var app = new Vue({
                 console.log(response)
             }).catch((error) => {
                 console.log(error)
-                console.log(dataToSend)
           })
 
 
@@ -216,13 +248,16 @@ var app = new Vue({
                 localStorage.setItem("connect",this.connected)
                 var modal = document.getElementById("myModal");
                 modal.style.display = "none";
-
+                localStorage.removeItem("shippingAdress")
                 
             }).catch((error) => {
                 console.log(error)
                 console.log(axios)
             })
         },
+        async visitor() {
+            this.myCart()
+       }
     },
     mounted() {
         if(window.localStorage.getItem("imageToPreview") != null && window.localStorage.getItem.length > 0){

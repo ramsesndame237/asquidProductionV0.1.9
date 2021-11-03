@@ -8,9 +8,9 @@ var image2 = document.createElement('img');
 var canvas = new fabric.Canvas('canvasUpload');
 /**
  * this function is to initialise the line guide 
- */
-// initCenteringGuidelines(canvas);
-// initAligningGuidelines(canvas);
+//  */
+//  initCenteringGuidelines(canvas);
+//  initAligningGuidelines(canvas);
 
 /**this function is to do the responsive off the <canvas id="canvasUpload"></canvas>
  */
@@ -307,7 +307,7 @@ fabric.Object.prototype.customiseCornerIcons({
         borderColor: '#33ccff',
         cornerSize: 25,
         cornerShape: 'circle',
-        strokeWidth:5,
+        strokeWidth:15,
         cornerPadding: 5,
         cornerBackgroundColor: '#919da1',
     },
@@ -366,12 +366,13 @@ function boundingBox(bbox) {
         //$('#demo').css('box-shadow', '0 0 20px red');
         var cd = document.getElementById('canvasUpload');
         var cdStyle = cd.style;
-        cdStyle.boxShadow = '0 0 20px red';
+        cdStyle.boxShadow = '0px 0px 10px 10px #33CCFF';
     } else {
         //$('#demo').css('box-shadow'. '0 0 20px #a8a8a8');
         var cd = document.getElementById('canvasUpload');
         var cdStyle = cd.style;
-        cdStyle.boxShadow = '0 0 0px #a8a8a8';
+        cdStyle.boxShadow = '0px 0px 10px 10px #33CCFF';
+
     }
 }
 
@@ -387,7 +388,8 @@ var myFunc = function() {
         selectable: true,
         left: 180,
         top: 11,
-        fontWeight:900,
+        fontWeight: 900,
+        padding: 10,
         text: "Company Name"
     })
     text1.setControlsVisibility({
@@ -412,6 +414,7 @@ var myFunc = function() {
         selectable: true,
         left: 274,
         top: 71,
+        padding: 10,
         text: "Your business"
     })
     text2.setControlsVisibility({
@@ -437,6 +440,7 @@ var myFunc = function() {
         selectable: true,
         left: 143,
         top: 109,
+        padding: 10,
         text: "• Activity n°1  •  Activity n°2   • Activity n°3"
     })
     text3.setControlsVisibility({
@@ -462,6 +466,7 @@ var myFunc = function() {
         selectable: true,
         left: 234,
         top: 146,
+        padding: 10,
         text: "Additional information"
     })
     text4.setControlsVisibility({
@@ -489,6 +494,7 @@ var myFunc = function() {
         color:'#002633',
         left: 136,
         top: 180,
+        padding: 10,
         text: "04 00 000 000 - example@adsquid.com.au"
     })
     text5.setControlsVisibility({
@@ -508,10 +514,12 @@ var myFunc = function() {
         console.log("modification")
 
     })
-    document.querySelector("#textCompany").addEventListener('click', function () {
-        console.log("k")
-    })
+
+    var jsone = canvas.toJSON();
+    localStorage.setItem("defaultCanvas",JSON.stringify(jsone))
 }();
+
+
 
 var objIsActive = canvas.getActiveObject();
 objIsActive.setControlsVisibility({
@@ -591,7 +599,7 @@ document.querySelector(".deleteSelection").addEventListener("click", () => {
             x++;
             let id = x
          //text box increment
-            $(wrapper).append('<div class="textInputToCanvas d-lg-flex d-md-flex d-sm-flex"><div><input  data-id="'+x+'" class="addInput" value="Double Tap and Type"  type="text" name="mytext[]" id="data_item_'+ id +'"/> <div class="imageTextTocanvas remove_field"><img src="dist/assets/images/Customisateur/Trash.png" alt=""></div></div></div>'); //add input box
+            $(wrapper).append('<div class="textInputToCanvas d-lg-flex d-md-flex d-sm-flex"><div><input  data-id="'+x+'" class="addInput" value="Double Tap and Type"  type="text" name="mytext[]" id="data_item_'+ id +'"/> <div class="imageTextTocanvas remove_field"> <img src="dist/assets/images/Customisateur/Trash.png" alt=""></div></div></div>'); //add input box
             
         }
         inputs = $(".addInput")
@@ -618,7 +626,8 @@ document.querySelector(".deleteSelection").addEventListener("click", () => {
                 top: 100,
                 selectable: true,
                 text:"Double Tap and Type",
-                fontSize: 20,
+              fontSize: 20,
+                padding:10,
                 fontWeight:100,
             });
 
@@ -692,19 +701,19 @@ $("#picker1").colorPick({
                 console.log(mySVGsToInject)
 
                 // Options
-                var injectorOptions = {
-                    evalScripts: 'once',
-                    pngFallback: 'assets/png',
-                    each: function(svg) {
-                        // Callback after each SVG is injected
-                        console.log('SVG injected: ' + svg.getAttribute('id'));
-                        console.log(svg)
-                        svg.style.fill = this.color
-                    }
-                };
+                // var injectorOptions = {
+                //     evalScripts: 'once',
+                //     pngFallback: 'assets/png',
+                //     each: function(svg) {
+                //         // Callback after each SVG is injected
+                //         console.log(svg)
+                //         svg.style.fill = this.color
+                //         console.log('SVG injected: ' + svg.getAttribute('id'));
+                //     }
+                // };
 
                 // Trigger the injection
-                SVGInjector(mySVGsToInject, injectorOptions, function(totalSVGsInjected) {
+                SVGInjector(mySVGsToInject, function(totalSVGsInjected) {
                     // Callback after all SVGs are injected
                     console.log('this is the ijection option  ' + injectorOptions + ' SVG(s)!');
                     console.log(totalSVGsInjected)
@@ -715,6 +724,18 @@ $("#picker1").colorPick({
                     console.log(mySVGsToInject)
                     console.log("oooaojqdfijoqdsfioj")
                     mySVGsToInject.style.fill = this.color
+                    if (selectBackground = localStorage.getItem("selectBackground") == 3) {
+                        document.querySelector(".cls-2").style.fill = this.color
+                        console.log(document.querySelector(".cls-2"))
+                    } else if (selectBackground = localStorage.getItem("selectBackground") == 4) {
+                        document.querySelector(".cls-3").style.fill = this.color
+                    } else if (selectBackground = localStorage.getItem("selectBackground") == 5) {
+                        document.querySelector(".cls-2").style.fill = this.color
+                    } else if (selectBackground = localStorage.getItem("selectBackground") == 2) {
+                        document.querySelector(".cls-1").style.fill = this.color
+                    }
+
+
                     console.log(mySVGsToInject)
                     var svg = mySVGsToInject;
                     svgData = new XMLSerializer().serializeToString(svg);
@@ -987,10 +1008,30 @@ document.getElementById('logoImport').addEventListener("change", function(e) {
     }
 });
 $('.imageBackgroundLayout').on('load', function () {
-    let data = $('.imageBackgroundLayout').attr('src')
-    selectBackground = localStorage.getItem("selectBackground")
-    console.log(selectBackground)
+    let data
+    data = $('.imageBackgroundLayout').attr('src')
+    let conT = document.querySelector(".canvasAree")
     if (data != "") {
+        let url = JSON.parse(localStorage.getItem("imageUrl"))
+        if (conT.getElementsByTagName('svg').length) {
+            $('svg').replaceWith('<img src="" class="imageBackgroundLayout  inject-me"  alt="#">');
+            setTimeout(() => {
+                document.querySelector('.imageBackgroundLayout').src = url
+                data = document.querySelector(".imageBackgroundLayout").src
+                console.log(document.querySelector('.imageBackgroundLayout').src)
+                       console.log('test1 hasn svg' + data);
+                        canvas.setBackgroundColor(null, canvas.renderAll.bind(canvas));
+                        fabric.Image.fromURL(data, function(img) {
+                            canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
+                                scaleX: canvas.width / img.width,
+                                scaleY: canvas.height / img.height
+                            });
+                        });
+            }, 500);
+        } else {
+            console.log('test1 hasn svg' + data);
+            document.querySelector('.imageBackgroundLayout').src = url
+           data = document.querySelector(".imageBackgroundLayout").src
         canvas.setBackgroundColor(null, canvas.renderAll.bind(canvas));
         fabric.Image.fromURL(data, function(img) {
             canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
@@ -998,6 +1039,8 @@ $('.imageBackgroundLayout').on('load', function () {
                 scaleY: canvas.height / img.height
             });
         });
+            
+        }
     } 
 });
 $('#background0').on('click', function () {
@@ -1012,7 +1055,8 @@ $('#background0').on('click', function () {
 
 let inputText = document.querySelectorAll(".textInputToCanvas")
 
-function deleteTextField(n){
+function deleteTextField(n) {
+   
 
     if (n == 0) {
         canvas.remove(text1);
@@ -1033,7 +1077,15 @@ function deleteTextField(n){
     }
     canvas.renderAll()
 }
-
+function displayClick(n) {
+    let image = document.querySelectorAll(".imgs")
+    for (let i = 0; i < image.length; i++) {
+        image[i].style.display = 'none'
+    }
+    console.log(image)
+    image[n].style.display = 'block'
+    
+}
 /**
  * this part is for setting configuration
  */
@@ -1084,7 +1136,8 @@ function deleteTextField(n){
  * this function is to add QRcode on the canvas 
  */
 
- function mainQrCode() {
+function mainQrCode() {
+     console.log("okay")
     const generateBtn = document.querySelector(".buttonQRcodeSend");
     const dataBox = document.getElementById("linkQrcode");
     const qrcode = document.getElementById("qrcode");
@@ -1295,96 +1348,6 @@ $(document).ready(function(){
     $(window).trigger('resize');
 });
 
-
-/**
- * this part is for the chat part 
- * 
- */
-
-var element = $('.floating-chat');
-var myStorage = localStorage;
-
-if (!myStorage.getItem('chatID')) {
-    myStorage.setItem('chatID', createUUID());
-}
-
-setTimeout(function() {
-    element.addClass('enter');
-}, 1000);
-
-element.click(openElement);
-
-function openElement() {
-    var messages = element.find('.messages');
-    var textInput = element.find('.text-box');
-    element.find('>i').hide();
-    element.addClass('expand');
-    element.find('.chat').addClass('enter');
-    var strLength = textInput.val().length * 2;
-    textInput.keydown(onMetaAndEnter).prop("disabled", false).focus();
-    element.off('click', openElement);
-    element.find('.header button').click(closeElement);
-    element.find('#sendMessage').click(sendNewMessage);
-    messages.scrollTop(messages.prop("scrollHeight"));
-}
-
-function closeElement() {
-    element.find('.chat').removeClass('enter').hide();
-    element.find('>i').show();
-    element.removeClass('expand');
-    element.find('.header button').off('click', closeElement);
-    element.find('#sendMessage').off('click', sendNewMessage);
-    element.find('.text-box').off('keydown', onMetaAndEnter).prop("disabled", true).blur();
-    setTimeout(function() {
-        element.find('.chat').removeClass('enter').show()
-        element.click(openElement);
-    }, 500);
-}
-
-function createUUID() {
-    // http://www.ietf.org/rfc/rfc4122.txt
-    var s = [];
-    var hexDigits = "0123456789abcdef";
-    for (var i = 0; i < 36; i++) {
-        s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
-    }
-    s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
-    s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
-    s[8] = s[13] = s[18] = s[23] = "-";
-
-    var uuid = s.join("");
-    return uuid;
-}
-
-function sendNewMessage() {
-    var userInput = $('.text-box');
-    var newMessage = userInput.html().replace(/\<div\>|\<br.*?\>/ig, '\n').replace(/\<\/div\>/g, '').trim().replace(/\n/g, '<br>');
-
-    if (!newMessage) return;
-
-    var messagesContainer = $('.messages');
-
-    messagesContainer.append([
-        '<li class="self">',
-        newMessage,
-        '</li>'
-    ].join(''));
-
-    // clean out old message
-    userInput.html('');
-    // focus on input
-    userInput.focus();
-
-    messagesContainer.finish().animate({
-        scrollTop: messagesContainer.prop("scrollHeight")
-    }, 250);
-}
-
-function onMetaAndEnter(event) {
-    if ((event.metaKey || event.ctrlKey) && event.keyCode == 13) {
-        sendNewMessage();
-    }
-}
 
 canvas.on('mouse:down', (options) => {
     console.log(options)

@@ -7,8 +7,11 @@ var app = new Vue({
       resumeChooseList: [],
       infoDesign: [],
       YearList:[],
-    index: 0,
+      index: 0,
+      messageReceive:0,
       indx: 0,
+      numberOfProduct: 0,
+      dimensionKit:1,
       dropChoose: false,
       visuel: false,
       proposition: false,
@@ -233,17 +236,32 @@ var app = new Vue({
           let data ="Flexi"
         localStorage.setItem("CustomiseTitle", data)
 
-        let commande= {
-          nameProduct: data,
-          sizeProduct: this.YourFlexisize,
-          designProduct: this.YourFlexiDesign,
-          cutProduct:"",
-          quantityProduct: this.YourFlexiQuantity,
-          extraProduct:"",
-          totalAmountProduct:this.YourFlexiTotalAmount
-        }
+        // let commande= {
+        //   nameProduct: data,
+        //   sizeProduct: this.YourFlexisize,
+        //   designProduct: this.YourFlexiDesign,
+        //   cutProduct:"",
+        //   quantityProduct: this.YourFlexiQuantity,
+        //   extraProduct:"",
+        //   totalAmountProduct:this.YourFlexiTotalAmount
+        // }
+       let product = {
+        nameProduct: data,
+        sizeProduct: this.YourFlexisize,
+        designProduct: this.YourFlexiDesign,
+        cutProduct: this.YourCut,
+        quantityProduct: this.YourFlexiQuantity,
+        extraProduct: "",
+        carInformation: {
+          carBrand: this.YourBrandChoose,
+          carModel: this.YourCarModel,
+          carColor: this.YourCarColor,
+          moreInfo:this.MoreInfo
+        },
+        totalAmountProduct:this.YourFlexiTotalAmount
+      }
       if (window.localStorage.getItem("userInfomation") != null && window.localStorage.getItem("userInfomation").length > 0) {
-        if (commande.sizeProduct != '' && commande.totalAmountProduct != '') {
+        if (product.sizeProduct != '' && product.totalAmountProduct != '') {
            // Get the modal
         var modal = document.getElementById("myModal");
         // Get the <span> element that closes the modal
@@ -254,9 +272,9 @@ var app = new Vue({
             modal.style.display = "block";
 
         // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-        modal.style.display = "none";
-        }
+        // span.onclick = function() {
+        // modal.style.display = "none";
+        // }
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
@@ -267,9 +285,9 @@ var app = new Vue({
       } else {
         alert("Veillez selectionner une taille")
       }
-      localStorage.setItem('commande',JSON.stringify(commande))
+      localStorage.setItem('commande',JSON.stringify(product))
       } else {
-                if (commande.sizeProduct != '' && commande.totalAmountProduct != '') {
+                if (product.sizeProduct != '' && product.totalAmountProduct != '') {
                   this.startNew()
           } else {
             alert("Veillez selectionner une taille")
@@ -279,7 +297,8 @@ var app = new Vue({
         
     },
     startNew() {
-         window.location = "../../../customiser2.html"
+      this.saveCommande()
+      window.location = "../../../customiser2.html"
       },
     useAgain() {
       this.visuel = true
