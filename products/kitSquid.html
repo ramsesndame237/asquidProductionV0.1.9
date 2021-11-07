@@ -103,7 +103,7 @@
                     </div>
                     <div class="sizeKitSquid">
                         <div class="titleRearSquid">
-                            <span>choose your <span style="color: #33ccff;"> size:</span></span>
+                            <span>choose your <span style="color: #33ccff;"> size</span>:</span>
                         </div>
 
                         <div class="containerSizeSquid">
@@ -129,7 +129,7 @@
                     </div>
                     <div class="cutKitSquid" style="margin-top: 35px;">
                         <div class="titleRearSquid">
-                         <span>choose your <span style="color: #33ccff;"> cut:</span></span>
+                         <span>choose your <span style="color: #33ccff;"> cut</span>:</span>
                         </div>
                         <div class="containerCutSquid">
                             <div class="cutKitContainer" v-for="itemsCut in kitCut" @click="cutShowActive(itemsCut.id)">
@@ -151,7 +151,7 @@
                     </div>
                     <div class="extraSquid" style="margin-top: 35px;">
                         <div class="titleRearSquid">
-                            <span>choose your <span style="color: #33ccff;"> extra stickers:</span></span>
+                            <span>choose your <span style="color: #33ccff;"> extra stickers</span>:</span>
                         </div>
                         <div class="containerExtraSquid ">
                             <div class="extraKitContainer  noneExtra" @click="noneExtraShowActive(0)">
@@ -168,7 +168,7 @@
                                     <span>?</span>
                                 </div>
                                 <div class="messageExtraContainer" v-if="index == 0">
-                                    <span style="width: 252px;height: 88px;text-align: left;letter-spacing: 0px;color: #002633;">Sitcker for the back of your vehicle: Kit XS: <span style="color: #002633; font-size: 16px; font-weight: 900;">600 x 200 mm </span> <br/> Kit S:<span style="color: #002633; font-size: 16px; font-weight: 900;">6 900 x 300 mm</span> <br/> Kit M | L | XL: <span style="color: #002633; font-size: 16px; font-weight: 900;">1,200 x 400 mm</span></span>
+                                    <span style="width: 252px;height: 88px;text-align: left;letter-spacing: 0px;color: #002633;">Sitcker for the back of your vehicle: Kit XS: <span style="color: #002633; font-size: 16px; font-weight: 900;">600 x 200 mm </span> <br/> Kit S:<span style="color: #002633; font-size: 16px; font-weight: 900;">900 x 300 mm</span> <br/> Kit M | L | XL: <span style="color: #002633; font-size: 16px; font-weight: 900;">1,200 x 400 mm</span></span>
                                 </div>
                                 <div :id="'extra'+ index" class="infoExtra" v-if="index == 2" >
                                     <span>?</span>
@@ -195,7 +195,7 @@
                     </div>
                     <div class="carInformation" v-show="ToShow">
                         <div class="titleRearSquid">
-                            <span>What’s your  <span style="color: #33ccff;"> car:</span></span>
+                            <span>What’s your  <span style="color: #33ccff;"> car</span>:</span>
                         </div>
                         <div class="carInfomationContent">
                             <div class="YourBrand">
@@ -288,7 +288,7 @@
                                </div>
                             </div>
                             <div class="titleRearSquid" style="margin-top: 35px;" >
-                               <span>Additional  <span style="color: #33ccff;"> information:</span></span>
+                               <span>Additional  <span style="color: #33ccff;"> information</span>:</span>
                             </div>
                              <div class="MoreDetails">
                                  <textarea name="more information" id="information" cols="30" rows="10"></textarea>
@@ -298,7 +298,7 @@
                     </div>
                     <div class="designSquid" style="margin-top: 35px;">
                         <div class="titleRearSquid ">
-                         <span>choose your <span style="color: #33ccff;"> design:</span></span>
+                         <span>choose your <span style="color: #33ccff;"> design</span>:</span>
                         </div>
                         <div class="containerDesignSquid  fw-bold ">
                             <div class="designKitContainer" v-for="itemDesign in KitDesign" @click="designShowActive(itemDesign.id)">
@@ -344,7 +344,7 @@
                     </div>
                     <div class="carInformation" v-show="YourDesign == 'Graphic support'">
                         <div class="titleRearSquid">
-                            <span>What’s your  <span style="color: #33ccff;"> car:</span></span>
+                            <span>What’s your  <span style="color: #33ccff;"> car</span>:</span>
                         </div>
                         <div class="carInfomationContent">
                             <div class="YourBrand" v-if="ToShow == false " >
@@ -447,7 +447,7 @@
                     </div>
                     <div class="quantitySquid">
                         <div class="titleRearSquid ">
-                         <span>choose your <span style="color: #33ccff;"> quantity:</span></span>
+                         <span>choose your <span style="color: #33ccff;"> quantity</span>:</span>
                         </div>
                         <div class="containerQuantitySquid">
                             <div class="choosequantityDropdow" @click="dropChoose = !dropChoose">
@@ -700,6 +700,7 @@
                             <img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">
                             <span> {{initialQuatity}} </span>
                             <span > {{itemEst.nomExtra}} </span> 
+                            <span></span>
                         </div>
                         <div class="consignReview">
                             <img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">

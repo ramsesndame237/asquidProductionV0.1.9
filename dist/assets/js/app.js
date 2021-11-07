@@ -39,7 +39,10 @@ var app = new Vue({
       YourCarColor: "",
       YourCarModel: "",
       MoreInfo:"",
-      dimensionKit:"600 x 200",
+    dimensionKit: "600 x 200",
+    houdSize: "",
+    rearLargeSize: "",
+    oneWaySize:"",
       YourCut:"Rectangular",
         YourExtra: [],
         YourExtraToSave:[],
@@ -327,14 +330,22 @@ var app = new Vue({
           if (n == 0) {
             if (this.Yoursize == 'Size XS "600 x 200 mm"' || this.Yoursize == 'Size S "900 x 300 mm"') {
                   this.largeExtraPrice = 25
-                  this.YourTotal = this.YourTotal + this.largeExtraPrice
+              this.YourTotal = this.YourTotal + this.largeExtraPrice
+              if (this.Yoursize == 'Size XS "600 x 200 mm"') {
+                this.rearLargeSize ="600 x 200 "
+              }else{
+                this.rearLargeSize ="900 x 300"
+              }
             } else if (this.Yoursize == 'Size L "1,500 x 500 mm"' || this.Yoursize == 'Size XL "2,000 x 600 mm"') {
               this.largeExtraPrice = 89
                   this.YourTotal = this.YourTotal + this.largeExtraPrice
+                  this.rearLargeSize ="1,200 x 400 "
             } else if (this.Yoursize == 'Size M "1,200 x 400 mm') {
               this.largeExtraPrice = 49
                   this.YourTotal = this.YourTotal + this.largeExtraPrice
-                }
+                  this.rearLargeSize ="1,200 x 400 "
+            }
+            
             }
           if (n == 1) {
               this.oneWayPrice = 199

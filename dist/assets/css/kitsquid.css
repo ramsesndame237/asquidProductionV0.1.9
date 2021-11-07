@@ -266,6 +266,7 @@ ul,li,a{text-decoration: none !important; list-style: none !important; }
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 14px;
 }
 .quantityRearSize{
     display: flex;

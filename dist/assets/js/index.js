@@ -103,33 +103,35 @@ var app = new Vue({
 
             await api.post(this.baseUri + "auth/signup",dataToSend).then((response) => {
                 console.log(response)
+
+                    let userToSave = {
+                        idUser: this.uuidv4(),
+                        Fname: this.dataRegistration.email.substring(0, this.dataRegistration.email.lastIndexOf("@")) || this.dataRegistration.name,
+                        Lname: this.dataRegistration.email.substring(0, this.dataRegistration.email.lastIndexOf("@")) || this.dataRegistration.surname,
+                        companyName: this.dataRegistration.companyName,
+                        password: this.dataRegistration.email.substring(0, this.dataRegistration.email.lastIndexOf("@")) + 2021 || this.dataRegistration.password,
+                        adress: this.dataRegistration.adress,
+                        phone: this.dataRegistration.phone,
+                        city: this.dataRegistration.city,
+                        state: this.dataRegistration.state,
+                        postCode: this.dataRegistration.postCode,
+                        CarInfo: this.dataRegistration.CarInfo,
+                        email:this.dataRegistration.email
+                    }
+
+                    this.User.push(userToSave)
+                    localStorage.setItem('User', JSON.stringify(this.User))
+                    this.itemTextToShow = 'confirmMail'
+                    setTimeout(() => {
+                        this.itemTextToShow = 'Signin'
+                    }, 1500);
             }).catch((error) => {
                 console.log(error)
+                alert("And error occur please contact the administration")
                 console.log(dataToSend)
           })
 
 
-            let userToSave = {
-                idUser: this.uuidv4(),
-                Fname: this.dataRegistration.email.substring(0, this.dataRegistration.email.lastIndexOf("@")) || this.dataRegistration.name,
-                Lname: this.dataRegistration.email.substring(0, this.dataRegistration.email.lastIndexOf("@")) || this.dataRegistration.surname,
-                companyName: this.dataRegistration.companyName,
-                password: this.dataRegistration.email.substring(0, this.dataRegistration.email.lastIndexOf("@")) + 2021 || this.dataRegistration.password,
-                adress: this.dataRegistration.adress,
-                phone: this.dataRegistration.phone,
-                city: this.dataRegistration.city,
-                state: this.dataRegistration.state,
-                postCode: this.dataRegistration.postCode,
-                CarInfo: this.dataRegistration.CarInfo,
-                email:this.dataRegistration.email
-            }
-
-            this.User.push(userToSave)
-            localStorage.setItem('User', JSON.stringify(this.User))
-            this.itemTextToShow = 'confirmMail'
-            setTimeout(() => {
-                this.itemTextToShow = 'Signin'
-            }, 1500);
         },
         /**
          * this fuction is to connecte a new user 
