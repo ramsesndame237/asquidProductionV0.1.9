@@ -177,28 +177,34 @@ var app = new Vue({
        
     },
     mounted() {
-        this.itemTextToShow = 'Signin'
-        let carts = []
-        if (JSON.parse(localStorage.getItem('User')) != null && localStorage.getItem('User').length > 0) {
-            let userInfo = JSON.parse(localStorage.getItem('User'))
-            this.username = userInfo[0].Fname 
-            this.connected = true
-            console.log(userInfo[0].Fname)
-              axios.get(this.baseUri + "panniers").then((response) => {
-            console.log(response)
-            response.data.forEach(element => {
-                if (element.statutCommande ==  'notPaid') {
-                    // cartContainer.push(element)
-                    carts.push(element)
+        setTimeout(() => {
+                if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                    window.location.href = "phoneHome.html"
+                }else{
+                    this.itemTextToShow = 'Signin'
+                    let carts = []
+                    if (JSON.parse(localStorage.getItem('User')) != null && localStorage.getItem('User').length > 0) {
+                        let userInfo = JSON.parse(localStorage.getItem('User'))
+                        this.username = userInfo[0].Fname 
+                        this.connected = true
+                        console.log(userInfo[0].Fname)
+                            axios.get(this.baseUri + "panniers").then((response) => {
+                        console.log(response)
+                        response.data.forEach(element => {
+                            if (element.statutCommande ==  'notPaid') {
+                                // cartContainer.push(element)
+                                carts.push(element)
+                            }
+                        });
+                        this.numberOfProduct = carts.length
+                    }).catch((error) => {
+                        console.log(error)
+                    })
+                    }
+            
+                    this.connected = localStorage.getItem("connect")
                 }
-            });
-            this.numberOfProduct = carts.length
-        }).catch((error) => {
-            console.log(error)
-        })
-        }
-
-        this.connected = localStorage.getItem("connect")
+        }, 500);
 
 
     },

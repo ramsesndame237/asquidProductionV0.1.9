@@ -5,6 +5,7 @@ var app = new Vue({
             numberOfProduct: '0',
             carts: [],
             checkidt: false,
+            toDrop:false,
             totalShipping: 0,
             shippingPrice: 0,
             // baseUri: 'https://adsquid.herokuapp.com/api/',
@@ -21,12 +22,46 @@ var app = new Vue({
                 tel3:"" ,
                 city:"" ,
                 state: "",
-                country:"",
+                country:"Australia",
                 postcode: "",
                 brand: "",
                 model: "",
                 years: ""
             },
+            stateList: [
+                {
+                    id: "1",
+                    stateName:"New South Wales"
+                },
+                {
+                    id: "2",
+                    stateName:"Queensland"
+                },
+                  {
+                    id: "3",
+                    stateName:"Northern Territory"
+                },
+                   {
+                    id: "4",
+                    stateName:"Western Australia"
+                },
+                    {
+                    id: "5",
+                    stateName:"South Australia"
+                },
+                {
+                    id: "4",
+                    stateName:"Victoria"
+                },
+                {
+                    id: "5",
+                    stateName:"The Australian Capital Territory"
+                },
+                {
+                    id: "6",
+                    stateName:"Tasmania"
+                },
+            ]
         }
     },
     methods: {
@@ -76,6 +111,10 @@ var app = new Vue({
                 localStorage.removeItem("shippingAdresse")
             }
             
+        },
+        selectState(elt) {
+            this.user.state = elt.stateName
+            this.toDrop = false
         }
     },
     mounted() {

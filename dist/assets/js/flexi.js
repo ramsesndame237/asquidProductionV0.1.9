@@ -306,32 +306,36 @@ var app = new Vue({
     }
   },
     mounted() {
-      this.ChoseItemList = document.querySelectorAll(".sizeKitContainer");
-      console.log(this.ChoseItemList)
-      this.designChooseList = document.querySelectorAll('.designKitContainer')
-      console.log(document.querySelector(".select-box__current"))
-      localStorage.setItem('oldTotalFlexi',JSON.stringify(this.initialQuatity))
-      console.log(this.designChooseList)
-      this.quantityChooseList = document.querySelectorAll(".select-box__input")
-      console.log(this.quantityChooseList)
-      this.infoDesign = document.querySelectorAll(".infoDesign")
-      localStorage.setItem('oldTotal',JSON.stringify(this.initialQuatity))
-      console.log(this.infoDesign)
-       this.resumeChooseList = document.querySelectorAll(".contentLinkItem")
-      this.resumeShowActive(this.index =0)
-      this.itemToShow = 'overview'
-      this.YourColorSelectContainer = document.querySelectorAll(".colorToSelect")
-      console.log(this.YearList)
-      let currentYear = new Date().getFullYear();
-            let earliestYear = 1990;
-
-        while (currentYear >= earliestYear) {
-                this.YearList.push(currentYear)
-                currentYear -= 1;
-            }
-      
-      for (let i = 0; i < this.YourColorSelectContainer.length; i++) {
-        this.YourColorSelectContainer[i].style.background = this.colorChooseList[i].value
+      if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        window.location.href = "../../phoneHome.html"
+      }else{
+          this.ChoseItemList = document.querySelectorAll(".sizeKitContainer");
+          console.log(this.ChoseItemList)
+          this.designChooseList = document.querySelectorAll('.designKitContainer')
+          console.log(document.querySelector(".select-box__current"))
+          localStorage.setItem('oldTotalFlexi',JSON.stringify(this.initialQuatity))
+          console.log(this.designChooseList)
+          this.quantityChooseList = document.querySelectorAll(".select-box__input")
+          console.log(this.quantityChooseList)
+          this.infoDesign = document.querySelectorAll(".infoDesign")
+          localStorage.setItem('oldTotal',JSON.stringify(this.initialQuatity))
+          console.log(this.infoDesign)
+          this.resumeChooseList = document.querySelectorAll(".contentLinkItem")
+          this.resumeShowActive(this.index =0)
+          this.itemToShow = 'overview'
+          this.YourColorSelectContainer = document.querySelectorAll(".colorToSelect")
+          console.log(this.YearList)
+          let currentYear = new Date().getFullYear();
+                let earliestYear = 1990;
+    
+            while (currentYear >= earliestYear) {
+                    this.YearList.push(currentYear)
+                    currentYear -= 1;
+                }
+          
+          for (let i = 0; i < this.YourColorSelectContainer.length; i++) {
+            this.YourColorSelectContainer[i].style.background = this.colorChooseList[i].value
+          }
       }
    }
   })

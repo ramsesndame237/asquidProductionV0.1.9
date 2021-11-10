@@ -155,6 +155,7 @@ var app = new Vue({
         ],
         backgroundName: "",
         imagesBackground: "",
+        jamais:false,
         elementToEdit: "",
         underlineWidth: 0,
         sliceSize: 0,
@@ -182,20 +183,23 @@ var app = new Vue({
                 id:'0',imageSrc:''
             },
             {
-                id:'1',imageSrc:'dist/assets/images/Background/Bubble.svg'
+                id:'1',imageSrc:'dist/assets/images/Background/Bubble.svg',image:'dist/assets/images/Background/Bubble_v2.png'
             },
              {
-                 id:'2',imageSrc:'dist/assets/images/Background/Fond_couleur.svg'
-             },
-             {
-                 id:'3',imageSrc:'dist/assets/images/Background/Bande.svg'
-             },
-             {
-                 id:'4',imageSrc:'dist/assets/images/Background/Soleil.svg'
-             },
-             {
-                 id:'5',imageSrc:'dist/assets/images/Background/Rond.svg'
-             }
+                id:'2',imageSrc:'dist/assets/images/Background/Test_backgrd.svg',image:'dist/assets/images/Background/Test_backgrd.png'
+            },
+            //  {
+            //      id:'2',imageSrc:'dist/assets/images/Background/Fond_couleur.svg'
+            //  },
+            //  {
+            //      id:'3',imageSrc:'dist/assets/images/Background/Bande.svg'
+            //  },
+            //  {
+            //      id:'4',imageSrc:'dist/assets/images/Background/Soleil.svg'
+            //  },
+            //  {
+            //      id:'5',imageSrc:'dist/assets/images/Background/Rond.svg'
+            //  }
         ]
         ,
         categoryIconChoose: [
@@ -316,7 +320,7 @@ var app = new Vue({
             }
             this.sidebarItemList[n].className += " activeToolsItem";
         },
-        showActiveBackground(n) {
+        showActiveBackground(n,element) {
             localStorage.setItem("selectBackground",n)
             for (var i = 0; i < this.selectBackgroundLayoutList.length; i++) {
                 this.selectBackgroundLayoutList[i].className = this.selectBackgroundLayoutList[
@@ -326,7 +330,8 @@ var app = new Vue({
             if (n == 0) {
                 this.imagesBackground =""
             } else {
-                let imagesSelectionner = this.selectBackgroundLayoutList[n].getElementsByTagName('img')[0].src;
+                // let imagesSelectionner = this.selectBackgroundLayoutList[n].getElementsByTagName('img')[0].src;
+                let imagesSelectionner = element.imageSrc;
                 this.imagesBackground = imagesSelectionner
                 localStorage.setItem("imageUrl",JSON.stringify(this.imagesBackground))
             }
@@ -454,32 +459,36 @@ var app = new Vue({
 
     },
     mounted() {
-        this.sidebarItemList = document.querySelectorAll(".itemToolsSidebar");
-        this.selectBackgroundLayoutList = document.querySelectorAll(".visualContent")
-        this.topnaveBackgroundLayoutList = document.querySelectorAll(".itemDesignLayout")
-        this.titleZoneImportHeader = document.querySelectorAll(".titleZoneHeader")
-        this.jobList=document.querySelectorAll(".containerVisualJob")
-        this.showActive((this.index = 0));
-      this.jobChooseList = document.querySelectorAll(".select-box__input")
-        this.titreProduct = localStorage.getItem("CustomiseTitle")
-        let sizeMedia = JSON.parse(localStorage.getItem("customizerSize"))
-        console.log(sizeMedia.width)
-        this.customizerHeight = sizeMedia.height
-        this.customizerWidth = sizeMedia.width
-        this.titleZoneImport = document.querySelectorAll(".titleZone")
-        console.log(this.titleZoneImport)
-        this.resumeImportShowActive(this.indx = 0)
-        this.resumeImportShowActiveHeader(this.index =0)
-        this.jobTipe = "downloadLogo"
-        console.log(this.titleZoneImportHeader)
-        let newCanvas = document.querySelector('#canvasUpload')
-        let allContainer = document.querySelector(".canvasAree")
-        if (window.localStorage.getItem('cutCustomizer') != null && window.localStorage.getItem('cutCustomizer') == 'Round') {
-            newCanvas.classList.add('roundedCanvas')
-            allContainer.classList.add("roundedCanvas")
-        } else {
-            console.log(newCanvas)
-        }
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            window.location.href = "phoneHome.html"
+          }else{
+                this.sidebarItemList = document.querySelectorAll(".itemToolsSidebar");
+                this.selectBackgroundLayoutList = document.querySelectorAll(".visualContent")
+                this.topnaveBackgroundLayoutList = document.querySelectorAll(".itemDesignLayout")
+                this.titleZoneImportHeader = document.querySelectorAll(".titleZoneHeader")
+                this.jobList=document.querySelectorAll(".containerVisualJob")
+                this.showActive((this.index = 0));
+                this.jobChooseList = document.querySelectorAll(".select-box__input")
+                this.titreProduct = localStorage.getItem("CustomiseTitle")
+                let sizeMedia = JSON.parse(localStorage.getItem("customizerSize"))
+                console.log(sizeMedia.width)
+                this.customizerHeight = sizeMedia.height
+                this.customizerWidth = sizeMedia.width
+                this.titleZoneImport = document.querySelectorAll(".titleZone")
+                console.log(this.titleZoneImport)
+                this.resumeImportShowActive(this.indx = 0)
+                this.resumeImportShowActiveHeader(this.index =0)
+                this.jobTipe = "downloadLogo"
+                console.log(this.titleZoneImportHeader)
+                let newCanvas = document.querySelector('#canvasUpload')
+                let allContainer = document.querySelector(".canvasAree")
+                if (window.localStorage.getItem('cutCustomizer') != null && window.localStorage.getItem('cutCustomizer') == 'Round') {
+                    newCanvas.classList.add('roundedCanvas')
+                    allContainer.classList.add("roundedCanvas")
+                } else {
+                    console.log(newCanvas)
+                }
+          }
 
     },
 

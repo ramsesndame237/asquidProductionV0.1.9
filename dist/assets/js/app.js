@@ -8,7 +8,7 @@ var app = new Vue({
     designChooseList:[],
     resumeChooseList: [],
     // baseUri:'https://adsquid.herokuapp.com/api/',
-    baseUri:'http:0.0.0.0:8080/api/',
+    baseUri:'http:0.0.0.0:8800/api/',
     info: [],
       infoCut: [],
     infoDesign:[],
@@ -101,28 +101,8 @@ var app = new Vue({
          id:"4",nomSize:'XL',dimension:'2,000 x 600',image:'../dist/assets/images/Size/Car_Stickers_XL.png'
         },
      ],
-   kitCut:[
-        {
-        id:'0',nomCut:'Rectangular',image:'../dist/assets/images/Page produit/Cut_rectangular.png'
-        },
-        {
-        id:'1',nomCut:'Round',image:'../dist/assets/images/Page produit/Cut_round.png'
-        },
-        {
-        id:'2',nomCut:'Lettering',image:'../dist/assets/images/Page produit/Cut_letering.png'
-        },
-      ],
-      KitExtra: [
-        {
-       id:'0',nomExtra:'Large Size rear sticker',image:'../dist/assets/images/Extra/Car_Stickers_back_e.png'
-        },
-        {
-       id:'1',nomExtra:'Rear Squid  One Way',image:'../dist/assets/images/Extra/Car_Stickers_back_ez.png'
-        },
-       {
-       id:'2',nomExtra:'Hood sticker',image:'../dist/assets/images/Extra/Car_Stickers_hood.png'
-        },
-      ],
+   kitCut:[],
+      KitExtra: [],
       KitDesign: [
         {
           id:'0',nomDesign:'Normal',image:'../dist/assets/images/Page produit/Design_normal.png'
@@ -342,8 +322,9 @@ var app = new Vue({
                   this.rearLargeSize ="1,200 x 400 "
             } else if (this.Yoursize == 'Size M "1,200 x 400 mm') {
               this.largeExtraPrice = 49
-                  this.YourTotal = this.YourTotal + this.largeExtraPrice
-                  this.rearLargeSize ="1,200 x 400 "
+              this.YourTotal = this.YourTotal + this.largeExtraPrice
+              this.rearLargeSize ="1,200 x 400 "
+              this.houdSize ="600 x 200"
             }
             
             }
@@ -381,7 +362,9 @@ var app = new Vue({
               }, 5000);
             } if (n == 2) {
               if (this.Yoursize == 'Size XS "600 x 200 mm"' || this.Yoursize == 'Size S "900 x 300 mm"' || this.Yoursize == 'Size M "1,200 x 400 mm') {
-                  this.hoodPrice = 25
+                this.hoodPrice = 25
+                 this.houdSize = "600 x 200"
+              console.log("this.houdSize")
                   this.YourTotal = this.YourTotal +this.hoodPrice
               } else if (this.Yoursize == 'Size L "1,500 x 500 mm"' || this.Yoursize == 'Size XL "2,000 x 600 mm"') {
                 this.hoodPrice = 49
@@ -695,36 +678,46 @@ var app = new Vue({
 
   },
     mounted() {
-      this.resumeChooseList = document.querySelectorAll(".contentLinkItem")
-      localStorage.setItem('oldTotal',JSON.stringify(this.initialQuatity))
-      this.choseCutList = document.querySelectorAll(".cutKitContainer")
-      this.noneExtra = document.querySelectorAll(".noneExtra")
-      this.extraChooseList = document.querySelectorAll(".withExtra")
-      this.info = document.querySelectorAll(".infoExtra")
-      this.infoCut = document.querySelectorAll(".infoCut")
-      this.infoDesign = document.querySelectorAll(".infoDesign")
-      this.ChoseItemList = document.querySelectorAll(".sizeKitContainer");
-      this.designChooseList = document.querySelectorAll(".designKitContainer")
-      this.YourColorSelectContainer = document.querySelectorAll(".colorToSelect")
-      this.YourColorSelectContainerGraphic = document.querySelectorAll(".colorToSelectGraphic")
-      console.log(this.YearList)
-      let currentYear = new Date().getFullYear();
-            let earliestYear = 1990;
-
-        while (currentYear >= earliestYear) {
-                this.YearList.push(currentYear)
-                currentYear -= 1;
-            }
+      if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+         window.location.href = "../../phoneHome.html"
+       }else{
+            this.resumeChooseList = document.querySelectorAll(".contentLinkItem")
+            localStorage.setItem('oldTotal',JSON.stringify(this.initialQuatity))
+            this.choseCutList = document.querySelectorAll(".cutKitContainer")
+            this.noneExtra = document.querySelectorAll(".noneExtra")
+            this.extraChooseList = document.querySelectorAll(".withExtra")
+            this.info = document.querySelectorAll(".infoExtra")
+            this.infoCut = document.querySelectorAll(".infoCut")
+            this.infoDesign = document.querySelectorAll(".infoDesign")
+            this.ChoseItemList = document.querySelectorAll(".sizeKitContainer");
+            this.designChooseList = document.querySelectorAll(".designKitContainer")
+            this.YourColorSelectContainer = document.querySelectorAll(".colorToSelect")
+            this.YourColorSelectContainerGraphic = document.querySelectorAll(".colorToSelectGraphic")
+            console.log(this.YearList)
+            let currentYear = new Date().getFullYear();
+                  let earliestYear = 1990;
       
-      for (let i = 0; i < this.YourColorSelectContainer.length; i++) {
-        this.YourColorSelectContainer[i].style.background = this.colorChooseList[i].value
-      }
-      for (let i = 0; i < this.YourColorSelectContainerGraphic.length; i++) {
-        this.YourColorSelectContainerGraphic[i].style.background = this.colorChooseList[i].value
-      }
-      console.log(this.infoCut)
-        this.resumeShowActive(this.index = 0)
-      this.itemToShow = 'overview'
+              while (currentYear >= earliestYear) {
+                      this.YearList.push(currentYear)
+                      currentYear -= 1;
+                  }
+            
+            for (let i = 0; i < this.YourColorSelectContainer.length; i++) {
+              this.YourColorSelectContainer[i].style.background = this.colorChooseList[i].value
+            }
+            for (let i = 0; i < this.YourColorSelectContainerGraphic.length; i++) {
+              this.YourColorSelectContainerGraphic[i].style.background = this.colorChooseList[i].value
+            }
+            console.log(this.infoCut)
+              this.resumeShowActive(this.index = 0)
+            this.itemToShow = 'overview'
+            api.get( this.baseUri + "cuts").then((response)=>{
+              console.log(response)
+            }).catch((error)=>{
+              console.log(error)
+            })
+
+       }
     },
    
   })

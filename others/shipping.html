@@ -147,7 +147,14 @@
                         </span>
                         </div>
                         <div class="contryInput">
-                            <input type="text" v-model="user.country">
+                            <div class="inputContryValue">
+                                {{user.country}}
+                            </div>
+                            <hr class="separateur"  /> 
+                            <div class="dropdownIcon">
+                                <img src="../dist/assets/images/arrowDown.png" alt="#">
+                            </div>
+
                         </div>
                     </div>
                     <div class="countryContent">
@@ -156,8 +163,25 @@
                                 State
                         </span>
                         </div>
-                        <div class="contryInput">
-                            <input type="text" v-model="user.state">
+                       <div class="contryInput" @click="toDrop = !toDrop">
+                            <div class="inputContryValue" style="font-size: 12px; display: flex;align-items: center;justify-content: center;text-align: center;">
+                                <span>
+                                    {{user.state}}
+                                </span>
+                            </div>
+                            <hr class="separateur"  /> 
+                            <div class="dropdownIcon">
+                                <img src="../dist/assets/images/arrowDown.png" alt="#">
+                            </div>
+                        </div>
+                        <div class="dropStateList" v-show="toDrop == true">
+                            <div class="dropStateListContent">
+                                <div class="stateitem" v-for="(item, index) in stateList" :key="index" @click="selectState(item)" >
+                                    <span style="cursor: pointer;">
+                                            {{item.stateName}}
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="countryContent">

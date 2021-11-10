@@ -10,12 +10,6 @@
     <link rel="stylesheet" href="../dist/assets/css/myCustomiseDropdown.css">
     <link rel="stylesheet" href="../dist/assets/css/footer.css">
     <link rel="stylesheet" href="../dist/assets/css/utils.css">
-
-
-
-    <!--boostrapp-->
-    <!-- <link rel="stylesheet" href="../dist/plugin/responsive/css/bootstrap.min.css"> -->
-    <!--vue js -->
     <script src="../dist/plugin/vue.js"></script>
     <script src="../dist/plugin/axios.min.js"></script>
 
@@ -696,11 +690,16 @@
                             <span> No extra stickers </span>
                             <span  v-for =" itemEst in YourExtra"> {{itemEst.nomExtra}} </span> 
                         </div>
-                          <div class="consignReview" v-else v-for =" itemEst in YourExtra">
+                        <div class="consignReview" v-else v-for =" itemEst in YourExtra">
                             <img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">
                             <span> {{initialQuatity}} </span>
                             <span > {{itemEst.nomExtra}} </span> 
-                            <span></span>
+                            <span v-if="itemEst.nomExtra =='Hood sticker'">
+                                {{houdSize}} mm
+                            </span>
+                             <span v-if="itemEst.nomExtra =='Large Size rear sticker'">
+                                {{rearLargeSize}} mm
+                            </span>
                         </div>
                         <div class="consignReview">
                             <img src="../dist/assets/images/Side-arrow_dark copie.png" alt="">

@@ -23,6 +23,7 @@ body{
     max-height: 897px;
     height: 809px;
     background: #002633;
+    margin: auto;
 }
 .headerPhone{
     height: 80px;

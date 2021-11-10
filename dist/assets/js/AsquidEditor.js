@@ -731,7 +731,7 @@ $("#picker1").colorPick({
                         document.querySelector(".cls-3").style.fill = this.color
                     } else if (selectBackground = localStorage.getItem("selectBackground") == 5) {
                         document.querySelector(".cls-2").style.fill = this.color
-                    } else if (selectBackground = localStorage.getItem("selectBackground") == 2) {
+                    } else if (selectBackground = localStorage.getItem("selectBackground") == 6) {
                         document.querySelector(".cls-1").style.fill = this.color
                     }
 

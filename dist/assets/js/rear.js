@@ -372,28 +372,32 @@ var app = new Vue({
      }
     },
     mounted() {
-        this.resumeChooseList = document.querySelectorAll(".contentLinkItem")
-        this.sizeChooseList = document.querySelectorAll(".sizeRearContainer")
-      this.designChooseList = document.querySelectorAll(".containerDesignRearSquid")
-      this.YourColorSelectContainer = document.querySelectorAll(".colorToSelect")
-      this.YourColorSelectContainerGraphic = document.querySelectorAll(".colorToSelectGraphic")
-        console.log(this.designChooseList)
-        localStorage.setItem('oldTotalrear', JSON.stringify(this.quantityRearSquid))
-        this.resumeShowActive(this.index = 0)
-      this.itemToShow = 'overview'
-          let currentYear = new Date().getFullYear();
-            let earliestYear = 1870;
+      if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        window.location.href = "../../phoneHome.html"
+      }else{
+          this.resumeChooseList = document.querySelectorAll(".contentLinkItem")
+          this.sizeChooseList = document.querySelectorAll(".sizeRearContainer")
+        this.designChooseList = document.querySelectorAll(".containerDesignRearSquid")
+        this.YourColorSelectContainer = document.querySelectorAll(".colorToSelect")
+        this.YourColorSelectContainerGraphic = document.querySelectorAll(".colorToSelectGraphic")
+          console.log(this.designChooseList)
+          localStorage.setItem('oldTotalrear', JSON.stringify(this.quantityRearSquid))
+          this.resumeShowActive(this.index = 0)
+        this.itemToShow = 'overview'
+            let currentYear = new Date().getFullYear();
+              let earliestYear = 1870;
 
-        while (currentYear >= earliestYear) {
-                this.YearList.push(currentYear)
-                currentYear -= 1;
+          while (currentYear >= earliestYear) {
+                  this.YearList.push(currentYear)
+                  currentYear -= 1;
+          }
+          
+        for (let i = 0; i < this.YourColorSelectContainer.length; i++) {
+          this.YourColorSelectContainer[i].style.background = this.colorChooseList[i].value
         }
-         
-      for (let i = 0; i < this.YourColorSelectContainer.length; i++) {
-        this.YourColorSelectContainer[i].style.background = this.colorChooseList[i].value
-      }
-      for (let i = 0; i < this.YourColorSelectContainerGraphic.length; i++) {
-        this.YourColorSelectContainerGraphic[i].style.background = this.colorChooseList[i].value
+        for (let i = 0; i < this.YourColorSelectContainerGraphic.length; i++) {
+          this.YourColorSelectContainerGraphic[i].style.background = this.colorChooseList[i].value
+        }
       }
     },
   })

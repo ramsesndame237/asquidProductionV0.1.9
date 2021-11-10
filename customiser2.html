@@ -156,8 +156,9 @@
                     </div>
                     <div class="visualDesignContainer">
                        <div class="force-overflow">
-                           <div class="visualContent" v-for="itemP in backgroundLayout" @click="OnselectedBackground(itemP.id),(backgroundName ='sidebarItem')" :id="'background' + itemP.id">
-                                   <img class="imageLayout" :src="itemP.imageSrc" alt="#">
+                           <div class="visualContent" v-for="itemP in backgroundLayout" @click="showActiveBackground(itemP.id,itemP),(backgroundName ='sidebarItem')" :id="'background' + itemP.id">
+                                   <img :src="itemP.image" alt="#">
+                                   <img class="imageLayout" :src="itemP.imageSrc" v-show="jamais" alt="#">
                             </div>
                        </div>
                     </div>
